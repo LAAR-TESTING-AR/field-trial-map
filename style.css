@@ -2,12 +2,11 @@
 html, body { margin: 0; width: 100%; height: 100%; font-family: Arial, Helvetica, sans-serif; background: #f4f6f4; color: #243127; }
 body { display: flex; flex-direction: column; }
 .encabezado { padding: 14px 18px; background: #176b3a; color: #fff; }
-.encabezado h1 { margin: 0; font-size: 23px; font-weight: 700; }
+.encabezado h1 { margin: 0; font-size: 23px; }
 .encabezado p { margin: 4px 0 0; font-size: 14px; }
-.panel { display: grid; grid-template-columns: minmax(200px, 1.5fr) repeat(3, minmax(160px, 1fr)) auto; gap: 8px; padding: 10px; background: #fff; border-bottom: 1px solid #d8ded9; }
+.panel { display: grid; grid-template-columns: minmax(190px,1.5fr) repeat(4,minmax(145px,1fr)) auto; gap: 8px; padding: 10px; background: #fff; border-bottom: 1px solid #d8ded9; }
 .panel input, .panel select, .panel button { width: 100%; min-height: 40px; padding: 8px 10px; font-size: 14px; border: 1px solid #b8c3ba; border-radius: 6px; background: #fff; }
-.panel input:focus, .panel select:focus { outline: 2px solid #70a989; border-color: #176b3a; }
-.panel button { padding: 8px 16px; border: none; background: #e8eee9; color: #24442e; font-weight: 600; cursor: pointer; }
+.panel button { border: none; background: #e8eee9; color: #24442e; font-weight: 600; cursor: pointer; }
 .resumen { padding: 8px 14px; background: #f0f4f1; border-bottom: 1px solid #d8ded9; font-size: 14px; font-weight: 600; }
 #mapa { width: 100%; flex: 1; min-height: 450px; }
 .leaflet-popup-content { min-width: 235px; margin: 14px; }
@@ -17,12 +16,14 @@ body { display: flex; flex-direction: column; }
 .boton-mapa, .boton-waze { display: block; padding: 9px 7px; border-radius: 6px; color: #fff !important; text-align: center; text-decoration: none; font-weight: 700; }
 .boton-mapa { background: #176b3a; }
 .boton-waze { background: #1976d2; }
-
 .marcador-cultivo-contenedor { background: transparent; border: none; overflow: visible; }
-.marcador-cultivo { position: relative; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; box-shadow: 0 2px 8px rgba(0,0,0,.4); transform: rotate(-45deg); }
-.icono-cultivo { display: block; font-size: 22px; line-height: 1; transform: rotate(45deg); }
+.marcador-cultivo, .muestra-leyenda { position: relative; display: inline-flex; align-items: center; justify-content: center; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+.marcador-cultivo { width: 38px; height: 38px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
+.marcador-cultivo .icono-cultivo { font-size: 22px; transform: rotate(45deg); }
+.muestra-leyenda { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; }
+.muestra-leyenda .icono-cultivo { font-size: 18px; }
 .insignia-pc { position: absolute; right: -7px; top: -7px; display: flex; align-items: center; justify-content: center; min-width: 24px; height: 20px; padding: 0 4px; border: 2px solid #fff; border-radius: 10px; background: #263238; color: #fff; font-size: 9px; font-weight: 800; transform: rotate(45deg); }
-
+.leyenda-pc { right: -9px; top: -8px; min-width: 21px; height: 17px; font-size: 7px; transform: none; }
 .estado-estandar.cultivo-canola { background: #f2cf43; }
 .estado-estandar.cultivo-corn { background: #e7b52c; }
 .estado-estandar.cultivo-mustard { background: #c89b25; }
@@ -31,64 +32,20 @@ body { display: flex; flex-direction: column; }
 .estado-estandar.cultivo-otro { background: #607d8b; }
 .estado-stewarded { background: #7b3fa1 !important; }
 .estado-regulated { background: #168052 !important; }
-
-.leyenda-mapa { min-width: 225px; max-height: 72vh; overflow-y: auto; border: 1px solid rgba(0,0,0,.15); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 2px 10px rgba(0,0,0,.2); color: #243127; }
+.leyenda-mapa { min-width: 220px; max-width: 285px; max-height: 72vh; overflow-y: auto; border: 1px solid rgba(0,0,0,.15); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 2px 10px rgba(0,0,0,.2); }
 .boton-leyenda { width: 100%; padding: 8px 10px; border: 0; border-radius: 8px 8px 0 0; background: #176b3a; color: #fff; font-weight: 700; cursor: pointer; }
 .contenido-leyenda { padding: 8px 10px 10px; }
 .contenido-leyenda.oculta { display: none; }
 .contenido-leyenda h4 { margin: 4px 0 7px; color: #176b3a; font-size: 13px; }
-.item-leyenda { display: flex; align-items: center; gap: 8px; margin: 5px 0; font-size: 12px; }
-.muestra-leyenda { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; flex: 0 0 27px; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.3); font-size: 16px; }
-.leyenda-pc { right: -10px; top: -8px; min-width: 20px; height: 16px; font-size: 7px; transform: none; }
-
-@media (max-width: 900px) { .panel { grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
+.item-leyenda { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
+.leyenda-vacia { margin: 4px 0; font-size: 12px; }
+@media (max-width: 1050px) { .panel { grid-template-columns: repeat(3,minmax(140px,1fr)); } }
 @media (max-width: 600px) {
   .encabezado { padding: 11px 13px; }
   .encabezado h1 { font-size: 19px; }
-  .encabezado p { font-size: 13px; }
   .panel { grid-template-columns: 1fr 1fr; gap: 7px; padding: 8px; }
   #busqueda, #limpiarFiltros { grid-column: 1 / -1; }
   .panel input, .panel select, .panel button { min-height: 42px; font-size: 13px; }
-  .resumen { padding: 7px 10px; font-size: 13px; }
   #mapa { min-height: 400px; }
-  .leyenda-mapa { min-width: 120px; }
-  .contenido-leyenda { display: none; }
-  .contenido-leyenda:not(.oculta) { display: block; }
-}
-
-
-/* Muestras neutrales para la clasificacion de ensayos */
-.muestra-clasificacion {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 27px;
-  height: 27px;
-  flex: 0 0 27px;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  font-size: 9px;
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.muestra-parent {
-  background: #263238;
-}
-
-.muestra-stewarded {
-  background: #7b3fa1;
-}
-
-.muestra-regulated {
-  background: #168052;
-}
-
-
-/* Ajuste de la leyenda detallada por combinación cultivo-clasificación */
-.leyenda-mapa .contenido-leyenda h4:not(:first-child) {
-  margin-top: 11px;
-  padding-top: 7px;
-  border-top: 1px solid #dfe7e1;
+  .leyenda-mapa { min-width: 150px; max-width: 230px; }
 }

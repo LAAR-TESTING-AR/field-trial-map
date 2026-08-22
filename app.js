@@ -11,9 +11,11 @@ const busqueda = document.getElementById("busqueda");
 const filtroCultivo = document.getElementById("filtroCultivo");
 const filtroRegion = document.getElementById("filtroRegion");
 const filtroLocalidad = document.getElementById("filtroLocalidad");
+const filtroFTS = document.getElementById("filtroFTS");
 const limpiarFiltros = document.getElementById("limpiarFiltros");
 const contadorSitios = document.getElementById("contadorSitios");
 let sitios = [];
+let contenidoLeyenda = null;
 
 const limpiarTexto = valor => String(valor ?? "").trim();
 
@@ -34,9 +36,7 @@ function convertirNumero(valor) {
 }
 
 function esVisible(sitio) {
-  return ["yes", "si", "sí", "true", "1", "visible"].includes(
-    limpiarTexto(sitio.visible).toLowerCase()
-  );
+  return ["yes", "si", "sí", "true", "1", "visible"].includes(limpiarTexto(sitio.visible).toLowerCase());
 }
 
 function transformarFila(fila) {
@@ -83,18 +83,18 @@ function completarFiltros() {
   completarFiltro(filtroCultivo, valoresUnicos("crop"));
   completarFiltro(filtroRegion, valoresUnicos("region"));
   completarFiltro(filtroLocalidad, valoresUnicos("location"));
+  completarFiltro(filtroFTS, valoresUnicos("fts"));
 }
 
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [sitio.location, sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.aoiId]
-    .join(" ").toLowerCase();
-
+  const buscable = [sitio.location, sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.aoiId].join(" ").toLowerCase();
   return esVisible(sitio)
     && (!q || buscable.includes(q))
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
-    && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value);
+    && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
+    && (!filtroFTS.value || sitio.fts === filtroFTS.value);
 }
 
 function configuracionCultivo(cultivo) {
@@ -102,46 +102,31 @@ function configuracionCultivo(cultivo) {
   const parent = nombre.includes("parent chr");
   const stewarded = nombre.includes("stewarded");
   const regulated = nombre.includes("regulated");
-
   let tipo = "otro";
   let icono = "📍";
-  let etiqueta = cultivo || "Otro";
 
-  if (nombre.startsWith("canola")) {
-    tipo = "canola";
-    icono = "🌼";
-  } else if (nombre.startsWith("corn")) {
-    tipo = "corn";
-    icono = "🌽";
-  } else if (nombre.startsWith("mustard")) {
-    tipo = "mustard";
-    icono = "🌿";
-  } else if (nombre.startsWith("soybean")) {
-    tipo = "soybean";
-    icono = "🌱";
-  } else if (nombre.startsWith("sunflower")) {
-    tipo = "sunflower";
-    icono = "🌻";
-  }
+  if (nombre.startsWith("canola")) { tipo = "canola"; icono = "🌼"; }
+  else if (nombre.startsWith("corn")) { tipo = "corn"; icono = "🌽"; }
+  else if (nombre.startsWith("mustard")) { tipo = "mustard"; icono = "🌿"; }
+  else if (nombre.startsWith("soybean")) { tipo = "soybean"; icono = "🌱"; }
+  else if (nombre.startsWith("sunflower")) { tipo = "sunflower"; icono = "🌻"; }
 
   let claseEstado = "estado-estandar";
   if (stewarded) claseEstado = "estado-stewarded";
   if (regulated) claseEstado = "estado-regulated";
+  return { tipo, icono, parent, claseEstado };
+}
 
-  return { tipo, icono, etiqueta, parent, claseEstado };
+function contenidoMarcador(cultivo, modoLeyenda = false) {
+  const cfg = configuracionCultivo(cultivo);
+  const pc = cfg.parent ? `<span class="insignia-pc${modoLeyenda ? " leyenda-pc" : ""}">PC</span>` : "";
+  return `<span class="${modoLeyenda ? "muestra-leyenda" : "marcador-cultivo"} cultivo-${cfg.tipo} ${cfg.claseEstado}"><span class="icono-cultivo">${cfg.icono}</span>${pc}</span>`;
 }
 
 function crearIconoCultivo(cultivo) {
-  const cfg = configuracionCultivo(cultivo);
-  const insignia = cfg.parent ? '<span class="insignia-pc">PC</span>' : "";
-
   return L.divIcon({
     className: "marcador-cultivo-contenedor",
-    html: `
-      <div class="marcador-cultivo cultivo-${cfg.tipo} ${cfg.claseEstado}" title="${escaparHTML(cfg.etiqueta)}">
-        <span class="icono-cultivo">${cfg.icono}</span>
-        ${insignia}
-      </div>`,
+    html: contenidoMarcador(cultivo),
     iconSize: [38, 46],
     iconAnchor: [19, 46],
     popupAnchor: [0, -43]
@@ -150,114 +135,74 @@ function crearIconoCultivo(cultivo) {
 
 function linea(etiqueta, valor) {
   const contenido = limpiarTexto(valor);
-  return contenido
-    ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}</p>`
-    : "";
+  return contenido ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}</p>` : "";
 }
 
 function crearPopup(sitio) {
   const gmaps = `https://www.google.com/maps/dir/?api=1&destination=${sitio.latitude},${sitio.longitude}`;
   const waze = `https://waze.com/ul?ll=${sitio.latitude},${sitio.longitude}&navigate=yes`;
-
-  return `
-    <h2>${escaparHTML(sitio.location)}</h2>
-    ${linea("Cultivo", sitio.crop)}
-    ${linea("Temporada", sitio.season)}
-    ${linea("Provincia", sitio.province)}
-    ${linea("Región", sitio.region)}
-    ${linea("Estación", sitio.station)}
-    ${linea("FTS", sitio.fts)}
-    ${linea("SPA", sitio.spa)}
-    ${linea("Fecha de siembra", sitio.plantingDate)}
-    ${linea("Estado LAAR", sitio.laarStatus)}
-    ${linea("Cultivo antecesor", sitio.previousCrop)}
-    ${linea("Densidad", sitio.plantDensity)}
-    ${linea("Área", sitio.area ? `${sitio.area} ha` : "")}
+  return `<h2>${escaparHTML(sitio.location)}</h2>
+    ${linea("Cultivo", sitio.crop)}${linea("Temporada", sitio.season)}${linea("Provincia", sitio.province)}
+    ${linea("Región", sitio.region)}${linea("Estación", sitio.station)}${linea("FTS", sitio.fts)}
+    ${linea("SPA", sitio.spa)}${linea("Fecha de siembra", sitio.plantingDate)}${linea("Estado LAAR", sitio.laarStatus)}
+    ${linea("Cultivo antecesor", sitio.previousCrop)}${linea("Densidad", sitio.plantDensity)}${linea("Área", sitio.area ? `${sitio.area} ha` : "")}
     <div class="botones-navegacion">
       <a class="boton-mapa" href="${gmaps}" target="_blank" rel="noopener noreferrer">Google Maps</a>
       <a class="boton-waze" href="${waze}" target="_blank" rel="noopener noreferrer">Waze</a>
     </div>`;
 }
 
+function actualizarLeyenda(sitiosFiltrados) {
+  if (!contenidoLeyenda) return;
+  const cultivos = [...new Set(sitiosFiltrados.map(s => limpiarTexto(s.crop)).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+
+  if (!cultivos.length) {
+    contenidoLeyenda.innerHTML = '<p class="leyenda-vacia">No hay cultivos para los filtros seleccionados.</p>';
+    return;
+  }
+
+  contenidoLeyenda.innerHTML = `<h4>Cultivos visibles</h4>${cultivos.map(cultivo => `
+    <div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`).join("")}`;
+}
+
 function actualizarMapa() {
   capaMarcadores.clearLayers();
+  const sitiosFiltrados = sitios.filter(coincideConFiltros).filter(s => Number.isFinite(s.latitude) && Number.isFinite(s.longitude));
   const coordenadas = [];
 
-  sitios.filter(coincideConFiltros).forEach(sitio => {
-    if (!Number.isFinite(sitio.latitude) || !Number.isFinite(sitio.longitude)) return;
-
+  sitiosFiltrados.forEach(sitio => {
     L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoCultivo(sitio.crop) })
-      .bindPopup(crearPopup(sitio))
-      .addTo(capaMarcadores);
-
+      .bindPopup(crearPopup(sitio)).addTo(capaMarcadores);
     coordenadas.push([sitio.latitude, sitio.longitude]);
   });
 
   contadorSitios.textContent = `${coordenadas.length} sitios visibles`;
+  actualizarLeyenda(sitiosFiltrados);
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
-}
-
-function crearMuestraLeyenda(cultivo, texto) {
-  const cfg = configuracionCultivo(cultivo);
-  const pc = cfg.parent ? '<span class="insignia-pc leyenda-pc">PC</span>' : "";
-  return `
-    <div class="item-leyenda">
-      <span class="muestra-leyenda cultivo-${cfg.tipo} ${cfg.claseEstado}">
-        <span>${cfg.icono}</span>${pc}
-      </span>
-      <span>${texto}</span>
-    </div>`;
 }
 
 function agregarLeyenda() {
   const control = L.control({ position: "bottomright" });
-
   control.onAdd = function () {
     const div = L.DomUtil.create("div", "leyenda-mapa");
-    div.innerHTML = `
-      <button class="boton-leyenda" type="button" aria-expanded="true">Leyenda</button>
-      <div class="contenido-leyenda">
-        <h4>Cultivos estándar</h4>
-        ${crearMuestraLeyenda("Canola", "Canola")}
-        ${crearMuestraLeyenda("Corn", "Corn")}
-        ${crearMuestraLeyenda("Soybean", "Soybean")}
-        ${crearMuestraLeyenda("Sunflower", "Sunflower")}
-
-        <h4>Parent Chr</h4>
-        ${crearMuestraLeyenda("Canola - Parent Chr", "Canola - Parent Chr")}
-        ${crearMuestraLeyenda("Corn - Parent Chr", "Corn - Parent Chr")}
-
-        <h4>Stewarded</h4>
-        ${crearMuestraLeyenda("Corn - Stewarded", "Corn - Stewarded")}
-        ${crearMuestraLeyenda("Mustard - Stewarded", "Mustard - Stewarded")}
-        ${crearMuestraLeyenda("Soybean - Stewarded", "Soybean - Stewarded")}
-
-        <h4>Regulated</h4>
-        ${crearMuestraLeyenda("Corn - Regulated", "Corn - Regulated")}
-        ${crearMuestraLeyenda("Soybean - Regulated", "Soybean - Regulated")}
-      </div>`;
-
+    div.innerHTML = '<button class="boton-leyenda" type="button" aria-expanded="true">Leyenda</button><div class="contenido-leyenda"></div>';
     L.DomEvent.disableClickPropagation(div);
+    contenidoLeyenda = div.querySelector(".contenido-leyenda");
     const boton = div.querySelector(".boton-leyenda");
-    const contenido = div.querySelector(".contenido-leyenda");
-
     boton.addEventListener("click", () => {
-      const abierta = !contenido.classList.contains("oculta");
-      contenido.classList.toggle("oculta", abierta);
+      const abierta = !contenidoLeyenda.classList.contains("oculta");
+      contenidoLeyenda.classList.toggle("oculta", abierta);
       boton.setAttribute("aria-expanded", String(!abierta));
     });
-
     return div;
   };
-
   control.addTo(mapa);
 }
 
 function cargarSitios() {
-  Papa.parse("Sitios.csv?v=7", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
+  Papa.parse("Sitios.csv?v=8", {
+    download: true, header: true, skipEmptyLines: true,
     transformHeader: h => h.replace(/^\uFEFF/, "").trim(),
     complete: resultado => {
       sitios = resultado.data.map(transformarFila).filter(s => s.location);
@@ -272,16 +217,14 @@ function cargarSitios() {
   });
 }
 
-[filtroCultivo, filtroRegion, filtroLocalidad].forEach(control =>
-  control.addEventListener("change", actualizarMapa)
-);
-
+[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => control.addEventListener("change", actualizarMapa));
 busqueda.addEventListener("input", actualizarMapa);
 limpiarFiltros.addEventListener("click", () => {
   busqueda.value = "";
   filtroCultivo.value = "";
   filtroRegion.value = "";
   filtroLocalidad.value = "";
+  filtroFTS.value = "";
   actualizarMapa();
 });
 
