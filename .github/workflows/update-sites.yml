@@ -1,0 +1,49 @@
+name: Update sites CSV
+
+on:
+  repository_dispatch:
+    types: [update-sites]
+
+permissions:
+  contents: write
+
+jobs:
+  update-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Decode CSV received from Power Automate
+        env:
+          CSV_BASE64: ${{ github.event.client_payload.csv_base64 }}
+        run: |
+          echo "$CSV_BASE64" | base64 --decode > Sitios.csv
+
+      - name: Validate CSV
+        run: |
+          if [ ! -s Sitios.csv ]; then
+            echo "Sitios.csv is empty"
+            exit 1
+          fi
+
+          echo "CSV generated successfully"
+          echo "Number of lines:"
+          wc -l Sitios.csv
+          head -n 2 Sitios.csv
+
+      - name: Commit updated CSV
+        run: |
+          git config user.name "LAAR Map Automation"
+          git config user.email "actions@github.com"
+
+          git add Sitios.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes detected"
+            exit 0
+          fi
+
+          git commit -m "Automatic update from SharePoint"
+          git push
