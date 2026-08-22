@@ -1,71 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Mapa de Ensayos 2026-27</title>
-
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Ensayos 2026-27</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="encabezado">
+    <h1>Mapa de Ensayos 2026-27</h1>
+    <p>Giras tecnicas y visitas a campo</p>
+  </header>
 
-    <header class="encabezado">
-        <h1>Mapa de Ensayos 2026-27</h1>
-        <p>Giras técnicas y visitas a campo</p>
-    </header>
+  <section class="panel">
+    <input type="search" id="busqueda" placeholder="Buscar localidad..." aria-label="Buscar localidad">
+    <select id="filtroCultivo"><option value="">Todos los cultivos</option></select>
+    <select id="filtroProvincia"><option value="">Todas las provincias</option></select>
+    <select id="filtroRegion"><option value="">Todas las regiones</option></select>
+    <select id="filtroFTS"><option value="">Todos los responsables</option></select>
+    <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+  </section>
 
-    <section class="panel">
+  <div class="resumen"><span id="contadorSitios">Cargando sitios...</span></div>
+  <main id="mapa"></main>
 
-        <input
-            type="search"
-            id="busqueda"
-            placeholder="Buscar localidad..."
-            aria-label="Buscar localidad"
-        >
-
-        <select id="filtroCultivo">
-            <option value="">Todos los cultivos</option>
-        </select>
-
-        <select id="filtroProvincia">
-            <option value="">Todas las provincias</option>
-        </select>
-
-        <select id="filtroRegion">
-            <option value="">Todas las regiones</option>
-        </select>
-
-        <select id="filtroFTS">
-            <option value="">Todos los responsables</option>
-        </select>
-
-        <button id="limpiarFiltros" type="button">
-            Limpiar filtros
-        </button>
-
-    </section>
-
-    <div class="resumen">
-        <span id="contadorSitios">Cargando sitios...</span>
-    </div>
-
-    <main id="mapa"></main>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist
-
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-    app.js?v=2script>
-
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
