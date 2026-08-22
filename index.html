@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Mapa de ensayos 2026-27</title>
+
+  https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
+
+  style.css
+</head>
+
+<body>
+
+  <header class="encabezado">
+    <div>
+      <h1>Mapa de ensayos 2026-27</h1>
+      <p>Giras técnicas y visitas a campo</p>
+    </div>
+  </header>
+
+  <section class="panel">
+
+    <input
+      type="search"
+      id="busqueda"
+      placeholder="Buscar localidad..."
+      aria-label="Buscar localidad"
+    >
+
+    <select id="filtroCultivo">
+      <option value="">Todos los cultivos</option>
+    </select>
+
+    <select id="filtroProvincia">
+      <option value="">Todas las provincias</option>
+    </select>
+
+    <select id="filtroRegion">
+      <option value="">Todas las regiones</option>
+    </select>
+
+    <select id="filtroFTS">
+      <option value="">Todos los responsables</option>
+    </select>
+
+    <button id="limpiarFiltros" type="button">
+      Limpiar filtros
+    </button>
+
+  </section>
+
+  <div class="resumen">
+    <span id="contadorSitios">Cargando sitios...</span>
+  </div>
+
+  <main id="mapa"></main>
+
+  https://unpkg.com/leaflet@1.9.4/dist/leaflet.jsscript>
+
+  app.jsscript>
+
+</body>
+</html>
