@@ -217,25 +217,24 @@ function agregarLeyenda() {
     div.innerHTML = `
       <button class="boton-leyenda" type="button" aria-expanded="true">Leyenda</button>
       <div class="contenido-leyenda">
-        <h4>Cultivos</h4>
+        <h4>Cultivos estándar</h4>
         ${crearMuestraLeyenda("Canola", "Canola")}
         ${crearMuestraLeyenda("Corn", "Corn")}
-        ${crearMuestraLeyenda("Mustard", "Mustard")}
         ${crearMuestraLeyenda("Soybean", "Soybean")}
         ${crearMuestraLeyenda("Sunflower", "Sunflower")}
-        <h4>Clasificación</h4>
-        <div class="item-leyenda">
-          <span class="muestra-clasificacion muestra-parent">PC</span>
-          <span>Parent Chr: ícono del cultivo + PC</span>
-        </div>
-        <div class="item-leyenda">
-          <span class="muestra-clasificacion muestra-stewarded"></span>
-          <span>Stewarded: fondo violeta</span>
-        </div>
-        <div class="item-leyenda">
-          <span class="muestra-clasificacion muestra-regulated"></span>
-          <span>Regulated: fondo verde</span>
-        </div>
+
+        <h4>Parent Chr</h4>
+        ${crearMuestraLeyenda("Canola - Parent Chr", "Canola - Parent Chr")}
+        ${crearMuestraLeyenda("Corn - Parent Chr", "Corn - Parent Chr")}
+
+        <h4>Stewarded</h4>
+        ${crearMuestraLeyenda("Corn - Stewarded", "Corn - Stewarded")}
+        ${crearMuestraLeyenda("Mustard - Stewarded", "Mustard - Stewarded")}
+        ${crearMuestraLeyenda("Soybean - Stewarded", "Soybean - Stewarded")}
+
+        <h4>Regulated</h4>
+        ${crearMuestraLeyenda("Corn - Regulated", "Corn - Regulated")}
+        ${crearMuestraLeyenda("Soybean - Regulated", "Soybean - Regulated")}
       </div>`;
 
     L.DomEvent.disableClickPropagation(div);
