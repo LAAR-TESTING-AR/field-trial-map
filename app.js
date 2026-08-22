@@ -9,9 +9,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 const capaMarcadores = L.layerGroup().addTo(mapa);
 const busqueda = document.getElementById("busqueda");
 const filtroCultivo = document.getElementById("filtroCultivo");
-const filtroProvincia = document.getElementById("filtroProvincia");
 const filtroRegion = document.getElementById("filtroRegion");
-const filtroFTS = document.getElementById("filtroFTS");
+const filtroLocalidad = document.getElementById("filtroLocalidad");
 const limpiarFiltros = document.getElementById("limpiarFiltros");
 const contadorSitios = document.getElementById("contadorSitios");
 let sitios = [];
@@ -73,9 +72,8 @@ function completarFiltro(elemento, valores) {
 }
 function completarFiltros() {
   completarFiltro(filtroCultivo, valoresUnicos("crop"));
-  completarFiltro(filtroProvincia, valoresUnicos("province"));
   completarFiltro(filtroRegion, valoresUnicos("region"));
-  completarFiltro(filtroFTS, valoresUnicos("fts"));
+  completarFiltro(filtroLocalidad, valoresUnicos("location"));
 }
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
@@ -83,9 +81,8 @@ function coincideConFiltros(sitio) {
   return esVisible(sitio)
     && (!q || buscable.includes(q))
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
-    && (!filtroProvincia.value || sitio.province === filtroProvincia.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
-    && (!filtroFTS.value || sitio.fts === filtroFTS.value);
+    && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value);
 }
 function linea(etiqueta, valor) {
   const contenido = limpiarTexto(valor);
@@ -113,12 +110,43 @@ function crearPopup(sitio) {
       <a class="boton-waze" href="${waze}" target="_blank" rel="noopener noreferrer">Waze</a>
     </div>`;
 }
+
+function crearIconoCultivo(cultivo) {
+  const nombre = limpiarTexto(cultivo).toLowerCase();
+  let clase = "marcador-otro";
+  let simbolo = "E";
+
+  if (nombre.includes("sunflower") || nombre.includes("girasol")) {
+    clase = "marcador-girasol";
+    simbolo = "S";
+  } else if (nombre.includes("corn") || nombre.includes("maiz") || nombre.includes("maíz")) {
+    clase = "marcador-maiz";
+    simbolo = "C";
+  } else if (nombre.includes("soybean") || nombre.includes("soja")) {
+    clase = "marcador-soja";
+    simbolo = "B";
+  } else if (nombre.includes("canola") || nombre.includes("colza")) {
+    clase = "marcador-canola";
+    simbolo = "K";
+  }
+
+  return L.divIcon({
+    className: "marcador-cultivo-contenedor",
+    html: `<div class="marcador-cultivo ${clase}" title="${escaparHTML(cultivo)}">${simbolo}</div>`,
+    iconSize: [30, 38],
+    iconAnchor: [15, 38],
+    popupAnchor: [0, -36]
+  });
+}
+
 function actualizarMapa() {
   capaMarcadores.clearLayers();
   const coordenadas = [];
   sitios.filter(coincideConFiltros).forEach(sitio => {
     if (!Number.isFinite(sitio.latitude) || !Number.isFinite(sitio.longitude)) return;
-    L.marker([sitio.latitude, sitio.longitude]).bindPopup(crearPopup(sitio)).addTo(capaMarcadores);
+    L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoCultivo(sitio.crop) })
+      .bindPopup(crearPopup(sitio))
+      .addTo(capaMarcadores);
     coordenadas.push([sitio.latitude, sitio.longitude]);
   });
   contadorSitios.textContent = `${coordenadas.length} sitios visibles`;
@@ -144,14 +172,13 @@ function cargarSitios() {
     }
   });
 }
-[filtroCultivo, filtroProvincia, filtroRegion, filtroFTS].forEach(c => c.addEventListener("change", actualizarMapa));
+[filtroCultivo, filtroRegion, filtroLocalidad].forEach(c => c.addEventListener("change", actualizarMapa));
 busqueda.addEventListener("input", actualizarMapa);
 limpiarFiltros.addEventListener("click", () => {
   busqueda.value = "";
   filtroCultivo.value = "";
-  filtroProvincia.value = "";
   filtroRegion.value = "";
-  filtroFTS.value = "";
+  filtroLocalidad.value = "";
   actualizarMapa();
 });
 
