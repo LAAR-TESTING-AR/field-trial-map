@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mapa de Ensayos 2026-27</title>
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,6 +27,7 @@
             type="search"
             id="busqueda"
             placeholder="Buscar localidad..."
+            aria-label="Buscar localidad"
         >
 
         <select id="filtroCultivo">
@@ -42,5 +46,20 @@
             <option value="">Todos los responsables</option>
         </select>
 
-        <button id="limpiarFiltros">
-            Limpiar
+        <button id="limpiarFiltros" type="button">
+            Limpiar filtros
+        </button>
+
+    </section>
+
+    <div class="resumen">
+        <span id="contadorSitios">Cargando sitios...</span>
+    </div>
+
+    <main id="mapa"></main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <cript src="app.js"></script>
+
+</body>
+</html>
