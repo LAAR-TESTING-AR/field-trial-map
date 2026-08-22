@@ -55,3 +55,32 @@ body { display: flex; flex-direction: column; }
   .contenido-leyenda { display: none; }
   .contenido-leyenda:not(.oculta) { display: block; }
 }
+
+
+/* Muestras neutrales para la clasificacion de ensayos */
+.muestra-clasificacion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 9px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.muestra-parent {
+  background: #263238;
+}
+
+.muestra-stewarded {
+  background: #7b3fa1;
+}
+
+.muestra-regulated {
+  background: #168052;
+}

@@ -224,9 +224,18 @@ function agregarLeyenda() {
         ${crearMuestraLeyenda("Soybean", "Soybean")}
         ${crearMuestraLeyenda("Sunflower", "Sunflower")}
         <h4>Clasificación</h4>
-        ${crearMuestraLeyenda("Corn - Parent Chr", "Parent Chr")}
-        ${crearMuestraLeyenda("Corn - Stewarded", "Stewarded")}
-        ${crearMuestraLeyenda("Corn - Regulated", "Regulated")}
+        <div class="item-leyenda">
+          <span class="muestra-clasificacion muestra-parent">PC</span>
+          <span>Parent Chr: ícono del cultivo + PC</span>
+        </div>
+        <div class="item-leyenda">
+          <span class="muestra-clasificacion muestra-stewarded"></span>
+          <span>Stewarded: fondo violeta</span>
+        </div>
+        <div class="item-leyenda">
+          <span class="muestra-clasificacion muestra-regulated"></span>
+          <span>Regulated: fondo verde</span>
+        </div>
       </div>`;
 
     L.DomEvent.disableClickPropagation(div);
