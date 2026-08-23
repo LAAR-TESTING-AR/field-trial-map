@@ -18,6 +18,8 @@ const contadorSitios = document.getElementById("contadorSitios");
 
 let sitios = [];
 let contenidoLeyenda = null;
+let panelLeyenda = null;
+let botonLeyenda = null;
 
 const limpiarTexto = valor => String(valor ?? "").trim();
 
@@ -94,8 +96,14 @@ function completarFiltros() {
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
   const buscable = [
-    sitio.location, sitio.region, sitio.province, sitio.fts,
-    sitio.spa, sitio.aoiId, sitio.operations, sitio.crop
+    sitio.location,
+    sitio.region,
+    sitio.province,
+    sitio.fts,
+    sitio.spa,
+    sitio.aoiId,
+    sitio.operations,
+    sitio.crop
   ].join(" ").toLowerCase();
 
   return esVisible(sitio)
@@ -186,8 +194,28 @@ function crearPopup(sitio) {
   </div>`;
 }
 
+function ocultarLeyenda() {
+  if (!panelLeyenda || !botonLeyenda) return;
+  panelLeyenda.classList.remove("visible");
+  botonLeyenda.classList.remove("activo");
+  botonLeyenda.setAttribute("aria-expanded", "false");
+  botonLeyenda.setAttribute("aria-label", "Mostrar leyenda");
+  botonLeyenda.title = "Mostrar leyenda";
+}
+
+function alternarLeyenda() {
+  if (!panelLeyenda || !botonLeyenda) return;
+  const mostrar = !panelLeyenda.classList.contains("visible");
+  panelLeyenda.classList.toggle("visible", mostrar);
+  botonLeyenda.classList.toggle("activo", mostrar);
+  botonLeyenda.setAttribute("aria-expanded", String(mostrar));
+  botonLeyenda.setAttribute("aria-label", mostrar ? "Ocultar leyenda" : "Mostrar leyenda");
+  botonLeyenda.title = mostrar ? "Ocultar leyenda" : "Mostrar leyenda";
+}
+
 function actualizarLeyenda(sitiosFiltrados) {
   if (!contenidoLeyenda) return;
+
   const cultivos = [...new Set(
     sitiosFiltrados.map(s => limpiarTexto(s.crop)).filter(Boolean)
   )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
@@ -197,45 +225,76 @@ function actualizarLeyenda(sitiosFiltrados) {
     return;
   }
 
-  contenidoLeyenda.innerHTML = `<h4>Cultivos visibles</h4>${cultivos.map(cultivo =>
+  contenidoLeyenda.innerHTML = cultivos.map(cultivo =>
     `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`
-  ).join("")}`;
+  ).join("");
 }
 
 function actualizarMapa() {
   capaMarcadores.clearLayers();
+
   const sitiosFiltrados = sitios
     .filter(coincideConFiltros)
     .filter(s => Number.isFinite(s.latitude) && Number.isFinite(s.longitude));
+
   const coordenadas = [];
 
   sitiosFiltrados.forEach(sitio => {
     L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoCultivo(sitio.crop) })
       .bindPopup(crearPopup(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 520 })
       .addTo(capaMarcadores);
+
     coordenadas.push([sitio.latitude, sitio.longitude]);
   });
 
   contadorSitios.textContent = `${coordenadas.length} sitios visibles`;
   actualizarLeyenda(sitiosFiltrados);
-  if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
+
+  if (coordenadas.length) {
+    mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
+  }
 }
 
-function agregarLeyenda() {
+function agregarLeyendaPremium() {
   const control = L.control({ position: "bottomright" });
+
   control.onAdd = function () {
-    const div = L.DomUtil.create("div", "leyenda-mapa");
-    div.innerHTML = '<button class="boton-leyenda" type="button" aria-expanded="true">Leyenda</button><div class="contenido-leyenda"></div>';
-    L.DomEvent.disableClickPropagation(div);
-    contenidoLeyenda = div.querySelector(".contenido-leyenda");
-    const boton = div.querySelector(".boton-leyenda");
-    boton.addEventListener("click", () => {
-      const abierta = !contenidoLeyenda.classList.contains("oculta");
-      contenidoLeyenda.classList.toggle("oculta", abierta);
-      boton.setAttribute("aria-expanded", String(!abierta));
-    });
-    return div;
+    const contenedor = L.DomUtil.create("div", "control-leyenda-premium");
+
+    contenedor.innerHTML = `
+      <button
+        class="boton-leyenda-flotante"
+        type="button"
+        aria-label="Mostrar leyenda"
+        aria-expanded="false"
+        title="Mostrar leyenda"
+      >
+        <span class="icono-leyenda" aria-hidden="true">i</span>
+      </button>
+
+      <section class="panel-leyenda-premium" aria-label="Leyenda del mapa">
+        <div class="cabecera-leyenda-premium">
+          <h4>Leyenda</h4>
+          <button class="cerrar-leyenda" type="button" aria-label="Cerrar leyenda">×</button>
+        </div>
+        <div class="contenido-leyenda"></div>
+      </section>
+    `;
+
+    L.DomEvent.disableClickPropagation(contenedor);
+    L.DomEvent.disableScrollPropagation(contenedor);
+
+    botonLeyenda = contenedor.querySelector(".boton-leyenda-flotante");
+    panelLeyenda = contenedor.querySelector(".panel-leyenda-premium");
+    contenidoLeyenda = contenedor.querySelector(".contenido-leyenda");
+    const cerrarLeyenda = contenedor.querySelector(".cerrar-leyenda");
+
+    botonLeyenda.addEventListener("click", alternarLeyenda);
+    cerrarLeyenda.addEventListener("click", ocultarLeyenda);
+
+    return contenedor;
   };
+
   control.addTo(mapa);
 }
 
@@ -273,5 +332,8 @@ limpiarFiltros.addEventListener("click", () => {
   actualizarMapa();
 });
 
-agregarLeyenda();
+mapa.on("popupopen", ocultarLeyenda);
+mapa.on("click", ocultarLeyenda);
+
+agregarLeyendaPremium();
 cargarSitios();
