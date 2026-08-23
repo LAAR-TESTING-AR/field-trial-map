@@ -1,7 +1,6 @@
 console.log("app.js iniciado correctamente");
 
 const mapa = L.map("mapa").setView([-34.5, -63.0], 5);
-
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "&copy; OpenStreetMap contributors"
@@ -39,6 +38,11 @@ function convertirNumero(valor) {
   return Number(texto);
 }
 
+function esAccess(sitio) {
+  const tipo = limpiarTexto(sitio.siteType).toLowerCase();
+  return ["access", "acceso", "bajada", "bajada de ruta"].includes(tipo);
+}
+
 function esVisible(sitio) {
   return ["yes", "si", "sí", "true", "1", "visible"].includes(
     limpiarTexto(sitio.visible).toLowerCase()
@@ -47,6 +51,8 @@ function esVisible(sitio) {
 
 function transformarFila(fila) {
   return {
+    siteType: limpiarTexto(fila["Site Type"]),
+    description: limpiarTexto(fila["Description"]),
     aoiId: limpiarTexto(fila["AOI ID"]),
     location: limpiarTexto(fila["Location"]),
     operations: limpiarTexto(fila["Operations"]),
@@ -71,9 +77,8 @@ function transformarFila(fila) {
 }
 
 function valoresUnicos(campo) {
-  return [...new Set(
-    sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean)
-  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  return [...new Set(sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 }
 
 function completarFiltro(elemento, valores) {
@@ -95,16 +100,9 @@ function completarFiltros() {
 
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [
-    sitio.location,
-    sitio.region,
-    sitio.province,
-    sitio.fts,
-    sitio.spa,
-    sitio.aoiId,
-    sitio.operations,
-    sitio.crop
-  ].join(" ").toLowerCase();
+  const buscable = [sitio.location, sitio.description, sitio.siteType, sitio.region,
+    sitio.province, sitio.fts, sitio.spa, sitio.aoiId, sitio.operations, sitio.crop]
+    .join(" ").toLowerCase();
 
   return esVisible(sitio)
     && (!q || buscable.includes(q))
@@ -131,23 +129,35 @@ function configuracionCultivo(cultivo) {
   let claseEstado = "estado-estandar";
   if (stewarded) claseEstado = "estado-stewarded";
   if (regulated) claseEstado = "estado-regulated";
-
   return { tipo, icono, parent, claseEstado };
 }
 
 function contenidoMarcador(cultivo, modoLeyenda = false) {
   const cfg = configuracionCultivo(cultivo);
-  const pc = cfg.parent
-    ? `<span class="insignia-pc${modoLeyenda ? " leyenda-pc" : ""}">PC</span>`
-    : "";
-
+  const pc = cfg.parent ? `<span class="insignia-pc${modoLeyenda ? " leyenda-pc" : ""}">PC</span>` : "";
   return `<span class="${modoLeyenda ? "muestra-leyenda" : "marcador-cultivo"} cultivo-${cfg.tipo} ${cfg.claseEstado}"><span class="icono-cultivo">${cfg.icono}</span>${pc}</span>`;
 }
 
-function crearIconoCultivo(cultivo) {
+function crearIconoAccess(modoLeyenda = false) {
+  return `<span class="${modoLeyenda ? "muestra-access-leyenda" : "marcador-access"}" aria-hidden="true">
+    <span class="pin-access-cabeza"></span><span class="pin-access-punta"></span>
+  </span>`;
+}
+
+function crearIconoSitio(sitio) {
+  if (esAccess(sitio)) {
+    return L.divIcon({
+      className: "marcador-access-contenedor",
+      html: crearIconoAccess(false),
+      iconSize: [34, 46],
+      iconAnchor: [17, 46],
+      popupAnchor: [0, -43]
+    });
+  }
+
   return L.divIcon({
     className: "marcador-cultivo-contenedor",
-    html: contenidoMarcador(cultivo),
+    html: contenidoMarcador(sitio.crop),
     iconSize: [38, 46],
     iconAnchor: [19, 46],
     popupAnchor: [0, -43]
@@ -156,42 +166,23 @@ function crearIconoCultivo(cultivo) {
 
 function linea(etiqueta, valor, sufijo = "") {
   const contenido = limpiarTexto(valor);
-  return contenido
-    ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}${escaparHTML(sufijo)}</p>`
-    : "";
+  return contenido ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}${escaparHTML(sufijo)}</p>` : "";
 }
 
 function crearPopup(sitio) {
   const googleMaps = `https://www.google.com/maps/dir/?api=1&destination=${sitio.latitude},${sitio.longitude}`;
   const waze = `https://waze.com/ul?ll=${sitio.latitude},${sitio.longitude}&navigate=yes`;
 
-  return `<div class="popup-sitio">
-    <h2>${escaparHTML(sitio.location)}</h2>
-    <div class="popup-detalles">
-      ${linea("AOI ID", sitio.aoiId)}
-      ${linea("Operación", sitio.operations)}
-      ${linea("Cultivo", sitio.crop)}
-      ${linea("Temporada", sitio.season)}
-      ${linea("Estación", sitio.station)}
-      ${linea("Provincia", sitio.province)}
-      ${linea("Región", sitio.region)}
-      ${linea("FTS", sitio.fts)}
-      ${linea("SPA", sitio.spa)}
-      ${linea("Número de plots SPD", sitio.plots)}
-      ${linea("Estado LAAR 2026-2027", sitio.laarStatus)}
-      ${linea("Fecha de siembra", sitio.plantingDate)}
-      ${linea("Cultivo antecesor", sitio.previousCrop)}
-      ${linea("Densidad de plantas", sitio.plantDensity, sitio.plantDensity ? " plantas/ha" : "")}
-      ${linea("Fertilización", sitio.fertilization)}
-      ${linea("Área", sitio.area, sitio.area ? " ha" : "")}
-      ${linea("Latitud", Number.isFinite(sitio.latitude) ? sitio.latitude : "")}
-      ${linea("Longitud", Number.isFinite(sitio.longitude) ? sitio.longitude : "")}
-    </div>
+  const detalle = esAccess(sitio)
+    ? `${linea("Tipo", "Bajada de ruta")}${linea("Descripción", sitio.description)}${linea("Provincia", sitio.province)}${linea("Región", sitio.region)}${linea("Latitud", sitio.latitude)}${linea("Longitud", sitio.longitude)}`
+    : `${linea("AOI ID", sitio.aoiId)}${linea("Operación", sitio.operations)}${linea("Cultivo", sitio.crop)}${linea("Temporada", sitio.season)}${linea("Estación", sitio.station)}${linea("Provincia", sitio.province)}${linea("Región", sitio.region)}${linea("FTS", sitio.fts)}${linea("SPA", sitio.spa)}${linea("Número de plots SPD", sitio.plots)}${linea("Estado LAAR 2026-2027", sitio.laarStatus)}${linea("Fecha de siembra", sitio.plantingDate)}${linea("Cultivo antecesor", sitio.previousCrop)}${linea("Densidad de plantas", sitio.plantDensity, sitio.plantDensity ? " plantas/ha" : "")}${linea("Fertilización", sitio.fertilization)}${linea("Área", sitio.area, sitio.area ? " ha" : "")}${linea("Latitud", sitio.latitude)}${linea("Longitud", sitio.longitude)}`;
+
+  return `<div class="popup-sitio${esAccess(sitio) ? " popup-access" : ""}">
+    <h2>${escaparHTML(sitio.location)}</h2><div class="popup-detalles">${detalle}</div>
     <div class="botones-navegacion">
       <a class="boton-mapa" href="${googleMaps}" target="_blank" rel="noopener noreferrer">Google Maps</a>
       <a class="boton-waze" href="${waze}" target="_blank" rel="noopener noreferrer">Waze</a>
-    </div>
-  </div>`;
+    </div></div>`;
 }
 
 function ocultarLeyenda() {
@@ -215,94 +206,54 @@ function alternarLeyenda() {
 
 function actualizarLeyenda(sitiosFiltrados) {
   if (!contenidoLeyenda) return;
+  const hayAccess = sitiosFiltrados.some(esAccess);
+  const cultivos = [...new Set(sitiosFiltrados.filter(s => !esAccess(s)).map(s => limpiarTexto(s.crop)).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 
-  const cultivos = [...new Set(
-    sitiosFiltrados.map(s => limpiarTexto(s.crop)).filter(Boolean)
-  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  let html = cultivos.map(cultivo => `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`).join("");
+  if (hayAccess) html += `<div class="item-leyenda item-leyenda-access">${crearIconoAccess(true)}<span>Bajada de ruta / Access</span></div>`;
 
-  if (!cultivos.length) {
-    contenidoLeyenda.innerHTML = '<p class="leyenda-vacia">No hay cultivos para los filtros seleccionados.</p>';
-    return;
-  }
-
-  contenidoLeyenda.innerHTML = cultivos.map(cultivo =>
-    `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`
-  ).join("");
+  contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
 
 function actualizarMapa() {
   capaMarcadores.clearLayers();
-
-  const sitiosFiltrados = sitios
-    .filter(coincideConFiltros)
+  const sitiosFiltrados = sitios.filter(coincideConFiltros)
     .filter(s => Number.isFinite(s.latitude) && Number.isFinite(s.longitude));
-
   const coordenadas = [];
 
   sitiosFiltrados.forEach(sitio => {
-    L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoCultivo(sitio.crop) })
+    L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoSitio(sitio), zIndexOffset: esAccess(sitio) ? 1000 : 0 })
       .bindPopup(crearPopup(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 520 })
       .addTo(capaMarcadores);
-
     coordenadas.push([sitio.latitude, sitio.longitude]);
   });
 
-  contadorSitios.textContent = `${coordenadas.length} sitios visibles`;
+  contadorSitios.textContent = `${coordenadas.length} puntos visibles`;
   actualizarLeyenda(sitiosFiltrados);
-
-  if (coordenadas.length) {
-    mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
-  }
+  if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
 
 function agregarLeyendaPremium() {
   const control = L.control({ position: "bottomright" });
-
   control.onAdd = function () {
     const contenedor = L.DomUtil.create("div", "control-leyenda-premium");
-
-    contenedor.innerHTML = `
-      <button
-        class="boton-leyenda-flotante"
-        type="button"
-        aria-label="Mostrar leyenda"
-        aria-expanded="false"
-        title="Mostrar leyenda"
-      >
-        <span class="icono-leyenda" aria-hidden="true">i</span>
-      </button>
-
-      <section class="panel-leyenda-premium" aria-label="Leyenda del mapa">
-        <div class="cabecera-leyenda-premium">
-          <h4>Leyenda</h4>
-          <button class="cerrar-leyenda" type="button" aria-label="Cerrar leyenda">×</button>
-        </div>
-        <div class="contenido-leyenda"></div>
-      </section>
-    `;
-
+    contenedor.innerHTML = `<button class="boton-leyenda-flotante" type="button" aria-label="Mostrar leyenda" aria-expanded="false" title="Mostrar leyenda"><span class="icono-leyenda" aria-hidden="true">i</span></button><section class="panel-leyenda-premium" aria-label="Leyenda del mapa"><div class="cabecera-leyenda-premium"><h4>Leyenda</h4><button class="cerrar-leyenda" type="button" aria-label="Cerrar leyenda">×</button></div><div class="contenido-leyenda"></div></section>`;
     L.DomEvent.disableClickPropagation(contenedor);
     L.DomEvent.disableScrollPropagation(contenedor);
-
     botonLeyenda = contenedor.querySelector(".boton-leyenda-flotante");
     panelLeyenda = contenedor.querySelector(".panel-leyenda-premium");
     contenidoLeyenda = contenedor.querySelector(".contenido-leyenda");
-    const cerrarLeyenda = contenedor.querySelector(".cerrar-leyenda");
-
     botonLeyenda.addEventListener("click", alternarLeyenda);
-    cerrarLeyenda.addEventListener("click", ocultarLeyenda);
-
+    contenedor.querySelector(".cerrar-leyenda").addEventListener("click", ocultarLeyenda);
     return contenedor;
   };
-
   control.addTo(mapa);
 }
 
 function cargarSitios() {
   Papa.parse(`Sitios.csv?v=${Date.now()}`, {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
+    download: true, header: true, skipEmptyLines: true,
     transformHeader: h => h.replace(/^\uFEFF/, "").trim(),
     complete: resultado => {
       sitios = resultado.data.map(transformarFila).filter(s => s.location);
@@ -317,23 +268,14 @@ function cargarSitios() {
   });
 }
 
-[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => {
-  control.addEventListener("change", actualizarMapa);
-});
-
+[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => control.addEventListener("change", actualizarMapa));
 busqueda.addEventListener("input", actualizarMapa);
-
 limpiarFiltros.addEventListener("click", () => {
-  busqueda.value = "";
-  filtroCultivo.value = "";
-  filtroRegion.value = "";
-  filtroLocalidad.value = "";
-  filtroFTS.value = "";
-  actualizarMapa();
+  busqueda.value = ""; filtroCultivo.value = ""; filtroRegion.value = "";
+  filtroLocalidad.value = ""; filtroFTS.value = ""; actualizarMapa();
 });
 
 mapa.on("popupopen", ocultarLeyenda);
 mapa.on("click", ocultarLeyenda);
-
 agregarLeyendaPremium();
 cargarSitios();
