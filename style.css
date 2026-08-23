@@ -223,3 +223,11 @@ body { display: flex; flex-direction: column; }
     max-height: calc(45vh - 56px);
   }
 }
+.marcador-access-contenedor { background: transparent !important; border: 0 !important; }
+.marcador-access, .muestra-access-leyenda { position: relative; display: inline-block; width: 34px; height: 46px; filter: drop-shadow(0 3px 3px rgba(0,0,0,.35)); }
+.pin-access-cabeza { position: absolute; top: 2px; left: 4px; width: 26px; height: 26px; box-sizing: border-box; border: 3px solid #fff; border-radius: 50% 50% 50% 0; background: #e52521; transform: rotate(-45deg); }
+.pin-access-cabeza::after { content: ""; position: absolute; top: 6px; left: 6px; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.pin-access-punta { display: none; }
+.muestra-access-leyenda { width: 30px; height: 38px; flex: 0 0 30px; transform: scale(.82); transform-origin: center; }
+.item-leyenda-access { margin-top: 6px; padding-top: 10px !important; border-top: 2px solid #e6e9e7; }
+.popup-access h2 { color: #c91f1b; }
