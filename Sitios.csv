@@ -241,7 +241,7 @@ Completar,Serrano,Contractor,Sunflower,IMPACT 3R,Early,AC,Córdoba,Oeste,-33.902
 Completar,Tandil,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Sudeste,-37.44663,-58.95398,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Cantero,Sarlangue,Trial,,Yes
 Completar,Trenque Lauquen,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Oeste,-35.92648,-62.79512,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Focke,Peralta Martinez,Trial,,Yes
 Completar,Tres Arroyos,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AA,Buenos Aires,Sudeste,-38.09632,-60.21547,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Cantero,Sarlangue,Trial,,Yes
-ANFY04NTISLN / ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,-26.22589,-60.62126,,,30 kg Microstar CMB + 60 kg UREA,1.4784,Puntano,Oggero,Trial,,Yes
+ANFY04NTISLN / ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,-26.22589,-60.62126,08/24/2026,,30 kg Microstar CMB + 60 kg UREA,1.4784,Puntano,Oggero,Trial,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT 3R,Early,AC,Santa Fe,Centro,-31.146384,-61.415785,,,30 kg Microstar CMB + 60 kg UREA,0.2016,Arias,Traggiay,Trial,,Yes
 ACFY04NSFRAN,San Francisco,SPD,Sunflower,IMPACT 3R,Early,AC,Córdoba,Centro,-30.861169,-61.813652,,,30 kg Microstar CMB + 60 kg UREA,0.2016,Arias,Traggiay,Trial,,Yes
 NA,La Virginia TCD,SPD-TCD,Soybean - Regulated,NA,Early,AN,Tucuman,NOA,Completar,Completar,,,,0,NA,NA,Trial,,No
@@ -534,7 +534,7 @@ Completar,Serrano,Contractor,Sunflower,IMPACT 3R,Early,AC,Córdoba,Oeste,,,,,30 
 Completar,Tandil,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Cantero,Sarlangue,Access,,Yes
 Completar,Trenque Lauquen,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Oeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Focke,Peralta Martinez,Access,,Yes
 Completar,Tres Arroyos,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AA,Buenos Aires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,0,Cantero,Sarlangue,Access,,Yes
-ANFY04NTISLN / ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,-26.210644,-60.48419,,,30 kg Microstar CMB + 60 kg UREA,1.4784,Puntano,Oggero,Access,,Yes
+ANFY04NTISLN / ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,-26.210644,-60.48419,08/24/2026,,30 kg Microstar CMB + 60 kg UREA,1.4784,Puntano,Oggero,Access,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT 3R,Early,AC,Santa Fe,Centro,,,,,30 kg Microstar CMB + 60 kg UREA,0.2016,Arias,Traggiay,Access,,Yes
 ACFY04NSFRAN,San Francisco,SPD,Sunflower,IMPACT 3R,Early,AC,Córdoba,Centro,,,,,30 kg Microstar CMB + 60 kg UREA,0.2016,Arias,Traggiay,Access,,Yes
 NA,La Virginia TCD,SPD-TCD,Soybean - Regulated,NA,Early,AN,Tucuman,NOA,,,,,,0,NA,NA,Access,,No
