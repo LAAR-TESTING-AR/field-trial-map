@@ -6,22 +6,27 @@
   const ACCESS_ID_FIELD = "r7a72e2f762b74f7099bc3df7da194874";
   const LOCATION_FIELD = "r845419d35b094ab9a8c5d4752ee6b234";
 
+  function limpiarValorFormulario(valor) {
+    return String(valor ?? "")
+      .trim()
+      .replaceAll("+", " ")
+      .replaceAll("%20", " ");
+  }
+
   function construirUrlFormulario(sitio) {
-    const parametros = new URLSearchParams();
-    parametros.set("id", FORM_ID);
-    parametros.set(ACCESS_ID_FIELD, String(sitio.aoiId || "").trim());
-    parametros.set(
-  LOCATION_FIELD,
-  String(sitio.location || "").trim().replaceAll(" ", "%20")
-);
-    return `${FORM_BASE_URL}?${parametros.toString()}`;
+    const accessId = limpiarValorFormulario(sitio.aoiId);
+    const location = limpiarValorFormulario(sitio.location);
+
+    return (
+      FORM_BASE_URL +
+      "?id=" + FORM_ID +
+      "&" + ACCESS_ID_FIELD + "=" + accessId +
+      "&" + LOCATION_FIELD + "=" + location
+    );
   }
 
   function agregarBotonAlPopup(evento) {
-    const sitio = evento && evento.popup && evento.popup.options
-      ? evento.popup.options.sitioAccess
-      : null;
-
+    const sitio = evento?.popup?.options?.sitioAccess;
     if (!sitio) return;
 
     const popup = document.querySelector(".leaflet-popup-content .popup-access");
@@ -37,11 +42,15 @@
     boton.rel = "noopener noreferrer";
     boton.setAttribute("aria-label", "Cargar una foto del acceso");
     boton.innerHTML = '<span aria-hidden="true">📷</span> Cargar foto';
+
     contenedor.insertBefore(boton, contenedor.firstChild);
   }
 
   if (typeof mapa === "undefined" || !mapa || typeof mapa.on !== "function") {
-    console.error("foto-access-addon.js: no se encontro el mapa. El archivo debe cargarse despues de app.js.");
+    console.error(
+      "foto-access-addon.js: no se encontro el mapa. " +
+      "El archivo debe cargarse despues de app.js."
+    );
     return;
   }
 
