@@ -146,10 +146,29 @@ bloque.innerHTML = comentario;
 
     enlaceMiniatura.appendChild(miniatura);
     bloque.appendChild(enlaceMiniatura);
-    bloque.appendChild(crearBoton(
-      "boton-ver-foto-access",
-      ultimaFoto.photoLink,
-      '<span aria-hidden="true">🖼️</span> Ver foto completa',
+    const filaFotos = document.createElement("div");
+filaFotos.className = "fila-botones-foto";
+
+filaFotos.appendChild(
+  crearBoton(
+    "boton-ver-foto-access",
+    ultimaFoto.photoLink,
+    '<span aria-hidden="true">🖼️</span> Ver foto',
+    "Ver foto"
+  )
+);
+
+filaFotos.appendChild(
+  crearBoton(
+    "boton-foto-access",
+    construirUrlFormulario(sitio),
+    '<span aria-hidden="true">📷</span> Cargar foto',
+    "Cargar foto"
+  )
+);
+
+bloque.appendChild(filaFotos);
+      '<span aria-hidden="true">🖼️</span> Ver foto'
       "Ver la última foto del acceso en tamaño completo"
     ));
 
