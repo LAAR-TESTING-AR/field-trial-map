@@ -46,19 +46,9 @@
     return Number.isNaN(fecha.getTime()) ? null : fecha;
   }
 
-  function formatearFecha(valor) {
-    const fecha = convertirFecha(valor);
-    if (!fecha) return limpiar(valor);
-    return new Intl.DateTimeFormat("es-AR", {
-      day: "2-digit", month: "2-digit", year: "numeric",
-      hour: "2-digit", minute: "2-digit"
-    }).format(fecha);
-  }
-
   function transformarFoto(fila) {
     return {
       accessId: limpiar(fila.AccessID),
-      location: limpiar(fila.Location),
       comments: limpiar(fila.Comments),
       photoLink: extraerUrl(fila.PhotoLink),
       captureDate: limpiar(fila.CaptureDate)
@@ -69,9 +59,9 @@
     return fotosAccess
       .filter(foto => normalizarId(foto.accessId) === normalizarId(accessId))
       .sort((a, b) => {
-        const fa = convertirFecha(a.captureDate);
-        const fb = convertirFecha(b.captureDate);
-        return (fb ? fb.getTime() : 0) - (fa ? fa.getTime() : 0);
+        const fechaA = convertirFecha(a.captureDate);
+        const fechaB = convertirFecha(b.captureDate);
+        return (fechaB ? fechaB.getTime() : 0) - (fechaA ? fechaA.getTime() : 0);
       })[0] || null;
   }
 
@@ -91,98 +81,60 @@
     if (!sitio) return;
 
     const popup = document.querySelector(".leaflet-popup-content .popup-access");
-    const botones = popup?.querySelector(".botones-navegacion");
-    if (!popup || !botones) return;
+    const navegacion = popup?.querySelector(".botones-navegacion");
+    if (!popup || !navegacion) return;
 
-    if (!popup.querySelector(".boton-foto-access")) {
-      botones.insertBefore(crearBoton(
-        "boton-foto-access",
-        construirUrlFormulario(sitio),
-        '<span aria-hidden="true">📷</span> Cargar foto',
-        "Cargar una foto del acceso"
-      ), botones.firstChild);
-    }
-
-    popup.querySelector(".ultima-foto-access")?.remove();
-    const ultimaFoto = obtenerUltimaFoto(sitio.aoiId);
-
-    if (!ultimaFoto) {
-      if (!fotosCargadas) {
-        const estado = document.createElement("div");
-        estado.className = "ultima-foto-access estado-foto-access";
-        estado.textContent = "Buscando última foto...";
-        botones.parentNode.insertBefore(estado, botones);
-      }
-      return;
-    }
+    /* Elimina versiones anteriores para evitar botones duplicados o fuera de lugar. */
+    popup.querySelector(".bloque-fotos-access")?.remove();
+    navegacion.querySelectorAll(".boton-foto-access, .boton-ver-foto-access")
+      .forEach(boton => boton.remove());
 
     const bloque = document.createElement("div");
-    bloque.className = "ultima-foto-access";
+    bloque.className = "bloque-fotos-access";
 
-    const comentario = ultimaFoto.comments
-  ? `<p><strong>Comentario:</strong> ${ultimaFoto.comments}</p>`
-  : "";
+    const ultimaFoto = obtenerUltimaFoto(sitio.aoiId);
 
-bloque.innerHTML = comentario;
+    if (ultimaFoto?.comments) {
+      const comentario = document.createElement("p");
+      comentario.className = "comentario-foto-access";
+      comentario.innerHTML = `<strong>Comentario:</strong> ${ultimaFoto.comments}`;
+      bloque.appendChild(comentario);
+    }
 
+    const fila = document.createElement("div");
+    fila.className = "fila-botones-foto";
 
-    const enlaceMiniatura = document.createElement("a");
-    enlaceMiniatura.className = "enlace-miniatura-access";
-    enlaceMiniatura.href = ultimaFoto.photoLink;
-    enlaceMiniatura.target = "_blank";
-    enlaceMiniatura.rel = "noopener noreferrer";
-    enlaceMiniatura.setAttribute("aria-label", "Abrir la última foto del acceso");
+    if (ultimaFoto?.photoLink) {
+      fila.appendChild(crearBoton(
+        "boton-ver-foto-access",
+        ultimaFoto.photoLink,
+        '<span aria-hidden="true">🖼️</span> Ver foto',
+        "Ver foto del acceso"
+      ));
+    }
 
-    const miniatura = document.createElement("img");
-    miniatura.className = "miniatura-access";
-    miniatura.src = ultimaFoto.photoLink;
-    miniatura.alt = `Última foto del acceso ${limpiar(sitio.location)}`;
-    miniatura.loading = "lazy";
-
-    miniatura.addEventListener("error", () => {
-      enlaceMiniatura.remove();
-      bloque.classList.add("sin-miniatura");
-    });
-
-    enlaceMiniatura.appendChild(miniatura);
-    bloque.appendChild(enlaceMiniatura);
-    const filaFotos = document.createElement("div");
-filaFotos.className = "fila-botones-foto";
-
-filaFotos.appendChild(
-  crearBoton(
-    "boton-ver-foto-access",
-    ultimaFoto.photoLink,
-    '<span aria-hidden="true">🖼️</span> Ver foto',
-    "Ver foto"
-  )
-);
-
-filaFotos.appendChild(
-  crearBoton(
-    "boton-foto-access",
-    construirUrlFormulario(sitio),
-    '<span aria-hidden="true">📷</span> Cargar foto',
-    "Cargar foto"
-  )
-);
-
-bloque.appendChild(filaFotos);
-      '<span aria-hidden="true">🖼️</span> Ver foto'
-      "Ver la última foto del acceso en tamaño completo"
+    fila.appendChild(crearBoton(
+      "boton-foto-access",
+      construirUrlFormulario(sitio),
+      '<span aria-hidden="true">📷</span> Cargar foto',
+      "Cargar foto del acceso"
     ));
 
-    botones.parentNode.insertBefore(bloque, botones);
+    bloque.appendChild(fila);
+    navegacion.parentNode.insertBefore(bloque, navegacion);
   }
 
   function cargarFotosAccess() {
+    if (typeof Papa === "undefined") return;
+
     Papa.parse(`${ARCHIVO_FOTOS}?v=${Date.now()}`, {
       download: true,
       header: true,
       skipEmptyLines: true,
-      transformHeader: h => h.replace(/^\uFEFF/, "").trim(),
+      transformHeader: encabezado => encabezado.replace(/^\uFEFF/, "").trim(),
       complete: resultado => {
-        fotosAccess = resultado.data.map(transformarFoto)
+        fotosAccess = resultado.data
+          .map(transformarFoto)
           .filter(foto => foto.accessId && foto.photoLink);
         fotosCargadas = true;
         if (mapa._popup) agregarContenidoAlPopup({ popup: mapa._popup });
@@ -195,10 +147,15 @@ bloque.appendChild(filaFotos);
   }
 
   if (typeof mapa === "undefined" || !mapa?.on) {
-    console.error("foto-access-addon.js debe cargarse después de app.js.");
+    console.error("foto-access-addon.js debe cargarse despues de app.js.");
     return;
   }
 
-  mapa.on("popupopen", agregarContenidoAlPopup);
+  mapa.on("popupopen", evento => {
+    agregarContenidoAlPopup(evento);
+    window.setTimeout(() => agregarContenidoAlPopup(evento), 100);
+  });
+
   cargarFotosAccess();
+  console.log("Botones de fotos Access habilitados.");
 })();
