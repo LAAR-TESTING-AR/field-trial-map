@@ -224,7 +224,12 @@ function actualizarMapa() {
 
   sitiosFiltrados.forEach(sitio => {
     L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoSitio(sitio), zIndexOffset: esAccess(sitio) ? 1000 : 0 })
-      .bindPopup(crearPopup(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 520 })
+      .bindPopup(crearPopup(sitio), {
+  maxWidth: 390,
+  minWidth: 285,
+  maxHeight: 520,
+  sitioAccess: esAccess(sitio) ? sitio : null
+})
       .addTo(capaMarcadores);
     coordenadas.push([sitio.latitude, sitio.longitude]);
   });
