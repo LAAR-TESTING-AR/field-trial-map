@@ -1,4 +1,3 @@
-/* Botones y última foto de los puntos Access */
 .boton-foto-access,
 .boton-ver-foto-access {
   display: flex;
@@ -9,37 +8,17 @@
   box-sizing: border-box;
   padding: 10px 12px;
   border-radius: 8px;
-  color: #ffffff !important;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+  color: #fff !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,.2);
   font-weight: 700;
-  line-height: 1.2;
   text-align: center;
   text-decoration: none !important;
 }
 
-.boton-foto-access {
-  margin: 0 0 9px;
-  background: #d62828;
-}
-
-.boton-foto-access:hover,
-.boton-foto-access:focus-visible {
-  color: #ffffff !important;
-  background: #b91f1f;
-  outline: none;
-}
-
-.boton-ver-foto-access {
-  margin-top: 8px;
-  background: #176f3a;
-}
-
-.boton-ver-foto-access:hover,
-.boton-ver-foto-access:focus-visible {
-  color: #ffffff !important;
-  background: #10592e;
-  outline: none;
-}
+.boton-foto-access { margin: 0 0 9px; background: #d62828; }
+.boton-foto-access:hover { background: #b91f1f; }
+.boton-ver-foto-access { margin-top: 8px; background: #176f3a; }
+.boton-ver-foto-access:hover { background: #10592e; }
 
 .ultima-foto-access {
   margin: 10px 0 12px;
@@ -55,6 +34,28 @@
   overflow-wrap: anywhere;
 }
 
+.enlace-miniatura-access {
+  display: block;
+  margin: 9px 0 4px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #e9eeeb;
+}
+
+.miniatura-access {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 0;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.enlace-miniatura-access:hover .miniatura-access {
+  transform: scale(1.02);
+  filter: brightness(.94);
+}
+
 .estado-foto-access {
   color: #5b645f;
   font-size: 13px;
@@ -63,8 +64,6 @@
 
 @media (max-width: 600px) {
   .boton-foto-access,
-  .boton-ver-foto-access {
-    min-height: 44px;
-    font-size: 15px;
-  }
+  .boton-ver-foto-access { min-height: 44px; font-size: 15px; }
+  .miniatura-access { height: 125px; }
 }

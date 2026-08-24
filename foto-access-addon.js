@@ -10,68 +10,48 @@
   let fotosAccess = [];
   let fotosCargadas = false;
 
-  function limpiar(valor) {
-    return String(valor ?? "").trim();
-  }
-
-  function normalizarId(valor) {
-    return limpiar(valor).toLowerCase();
-  }
+  const limpiar = valor => String(valor ?? "").trim();
+  const normalizarId = valor => limpiar(valor).toLowerCase();
 
   function limpiarValorFormulario(valor) {
     return limpiar(valor).replaceAll("+", " ").replaceAll("%20", " ");
   }
 
   function construirUrlFormulario(sitio) {
-    const accessId = limpiarValorFormulario(sitio.aoiId);
-    const location = limpiarValorFormulario(sitio.location);
-
-    return (
-      FORM_BASE_URL +
-      "?id=" + FORM_ID +
-      "&" + ACCESS_ID_FIELD + "=" + accessId +
-      "&" + LOCATION_FIELD + "=" + location
-    );
+    return FORM_BASE_URL
+      + "?id=" + FORM_ID
+      + "&" + ACCESS_ID_FIELD + "=" + limpiarValorFormulario(sitio.aoiId)
+      + "&" + LOCATION_FIELD + "=" + limpiarValorFormulario(sitio.location);
   }
 
   function extraerUrl(valor) {
     const texto = limpiar(valor);
     if (!texto) return "";
-
     if (/^https?:\/\//i.test(texto)) return texto;
 
     try {
       const objeto = JSON.parse(texto);
       if (typeof objeto === "string") return objeto;
-      if (objeto && typeof objeto.Url === "string") return objeto.Url;
-      if (objeto && typeof objeto.url === "string") return objeto.url;
-      if (objeto && typeof objeto.link === "string") return objeto.link;
-    } catch (_) {
-      // El valor no es JSON; se intenta extraer una URL del texto.
-    }
+      if (objeto?.Url) return objeto.Url;
+      if (objeto?.url) return objeto.url;
+      if (objeto?.link) return objeto.link;
+    } catch (_) {}
 
     const coincidencia = texto.match(/https?:\/\/[^\s"']+/i);
     return coincidencia ? coincidencia[0] : "";
   }
 
   function convertirFecha(valor) {
-    const texto = limpiar(valor);
-    if (!texto) return null;
-
-    const fecha = new Date(texto);
+    const fecha = new Date(limpiar(valor));
     return Number.isNaN(fecha.getTime()) ? null : fecha;
   }
 
   function formatearFecha(valor) {
     const fecha = convertirFecha(valor);
     if (!fecha) return limpiar(valor);
-
     return new Intl.DateTimeFormat("es-AR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
+      day: "2-digit", month: "2-digit", year: "numeric",
+      hour: "2-digit", minute: "2-digit"
     }).format(fecha);
   }
 
@@ -85,44 +65,13 @@
     };
   }
 
-  function cargarFotosAccess() {
-    if (typeof Papa === "undefined") {
-      console.error("foto-access-addon.js: Papa Parse no esta disponible.");
-      return;
-    }
-
-    Papa.parse(`${ARCHIVO_FOTOS}?v=${Date.now()}`, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      transformHeader: encabezado => encabezado.replace(/^\uFEFF/, "").trim(),
-      complete: resultado => {
-        fotosAccess = resultado.data
-          .map(transformarFoto)
-          .filter(foto => foto.accessId && foto.photoLink);
-
-        fotosCargadas = true;
-        console.log(`${fotosAccess.length} fotos de accesos cargadas.`);
-
-        const popupAbierto = mapa && mapa._popup;
-        if (popupAbierto) agregarContenidoAlPopup({ popup: popupAbierto });
-      },
-      error: error => {
-        fotosCargadas = true;
-        console.error("No fue posible cargar AccessPhotos.csv:", error);
-      }
-    });
-  }
-
   function obtenerUltimaFoto(accessId) {
-    const idBuscado = normalizarId(accessId);
-
     return fotosAccess
-      .filter(foto => normalizarId(foto.accessId) === idBuscado)
+      .filter(foto => normalizarId(foto.accessId) === normalizarId(accessId))
       .sort((a, b) => {
-        const fechaA = convertirFecha(a.captureDate);
-        const fechaB = convertirFecha(b.captureDate);
-        return (fechaB ? fechaB.getTime() : 0) - (fechaA ? fechaA.getTime() : 0);
+        const fa = convertirFecha(a.captureDate);
+        const fb = convertirFecha(b.captureDate);
+        return (fb ? fb.getTime() : 0) - (fa ? fa.getTime() : 0);
       })[0] || null;
   }
 
@@ -142,31 +91,27 @@
     if (!sitio) return;
 
     const popup = document.querySelector(".leaflet-popup-content .popup-access");
-    if (!popup) return;
-
-    const contenedor = popup.querySelector(".botones-navegacion");
-    if (!contenedor) return;
+    const botones = popup?.querySelector(".botones-navegacion");
+    if (!popup || !botones) return;
 
     if (!popup.querySelector(".boton-foto-access")) {
-      const botonCargar = crearBoton(
+      botones.insertBefore(crearBoton(
         "boton-foto-access",
         construirUrlFormulario(sitio),
         '<span aria-hidden="true">📷</span> Cargar foto',
         "Cargar una foto del acceso"
-      );
-      contenedor.insertBefore(botonCargar, contenedor.firstChild);
+      ), botones.firstChild);
     }
 
-    const bloqueAnterior = popup.querySelector(".ultima-foto-access");
-    if (bloqueAnterior) bloqueAnterior.remove();
-
+    popup.querySelector(".ultima-foto-access")?.remove();
     const ultimaFoto = obtenerUltimaFoto(sitio.aoiId);
+
     if (!ultimaFoto) {
       if (!fotosCargadas) {
         const estado = document.createElement("div");
         estado.className = "ultima-foto-access estado-foto-access";
         estado.textContent = "Buscando última foto...";
-        contenedor.parentNode.insertBefore(estado, contenedor);
+        botones.parentNode.insertBefore(estado, botones);
       }
       return;
     }
@@ -175,35 +120,65 @@
     bloque.className = "ultima-foto-access";
 
     const fecha = ultimaFoto.captureDate
-      ? `<p><strong>Última foto:</strong> ${formatearFecha(ultimaFoto.captureDate)}</p>`
-      : "";
-
+      ? `<p><strong>Última foto:</strong> ${formatearFecha(ultimaFoto.captureDate)}</p>` : "";
     const comentario = ultimaFoto.comments
-      ? `<p><strong>Comentario:</strong> ${ultimaFoto.comments}</p>`
-      : "";
+      ? `<p><strong>Comentario:</strong> ${ultimaFoto.comments}</p>` : "";
+    bloque.innerHTML = fecha + comentario;
 
-    bloque.innerHTML = `${fecha}${comentario}`;
+    const enlaceMiniatura = document.createElement("a");
+    enlaceMiniatura.className = "enlace-miniatura-access";
+    enlaceMiniatura.href = ultimaFoto.photoLink;
+    enlaceMiniatura.target = "_blank";
+    enlaceMiniatura.rel = "noopener noreferrer";
+    enlaceMiniatura.setAttribute("aria-label", "Abrir la última foto del acceso");
 
-    const botonVer = crearBoton(
+    const miniatura = document.createElement("img");
+    miniatura.className = "miniatura-access";
+    miniatura.src = ultimaFoto.photoLink;
+    miniatura.alt = `Última foto del acceso ${limpiar(sitio.location)}`;
+    miniatura.loading = "lazy";
+
+    miniatura.addEventListener("error", () => {
+      enlaceMiniatura.remove();
+      bloque.classList.add("sin-miniatura");
+    });
+
+    enlaceMiniatura.appendChild(miniatura);
+    bloque.appendChild(enlaceMiniatura);
+    bloque.appendChild(crearBoton(
       "boton-ver-foto-access",
       ultimaFoto.photoLink,
-      '<span aria-hidden="true">🖼️</span> Ver última foto',
-      "Ver la última foto del acceso"
-    );
+      '<span aria-hidden="true">🖼️</span> Ver foto completa',
+      "Ver la última foto del acceso en tamaño completo"
+    ));
 
-    bloque.appendChild(botonVer);
-    contenedor.parentNode.insertBefore(bloque, contenedor);
+    botones.parentNode.insertBefore(bloque, botones);
   }
 
-  if (typeof mapa === "undefined" || !mapa || typeof mapa.on !== "function") {
-    console.error(
-      "foto-access-addon.js: no se encontro el mapa. " +
-      "El archivo debe cargarse despues de app.js."
-    );
+  function cargarFotosAccess() {
+    Papa.parse(`${ARCHIVO_FOTOS}?v=${Date.now()}`, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      transformHeader: h => h.replace(/^\uFEFF/, "").trim(),
+      complete: resultado => {
+        fotosAccess = resultado.data.map(transformarFoto)
+          .filter(foto => foto.accessId && foto.photoLink);
+        fotosCargadas = true;
+        if (mapa._popup) agregarContenidoAlPopup({ popup: mapa._popup });
+      },
+      error: error => {
+        fotosCargadas = true;
+        console.error("No fue posible cargar AccessPhotos.csv:", error);
+      }
+    });
+  }
+
+  if (typeof mapa === "undefined" || !mapa?.on) {
+    console.error("foto-access-addon.js debe cargarse después de app.js.");
     return;
   }
 
   mapa.on("popupopen", agregarContenidoAlPopup);
   cargarFotosAccess();
-  console.log("Fotos e historial de Access habilitados correctamente.");
 })();
