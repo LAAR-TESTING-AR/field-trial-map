@@ -1,0 +1,162 @@
+/* Optimización de popups para escritorio y celular */
+
+.detalles-adicionales-trial {
+  margin-top: 8px;
+  border-top: 1px solid #dfe5e1;
+}
+
+.detalles-adicionales-trial > summary {
+  padding: 10px 2px 6px;
+  color: #176f3a;
+  font-weight: 700;
+  cursor: pointer;
+  list-style-position: inside;
+  user-select: none;
+}
+
+.contenido-adicional-trial {
+  padding-top: 2px;
+}
+
+/* La miniatura de SharePoint se desactiva; queda el botón Ver última foto. */
+.enlace-miniatura-access,
+.miniatura-access {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  /* Popup tipo panel inferior, centrado y por encima de la barra del navegador. */
+  .leaflet-popup {
+    position: fixed !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    top: auto !important;
+    width: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 1200 !important;
+  }
+
+  .leaflet-popup-content-wrapper {
+    width: 100%;
+    max-height: 64vh;
+    box-sizing: border-box;
+    border-radius: 14px 14px 10px 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  .leaflet-popup-content {
+    width: auto !important;
+    max-width: none !important;
+    height: auto;
+    max-height: 64vh;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .leaflet-popup-tip-container {
+    display: none;
+  }
+
+  .leaflet-popup-close-button {
+    top: 7px !important;
+    right: 9px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50%;
+    color: #ffffff !important;
+    background: rgba(23, 111, 58, 0.94) !important;
+    font-size: 25px !important;
+    line-height: 32px !important;
+    z-index: 5;
+  }
+
+  .popup-sitio {
+    display: flex;
+    flex-direction: column;
+    max-height: 64vh;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  .popup-sitio h2 {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 14px 48px 10px 14px;
+    border-bottom: 1px solid #e2e6e4;
+    background: #ffffff;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .popup-detalles {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none !important;
+    padding: 8px 14px 10px;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .popup-detalles p {
+    margin: 6px 0;
+    font-size: 15px;
+    line-height: 1.34;
+  }
+
+  .popup-sitio .botones-navegacion {
+    position: static !important;
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 0;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid #dfe5e1;
+    background: #ffffff;
+    z-index: 4;
+  }
+
+  .popup-sitio .botones-navegacion a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 9px 7px;
+    font-size: 14px;
+    line-height: 1.15;
+  }
+
+  /* En Access, los botones de foto ocupan todo el ancho. */
+  .popup-access .boton-foto-access,
+  .popup-access .boton-ver-foto-access {
+    grid-column: 1 / -1;
+  }
+
+  .popup-access .ultima-foto-access {
+    flex: 0 0 auto;
+    margin: 0 12px 8px;
+    padding: 8px 10px;
+    max-height: 105px;
+    overflow-y: auto;
+  }
+
+  .detalles-adicionales-trial > summary {
+    min-height: 40px;
+    box-sizing: border-box;
+  }
+
+  /* Evita que zoom y atribución queden visualmente encima del panel. */
+  .leaflet-control-zoom {
+    margin-bottom: 72px !important;
+  }
+
+  .leaflet-control-attribution {
+    display: none;
+  }
+}
