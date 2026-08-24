@@ -10,7 +10,10 @@
     const parametros = new URLSearchParams();
     parametros.set("id", FORM_ID);
     parametros.set(ACCESS_ID_FIELD, String(sitio.aoiId || "").trim());
-    parametros.set(LOCATION_FIELD, String(sitio.location || "").trim());
+    parametros.set(
+  LOCATION_FIELD,
+  String(sitio.location || "").trim().replaceAll(" ", "%20")
+);
     return `${FORM_BASE_URL}?${parametros.toString()}`;
   }
 
