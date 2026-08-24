@@ -1,15 +1,15 @@
 /*
-  CORRECCION POPUP MOVIL
-  Reemplazar TODO el contenido de popup-mobile-addon.css por este archivo.
+  POPUP MOVIL COMPACTO
+  Reemplazar todo el contenido de popup-mobile-addon.css
 */
 
 .detalles-adicionales-trial {
-  margin-top: 8px;
+  margin-top: 6px;
   border-top: 1px solid #dfe5e1;
 }
 
 .detalles-adicionales-trial > summary {
-  padding: 10px 2px 6px;
+  padding: 8px 2px 4px;
   color: #176f3a;
   font-weight: 700;
   cursor: pointer;
@@ -21,48 +21,52 @@
   padding-top: 2px;
 }
 
-/* SharePoint puede bloquear la miniatura incrustada.
-   Se conserva el boton Ver ultima foto. */
+/*
+  SharePoint puede bloquear la miniatura incrustada.
+  Se conserva el botón Ver última foto.
+*/
 .enlace-miniatura-access,
 .miniatura-access {
   display: none !important;
 }
 
 @media (max-width: 700px) {
-  /* IMPORTANTE: no usar position: fixed en .leaflet-popup.
-     Leaflet debe conservar la posicion del popup sobre el marcador. */
+  /*
+    Leaflet conserva la posición del popup
+    sobre el marcador seleccionado.
+  */
   .leaflet-popup {
-    max-width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 32px) !important;
     z-index: 1200 !important;
   }
 
   .leaflet-popup-content-wrapper {
-    width: min(390px, calc(100vw - 24px));
-    max-height: 62vh;
+    width: min(360px, calc(100vw - 32px));
+    max-height: 48vh;
     box-sizing: border-box;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.34);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.32);
   }
 
   .leaflet-popup-content {
     width: auto !important;
     max-width: none !important;
-    max-height: 62vh;
+    max-height: 48vh;
     margin: 0 !important;
     overflow: hidden !important;
   }
 
   .leaflet-popup-close-button {
-    top: 7px !important;
-    right: 8px !important;
-    width: 34px !important;
-    height: 34px !important;
+    top: 6px !important;
+    right: 7px !important;
+    width: 30px !important;
+    height: 30px !important;
     border-radius: 50%;
     color: #ffffff !important;
     background: rgba(23, 111, 58, 0.96) !important;
-    font-size: 25px !important;
-    line-height: 32px !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
     z-index: 10;
   }
 
@@ -70,7 +74,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height: 62vh;
+    max-height: 48vh;
     box-sizing: border-box;
     background: #ffffff;
   }
@@ -78,28 +82,33 @@
   .popup-sitio h2 {
     flex: 0 0 auto;
     margin: 0;
-    padding: 14px 48px 10px 14px;
+    padding: 10px 42px 8px 11px;
     border-bottom: 1px solid #e2e6e4;
     background: #ffffff;
-    font-size: 19px;
-    line-height: 1.2;
+    font-size: 16px;
+    line-height: 1.18;
   }
 
   .popup-detalles {
     flex: 1 1 auto;
     min-height: 0;
     max-height: none !important;
-    padding: 8px 14px 10px;
+    padding: 6px 11px 7px;
     overflow-y: auto !important;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   .popup-detalles p {
-    margin: 6px 0;
-    font-size: 14px;
-    line-height: 1.32;
+    margin: 4px 0;
+    font-size: 13px;
+    line-height: 1.25;
     overflow-wrap: anywhere;
+  }
+
+  .popup-detalles strong {
+    font-weight: 700;
   }
 
   .popup-sitio .botones-navegacion {
@@ -107,9 +116,9 @@
     flex: 0 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
-    padding: 10px 12px;
+    padding: 7px 9px;
     border-top: 1px solid #dfe5e1;
     background: #ffffff;
     z-index: 4;
@@ -119,42 +128,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 42px;
+    min-height: 38px;
     box-sizing: border-box;
     margin: 0 !important;
-    padding: 8px 6px;
-    font-size: 13px;
-    line-height: 1.15;
-    text-align: center;
-  }
-
-  .popup-access .boton-foto-access,
-  .popup-access .boton-ver-foto-access {
-    grid-column: 1 / -1;
-  }
-
-  .popup-access .ultima-foto-access {
-    flex: 0 0 auto;
-    max-height: 92px;
-    margin: 0 12px 8px;
-    padding: 8px 10px;
-    overflow-y: auto;
-  }
-
-  .detalles-adicionales-trial > summary {
-    min-height: 40px;
-    box-sizing: border-box;
-  }
-
-  /* El zoom queda debajo de los popups, sin desplazamientos extraños. */
-  .leaflet-control-zoom {
-    margin-bottom: 10px !important;
-  }
-
-  .leaflet-control-attribution {
-    font-size: 9px;
-    max-width: 65vw;
-    white-space: normal;
-    line-height: 1.1;
-  }
-}
+    padding: 6px 5px;
+    border-radius: 7px;
+    font-size: 12px;
+    line-height: 1.12;
+    text-align
