@@ -1,20 +1,25 @@
-.boton-foto-access {
+/* Botones y última foto de los puntos Access */
+.boton-foto-access,
+.boton-ver-foto-access {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
   width: 100%;
   box-sizing: border-box;
-  margin: 0 0 9px;
   padding: 10px 12px;
   border-radius: 8px;
   color: #ffffff !important;
-  background: #d62828;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
   text-decoration: none !important;
+}
+
+.boton-foto-access {
+  margin: 0 0 9px;
+  background: #d62828;
 }
 
 .boton-foto-access:hover,
@@ -24,8 +29,41 @@
   outline: none;
 }
 
+.boton-ver-foto-access {
+  margin-top: 8px;
+  background: #176f3a;
+}
+
+.boton-ver-foto-access:hover,
+.boton-ver-foto-access:focus-visible {
+  color: #ffffff !important;
+  background: #10592e;
+  outline: none;
+}
+
+.ultima-foto-access {
+  margin: 10px 0 12px;
+  padding: 10px;
+  border: 1px solid #dce5df;
+  border-radius: 9px;
+  background: #f7faf8;
+}
+
+.ultima-foto-access p {
+  margin: 4px 0;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.estado-foto-access {
+  color: #5b645f;
+  font-size: 13px;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
-  .boton-foto-access {
+  .boton-foto-access,
+  .boton-ver-foto-access {
     min-height: 44px;
     font-size: 15px;
   }
