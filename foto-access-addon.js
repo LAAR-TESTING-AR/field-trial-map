@@ -119,11 +119,12 @@
     const bloque = document.createElement("div");
     bloque.className = "ultima-foto-access";
 
-    const fecha = ultimaFoto.captureDate
-      ? `<p><strong>Última foto:</strong> ${formatearFecha(ultimaFoto.captureDate)}</p>` : "";
     const comentario = ultimaFoto.comments
-      ? `<p><strong>Comentario:</strong> ${ultimaFoto.comments}</p>` : "";
-    bloque.innerHTML = fecha + comentario;
+  ? `<p><strong>Comentario:</strong> ${ultimaFoto.comments}</p>`
+  : "";
+
+bloque.innerHTML = comentario;
+
 
     const enlaceMiniatura = document.createElement("a");
     enlaceMiniatura.className = "enlace-miniatura-access";
