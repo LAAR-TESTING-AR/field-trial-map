@@ -1,9 +1,26 @@
 (function () {
   "use strict";
 
-  const FORM_URL = "https://forms.cloud.microsoft/r/Xy2k2YvNBk";
+  const FORM_BASE_URL = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx";
+  const FORM_ID = "suwgPrCc8U2te5FOMdzdpCxUfKtsO4dHmIGDSDmC5vdUOUg2SDZZSUdHTEJUVUE0MkxKRE9WVklFVi4u";
+  const ACCESS_ID_FIELD = "r7a72e2f762b74f7099bc3df7da194874";
+  const LOCATION_FIELD = "r845419d35b094ab9a8c5d4752ee6b234";
 
-  function agregarBotonAlPopup() {
+  function construirUrlFormulario(sitio) {
+    const parametros = new URLSearchParams();
+    parametros.set("id", FORM_ID);
+    parametros.set(ACCESS_ID_FIELD, String(sitio.aoiId || "").trim());
+    parametros.set(LOCATION_FIELD, String(sitio.location || "").trim());
+    return `${FORM_BASE_URL}?${parametros.toString()}`;
+  }
+
+  function agregarBotonAlPopup(evento) {
+    const sitio = evento && evento.popup && evento.popup.options
+      ? evento.popup.options.sitioAccess
+      : null;
+
+    if (!sitio) return;
+
     const popup = document.querySelector(".leaflet-popup-content .popup-access");
     if (!popup || popup.querySelector(".boton-foto-access")) return;
 
@@ -12,12 +29,11 @@
 
     const boton = document.createElement("a");
     boton.className = "boton-foto-access";
-    boton.href = FORM_URL;
+    boton.href = construirUrlFormulario(sitio);
     boton.target = "_blank";
     boton.rel = "noopener noreferrer";
     boton.setAttribute("aria-label", "Cargar una foto del acceso");
     boton.innerHTML = '<span aria-hidden="true">📷</span> Cargar foto';
-
     contenedor.insertBefore(boton, contenedor.firstChild);
   }
 
@@ -27,5 +43,5 @@
   }
 
   mapa.on("popupopen", agregarBotonAlPopup);
-  console.log("Boton de fotos para Access habilitado correctamente.");
+  console.log("Formulario precargado para fotos Access habilitado correctamente.");
 })();
