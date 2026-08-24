@@ -1,0 +1,42 @@
+/* Boton de carga de foto para los pines Access */
+.boton-foto-access {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 9px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff !important;
+  background: #d62828;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.boton-foto-access:hover,
+.boton-foto-access:focus-visible {
+  color: #ffffff !important;
+  background: #b91f1f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.boton-foto-access:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .boton-foto-access {
+    min-height: 44px;
+    font-size: 15px;
+  }
+}
