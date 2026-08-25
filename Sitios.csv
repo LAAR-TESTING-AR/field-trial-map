@@ -257,12 +257,12 @@ NA,RojasTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,Completar,Com
 NA,ChivilcoyTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,Completar,Completar,,,,,NA,NA,Trial,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,Completar,Completar,,,,,NA,NA,Trial,,No
 NA,FerreTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,Completar,Completar,,,,,NA,NA,Trial,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,LaCochaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,CejolaoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,VilelasTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,GancedoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Chaco,NEA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,RancaguaTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,MailenRiveira,NA,Trial,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,LaCochaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,CejolaoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,VilelasTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,GancedoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Chaco,NEA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,RancaguaTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,Mailen Riveira,NA,Trial,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,MailenRiveira,NA,Trial,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,MailenRiveira,NA,Trial,,No
 NA,FerreTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,YesicaChazarreta,NA,Trial,,No
@@ -289,9 +289,9 @@ NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,C
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Late,AA,BuenosAires,Nucleo,Completar,Completar,11/15/2026,,Completar,,YesicaChazarreta,NA,Trial,,No
 NA,CampoEscuelaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AC,Córdoba,Centro,Completar,Completar,11/15/2026,,Completar,,PaulaColla,NA,Trial,,No
 NA,CampoEscuelaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AC,Córdoba,Centro,Completar,Completar,11/15/2026,,Completar,,PaulaColla,NA,Trial,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
-NA,LaCochaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,LourdesSuarez,NA,Trial,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
+NA,LaCochaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
 AARY07FACEVN,Acevedo,Contractor,Canola,R5,Early,XL,BuenosAires,Nucleo,,,05/06/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,RomeroCuny,Mazzini,Access,,Yes
 AARY07FAMERN,America,Contractor,Canola,R5,Early,XL,BuenosAires,Oeste,,,05/13/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Antunes,PeraltaMartinez,Access,,Yes
 AARY07FBAL1N,Balcarce,Contractor,Canola,R5,Early,XL,BuenosAires,Sudeste,,,06/02/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Cantero,Sarlangue,Access,,Yes
@@ -550,24 +550,24 @@ NA,RojasTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,,,,,,,NA,NA,A
 NA,ChivilcoyTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,,,,,,,NA,NA,Access,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,,,,,,,NA,NA,Access,,No
 NA,FerreTCD,SPD-TCD,Soybean-Regulated,NA,Early,AA,BuenosAires,II-6,,,,,,,NA,NA,Access,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,LaCochaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,CejolaoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,VilelasTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,GancedoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,RancaguaTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,MailenRiveira,NA,Access,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,LaCochaTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,CejolaoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,VilelasTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,SantiagoDelEstero,NEA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,GancedoTCD,SPD-TCD,Corn-Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,RancaguaTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
 NA,FerreTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
 NA,FerreTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
 NA,AmericaTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,BuenosAires,Oeste,,,09/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
-NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,SantaFe,Nucleo,,,09/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,SantaFe,Nucleo,,,09/15/2026,,Completar,,MailenRiveira,NA,Access,,No
+NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,SantaFe,Nucleo,,,09/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,SantaFe,Nucleo,,,09/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
 NA,MarcosJuarezTCD,SPD-TCD,Corn-Regulated,NA,Early,AA,Córdoba,Nucleo,,,09/15/2026,,Completar,,PaulaColla,NA,Access,,No
-NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Completar,,MailenRiveira,NA,Access,,No
-NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Completar,,MailenRiveira,NA,Access,,No
+NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
+NA,SanEduardoTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Completar,,Mailen Riveira,NA,Access,,No
 NA,AmericaTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Oeste,,,11/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
 NA,MarcosJuarezTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Nucleo,,,11/15/2026,,Completar,,PaulaColla,NA,Access,,No
 NA,ChivilcoyTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
@@ -582,6 +582,6 @@ NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,,
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,YesicaChazarreta,NA,Access,,No
 NA,CampoEscuelaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,Completar,,PaulaColla,NA,Access,,No
 NA,CampoEscuelaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,Completar,,PaulaColla,NA,Access,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
-NA,LaCochaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,LourdesSuarez,NA,Access,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
+NA,LaCochaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,Completar,,Lourdes Suarez,NA,Access,,No
