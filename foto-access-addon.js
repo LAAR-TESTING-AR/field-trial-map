@@ -12,17 +12,14 @@
   const limpiar = valor => String(valor ?? "").trim();
   const normalizarId = valor => limpiar(valor).toLowerCase();
 
-  function limpiarValorFormulario(valor) {
-    return limpiar(valor).replaceAll("+", " ").replaceAll("%20", " ");
+  function textoSinHTML(valor) {
+    const contenedor = document.createElement("div");
+    contenedor.innerHTML = limpiar(valor);
+    return limpiar(contenedor.textContent || contenedor.innerText || "");
   }
 
-  function escaparHTML(valor) {
-    return limpiar(valor)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+  function limpiarValorFormulario(valor) {
+    return limpiar(valor).replaceAll("+", " ").replaceAll("%20", " ");
   }
 
   function construirUrlFormulario(sitio) {
@@ -57,7 +54,7 @@
   function transformarFoto(fila) {
     return {
       accessId: limpiar(fila.AccessID),
-      comments: limpiar(fila.Comments),
+      comments: textoSinHTML(fila.Comments),
       publicPhotoUrl: extraerUrl(fila.PublicPhotoUrl),
       corporatePhotoUrl: extraerUrl(fila.PhotoLink),
       captureDate: limpiar(fila.CaptureDate)
@@ -106,7 +103,11 @@
     if (ultimaFoto?.comments) {
       const comentario = document.createElement("p");
       comentario.className = "comentario-foto-access";
-      comentario.innerHTML = `<strong>Comentario:</strong> ${escaparHTML(ultimaFoto.comments)}`;
+
+      const etiqueta = document.createElement("strong");
+      etiqueta.textContent = "Comentario: ";
+      comentario.appendChild(etiqueta);
+      comentario.appendChild(document.createTextNode(ultimaFoto.comments));
       bloque.appendChild(comentario);
     }
 
@@ -120,14 +121,12 @@
 
       const miniatura = document.createElement("img");
       miniatura.className = "miniatura-access";
-      miniatura.src = ultimaFoto.publicPhotoUrl;
-      miniatura.alt = `Foto del acceso ${limpiar(sitio.location)}`;
-      miniatura.loading = "lazy";
+      miniatura.src = ultimaFoto.publicPhotoUrl + "?v=" + Date.now();
+      miniatura.alt = "Foto del acceso " + limpiar(sitio.location);
+      miniatura.loading = "eager";
+      miniatura.decoding = "async";
 
-      miniatura.addEventListener("error", () => {
-        enlaceMiniatura.remove();
-      });
-
+      miniatura.addEventListener("error", () => enlaceMiniatura.remove());
       enlaceMiniatura.appendChild(miniatura);
       bloque.appendChild(enlaceMiniatura);
     }
@@ -156,12 +155,7 @@
   }
 
   function cargarFotosAccess() {
-    if (typeof Papa === "undefined") {
-      console.error("Papa Parse no esta disponible.");
-      return;
-    }
-
-    Papa.parse(`${ARCHIVO_FOTOS}?v=${Date.now()}`, {
+    Papa.parse(ARCHIVO_FOTOS + "?v=" + Date.now(), {
       download: true,
       header: true,
       skipEmptyLines: true,
@@ -172,11 +166,9 @@
           .filter(foto => foto.accessId && (foto.publicPhotoUrl || foto.corporatePhotoUrl));
 
         if (mapa._popup) agregarContenidoAlPopup({ popup: mapa._popup });
-        console.log(`${fotosAccess.length} fotos de Access cargadas.`);
+        console.log(fotosAccess.length + " fotos de Access cargadas.");
       },
-      error: error => {
-        console.error("No fue posible cargar AccessPhotos.csv:", error);
-      }
+      error: error => console.error("No fue posible cargar AccessPhotos.csv:", error)
     });
   }
 
@@ -191,5 +183,4 @@
   });
 
   cargarFotosAccess();
-  console.log("Miniaturas publicas de Access habilitadas.");
 })();
