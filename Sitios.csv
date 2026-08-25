@@ -117,31 +117,31 @@ Completar,PergaminoRes1,SPD,Corn-ParentChr,ARPC Restoration,Early,AA,BuenosAires
 Completar,PergaminoRes2,SPD,Corn-ParentChr,ARPC Restoration,Early,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
 Completar,PergaminoRes3,SPD,Corn-ParentChr,ARPC Restoration,Late,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
 Completar,PergaminoRes4,SPD,Corn-ParentChr,ARPC Restoration,Late,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
-AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,-35.63105,-63.07321,,,Alta,,Antunes,Peralta Martinez,Trial,,Yes
-AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,-33.03078,-61.10921,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
-AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3;GCA,Early,AA,EntreRíos,Litoral,-33.09575,-58.80542,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
-AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Oeste,-33.26902,-63.29965,,,Baja,,Perassi,Paz,Trial,,Yes
-ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3;GCA,Early,AC,Córdoba,Oeste,-33.48942,-64.4722,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
-AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Nucleo,-33.00007,-62.45911,,,Estandar,,Perassi,Paz,Trial,,Yes
-AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,-34.12044,-61.20371,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
-AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,-34.19907,-60.7907,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
-AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,-35.02656,-63.63536,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
-AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,-33.05956,-60.86021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
-AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,-35.63047,-63.07252,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
-AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3;GCA,Late,AA,SantaFe,Nucleo,-33.02955,-61.11021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
-ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,-33.42723,-64.78349,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
-ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.90911,-63.5557,,,Baja,,Gomez,Capristo,Trial,,Yes
-ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.47336,-64.01233,,,Estandar,,Attme,Capristo,Trial,,Yes
-ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-32.38371,-63.70896,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
-ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,-26.74108,-64.75224,,,Ultra Baja,,Guzman,Aris,Trial,,Yes
-ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,-28.11343,-65.35282,,,Estandar,,Guzman,Aris,Trial,,Yes
-ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,-33.48941,-64.47144,,,Baja,,Milani,Open Rio IV,Trial,,Yes
-ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,-25.4318,-64.82504,,,Ultra Baja,,Miranda,Aris,Trial,,Yes
-AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Late,AA,Córdoba,Nucleo,-33.00076,-62.45927,,,Alta,,Perassi,Paz,Trial,,Yes
-ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,-27.2062,-62.03069,,,Ultra Baja,,New FTS-Quimili,Oggero,Trial,,Yes
-ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.0322,-61.9507,,,Estandar,,Arias,Traggiay,Trial,,Yes
-ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,-27.78477,-62.19608,,,Estandar,,New FTS-Quimili,Oggero,Trial,,Yes
-ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NOA,-26.43294,-64.51268,,,Estandar,,Guzman,Aris,Trial,,Yes
+AACY04NAME1S,America,SPD,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Oeste,-35.63105,-63.07321,,,Alta,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3; GCA,Early,AA,SantaFe,Nucleo,-33.03078,-61.10921,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
+AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3; GCA,Early,AA,EntreRíos,Litoral,-33.09575,-58.80542,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
+AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3; GCA,Early,AA,Córdoba,Oeste,-33.26902,-63.29965,,,Baja,,Perassi,Paz,Trial,,Yes
+ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3; GCA,Early,AC,Córdoba,Oeste,-33.48942,-64.4722,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
+AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3; GCA,Early,AA,Córdoba,Nucleo,-33.00007,-62.45911,,,Estandar,,Perassi,Paz,Trial,,Yes
+AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Nucleo,-34.12044,-61.20371,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
+AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Nucleo,-34.19907,-60.7907,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
+AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3; GCA,Early,AA,LaPampa,Oeste,-35.02656,-63.63536,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3; GCA,Early,AA,SantaFe,Nucleo,-33.05956,-60.86021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
+AACY04NAME2S,America,SPD,Corn-Stewarded,R3; GCA,Late,AA,BuenosAires,Oeste,-35.63047,-63.07252,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3; GCA,Late,AA,SantaFe,Nucleo,-33.02955,-61.11021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
+ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Oeste,-33.42723,-64.78349,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
+ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,-31.90911,-63.5557,,,Baja,,Gomez,Capristo,Trial,,Yes
+ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,-31.47336,-64.01233,,,Estandar,,Attme,Capristo,Trial,,Yes
+ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,-32.38371,-63.70896,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
+ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3; GCA,Late,AN,Tucuman,NOA,-26.74108,-64.75224,,,Ultra Baja,,Guzman,Aris,Trial,,Yes
+ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3; GCA,Late,AN,Tucuman,NOA,-28.11343,-65.35282,,,Estandar,,Guzman,Aris,Trial,,Yes
+ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Oeste,-33.48941,-64.47144,,,Baja,,Milani,Open Rio IV,Trial,,Yes
+ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3; GCA,Late,AN,Salta,NOA,-25.4318,-64.82504,,,Ultra Baja,,Miranda,Aris,Trial,,Yes
+AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3; GCA,Late,AA,Córdoba,Nucleo,-33.00076,-62.45927,,,Alta,,Perassi,Paz,Trial,,Yes
+ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NEA,-27.2062,-62.03069,,,Ultra Baja,,New FTS-Quimili,Oggero,Trial,,Yes
+ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,-31.0322,-61.9507,,,Estandar,,Arias,Traggiay,Trial,,Yes
+ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NEA,-27.78477,-62.19608,,,Estandar,,New FTS-Quimili,Oggero,Trial,,Yes
+ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NOA,-26.43294,-64.51268,,,Estandar,,Guzman,Aris,Trial,,Yes
 AAJY07NFERRS,Ferre,Contractor,Mustard-Stewarded,R0,Early,XL,BuenosAires,Nucleo,-34.116516,-61.205039,06/17/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Romero Cuny,Mazzini,Trial,,Yes
 AAJY07NLCEJS,LasCejas,Contractor,Mustard-Stewarded,R0,Early,XL,Tucuman,NOA,-26.827933,-64.8244,06/11/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Guzman,Oggero,Trial,,Yes
 AAJY07NRNOGS,RincondeNogoya,Contractor,Mustard-Stewarded,R0,Early,XL,EntreRíos,Litoral,-32.846661,-59.793735,06/19/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Vilchez,Bernardi,Trial,,Yes
@@ -229,7 +229,7 @@ Completar,Miramar,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AA,BuenosAi
 Completar,Miramar-Infectario,Contractor,Sunflower,Infectario phomopsis,Early,AA,BuenosAires,Sudeste,-38.15441,-57.9873,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Trial,,Yes
 Completar,Necochea,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,BuenosAires,Sudeste,-38.36324,-58.65538,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Trial,,Yes
 XLFY04NNU11N,Nucleo29,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,-16.650972,-62.902811,04/24/2026,,Sin Fertilizacion,,Miranda,NA,Trial,,Yes
-XLFY04NNU53N-XLFY04NN532N,Nucleo47,Contractor,Sunflower,OrobancheEvaluation,Early,XL,Bolivia,Bolivia,-16.465142,-63.171036,04/29/2026,,Sin Fertilizacion,,Miranda,NA,Trial,,Yes
+XLFY04NNU53N-XLFY04NN532N,Nucleo47,Contractor,Sunflower,Orobanche Evaluation,Early,XL,Bolivia,Bolivia,-16.465142,-63.171036,04/29/2026,,Sin Fertilizacion,,Miranda,NA,Trial,,Yes
 Completar,Orense,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,BuenosAires,Sudeste,-38.64373,-59.91578,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Trial,,Yes
 Completar,Pergamino-Densidad,Mixed,Sunflower,Densidad,Early,AA,BuenosAires,Nucleo,-34.009098,-60.452519,,,,,Romero Cuny,Mazzini,Trial,,Yes
 ANFY04NRECON,Reconquista,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AN,SantaFe,NEA,-29.19456,-59.93713,,,30 kg Microstar CMB + 60 kg UREA,,Puntano,Oggero,Trial,,Yes
@@ -410,31 +410,31 @@ Completar,PergaminoRes1,SPD,Corn-ParentChr,ARPC Restoration,Early,AA,BuenosAires
 Completar,PergaminoRes2,SPD,Corn-ParentChr,ARPC Restoration,Early,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
 Completar,PergaminoRes3,SPD,Corn-ParentChr,ARPC Restoration,Late,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
 Completar,PergaminoRes4,SPD,Corn-ParentChr,ARPC Restoration,Late,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
-AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,Peralta Martinez,Access,,Yes
-AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
-AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3;GCA,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
-AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Oeste,,,,,Baja,,Perassi,Paz,Access,,Yes
-ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3;GCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
-AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Nucleo,,,,,Estandar,,Perassi,Paz,Access,,Yes
-AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
-AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
-AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
-AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
-AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
-AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3;GCA,Late,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
-ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
-ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Baja,,Gomez,Capristo,Access,,Yes
-ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Attme,Capristo,Access,,Yes
-ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
-ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,,,,,Ultra Baja,,Guzman,Aris,Access,,Yes
-ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
-ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,,,,,Baja,,Milani,Open Rio IV,Access,,Yes
-ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,,,,,Ultra Baja,,Miranda,Aris,Access,,Yes
-AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Late,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
-ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultra Baja,,New FTS-Quimili,Oggero,Access,,Yes
-ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
-ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,New FTS-Quimili,Oggero,Access,,Yes
-ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
+AACY04NAME1S,America,SPD,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3; GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
+AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3; GCA,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
+AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3; GCA,Early,AA,Córdoba,Oeste,,,,,Baja,,Perassi,Paz,Access,,Yes
+ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3; GCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
+AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3; GCA,Early,AA,Córdoba,Nucleo,,,,,Estandar,,Perassi,Paz,Access,,Yes
+AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
+AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3; GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
+AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3; GCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3; GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
+AACY04NAME2S,America,SPD,Corn-Stewarded,R3; GCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3; GCA,Late,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
+ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
+ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,,,,,Baja,,Gomez,Capristo,Access,,Yes
+ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Attme,Capristo,Access,,Yes
+ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
+ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3; GCA,Late,AN,Tucuman,NOA,,,,,Ultra Baja,,Guzman,Aris,Access,,Yes
+ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3; GCA,Late,AN,Tucuman,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
+ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Oeste,,,,,Baja,,Milani,Open Rio IV,Access,,Yes
+ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3; GCA,Late,AN,Salta,NOA,,,,,Ultra Baja,,Miranda,Aris,Access,,Yes
+AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3; GCA,Late,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
+ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultra Baja,,New FTS-Quimili,Oggero,Access,,Yes
+ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3; GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
+ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,New FTS-Quimili,Oggero,Access,,Yes
+ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3; GCA,Late,AN,SantiagoDelEstero,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
 AAJY07NFERRS,Ferre,Contractor,Mustard-Stewarded,R0,Early,XL,BuenosAires,Nucleo,,,06/17/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Romero Cuny,Mazzini,Access,,Yes
 AAJY07NLCEJS,LasCejas,Contractor,Mustard-Stewarded,R0,Early,XL,Tucuman,NOA,,,06/11/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Guzman,Oggero,Access,,Yes
 AAJY07NRNOGS,RincondeNogoya,Contractor,Mustard-Stewarded,R0,Early,XL,EntreRíos,Litoral,,,06/19/2026,,60 kg MAP + 150 kg UREA + 100 kg Sulfato Amonio,,Vilchez,Bernardi,Access,,Yes
@@ -522,7 +522,7 @@ Completar,Miramar,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AA,BuenosAi
 Completar,Miramar-Infectario,Contractor,Sunflower,Infectario phomopsis,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 Completar,Necochea,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 XLFY04NNU11N,Nucleo29,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/24/2026,,Sin Fertilizacion,,Miranda,NA,Access,,Yes
-XLFY04NNU53N-XLFY04NN532N,Nucleo47,Contractor,Sunflower,OrobancheEvaluation,Early,XL,Bolivia,Bolivia,,,04/29/2026,,Sin Fertilizacion,,Miranda,NA,Access,,Yes
+XLFY04NNU53N-XLFY04NN532N,Nucleo47,Contractor,Sunflower,Orobanche Evaluation,Early,XL,Bolivia,Bolivia,,,04/29/2026,,Sin Fertilizacion,,Miranda,NA,Access,,Yes
 Completar,Orense,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 Completar,Pergamino-Densidad,Mixed,Sunflower,Densidad,Early,AA,BuenosAires,Nucleo,,,,,,,Romero Cuny,Mazzini,Access,,Yes
 ANFY04NRECON,Reconquista,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AN,SantaFe,NEA,,,,,30 kg Microstar CMB + 60 kg UREA,,Puntano,Oggero,Access,,Yes
