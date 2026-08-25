@@ -8,13 +8,21 @@
   const ARCHIVO_FOTOS = "AccessPhotos.csv";
 
   let fotosAccess = [];
-  let fotosCargadas = false;
 
   const limpiar = valor => String(valor ?? "").trim();
   const normalizarId = valor => limpiar(valor).toLowerCase();
 
   function limpiarValorFormulario(valor) {
     return limpiar(valor).replaceAll("+", " ").replaceAll("%20", " ");
+  }
+
+  function escaparHTML(valor) {
+    return limpiar(valor)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
 
   function construirUrlFormulario(sitio) {
@@ -50,7 +58,8 @@
     return {
       accessId: limpiar(fila.AccessID),
       comments: limpiar(fila.Comments),
-      photoLink: extraerUrl(fila.PhotoLink),
+      publicPhotoUrl: extraerUrl(fila.PublicPhotoUrl),
+      corporatePhotoUrl: extraerUrl(fila.PhotoLink),
       captureDate: limpiar(fila.CaptureDate)
     };
   }
@@ -84,7 +93,6 @@
     const navegacion = popup?.querySelector(".botones-navegacion");
     if (!popup || !navegacion) return;
 
-    /* Elimina versiones anteriores para evitar botones duplicados o fuera de lugar. */
     popup.querySelector(".bloque-fotos-access")?.remove();
     navegacion.querySelectorAll(".boton-foto-access, .boton-ver-foto-access")
       .forEach(boton => boton.remove());
@@ -93,21 +101,44 @@
     bloque.className = "bloque-fotos-access";
 
     const ultimaFoto = obtenerUltimaFoto(sitio.aoiId);
+    const urlFoto = ultimaFoto?.publicPhotoUrl || ultimaFoto?.corporatePhotoUrl || "";
 
     if (ultimaFoto?.comments) {
       const comentario = document.createElement("p");
       comentario.className = "comentario-foto-access";
-      comentario.innerHTML = `<strong>Comentario:</strong> ${ultimaFoto.comments}`;
+      comentario.innerHTML = `<strong>Comentario:</strong> ${escaparHTML(ultimaFoto.comments)}`;
       bloque.appendChild(comentario);
+    }
+
+    if (ultimaFoto?.publicPhotoUrl) {
+      const enlaceMiniatura = document.createElement("a");
+      enlaceMiniatura.className = "enlace-miniatura-access";
+      enlaceMiniatura.href = ultimaFoto.publicPhotoUrl;
+      enlaceMiniatura.target = "_blank";
+      enlaceMiniatura.rel = "noopener noreferrer";
+      enlaceMiniatura.setAttribute("aria-label", "Abrir foto completa del acceso");
+
+      const miniatura = document.createElement("img");
+      miniatura.className = "miniatura-access";
+      miniatura.src = ultimaFoto.publicPhotoUrl;
+      miniatura.alt = `Foto del acceso ${limpiar(sitio.location)}`;
+      miniatura.loading = "lazy";
+
+      miniatura.addEventListener("error", () => {
+        enlaceMiniatura.remove();
+      });
+
+      enlaceMiniatura.appendChild(miniatura);
+      bloque.appendChild(enlaceMiniatura);
     }
 
     const fila = document.createElement("div");
     fila.className = "fila-botones-foto";
 
-    if (ultimaFoto?.photoLink) {
+    if (urlFoto) {
       fila.appendChild(crearBoton(
         "boton-ver-foto-access",
-        ultimaFoto.photoLink,
+        urlFoto,
         '<span aria-hidden="true">🖼️</span> Ver foto',
         "Ver foto del acceso"
       ));
@@ -125,7 +156,10 @@
   }
 
   function cargarFotosAccess() {
-    if (typeof Papa === "undefined") return;
+    if (typeof Papa === "undefined") {
+      console.error("Papa Parse no esta disponible.");
+      return;
+    }
 
     Papa.parse(`${ARCHIVO_FOTOS}?v=${Date.now()}`, {
       download: true,
@@ -135,12 +169,12 @@
       complete: resultado => {
         fotosAccess = resultado.data
           .map(transformarFoto)
-          .filter(foto => foto.accessId && foto.photoLink);
-        fotosCargadas = true;
+          .filter(foto => foto.accessId && (foto.publicPhotoUrl || foto.corporatePhotoUrl));
+
         if (mapa._popup) agregarContenidoAlPopup({ popup: mapa._popup });
+        console.log(`${fotosAccess.length} fotos de Access cargadas.`);
       },
       error: error => {
-        fotosCargadas = true;
         console.error("No fue posible cargar AccessPhotos.csv:", error);
       }
     });
@@ -157,5 +191,5 @@
   });
 
   cargarFotosAccess();
-  console.log("Botones de fotos Access habilitados.");
+  console.log("Miniaturas publicas de Access habilitadas.");
 })();
