@@ -2,95 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Field Trial Map Argentina 2026-27</title>
 
-  <meta
-    name="description"
-    content="Mapa de ensayos, accesos e información de campo de Research Argentina."
-  >
-
+  <meta name="description" content="Mapa de ensayos, accesos e información de campo de Research Argentina.">
   <meta name="theme-color" content="#0b6b3a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trial Map">
 
-  <!-- Configuración PWA -->
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
-  >
-
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
-  >
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="Trial Map"
-  >
-
-  <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  >
-
-  <!-- Estilos principales -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Complementos visuales -->
-  foto-access-addon.css?v=3
-  popup-mobile-addon.css?v=3
-  <linktrial-addon.css?v=1
-
-  <!-- Filtros dependientes con selección múltiple de FTS -->
-  <link rel="stylesheet" href="filtros-dependientes-v3.css?v=1link rels?v=2
-  <linkr-app.css?v=2
+  <link rel="stylesheet" href="foto-access-addon.css?v=3">
+  <link rel="stylesheet" href="popup-mobile-addon.css?v=3">
+  <link rel="stylesheet" href="drop-trial-addon.css?v=1">
+  <link rel="stylesheet" href="filtros-dependientes-v3.css?v=1">
+  <link rel="stylesheet" href="pwa-ui.css?v=2">
+  <link rel="stylesheet" href="header-app.css?v=2">
 </head>
 
 <body>
-
-  <!-- Encabezado de la aplicación -->
   <header class="encabezado">
     <div class="encabezado-app">
-
-      <img
-        class="encabezado-logo"
-        src="icon-192.png"
-        alt="Ícono de Field Trial Map"
-      >
+      <img class="encabezado-logo" src="icon-192.png" alt="Ícono de Field Trial Map">
 
       <div class="encabezado-textos">
         <h1>Field Trial Map</h1>
-
-        <p class="encabezado-subtitulo">
-          Research Argentina 2026-27
-        </p>
-
-        <p class="encabezado-funciones">
-          Ensayos • Accesos • Fotografías • Navegación
-        </p>
+        <p class="encabezado-subtitulo">Research Argentina 2026-27</p>
+        <p class="encabezado-funciones">Ensayos • Accesos • Fotografías • Navegación</p>
       </div>
-
     </div>
   </header>
 
-  <!-- Panel de búsqueda y filtros -->
   <section class="panel">
-
-    <input
-      type="search"
-      id="busqueda"
-      placeholder="Buscar localidad..."
-      aria-label="Buscar localidad"
-    >
+    <input type="search" id="busqueda" placeholder="Buscar localidad..." aria-label="Buscar localidad">
 
     <select id="filtroCultivo">
       <option value="">Todos los cultivos</option>
@@ -104,76 +54,38 @@
       <option value="">Todas las localidades</option>
     </select>
 
-    <!--
-      Este select permanece en el HTML porque app.js lo necesita.
-      filtros-dependientes-v3.js lo ocultará y creará el selector múltiple.
-    -->
     <select id="filtroFTS">
       <option value="">Todos los FTS</option>
     </select>
 
-    <button id="limpiarFiltros" type="button">
-      Limpiar filtros
-    </button>
-
+    <button id="limpiarFiltros" type="button">Limpiar filtros</button>
   </section>
 
-  <!-- Contador -->
   <div class="resumen">
-    <span id="contadorSitios">
-      Cargando sitios...
-    </span>
+    <span id="contadorSitios">Cargando sitios...</span>
   </div>
 
-  <!-- Mapa -->
   <main id="mapa"></main>
 
-  <!-- Librerías -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-  <!-- Aplicación principal: modelo unificado Trial + Access -->
-  app.js?v=10script>
+  <script src="app.js?v=10"></script>
+  <script src="drop-trial-addon.js?v=1"></script>
+  <script src="foto-access-addon.js?v=3"></script>
+  <script src="popup-mobile-addon.js?v=3"></script>
+  <script src="filtros-dependientes-v3.js?v=1"></script>
+  <script src="pwa-ui.js?v=2"></script>
 
-  <!-- Visualización de Trials Drop -->
-  drop-trial-addon.js?v=1script>
-
-  <!-- Fotografías de Access -->
-  foto-access-addon.js?v=3script>
-
-  <!-- Popups optimizados para celular -->
-  popup-mobile-addon.js?v=3script>
-
-  <!-- Filtros dependientes y selección múltiple de FTS -->
-  <script src="filtros-dependientesipt>
-
-  <!-- Versión, estado de conexión e instalación PWA -->
-  pwa-ui.js?v=2script>
-
-  <!-- Registro del Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
           .register("./service-worker.js")
-          .then(registration => {
-            registration.update();
-
-            console.log(
-              "Service Worker registrado:",
-              registration.scope
-            );
-          })
-          .catch(error => {
-            console.error(
-              "Error al registrar Service Worker:",
-              error
-            );
-          });
+          .then(registration => registration.update())
+          .catch(error => console.error("Error al registrar Service Worker:", error));
       });
     }
   </script>
-
 </body>
 </html>
