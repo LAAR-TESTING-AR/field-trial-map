@@ -244,7 +244,7 @@ Completar,Serrano,Contractor,Sunflower,IMPACT 3R,Early,AC,Córdoba,Oeste,-33.902
 Completar,Tandil,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Sudeste,-37.44663,-58.95398,,,D2 - 55000,,Cantero,Sarlangue,Trial,,Yes
 Completar,Trenque Lauquen,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Buenos Aires,Oeste,-35.92648,-62.79512,,,D2 - 55000,,Focke,Peralta Martinez,Trial,,Yes
 Completar,Tres Arroyos,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AA,Buenos Aires,Sudeste,-38.09632,-60.21547,,,D2 - 55000,,Cantero,Sarlangue,Trial,,Yes
-ANFY04NTISLN-ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,"-26.213635, -60.590535",-60.62126,,,D1 - 50000,,Puntano,Oggero,Trial,,Yes
+ANFY04NTISLN-ANFY04NTISDN,Tres Isletas,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Chaco,NEA,-26.213635,-60.590535,,,D1 - 50000,,Puntano,Oggero,Trial,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT 3R,Early,AC,Santa Fe,Centro,-31.146384,-61.415785,,,D1 - 50000,,Arias,Traggiay,Trial,,Yes
 ACFY04NSFRAN,San Francisco,SPD,Sunflower,IMPACT 3R,Early,AC,Córdoba,Centro,-30.861169,-61.813652,,,D1 - 50000,,Arias,Traggiay,Trial,,Yes
 NA,La Virginia TCD,SPD-TCD,Soybean - Regulated,NA,Early,AN,Tucuman,NOA,Completar,Completar,,,,,NA,NA,Trial,,No
@@ -542,7 +542,7 @@ Completar,Orense,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AA,Bue
 Completar,Pergamino- Densidad,Mixed,Sunflower,Densidad,Early,AA,Buenos Aires,Nucleo,Completar,Completar,,,,,Romero Cuny,Mazzini,Access,,Yes
 ANFY04NRECON,Reconquista,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AN,Santa Fe,NEA,Completar,Completar,,,D1 - 50000,,Puntano,Oggero,Access,,Yes
 ANFY04NROMAN-ANFY04NROMDN,Romang,Mixed,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R; Dens,Early,AN,Santa Fe,NEA,Completar,Completar,,,D1 - 50000,,Puntano,Oggero,Access,,Yes
-ANFY04NSBERN,San Bernardo,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AN,Chaco,NEA,Completar,Completar,08/06/2026,,D1 - 50000,,Puntano,Oggero,Access,,Yes
+ANFY04NSBERN,San Bernardo,SPD,Sunflower,ONE GCA; R1; R2; R3; IMPACT 3R,Early,AN,Chaco,NEA,"-27.272682, -60.846365 ",Completar,08/06/2026,,D1 - 50000,,Puntano,Oggero,Access,,Yes
 XLFY04NMSINN,San Julian,Contractor,Sunflower,R3 Bolivia,Early,XL,Bolivia,Bolivia,Completar,Completar,04/27/2026,,50000,,Miranda,NA,Access,,Yes
 ACFY04NSJUSN,San Justo,Mixed,Sunflower,IMPACT 3R,Early,AC,Santa Fe,NEA,Completar,Completar,,,D1 - 50000,,Arias,Oggero,Access,,Yes
 Completar,Serrano,Contractor,Sunflower,IMPACT 3R,Early,AC,Córdoba,Oeste,Completar,Completar,,,D2 - 55000,,Milani,Open Rio IV,Access,,Yes
