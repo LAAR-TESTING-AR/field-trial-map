@@ -1,4 +1,4 @@
-console.log("app.js iniciado correctamente");
+console.log("app.js v10 - modelo unificado Trial + Access");
 
 const mapa = L.map("mapa").setView([-34.5, -63.0], 5);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -38,47 +38,50 @@ function convertirNumero(valor) {
   return Number(texto);
 }
 
-function esAccess(sitio) {
-  const tipo = limpiarTexto(sitio.siteType).toLowerCase();
-  return ["access", "acceso", "bajada", "bajada de ruta"].includes(tipo);
-}
-
 function esVisible(sitio) {
   return ["yes", "si", "sí", "true", "1", "visible"].includes(
     limpiarTexto(sitio.visible).toLowerCase()
   );
 }
 
+function tieneTrial(sitio) {
+  return Number.isFinite(sitio.latitudeTrial) && Number.isFinite(sitio.longitudeTrial);
+}
+
+function tieneAccess(sitio) {
+  return Number.isFinite(sitio.latitudeAccess) && Number.isFinite(sitio.longitudeAccess);
+}
+
 function transformarFila(fila) {
   return {
-    siteType: limpiarTexto(fila["Site Type"]),
-    description: limpiarTexto(fila["Description"]),
     aoiId: limpiarTexto(fila["AOI ID"]),
     location: limpiarTexto(fila["Location"]),
     operations: limpiarTexto(fila["Operations"]),
     crop: limpiarTexto(fila["Crop"]),
+    laarStatus: limpiarTexto(fila["LAAR Status 2026-2027"]),
     season: limpiarTexto(fila["Season"]),
     station: limpiarTexto(fila["Station"]),
     province: limpiarTexto(fila["Province"]),
     region: limpiarTexto(fila["Region"]),
-    latitude: convertirNumero(fila["Latitude"]),
-    longitude: convertirNumero(fila["Longitude"]),
-    plots: limpiarTexto(fila["Number of plots SPD"]),
-    laarStatus: limpiarTexto(fila["LAAR Status 2026-2027"]),
+    latitudeTrial: convertirNumero(fila["Latitude Trial"]),
+    longitudeTrial: convertirNumero(fila["Longitude Trial"]),
+    latitudeAccess: convertirNumero(fila["Latitude Access"]),
+    longitudeAccess: convertirNumero(fila["Longitude Access"]),
     plantingDate: limpiarTexto(fila["Planting Date (MM/DD/YYYY)"]),
-    previousCrop: limpiarTexto(fila["Previous Crop"]),
     plantDensity: limpiarTexto(fila["Plant Density (plants/ha)"]),
     fertilization: limpiarTexto(fila["Fertilization"]),
     area: limpiarTexto(fila["Area ( Ha)"]),
     fts: limpiarTexto(fila["Field Testing Specialist"]),
     spa: limpiarTexto(fila["Seed Product Agronomist"]),
-    visible: limpiarTexto(fila["Visible"])
+    visible: limpiarTexto(fila["Visible"]),
+    description: limpiarTexto(fila["Description"])
   };
 }
 
 function valoresUnicos(campo) {
-  return [...new Set(sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean))]
-    .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  return [...new Set(
+    sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean)
+  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 }
 
 function completarFiltro(elemento, valores) {
@@ -100,9 +103,10 @@ function completarFiltros() {
 
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [sitio.location, sitio.description, sitio.siteType, sitio.region,
-    sitio.province, sitio.fts, sitio.spa, sitio.aoiId, sitio.operations, sitio.crop]
-    .join(" ").toLowerCase();
+  const buscable = [
+    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
+    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
+  ].join(" ").toLowerCase();
 
   return esVisible(sitio)
     && (!q || buscable.includes(q))
@@ -134,55 +138,98 @@ function configuracionCultivo(cultivo) {
 
 function contenidoMarcador(cultivo, modoLeyenda = false) {
   const cfg = configuracionCultivo(cultivo);
-  const pc = cfg.parent ? `<span class="insignia-pc${modoLeyenda ? " leyenda-pc" : ""}">PC</span>` : "";
+  const pc = cfg.parent
+    ? `<span class="insignia-pc${modoLeyenda ? " leyenda-pc" : ""}">PC</span>`
+    : "";
   return `<span class="${modoLeyenda ? "muestra-leyenda" : "marcador-cultivo"} cultivo-${cfg.tipo} ${cfg.claseEstado}"><span class="icono-cultivo">${cfg.icono}</span>${pc}</span>`;
 }
 
-function crearIconoAccess(modoLeyenda = false) {
-  return `<span class="${modoLeyenda ? "muestra-access-leyenda" : "marcador-access"}" aria-hidden="true">
-    <span class="pin-access-cabeza"></span><span class="pin-access-punta"></span>
-  </span>`;
+function contenidoIconoAccess(modoLeyenda = false) {
+  return `<span class="${modoLeyenda ? "muestra-access-leyenda" : "marcador-access"}" aria-hidden="true"><span class="pin-access-cabeza"></span><span class="pin-access-punta"></span></span>`;
 }
 
-function crearIconoSitio(sitio) {
-  if (esAccess(sitio)) {
-    return L.divIcon({
-      className: "marcador-access-contenedor",
-      html: crearIconoAccess(false),
-      iconSize: [34, 46],
-      iconAnchor: [17, 46],
-      popupAnchor: [0, -43]
-    });
-  }
-
+function crearIconoTrial(cultivo) {
   return L.divIcon({
     className: "marcador-cultivo-contenedor",
-    html: contenidoMarcador(sitio.crop),
-    iconSize: [38, 46],
-    iconAnchor: [19, 46],
-    popupAnchor: [0, -43]
+    html: contenidoMarcador(cultivo),
+    iconSize: [38, 46], iconAnchor: [19, 46], popupAnchor: [0, -43]
+  });
+}
+
+function crearIconoAccess() {
+  return L.divIcon({
+    className: "marcador-access-contenedor",
+    html: contenidoIconoAccess(false),
+    iconSize: [34, 46], iconAnchor: [17, 46], popupAnchor: [0, -43]
   });
 }
 
 function linea(etiqueta, valor, sufijo = "") {
   const contenido = limpiarTexto(valor);
-  return contenido ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}${escaparHTML(sufijo)}</p>` : "";
+  return contenido
+    ? `<p><strong>${escaparHTML(etiqueta)}:</strong> ${escaparHTML(contenido)}${escaparHTML(sufijo)}</p>`
+    : "";
 }
 
-function crearPopup(sitio) {
-  const googleMaps = `https://www.google.com/maps/dir/?api=1&destination=${sitio.latitude},${sitio.longitude}`;
-  const waze = `https://waze.com/ul?ll=${sitio.latitude},${sitio.longitude}&navigate=yes`;
+function enlacesNavegacion(latitude, longitude) {
+  return {
+    googleMaps: `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`,
+    waze: `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`
+  };
+}
 
-  const detalle = esAccess(sitio)
-    ? `${linea("Tipo", "Bajada de ruta")}${linea("Descripción", sitio.description)}${linea("Provincia", sitio.province)}${linea("Región", sitio.region)}${linea("Latitud", sitio.latitude)}${linea("Longitud", sitio.longitude)}`
-    : `${linea("AOI ID", sitio.aoiId)}${linea("Operación", sitio.operations)}${linea("Cultivo", sitio.crop)}${linea("Temporada", sitio.season)}${linea("Estación", sitio.station)}${linea("Provincia", sitio.province)}${linea("Región", sitio.region)}${linea("FTS", sitio.fts)}${linea("SPA", sitio.spa)}${linea("Número de plots SPD", sitio.plots)}${linea("Estado LAAR 2026-2027", sitio.laarStatus)}${linea("Fecha de siembra", sitio.plantingDate)}${linea("Cultivo antecesor", sitio.previousCrop)}${linea("Densidad de plantas", sitio.plantDensity, sitio.plantDensity ? " plantas/ha" : "")}${linea("Fertilización", sitio.fertilization)}${linea("Área", sitio.area, sitio.area ? " ha" : "")}${linea("Latitud", sitio.latitude)}${linea("Longitud", sitio.longitude)}`;
+function crearPopupTrial(sitio) {
+  const lat = sitio.latitudeTrial;
+  const lon = sitio.longitudeTrial;
+  const { googleMaps, waze } = enlacesNavegacion(lat, lon);
 
-  return `<div class="popup-sitio${esAccess(sitio) ? " popup-access" : ""}">
-    <h2>${escaparHTML(sitio.location)}</h2><div class="popup-detalles">${detalle}</div>
+  return `<div class="popup-sitio popup-trial">
+    <h2>${escaparHTML(sitio.location)}</h2>
+    <div class="popup-detalles">
+      ${linea("AOI ID", sitio.aoiId)}
+      ${linea("Operación", sitio.operations)}
+      ${linea("Cultivo", sitio.crop)}
+      ${linea("Estado LAAR 2026-2027", sitio.laarStatus)}
+      ${linea("Temporada", sitio.season)}
+      ${linea("Estación", sitio.station)}
+      ${linea("Provincia", sitio.province)}
+      ${linea("Región", sitio.region)}
+      ${linea("FTS", sitio.fts)}
+      ${linea("SPA", sitio.spa)}
+      ${linea("Fecha de siembra", sitio.plantingDate)}
+      ${linea("Densidad de plantas", sitio.plantDensity, sitio.plantDensity ? " plantas/ha" : "")}
+      ${linea("Fertilización", sitio.fertilization)}
+      ${linea("Área", sitio.area, sitio.area ? " ha" : "")}
+      ${linea("Latitud", lat)}
+      ${linea("Longitud", lon)}
+    </div>
     <div class="botones-navegacion">
       <a class="boton-mapa" href="${googleMaps}" target="_blank" rel="noopener noreferrer">Google Maps</a>
       <a class="boton-waze" href="${waze}" target="_blank" rel="noopener noreferrer">Waze</a>
-    </div></div>`;
+    </div>
+  </div>`;
+}
+
+function crearPopupAccess(sitioAccess) {
+  const lat = sitioAccess.latitudeAccess;
+  const lon = sitioAccess.longitudeAccess;
+  const { googleMaps, waze } = enlacesNavegacion(lat, lon);
+
+  return `<div class="popup-sitio popup-access">
+    <h2>${escaparHTML(sitioAccess.location)}</h2>
+    <div class="popup-detalles">
+      ${linea("Tipo", "Bajada de ruta")}
+      ${linea("Descripción", sitioAccess.description)}
+      ${linea("Provincia", sitioAccess.province)}
+      ${linea("Región", sitioAccess.region)}
+      ${linea("Latitud", lat)}
+      ${linea("Longitud", lon)}
+    </div>
+    <div class="botones-navegacion">
+      <a class="boton-mapa" href="${googleMaps}" target="_blank" rel="noopener noreferrer">Google Maps</a>
+      <a class="boton-waze" href="${waze}" target="_blank" rel="noopener noreferrer">Waze</a>
+    </div>
+  </div>`;
 }
 
 function ocultarLeyenda() {
@@ -206,36 +253,60 @@ function alternarLeyenda() {
 
 function actualizarLeyenda(sitiosFiltrados) {
   if (!contenidoLeyenda) return;
-  const hayAccess = sitiosFiltrados.some(esAccess);
-  const cultivos = [...new Set(sitiosFiltrados.filter(s => !esAccess(s)).map(s => limpiarTexto(s.crop)).filter(Boolean))]
-    .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  const cultivos = [...new Set(
+    sitiosFiltrados.filter(tieneTrial).map(s => limpiarTexto(s.crop)).filter(Boolean)
+  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  const hayAccess = sitiosFiltrados.some(tieneAccess);
 
-  let html = cultivos.map(cultivo => `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`).join("");
-  if (hayAccess) html += `<div class="item-leyenda item-leyenda-access">${crearIconoAccess(true)}<span>Bajada de ruta / Access</span></div>`;
+  let html = cultivos.map(cultivo =>
+    `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`
+  ).join("");
+
+  if (hayAccess) {
+    html += `<div class="item-leyenda item-leyenda-access">${contenidoIconoAccess(true)}<span>Bajada de ruta / Access</span></div>`;
+  }
 
   contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
 
 function actualizarMapa() {
   capaMarcadores.clearLayers();
-  const sitiosFiltrados = sitios.filter(coincideConFiltros)
-    .filter(s => Number.isFinite(s.latitude) && Number.isFinite(s.longitude));
+  const sitiosFiltrados = sitios.filter(coincideConFiltros);
   const coordenadas = [];
+  let cantidadTrials = 0;
+  let cantidadAccess = 0;
 
   sitiosFiltrados.forEach(sitio => {
-    L.marker([sitio.latitude, sitio.longitude], { icon: crearIconoSitio(sitio), zIndexOffset: esAccess(sitio) ? 1000 : 0 })
-      .bindPopup(crearPopup(sitio), {
-  maxWidth: 390,
-  minWidth: 285,
-  maxHeight: 520,
-  sitioAccess: esAccess(sitio) ? sitio : null
-})
-      .addTo(capaMarcadores);
-    coordenadas.push([sitio.latitude, sitio.longitude]);
+    if (tieneTrial(sitio)) {
+      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
+        .bindPopup(crearPopupTrial(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 520 })
+        .addTo(capaMarcadores);
+      coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
+      cantidadTrials += 1;
+    }
+
+    if (tieneAccess(sitio)) {
+      const sitioAccess = { ...sitio, latitude: sitio.latitudeAccess, longitude: sitio.longitudeAccess };
+      L.marker([sitio.latitudeAccess, sitio.longitudeAccess], {
+        icon: crearIconoAccess(),
+        zIndexOffset: 1000
+      })
+        .bindPopup(crearPopupAccess(sitioAccess), {
+          maxWidth: 390,
+          minWidth: 285,
+          maxHeight: 520,
+          sitioAccess
+        })
+        .addTo(capaMarcadores);
+      coordenadas.push([sitio.latitudeAccess, sitio.longitudeAccess]);
+      cantidadAccess += 1;
+    }
   });
 
-  contadorSitios.textContent = `${coordenadas.length} puntos visibles`;
+  const total = cantidadTrials + cantidadAccess;
+  contadorSitios.textContent = `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
   actualizarLeyenda(sitiosFiltrados);
+
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
 
@@ -258,10 +329,12 @@ function agregarLeyendaPremium() {
 
 function cargarSitios() {
   Papa.parse(`Sitios.csv?v=${Date.now()}`, {
-    download: true, header: true, skipEmptyLines: true,
-    transformHeader: h => h.replace(/^\uFEFF/, "").trim(),
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    transformHeader: encabezado => encabezado.replace(/^\uFEFF/, "").trim(),
     complete: resultado => {
-      sitios = resultado.data.map(transformarFila).filter(s => s.location);
+      sitios = resultado.data.map(transformarFila).filter(s => s.aoiId && s.location);
       completarFiltros();
       actualizarMapa();
       if (resultado.errors.length) console.warn("Advertencias CSV:", resultado.errors);
@@ -273,11 +346,17 @@ function cargarSitios() {
   });
 }
 
-[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => control.addEventListener("change", actualizarMapa));
+[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => {
+  control.addEventListener("change", actualizarMapa);
+});
 busqueda.addEventListener("input", actualizarMapa);
 limpiarFiltros.addEventListener("click", () => {
-  busqueda.value = ""; filtroCultivo.value = ""; filtroRegion.value = "";
-  filtroLocalidad.value = ""; filtroFTS.value = ""; actualizarMapa();
+  busqueda.value = "";
+  filtroCultivo.value = "";
+  filtroRegion.value = "";
+  filtroLocalidad.value = "";
+  filtroFTS.value = "";
+  actualizarMapa();
 });
 
 mapa.on("popupopen", ocultarLeyenda);

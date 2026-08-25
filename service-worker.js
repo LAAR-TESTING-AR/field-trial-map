@@ -1,5 +1,4 @@
-const CACHE_NAME = "field-trial-map-v2";
-
+const CACHE_NAME = "field-trial-map-v3";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -22,152 +21,56 @@ const APP_SHELL = [
   `${BASE_PATH}apple-touch-icon.png`
 ];
 
-/*
-  Instalar la nueva versión del Service Worker
-  y guardar los recursos principales.
-*/
 self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(APP_SHELL);
-    })
-  );
-
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
   self.skipWaiting();
 });
 
-/*
-  Eliminar automáticamente las versiones anteriores
-  del caché.
-*/
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames
-          .filter(cacheName => cacheName !== CACHE_NAME)
-          .map(cacheName => caches.delete(cacheName))
-      );
-    })
+    caches.keys().then(names => Promise.all(
+      names.filter(name => name !== CACHE_NAME).map(name => caches.delete(name))
+    ))
   );
-
   self.clients.claim();
 });
 
-/*
-  Controlar las solicitudes de la aplicación.
-*/
 self.addEventListener("fetch", event => {
   const request = event.request;
   const url = new URL(request.url);
+  if (request.method !== "GET") return;
 
-  if (request.method !== "GET") {
-    return;
-  }
-
-  /*
-    Para index.html y navegación:
-    primero buscar la versión más reciente en la red.
-  */
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
-        .then(response => {
-          const copia = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(`${BASE_PATH}index.html`, copia);
-          });
-
-          return response;
-        })
-        .catch(async () => {
-          return (
-            await caches.match(`${BASE_PATH}index.html`)
-          ) || (
-            await caches.match(`${BASE_PATH}offline.html`)
-          );
-        })
-    );
-
-    return;
-  }
-
-  /*
-    Para Sitios.csv y AccessPhotos.csv:
-    primero red para obtener la información actualizada.
-    Si no hay conexión, usar la última versión guardada.
-  */
-  if (
-    url.pathname.endsWith("/Sitios.csv") ||
-    url.pathname.endsWith("/AccessPhotos.csv")
-  ) {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          const copia = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, copia);
-          });
-
-          return response;
-        })
-        .catch(() => caches.match(request))
-    );
-
-    return;
-  }
-
-  /*
-    Para imágenes públicas de los accesos:
-    red primero y caché como respaldo.
-  */
-  if (url.pathname.includes("/images/access/")) {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          const copia = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, copia);
-          });
-
-          return response;
-        })
-        .catch(() => caches.match(request))
-    );
-
-    return;
-  }
-
-  /*
-    Para CSS, JavaScript, íconos y demás recursos:
-    usar caché primero y descargar si todavía no existe.
-  */
-  event.respondWith(
-    caches.match(request).then(cachedResponse => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request).then(response => {
-        if (
-          !response ||
-          response.status !== 200 ||
-          response.type === "opaque"
-        ) {
-          return response;
-        }
-
-        const copia = response.clone();
-
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, copia);
-        });
-
+      fetch(request).then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(`${BASE_PATH}index.html`, copy));
         return response;
-      });
-    })
+      }).catch(async () =>
+        (await caches.match(`${BASE_PATH}index.html`)) ||
+        (await caches.match(`${BASE_PATH}offline.html`))
+      )
+    );
+    return;
+  }
+
+  if (url.pathname.endsWith("/Sitios.csv") || url.pathname.endsWith("/AccessPhotos.csv") || url.pathname.includes("/images/access/")) {
+    event.respondWith(
+      fetch(request).then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        return response;
+      }).catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then(cached => cached || fetch(request).then(response => {
+      if (!response || response.status !== 200 || response.type === "opaque") return response;
+      const copy = response.clone();
+      caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+      return response;
+    }))
   );
 });
