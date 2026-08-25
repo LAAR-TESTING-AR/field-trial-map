@@ -34,7 +34,7 @@ AACY04NFER1T,Ferre,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Nucleo,-34.16297,-61.
 ACCY04NGAL1T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,-31.95512,-61.16025,,,Estandar,,Arias,Traggiay,Trial,,Yes
 AACY04NGARRT,Garre,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,-36.50101,-62.60687,,,Alta,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NGUALT,Gualeguay,Contractor,Corn,IMPACT 3R,Early,XL,EntreRíos,Litoral,-33.05755,-59.29615,,,Baja,,Vilchez,Bernardi,Trial,,Yes
-AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-37.86049,-58.02404,,,Baja,,Cantero,Sarlangue,Trial,,Yes
+AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,-37.86049,-58.02404,,,Baja,,Cantero,Sarlangue,Trial,,Yes
 AACY04NGCH1T,Gualeguaychu,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,-33.09559,-58.8035,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 ACCY04NHER1T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Centro,-32.27237,-63.88752,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
 AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,-35.02334,-63.49163,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
@@ -46,14 +46,14 @@ AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,-35.4511,-61
 AACY04NMONET,MonesCazon,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,-36.16011,-61.99626,,,Alta,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NPAR1T,Paraná,Contractor,Corn,IMPACT 3R,Early,XL,EntreRíos,Litoral,-31.82448,-60.09405,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 AACY04NPERGT,Pergamino,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Nucleo,-33.84191,-60.62474,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
-AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-38.36364,-58.63112,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
+AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,-38.36364,-58.63112,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
 AACY04NRAMAT,Ramallo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,-33.54156,-60.15158,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NRUNCT,Runciman,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,-33.91214,-61.81002,,,Alta,,Perassi,Paz,Trial,,Yes
 ACCY04NSAMPT,Sampacho,SPD,Corn,IMPACT 3R; R3,Early,AC,Córdoba,Oeste,-33.36933,-64.70011,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.65468,-64.4799,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,-33.50465,-64.21658,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,-31.4146,-61.02957,,,Estandar,,Arias,Traggiay,Trial,,Yes
-AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-37.46783,-58.91169,,,Baja,,Cantero,Sarlangue,Trial,,Yes
+AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,-37.46783,-58.91169,,,Baja,,Cantero,Sarlangue,Trial,,Yes
 AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,-35.77353,-62.83583,,,Estandar,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NTR1HT,TresArroyos,Mixed,Corn,HYPER,Early,AA,BuenosAires,Sudeste,-38.16091,-60.23742,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
 AACY04NURANT,Uranga,SPD,Corn,IMPACT 3R,Early,AA,SantaFe,Nucleo,-33.29509,-60.4275,,,Estandar,,Vilchez,Mazzini,Trial,,Yes
@@ -327,7 +327,7 @@ AACY04NFER1T,Ferre,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Nucleo,,,,,Alta,,Rome
 ACCY04NGAL1T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
 AACY04NGARRT,Garre,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,Peralta Martinez,Access,,Yes
 AACY04NGUALT,Gualeguay,Contractor,Corn,IMPACT 3R,Early,XL,EntreRíos,Litoral,,,,,Baja,,Vilchez,Bernardi,Access,,Yes
-AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
+AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
 AACY04NGCH1T,Gualeguaychu,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 ACCY04NHER1T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
 AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
@@ -339,14 +339,14 @@ AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,,,,,Estandar
 AACY04NMONET,MonesCazon,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,Peralta Martinez,Access,,Yes
 AACY04NPAR1T,Paraná,Contractor,Corn,IMPACT 3R,Early,XL,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 AACY04NPERGT,Pergamino,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
-AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
+AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
 AACY04NRAMAT,Ramallo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NRUNCT,Runciman,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
 ACCY04NSAMPT,Sampacho,SPD,Corn,IMPACT 3R; R3,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
-AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
+AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
 AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Focke,Peralta Martinez,Access,,Yes
 AACY04NTR1HT,TresArroyos,Mixed,Corn,HYPER,Early,AA,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
 AACY04NURANT,Uranga,SPD,Corn,IMPACT 3R,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Mazzini,Access,,Yes
