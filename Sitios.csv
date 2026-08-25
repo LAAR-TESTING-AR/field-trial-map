@@ -26,7 +26,7 @@ ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,-32
 ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NCHA1T,Chazon,SPD,Corn,IMPACT3R,Early,AC,Córdoba,Oeste,-33.07967,-63.27564,,,Baja,,Gomez,Open Rio IV,Trial,,Yes
-AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,-34.91289,-60.16339,,,UltraBaja,,Romero Cuny,Mazzini,Trial,,Yes
+AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,-34.91289,-60.16339,,,Ultra Baja,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NCURUT,ConcepciondelUruguay,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,EntreRíos,Litoral,-32.60396,-58.49425,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 ACCY04NCMOLT,CoronelMoldes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,-33.44234,-64.72549,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NELT1T,ElTrebol,SPD,Corn,IMPACT3R,Early,AC,SantaFe,Centro,-32.17142,-61.77275,,,Alta,,Arias,Traggiay,Trial,,Yes
@@ -62,18 +62,18 @@ ACCY04NMAK1T,VicuñaMackenna,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oest
 AACY04NELOIT,VillaEloisa,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,-33.00167,-61.50074,,,Alta,,Vilchez,Traggiay,Trial,,Yes
 AACY04NVGU1T,Villaguay,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,-32.02287,-58.99225,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 AACY04NZAVAT,Zavalla,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,-33.03802,-60.90255,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
-ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,-33.65534,-64.47788,,,Ultrabaja,,Milani,Open Rio IV,Trial,,Yes
+ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,-33.65534,-64.47788,,,Ultra Baja,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NALCHT,AltosdeChipion,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,-31.02742,-62.3462,,,Alta,,Arias,Traggiay,Trial,,Yes
 AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,-34.98381,-62.83995,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,-36.64189,-63.9591,,,Baja,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NARR2T,Arrecifes,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Nucleo,-34.0357,-60.10664,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NBA2HT,Balcarce,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,-37.8947,-58.31263,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
-ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-28.79009,-62.21952,,,Ultrabaja,,New FTS-Quimili,Oggero,Trial,,Yes
+ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-28.79009,-62.21952,,,Ultra Baja,,New FTS-Quimili,Oggero,Trial,,Yes
 ANCY04NBUENT,Buenaventura,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Salta,NOA,-24.95582,-64.29458,,,Baja,,Miranda,Aris,Trial,,Yes
 ACCY04NCDLUT,CañadadeLuque,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AC,Córdoba,Centro,-30.79223,-63.75443,,,Estandar,,Attme,Capristo,Trial,,Yes
 ACCY04NCDRET,CapilladelosRemedios,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,-31.46498,-64.00674,,,Baja,,Attme,Capristo,Trial,,Yes
 ACCY04NCHA2T,Chazon,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Oeste,-33.04064,-63.59238,,,Baja,,Gomez,Open Rio IV,Trial,,Yes
-ACCY04NCMART,ColoniaMarina,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,-31.24709,-62.39959,,,Ultrabaja,,Arias,Traggiay,Trial,,Yes
+ACCY04NCMART,ColoniaMarina,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,-31.24709,-62.39959,,,Ultra Baja,,Arias,Traggiay,Trial,,Yes
 ACCY04NELT2T,ElTrebol,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,-32.17171,-61.77264,,,Baja,,Arias,Traggiay,Trial,,Yes
 AACY04NFER2T,Ferre,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,BuenosAires,Nucleo,-34.1632,-61.10482,,,Alta,,Romero Cuny,Mazzini,Trial,,Yes
 ACCY04NGAL2T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,-32.0552,-61.24585,,,Estandar,,Arias,Traggiay,Trial,,Yes
@@ -82,16 +82,16 @@ AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,-35.72576,-63.5
 AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,-35.15554,-63.01091,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NGCH2T,Gualeguaychu,SPD,Corn,IMPACT3R,Late,AA,EntreRíos,Litoral,-32.96958,-58.47771,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 ACCY04NHER2T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,-32.27251,-63.88597,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
-ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,-34.81137,-64.29639,,,Ultrabaja,,Milani,Open Rio IV,Trial,,Yes
-ACCY04NJMART,JesusMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,-30.1734,-64.16247,,,Ultrabaja,,Attme,Capristo,Trial,,Yes
+ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,-34.81137,-64.29639,,,Ultra Baja,,Milani,Open Rio IV,Trial,,Yes
+ACCY04NJMART,JesusMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,-30.1734,-64.16247,,,Ultra Baja,,Attme,Capristo,Trial,,Yes
 ANCY04NLCOCT,LaCocha,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,-28.08803,-65.39169,,,Baja,,Guzman,Aris,Trial,,Yes
-ANCY04NLCEJT,LasCejas,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,-26.99911,-64.68746,,,Ultrabaja,,Guzman,Aris,Trial,,Yes
+ANCY04NLCEJT,LasCejas,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,-26.99911,-64.68746,,,Ultra Baja,,Guzman,Aris,Trial,,Yes
 ANCY04NLFRET,LosFrentones,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Chaco,NEA,-26.46564,-61.60989,,,Baja,,Puntano,Oggero,Trial,,Yes
 AACY04NSURGT,LosSurgentes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,Córdoba,Nucleo,-32.94124,-61.94253,,,Alta,,Perassi,Paz,Trial,,Yes
-ANCY04NMETAT,Metan,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salta,NOA,-25.43167,-64.81481,,,Ultrabaja,,Miranda,Aris,Trial,,Yes
-ANCY04NNESPT,NuevaEsperanza,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NOA,-26.06925,-64.30616,,,Ultrabaja,,Guzman,Aris,Trial,,Yes
-ANCY04NOTUMT,Otumpa,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-27.23878,-62.04941,,,Ultrabaja,,New FTS-Quimili,Oggero,Trial,,Yes
-ANCY04NPINFT,PampadelInfierno,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Chaco,NEA,-26.57811,-61.28523,,,Ultrabaja,,Puntano,Oggero,Trial,,Yes
+ANCY04NMETAT,Metan,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salta,NOA,-25.43167,-64.81481,,,Ultra Baja,,Miranda,Aris,Trial,,Yes
+ANCY04NNESPT,NuevaEsperanza,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NOA,-26.06925,-64.30616,,,Ultra Baja,,Guzman,Aris,Trial,,Yes
+ANCY04NOTUMT,Otumpa,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-27.23878,-62.04941,,,Ultra Baja,,New FTS-Quimili,Oggero,Trial,,Yes
+ANCY04NPINFT,PampadelInfierno,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Chaco,NEA,-26.57811,-61.28523,,,Ultra Baja,,Puntano,Oggero,Trial,,Yes
 AACY04NPAR2T,Paraná,Contractor,Corn,IMPACT3R,Late,XL,EntreRíos,Litoral,-31.84732,-60.45179,,,Baja,,Vilchez,Bernardi,Trial,,Yes
 ANCY04NPIQUT,PiqueteCabado,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Salta,NOA,-24.87422,-64.15883,,,Baja,,Miranda,Aris,Trial,,Yes
 ANCY04NQUIMT,Quimili,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-27.77776,-62.22601,,,Estandar,,New FTS-Quimili,Oggero,Trial,,Yes
@@ -101,7 +101,7 @@ ANCY04NRDLET,RosariodeLerma,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salt
 ANCY04NROVET,Roversi,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-27.72827,-61.94761,,,Estandar,,New FTS-Quimili,Oggero,Trial,,Yes
 ACCY04NSACAT,Sacanta,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AC,Córdoba,Centro,-31.66945,-63.11862,,,Estandar,,Gomez,Capristo,Trial,,Yes
 ANCY04NSACHT,Sachayoj,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-26.62108,-61.97888,,,Estandar,,Puntano,Oggero,Trial,,Yes
-ACCY04NSJDOT,SanJosedelaDormida,SPD,Corn,IMPACT3R;HYPER,Late,AC,Córdoba,Centro,-30.29838,-63.91401,,,Ultrabaja,,Attme,Capristo,Trial,,Yes
+ACCY04NSJDOT,SanJosedelaDormida,SPD,Corn,IMPACT3R;HYPER,Late,AC,Córdoba,Centro,-30.29838,-63.91401,,,Ultra Baja,,Attme,Capristo,Trial,,Yes
 ACCY04NSUART,Suardi,SPD,Corn,IMPACT3R,Late,AC,SantaFe,Centro,-30.49787,-61.91444,,,Baja,,Arias,Traggiay,Trial,,Yes
 ACCY04NSUCOT,Suco,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Oeste,-33.42862,-64.78857,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 AACY04NTR2HT,TresArroyos,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,-38.16066,-60.23771,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
@@ -133,12 +133,12 @@ ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,-33.42723,-
 ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.90911,-63.5557,,,Baja,,Gomez,Capristo,Trial,,Yes
 ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.47336,-64.01233,,,Estandar,,Attme,Capristo,Trial,,Yes
 ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-32.38371,-63.70896,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
-ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,-26.74108,-64.75224,,,Ultrabaja,,Guzman,Aris,Trial,,Yes
+ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,-26.74108,-64.75224,,,Ultra Baja,,Guzman,Aris,Trial,,Yes
 ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,-28.11343,-65.35282,,,Estandar,,Guzman,Aris,Trial,,Yes
 ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,-33.48941,-64.47144,,,Baja,,Milani,Open Rio IV,Trial,,Yes
-ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,-25.4318,-64.82504,,,Ultrabaja,,Miranda,Aris,Trial,,Yes
+ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,-25.4318,-64.82504,,,Ultra Baja,,Miranda,Aris,Trial,,Yes
 AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Late,AA,Córdoba,Nucleo,-33.00076,-62.45927,,,Alta,,Perassi,Paz,Trial,,Yes
-ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,-27.2062,-62.03069,,,Ultrabaja,,New FTS-Quimili,Oggero,Trial,,Yes
+ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,-27.2062,-62.03069,,,Ultra Baja,,New FTS-Quimili,Oggero,Trial,,Yes
 ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.0322,-61.9507,,,Estandar,,Arias,Traggiay,Trial,,Yes
 ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,-27.78477,-62.19608,,,Estandar,,New FTS-Quimili,Oggero,Trial,,Yes
 ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NOA,-26.43294,-64.51268,,,Estandar,,Guzman,Aris,Trial,,Yes
@@ -319,7 +319,7 @@ ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,,,,
 ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NCHA1T,Chazon,SPD,Corn,IMPACT3R,Early,AC,Córdoba,Oeste,,,,,Baja,,Gomez,Open Rio IV,Access,,Yes
-AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,,,,,UltraBaja,,Romero Cuny,Mazzini,Access,,Yes
+AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Nucleo,,,,,Ultra Baja,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NCURUT,ConcepciondelUruguay,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 ACCY04NCMOLT,CoronelMoldes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NELT1T,ElTrebol,SPD,Corn,IMPACT3R,Early,AC,SantaFe,Centro,,,,,Alta,,Arias,Traggiay,Access,,Yes
@@ -355,18 +355,18 @@ ACCY04NMAK1T,VicuñaMackenna,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oest
 AACY04NELOIT,VillaEloisa,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,,,,,Alta,,Vilchez,Traggiay,Access,,Yes
 AACY04NVGU1T,Villaguay,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 AACY04NZAVAT,Zavalla,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
-ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,,,,,Ultrabaja,,Milani,Open Rio IV,Access,,Yes
+ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,,,,,Ultra Baja,,Milani,Open Rio IV,Access,,Yes
 ACCY04NALCHT,AltosdeChipion,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,,,,,Alta,,Arias,Traggiay,Access,,Yes
 AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,,,,,Baja,,Focke,Peralta Martinez,Access,,Yes
 AACY04NARR2T,Arrecifes,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NBA2HT,Balcarce,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
-ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultrabaja,,New FTS-Quimili,Oggero,Access,,Yes
+ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultra Baja,,New FTS-Quimili,Oggero,Access,,Yes
 ANCY04NBUENT,Buenaventura,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Salta,NOA,,,,,Baja,,Miranda,Aris,Access,,Yes
 ACCY04NCDLUT,CañadadeLuque,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AC,Córdoba,Centro,,,,,Estandar,,Attme,Capristo,Access,,Yes
 ACCY04NCDRET,CapilladelosRemedios,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,,,,,Baja,,Attme,Capristo,Access,,Yes
 ACCY04NCHA2T,Chazon,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Oeste,,,,,Baja,,Gomez,Open Rio IV,Access,,Yes
-ACCY04NCMART,ColoniaMarina,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,,,,,Ultrabaja,,Arias,Traggiay,Access,,Yes
+ACCY04NCMART,ColoniaMarina,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,,,,,Ultra Baja,,Arias,Traggiay,Access,,Yes
 ACCY04NELT2T,ElTrebol,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,,,,,Baja,,Arias,Traggiay,Access,,Yes
 AACY04NFER2T,Ferre,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,BuenosAires,Nucleo,,,,,Alta,,Romero Cuny,Mazzini,Access,,Yes
 ACCY04NGAL2T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
@@ -375,16 +375,16 @@ AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,,,,,Baja,,Antun
 AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NGCH2T,Gualeguaychu,SPD,Corn,IMPACT3R,Late,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 ACCY04NHER2T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
-ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,,,,,Ultrabaja,,Milani,Open Rio IV,Access,,Yes
-ACCY04NJMART,JesusMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,,,,,Ultrabaja,,Attme,Capristo,Access,,Yes
+ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,,,,,Ultra Baja,,Milani,Open Rio IV,Access,,Yes
+ACCY04NJMART,JesusMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Centro,,,,,Ultra Baja,,Attme,Capristo,Access,,Yes
 ANCY04NLCOCT,LaCocha,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,,,,,Baja,,Guzman,Aris,Access,,Yes
-ANCY04NLCEJT,LasCejas,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,,,,,Ultrabaja,,Guzman,Aris,Access,,Yes
+ANCY04NLCEJT,LasCejas,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Tucuman,NOA,,,,,Ultra Baja,,Guzman,Aris,Access,,Yes
 ANCY04NLFRET,LosFrentones,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Chaco,NEA,,,,,Baja,,Puntano,Oggero,Access,,Yes
 AACY04NSURGT,LosSurgentes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
-ANCY04NMETAT,Metan,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salta,NOA,,,,,Ultrabaja,,Miranda,Aris,Access,,Yes
-ANCY04NNESPT,NuevaEsperanza,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NOA,,,,,Ultrabaja,,Guzman,Aris,Access,,Yes
-ANCY04NOTUMT,Otumpa,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultrabaja,,New FTS-Quimili,Oggero,Access,,Yes
-ANCY04NPINFT,PampadelInfierno,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Chaco,NEA,,,,,Ultrabaja,,Puntano,Oggero,Access,,Yes
+ANCY04NMETAT,Metan,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salta,NOA,,,,,Ultra Baja,,Miranda,Aris,Access,,Yes
+ANCY04NNESPT,NuevaEsperanza,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NOA,,,,,Ultra Baja,,Guzman,Aris,Access,,Yes
+ANCY04NOTUMT,Otumpa,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultra Baja,,New FTS-Quimili,Oggero,Access,,Yes
+ANCY04NPINFT,PampadelInfierno,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Chaco,NEA,,,,,Ultra Baja,,Puntano,Oggero,Access,,Yes
 AACY04NPAR2T,Paraná,Contractor,Corn,IMPACT3R,Late,XL,EntreRíos,Litoral,,,,,Baja,,Vilchez,Bernardi,Access,,Yes
 ANCY04NPIQUT,PiqueteCabado,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,Salta,NOA,,,,,Baja,,Miranda,Aris,Access,,Yes
 ANCY04NQUIMT,Quimili,SPD,Corn,IMPACT3R;IMPACTTROP;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,New FTS-Quimili,Oggero,Access,,Yes
@@ -394,7 +394,7 @@ ANCY04NRDLET,RosariodeLerma,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,Salt
 ANCY04NROVET,Roversi,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,New FTS-Quimili,Oggero,Access,,Yes
 ACCY04NSACAT,Sacanta,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Capristo,Access,,Yes
 ANCY04NSACHT,Sachayoj,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,Puntano,Oggero,Access,,Yes
-ACCY04NSJDOT,SanJosedelaDormida,SPD,Corn,IMPACT3R;HYPER,Late,AC,Córdoba,Centro,,,,,Ultrabaja,,Attme,Capristo,Access,,Yes
+ACCY04NSJDOT,SanJosedelaDormida,SPD,Corn,IMPACT3R;HYPER,Late,AC,Córdoba,Centro,,,,,Ultra Baja,,Attme,Capristo,Access,,Yes
 ACCY04NSUART,Suardi,SPD,Corn,IMPACT3R,Late,AC,SantaFe,Centro,,,,,Baja,,Arias,Traggiay,Access,,Yes
 ACCY04NSUCOT,Suco,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 AACY04NTR2HT,TresArroyos,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
@@ -426,12 +426,12 @@ ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,,,,,Estanda
 ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Baja,,Gomez,Capristo,Access,,Yes
 ACCY04NCORDS,Córdoba,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Attme,Capristo,Access,,Yes
 ACCY04NHERNS,Hernando,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
-ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,,,,,Ultrabaja,,Guzman,Aris,Access,,Yes
+ANCY04NLCEJS,LasCejas,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,,,,,Ultra Baja,,Guzman,Aris,Access,,Yes
 ANCY04NLALTS,LosAltos,SPD,Corn-Stewarded,R3;GCA,Late,AN,Tucuman,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
 ACCY04NMAL2S,Malena,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,,,,,Baja,,Milani,Open Rio IV,Access,,Yes
-ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,,,,,Ultrabaja,,Miranda,Aris,Access,,Yes
+ANCY04NMETAS,Metan,SPD,Corn-Stewarded,R3;GCA,Late,AN,Salta,NOA,,,,,Ultra Baja,,Miranda,Aris,Access,,Yes
 AACY04NMBU2S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Late,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
-ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultrabaja,,New FTS-Quimili,Oggero,Access,,Yes
+ANCY04NOTUMS,Otumpa,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultra Baja,,New FTS-Quimili,Oggero,Access,,Yes
 ACCY04NPORTS,Porteña,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
 ANCY04NQUIMS,Quimili,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NEA,,,,,Estandar,,New FTS-Quimili,Oggero,Access,,Yes
 ANCY04NRAPES,Rapelli,SPD,Corn-Stewarded,R3;GCA,Late,AN,SantiagoDelEstero,NOA,,,,,Estandar,,Guzman,Aris,Access,,Yes
