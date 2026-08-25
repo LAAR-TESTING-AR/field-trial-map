@@ -23,8 +23,8 @@ AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,-34.98381,-6
 AACY04NAMERT,America,SPD,Corn,IMPACT 3R; R3; R2; OGCA; HYPER,Early,AA,BuenosAires,Oeste,-35.58085,-63.04017,,,Alta,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NARR1T,Arrecifes,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Nucleo,-34.03569,-60.10762,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Córdoba,Oeste,-32.92824,-63.91633,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
-ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
-ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
+ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
+ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NCHA1T,Chazon,SPD,Corn,IMPACT 3R,Early,AC,Córdoba,Oeste,-33.07967,-63.27564,,,Baja,,Gomez,Open Rio IV,Trial,,Yes
 AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,BuenosAires,Nucleo,-34.91289,-60.16339,,,Ultra Baja,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NCURUT,ConcepciondelUruguay,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,EntreRíos,Litoral,-32.60396,-58.49425,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
@@ -50,7 +50,7 @@ AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,Buenos
 AACY04NRAMAT,Ramallo,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,BuenosAires,Nucleo,-33.54156,-60.15158,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NRUNCT,Runciman,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,SantaFe,Nucleo,-33.91214,-61.81002,,,Alta,,Perassi,Paz,Trial,,Yes
 ACCY04NSAMPT,Sampacho,SPD,Corn,IMPACT 3R; R3,Early,AC,Córdoba,Oeste,-33.36933,-64.70011,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
-ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.65468,-64.4799,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
+ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,-33.65468,-64.4799,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Córdoba,Oeste,-33.50465,-64.21658,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,SantaFe,Centro,-31.4146,-61.02957,,,Estandar,,Arias,Traggiay,Trial,,Yes
 AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,-37.46783,-58.91169,,,Baja,,Cantero,Sarlangue,Trial,,Yes
@@ -316,8 +316,8 @@ AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Oeste,,,,,Estandar
 AACY04NAMERT,America,SPD,Corn,IMPACT 3R; R3; R2; OGCA; HYPER,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NARR1T,Arrecifes,SPD,Corn,IMPACT 3R,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
-ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
-ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
+ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
+ACCB02FMRC2T,ChajanMRCV2,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NCHA1T,Chazon,SPD,Corn,IMPACT 3R,Early,AC,Córdoba,Oeste,,,,,Baja,,Gomez,Open Rio IV,Access,,Yes
 AACY04NCHIVT,Chivilcoy,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,BuenosAires,Nucleo,,,,,Ultra Baja,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NCURUT,ConcepciondelUruguay,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
@@ -343,7 +343,7 @@ AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,Buenos
 AACY04NRAMAT,Ramallo,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NRUNCT,Runciman,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,SantaFe,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
 ACCY04NSAMPT,Sampacho,SPD,Corn,IMPACT 3R; R3,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
-ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
+ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
 AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
