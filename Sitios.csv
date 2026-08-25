@@ -149,7 +149,7 @@ Completar,AltosdeChipion,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-1,-31.
 Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,-34.850222,-62.392708,,,30 Kg Microstar CMB,,Antunes,Peralta Martinez,Trial,,Yes
 Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,-35.4265,-62.99505,,,30 Kg Microstar CMB,,Antunes,Peralta Martinez,Trial,,Yes
 Completar,Arrecifes,SPD,Soybean,R44E-R44L-R45E,Early,AA,BuenosAires,II-6,-34.0672,-60.0435,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
-Completar,Bandera,SPD,Soybean,--/--R36H-R37H,Early,AN,SantiagoDelEstero,I-2,-28.855506,-62.24577,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
+Completar,Bandera,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantiagoDelEstero,I-2,-28.855506,-62.24577,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
 Completar,Bigand,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,-33.34328,-61.1621,,,30 Kg Microstar CMB,,Vilchez,Mazzini,Trial,,Yes
 Completar,Bigand2,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,-33.34328,-61.1621,,,30 Kg Microstar CMB,,Vilchez,Mazzini,Trial,,Yes
 Completar,Bragado,SPD,Soybean,R44E--/-R24H--R34E--,Early,AA,BuenosAires,II-6,-35.115475,-60.489941,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
@@ -173,16 +173,16 @@ Completar,JesusMaria,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-1,
 Completar,Junin,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-6,-34.51443,-61.08774,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,LaCarlota,SPD,Soybean,R44E-R44L-R45E/--R25E---R35H,Early,AA,Córdoba,II-3,-33.43616,-63.35543,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
 Completar,LaCocha/LosAltos,SPD,Soybean, -  -  / Lic M2 - Var M2 - R3 6H - R3 7H,Early,AN,Tucuman,I-1,-27.750684,-65.50105,,,30 Kg Microstar CMB,,Guzman,Aris,Trial,,Yes
-Completar,LasBreñas,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,-27.027141,-61.027787,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
-Completar,LasCejas,SPD,Soybean,--/--R36H-R37H,Early,AN,Tucuman,I-1,-26.960404,-64.746405,,,30 Kg Microstar CMB,,Guzman,Aris,Trial,,Yes
+Completar,LasBreñas,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Chaco,I-2,-27.027141,-61.027787,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
+Completar,LasCejas,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Tucuman,I-1,-26.960404,-64.746405,,,30 Kg Microstar CMB,,Guzman,Aris,Trial,,Yes
 Completar,MarcosJuarez,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H--R34E-R34L-,Early,AA,Córdoba,II-4,-32.81895,-62.13943,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
-Completar,Metan,SPD,Soybean,--/--R36H-R37H,Early,AN,Salta,I-1,-25.535313,-64.872187,,,30 Kg Microstar CMB,,Miranda,Aris,Trial,,Yes
+Completar,Metan,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Salta,I-1,-25.535313,-64.872187,,,30 Kg Microstar CMB,,Miranda,Aris,Trial,,Yes
 Completar,MonteBuey,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,Córdoba,II-4,-32.9957,-62.47347,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
 Completar,MonteBuey2,SPD,Soybean,R44E-R44L-R45E,Early,AA,Córdoba,II-4,-32.9957,-62.47347,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
 Completar,Murphy,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,SantaFe,II-4,-33.56959,-61.9277,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
 Completar,Oncativo,SPD,Soybean,-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-1,-31.88399,-63.65295,,,30 Kg Microstar CMB,,Gomez,Capristo,Trial,,Yes
-Completar,Otumpa,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,-27.209522,-62.029693,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
-Completar,PampadelInfierno,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,-26.419925,-61.202893,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
+Completar,Otumpa,SPD,Soybean, -  -  /  - Var M2 - R3 6H - R3 7H,Early,AN,SantiagodelEstero,I-2,-27.209522,-62.029693,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
+Completar,PampadelInfierno,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Chaco,I-2,-26.419925,-61.202893,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
 Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,-35.90387,-61.51629,,,30 Kg Microstar CMB,,Focke,Peralta Martinez,Trial,,Yes
 AABY08NPER1T-AABY04NPER1T,Pergamino1,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,BuenosAires,II-6,-34.00908,-60.79528,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,Pergamino2,SPD,Soybean,R44E-R44L-R45E/VarM0-1---R34E-R34L-,Early,AA,BuenosAires,II-6,-34.00908,-60.79528,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
@@ -191,9 +191,9 @@ Completar,PozodelMolle,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-
 Completar,Quimili,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,-27.463119,-61.792584,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
 Completar,Ramallo,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AA,BuenosAires,II-4,-33.53749,-60.16693,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,Rapelli,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-1,-26.36328,-64.505,,,30 Kg Microstar CMB,,Guzman,Aris,Trial,,Yes
-Completar,Reconquista,Mixed,Soybean,--/--R36H-R37H,Early,AN,SantaFe,I-2,-29.009922,-59.737976,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
-Completar,Romang,Mixed,Soybean,--/--R36H-R37H,Early,AN,SantaFe,I-2,-29.472894,-59.752566,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
-Completar,RosariodeLerma,SPD,Soybean,--/--R36H-R37H,Early,AN,Salta,I-1,-24.942086,-65.494556,,,30 Kg Microstar CMB,,Miranda,Aris,Trial,,Yes
+Completar,Reconquista,Mixed,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantaFe,I-2,-29.009922,-59.737976,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
+Completar,Romang,Mixed,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantaFe,I-2,-29.472894,-59.752566,,,30 Kg Microstar CMB,,Puntano,Oggero,Trial,,Yes
+Completar,RosariodeLerma,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Salta,I-1,-24.942086,-65.494556,,,30 Kg Microstar CMB,,Miranda,Aris,Trial,,Yes
 Completar,Roversi,SPD,Soybean, -  -  / Lic M2 - Var M2 - R3 6H - R3 7H,Early,AN,SantiagodelEstero,I-2,-27.736837,-61.929635,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Trial,,Yes
 Completar,Runciman,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,SantaFe,II-4,-33.9609,-61.64778,,,30 Kg Microstar CMB,,Perassi,Paz,Trial,,Yes
 Completar,Sacanta,SPD,Soybean,-R44L-R45E/--R25E--R34L-R35H,Early,AC,Cordoba,II-2,-31.75465,-63.36537,,,30 Kg Microstar CMB,,Gomez,Capristo,Trial,,Yes
@@ -442,7 +442,7 @@ Completar,AltosdeChipion,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-1,,,,,
 Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Antunes,Peralta Martinez,Access,,Yes
 Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,,,,,30 Kg Microstar CMB,,Antunes,Peralta Martinez,Access,,Yes
 Completar,Arrecifes,SPD,Soybean,R44E-R44L-R45E,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
-Completar,Bandera,SPD,Soybean,--/--R36H-R37H,Early,AN,SantiagoDelEstero,I-2,,,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Access,,Yes
+Completar,Bandera,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantiagoDelEstero,I-2,,,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,Bigand,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,,,,,30 Kg Microstar CMB,,Vilchez,Mazzini,Access,,Yes
 Completar,Bigand2,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,,,,,30 Kg Microstar CMB,,Vilchez,Mazzini,Access,,Yes
 Completar,Bragado,SPD,Soybean,R44E--/-R24H--R34E--,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
@@ -466,16 +466,16 @@ Completar,JesusMaria,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-1,
 Completar,Junin,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,LaCarlota,SPD,Soybean,R44E-R44L-R45E/--R25E---R35H,Early,AA,Córdoba,II-3,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
 Completar,LaCocha/LosAltos,SPD,Soybean, -  -  / Lic M2 - Var M2 - R3 6H - R3 7H,Early,AN,Tucuman,I-1,,,,,30 Kg Microstar CMB,,Guzman,Aris,Access,,Yes
-Completar,LasBreñas,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
-Completar,LasCejas,SPD,Soybean,--/--R36H-R37H,Early,AN,Tucuman,I-1,,,,,30 Kg Microstar CMB,,Guzman,Aris,Access,,Yes
+Completar,LasBreñas,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Chaco,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
+Completar,LasCejas,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Tucuman,I-1,,,,,30 Kg Microstar CMB,,Guzman,Aris,Access,,Yes
 Completar,MarcosJuarez,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H--R34E-R34L-,Early,AA,Córdoba,II-4,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
-Completar,Metan,SPD,Soybean,--/--R36H-R37H,Early,AN,Salta,I-1,,,,,30 Kg Microstar CMB,,Miranda,Aris,Access,,Yes
+Completar,Metan,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Salta,I-1,,,,,30 Kg Microstar CMB,,Miranda,Aris,Access,,Yes
 Completar,MonteBuey,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,Córdoba,II-4,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
 Completar,MonteBuey2,SPD,Soybean,R44E-R44L-R45E,Early,AA,Córdoba,II-4,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
 Completar,Murphy,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,SantaFe,II-4,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
 Completar,Oncativo,SPD,Soybean,-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-1,,,,,30 Kg Microstar CMB,,Gomez,Capristo,Access,,Yes
 Completar,Otumpa,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,,,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Access,,Yes
-Completar,PampadelInfierno,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
+Completar,PampadelInfierno,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Chaco,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
 Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Focke,Peralta Martinez,Access,,Yes
 AABY08NPER1T-AABY04NPER1T,Pergamino1,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,Pergamino2,SPD,Soybean,R44E-R44L-R45E/VarM0-1---R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
@@ -484,9 +484,9 @@ Completar,PozodelMolle,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-
 Completar,Quimili,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,,,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,Ramallo,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AA,BuenosAires,II-4,,,,,30 Kg Microstar CMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,Rapelli,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-1,,,,,30 Kg Microstar CMB,,Guzman,Aris,Access,,Yes
-Completar,Reconquista,Mixed,Soybean,--/--R36H-R37H,Early,AN,SantaFe,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
-Completar,Romang,Mixed,Soybean,--/--R36H-R37H,Early,AN,SantaFe,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
-Completar,RosariodeLerma,SPD,Soybean,--/--R36H-R37H,Early,AN,Salta,I-1,,,,,30 Kg Microstar CMB,,Miranda,Aris,Access,,Yes
+Completar,Reconquista,Mixed,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantaFe,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
+Completar,Romang,Mixed,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,SantaFe,I-2,,,,,30 Kg Microstar CMB,,Puntano,Oggero,Access,,Yes
+Completar,RosariodeLerma,SPD,Soybean, -  -  /  -  - R3 6H - R3 7H,Early,AN,Salta,I-1,,,,,30 Kg Microstar CMB,,Miranda,Aris,Access,,Yes
 Completar,Roversi,SPD,Soybean, -  -  / Lic M2 - Var M2 - R3 6H - R3 7H,Early,AN,SantiagodelEstero,I-2,,,,,30 Kg Microstar CMB,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,Runciman,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,SantaFe,II-4,,,,,30 Kg Microstar CMB,,Perassi,Paz,Access,,Yes
 Completar,Sacanta,SPD,Soybean,-R44L-R45E/--R25E--R34L-R35H,Early,AC,Cordoba,II-2,,,,,30 Kg Microstar CMB,,Gomez,Capristo,Access,,Yes
