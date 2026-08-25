@@ -1,6 +1,6 @@
 AOI ID,Location,Operations,Crop,LAAR Status 2026-2027,Season,Station,Province,Region,Latitude,Longitude,Planting Date (MM/DD/YYYY),Plant Density (plants/ha),Fertilization,Area ( Ha),Field Testing Specialist,Seed Product Agronomist,Site Type,Description,Visible
 AARY07FACEVN,Acevedo,Contractor,Canola,R5,Early,XL,BuenosAires,Nucleo,-33.788167,-60.474803,05/06/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Trial,,Yes
-AARY07FAMERN,America,Contractor,Canola,R5,Early,XL,BuenosAires,Oeste,-35.623215,-63.267577,05/13/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Antunes,PeraltaMartinez,Trial,,Yes
+AARY07FAMERN,America,Contractor,Canola,R5,Early,XL,BuenosAires,Oeste,-35.623215,-63.267577,05/13/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Antunes,Peralta Martinez,Trial,,Yes
 AARY07FBAL1N,Balcarce,Contractor,Canola,R5,Early,XL,BuenosAires,Sudeste,-37.897019,-58.305969,06/02/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Cantero,Sarlangue,Trial,,Yes
 AARY07FBAL2N,Balcarce2,Contractor,Canola,R5,Early,XL,BuenosAires,Sudeste,-37.896932,-58.305857,07/01/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Cantero,Sarlangue,Trial,,Yes
 AARY07FFERRN,Ferre,Contractor,Canola,R5,Early,XL,BuenosAires,Nucleo,-34.116495,-61.21737,05/05/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Trial,,Yes
@@ -19,8 +19,8 @@ AARB07FRAN1N,Rancagua1,Contractor,Canola-ParentChr,PC,Early,XL,BuenosAires,Nucle
 AARB07FRAN2N,Rancagua2,Contractor,Canola-ParentChr,PC,Early,XL,BuenosAires,Nucleo,-34.005973,-60.511216,05/29/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Trial,,Yes
 AARB07FRNOGN,RincondeNogoya,Contractor,Canola-ParentChr,PC,Early,XL,EntreRíos,Litoral,-32.846661,-59.793251,05/14/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Vilchez,Bernardi,Trial,,Yes
 AACY04NALCOT,Alcorta,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,-33.54594,-61.06553,,,Estandar,,Vilchez,Mazzini,Trial,,Yes
-AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-34.98381,-62.83995,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
-AACY04NAMERT,America,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Oeste,-35.58085,-63.04017,,,Alta,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-34.98381,-62.83995,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NAMERT,America,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Oeste,-35.58085,-63.04017,,,Alta,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NARR1T,Arrecifes,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,-34.03569,-60.10762,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,-32.92824,-63.91633,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
 ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.538142,-64.937487,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
@@ -32,18 +32,18 @@ ACCY04NCMOLT,CoronelMoldes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,
 ACCY04NELT1T,ElTrebol,SPD,Corn,IMPACT3R,Early,AC,SantaFe,Centro,-32.17142,-61.77275,,,Alta,,Arias,Traggiay,Trial,,Yes
 AACY04NFER1T,Ferre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,-34.16297,-61.10358,,,Alta,,Romero Cuny,Mazzini,Trial,,Yes
 ACCY04NGAL1T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,-31.95512,-61.16025,,,Estandar,,Arias,Traggiay,Trial,,Yes
-AACY04NGARRT,Garre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.50101,-62.60687,,,Alta,,Focke,PeraltaMartinez,Trial,,Yes
+AACY04NGARRT,Garre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.50101,-62.60687,,,Alta,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NGUALT,Gualeguay,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,-33.05755,-59.29615,,,Baja,,Vilchez,Bernardi,Trial,,Yes
 AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-37.86049,-58.02404,,,Baja,,Cantero,Sarlangue,Trial,,Yes
 AACY04NGCH1T,Gualeguaychu,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,-33.09559,-58.8035,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 ACCY04NHER1T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Centro,-32.27237,-63.88752,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
-AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,-35.02334,-63.49163,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,-35.02334,-63.49163,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NJUNIT,Junin,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,-34.58006,-61.03331,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NLCART,LaCarlota,SPD,Corn,IMPACT3R,Early,AA,Córdoba,Oeste,-33.28897,-63.32201,,,Baja,,Perassi,Paz,Trial,,Yes
 AACY04NLBORT,Laborde,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,Córdoba,Nucleo,-33.13566,-62.97732,,,Alta,,Perassi,Paz,Trial,,Yes
 AACY04NMJUAT,MarcosJuarez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,Córdoba,Nucleo,-32.81882,-62.14058,,,Alta,,Perassi,Paz,Trial,,Yes
-AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-35.4511,-61.42362,,,Estandar,,Focke,PeraltaMartinez,Trial,,Yes
-AACY04NMONET,MonesCazon,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.16011,-61.99626,,,Alta,,Focke,PeraltaMartinez,Trial,,Yes
+AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-35.4511,-61.42362,,,Estandar,,Focke,Peralta Martinez,Trial,,Yes
+AACY04NMONET,MonesCazon,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.16011,-61.99626,,,Alta,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NPAR1T,Paraná,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,-31.82448,-60.09405,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 AACY04NPERGT,Pergamino,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Nucleo,-33.84191,-60.62474,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-38.36364,-58.63112,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
@@ -54,7 +54,7 @@ ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,-33.65468,-6
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,-33.50465,-64.21658,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,-31.4146,-61.02957,,,Estandar,,Arias,Traggiay,Trial,,Yes
 AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,-37.46783,-58.91169,,,Baja,,Cantero,Sarlangue,Trial,,Yes
-AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,-35.77353,-62.83583,,,Estandar,,Focke,PeraltaMartinez,Trial,,Yes
+AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,-35.77353,-62.83583,,,Estandar,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NTR1HT,TresArroyos,Mixed,Corn,HYPER,Early,AA,BuenosAires,Sudeste,-38.16091,-60.23742,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
 AACY04NURANT,Uranga,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,-33.29509,-60.4275,,,Estandar,,Vilchez,Mazzini,Trial,,Yes
 AACY04NVICTT,Victoria,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,-32.84509,-59.79271,,,Baja,,Vilchez,Bernardi,Trial,,Yes
@@ -64,8 +64,8 @@ AACY04NVGU1T,Villaguay,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Li
 AACY04NZAVAT,Zavalla,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,-33.03802,-60.90255,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
 ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,-33.65534,-64.47788,,,Ultrabaja,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NALCHT,AltosdeChipion,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,-31.02742,-62.3462,,,Alta,,Arias,Traggiay,Trial,,Yes
-AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,-34.98381,-62.83995,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
-AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,-36.64189,-63.9591,,,Baja,,Focke,PeraltaMartinez,Trial,,Yes
+AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,-34.98381,-62.83995,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,-36.64189,-63.9591,,,Baja,,Focke,Peralta Martinez,Trial,,Yes
 AACY04NARR2T,Arrecifes,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Nucleo,-34.0357,-60.10664,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NBA2HT,Balcarce,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,-37.8947,-58.31263,,,Estandar,,Cantero,Sarlangue,Trial,,Yes
 ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,-28.79009,-62.21952,,,Ultrabaja,,New FTS-Quimili,Oggero,Trial,,Yes
@@ -78,8 +78,8 @@ ACCY04NELT2T,ElTrebol,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,-32.17
 AACY04NFER2T,Ferre,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,BuenosAires,Nucleo,-34.1632,-61.10482,,,Alta,,Romero Cuny,Mazzini,Trial,,Yes
 ACCY04NGAL2T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,-32.0552,-61.24585,,,Estandar,,Arias,Traggiay,Trial,,Yes
 ANCY04NGCAPT,GeneralCapdevilla,SPD,Corn,IMPACT3R;IMPACTTROP,Late,AN,Chaco,NEA,-27.45281,-61.50464,,,Estandar,,Puntano,Oggero,Trial,,Yes
-AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,-35.72576,-63.56209,,,Baja,,Antunes,PeraltaMartinez,Trial,,Yes
-AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,-35.15554,-63.01091,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,-35.72576,-63.56209,,,Baja,,Antunes,Peralta Martinez,Trial,,Yes
+AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,-35.15554,-63.01091,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NGCH2T,Gualeguaychu,SPD,Corn,IMPACT3R,Late,AA,EntreRíos,Litoral,-32.96958,-58.47771,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 ACCY04NHER2T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,-32.27251,-63.88597,,,Estandar,,Gomez,Open Rio IV,Trial,,Yes
 ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,-34.81137,-64.29639,,,Ultrabaja,,Milani,Open Rio IV,Trial,,Yes
@@ -117,7 +117,7 @@ Completar,PergaminoRes1,SPD,Corn-ParentChr,ARPCRestoration,Early,AA,BuenosAires,
 Completar,PergaminoRes2,SPD,Corn-ParentChr,ARPCRestoration,Early,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
 Completar,PergaminoRes3,SPD,Corn-ParentChr,ARPCRestoration,Late,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
 Completar,PergaminoRes4,SPD,Corn-ParentChr,ARPCRestoration,Late,AA,BuenosAires,Nucleo,-33.79552,-60.845612,,,,,Cogo,Mazzini,Trial,,Yes
-AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,-35.63105,-63.07321,,,Alta,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,-35.63105,-63.07321,,,Alta,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,-33.03078,-61.10921,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
 AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3;GCA,Early,AA,EntreRíos,Litoral,-33.09575,-58.80542,,,Estandar,,Vilchez,Bernardi,Trial,,Yes
 AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Oeste,-33.26902,-63.29965,,,Baja,,Perassi,Paz,Trial,,Yes
@@ -125,9 +125,9 @@ ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3;GCA,Early,AC,Córdoba,Oeste,-33.48942,
 AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Nucleo,-33.00007,-62.45911,,,Estandar,,Perassi,Paz,Trial,,Yes
 AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,-34.12044,-61.20371,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
 AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,-34.19907,-60.7907,,,Estandar,,Romero Cuny,Mazzini,Trial,,Yes
-AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,-35.02656,-63.63536,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,-35.02656,-63.63536,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,-33.05956,-60.86021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
-AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,-35.63047,-63.07252,,,Estandar,,Antunes,PeraltaMartinez,Trial,,Yes
+AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,-35.63047,-63.07252,,,Estandar,,Antunes,Peralta Martinez,Trial,,Yes
 AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3;GCA,Late,AA,SantaFe,Nucleo,-33.02955,-61.11021,,,Estandar,,Vilchez,Traggiay,Trial,,Yes
 ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,-33.42723,-64.78349,,,Estandar,,Milani,Open Rio IV,Trial,,Yes
 ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,-31.90911,-63.5557,,,Baja,,Gomez,Capristo,Trial,,Yes
@@ -146,8 +146,8 @@ AAJY07NFERRS,Ferre,Contractor,Mustard-Stewarded,R0,Early,XL,BuenosAires,Nucleo,-
 AAJY07NLCEJS,LasCejas,Contractor,Mustard-Stewarded,R0,Early,XL,Tucuman,NOA,-26.827933,-64.8244,06/11/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Guzman,Oggero,Trial,,Yes
 AAJY07NRNOGS,RincondeNogoya,Contractor,Mustard-Stewarded,R0,Early,XL,EntreRíos,Litoral,-32.846661,-59.793735,06/19/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Vilchez,Bernardi,Trial,,Yes
 Completar,AltosdeChipion,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-1,-31.02742,-62.3462,,,30KgMicrostarCMB,,Arias,Traggiay,Trial,,Yes
-Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,-34.850222,-62.392708,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Trial,,Yes
-Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,-35.4265,-62.99505,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Trial,,Yes
+Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,-34.850222,-62.392708,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Trial,,Yes
+Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,-35.4265,-62.99505,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Trial,,Yes
 Completar,Arrecifes,SPD,Soybean,R44E-R44L-R45E,Early,AA,BuenosAires,II-6,-34.0672,-60.0435,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,Bandera,SPD,Soybean,--/--R36H-R37H,Early,AN,SantiagoDelEstero,I-2,-28.855506,-62.24577,,,30KgMicrostarCMB,,New FTS-Quimili,Oggero,Trial,,Yes
 Completar,Bigand,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,-33.34328,-61.1621,,,30KgMicrostarCMB,,Vilchez,Mazzini,Trial,,Yes
@@ -166,7 +166,7 @@ Completar,ElTrebol,SPD,Soybean,R44E-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,San
 Completar,Esperanza,SPD,Soybean,--R45E/--R25E---R35H,Early,AC,Cordoba,II-4,-31.396469,-60.858751,,,30KgMicrostarCMB,,Arias,Traggiay,Trial,,Yes
 Completar,Ferré,SPD,Soybean,R44E-R44L-/-R24H--R34E-R34L-,Early,AA,BuenosAires,II-6,-34.14541,-61.13984,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,Galvez,SPD,Soybean,R44E-R44L-R45E/--R25E--R34L-R35H,Early,AC,SantaFe,II-4,-32.07568,-61.21907,,,30KgMicrostarCMB,,Arias,Traggiay,Trial,,Yes
-Completar,GeneralVillegas,SPD,Soybean,R44E--/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-5,-35.15012,-62.84029,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Trial,,Yes
+Completar,GeneralVillegas,SPD,Soybean,R44E--/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-5,-35.15012,-62.84029,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Trial,,Yes
 Completar,Gualeguaychu,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AA,EntreRíos,II-8,-33.09274,-58.7842,,,30KgMicrostarCMB,,Vilchez,Bernardi,Trial,,Yes
 Completar,Hernando,SPD,Soybean,-R44L-R45E/--R25E--R34L-R35H,Early,AC,Cordoba,II-3,-32.35665,-63.72345,,,30KgMicrostarCMB,,Gomez,Open Rio IV,Trial,,Yes
 Completar,JesusMaria,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-1,-31.18639,-64.04678,,,30KgMicrostarCMB,,Attme,Capristo,Trial,,Yes
@@ -183,7 +183,7 @@ Completar,Murphy,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,A
 Completar,Oncativo,SPD,Soybean,-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-1,-31.88399,-63.65295,,,30KgMicrostarCMB,,Gomez,Capristo,Trial,,Yes
 Completar,Otumpa,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,-27.209522,-62.029693,,,30KgMicrostarCMB,,New FTS-Quimili,Oggero,Trial,,Yes
 Completar,PampadelInfierno,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,-26.419925,-61.202893,,,30KgMicrostarCMB,,Puntano,Oggero,Trial,,Yes
-Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,-35.90387,-61.51629,,,30KgMicrostarCMB,,Focke,PeraltaMartinez,Trial,,Yes
+Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,-35.90387,-61.51629,,,30KgMicrostarCMB,,Focke,Peralta Martinez,Trial,,Yes
 AABY08NPER1T-AABY04NPER1T,Pergamino1,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,BuenosAires,II-6,-34.00908,-60.79528,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,Pergamino2,SPD,Soybean,R44E-R44L-R45E/VarM0-1---R34E-R34L-,Early,AA,BuenosAires,II-6,-34.00908,-60.79528,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Trial,,Yes
 Completar,PiqueteCabado,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,Salta,I-1,-24.806129,-64.094574,,,30KgMicrostarCMB,,Miranda,Aris,Trial,,Yes
@@ -202,24 +202,24 @@ Completar,Salto,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosA
 Completar,Sampacho,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-3,-33.36933,-64.70011,,,30KgMicrostarCMB,,Milani,Open Rio IV,Trial,,Yes
 Completar,SanctiSpiritu,SPD,Soybean,R44E--/-R24H--R34E--,Early,AA,SantaFe,II-6,-34.05523,-62.25718,,,30KgMicrostarCMB,,Perassi,Paz,Trial,,Yes
 Completar,Suardi,SPD,Soybean,--R45E/-----R35H,Early,AC,SantaFe,II-1,-30.504903,-61.920523,,,30KgMicrostarCMB,,Arias,Traggiay,Trial,,Yes
-Completar,TrenqueLauquen,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,-35.85444,-62.8335,,,30KgMicrostarCMB,,Focke,PeraltaMartinez,Trial,,Yes
+Completar,TrenqueLauquen,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,-35.85444,-62.8335,,,30KgMicrostarCMB,,Focke,Peralta Martinez,Trial,,Yes
 Completar,VicuñaMackena,SPD,Soybean,R44E-R44L-/-R24H-R25E-R34E-R34L-,Early,AC,Cordoba,II-3,-33.909283,-64.38267,,,30KgMicrostarCMB,,Milani,Open Rio IV,Trial,,Yes
 Completar,VillaMaria,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-4,-32.414319,-63.246552,,,30KgMicrostarCMB,,Gomez,Capristo,Trial,,Yes
 Completar,Villaguay,SPD,Soybean,R44L-R45E,Early,AA,EntreRíos,II-8,-32.08565,-59.00467,,,30KgMicrostarCMB,,Vilchez,Bernardi,Trial,,Yes
 Completar,Zavalla/Casilda,SPD,Soybean,R44E-R44L-/--R25E-R34E-R34L-,Early,AA,SantaFe,II-4,-32.9631,-60.9923,,,30KgMicrostarCMB,,Vilchez,Traggiay,Trial,,Yes
-Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.5043,-62.61253,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Trial,,Yes
-Completar,Anguil,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,LaPampa,Oeste,-36.63311,-63.87264,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Trial,,Yes
+Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.5043,-62.61253,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
+Completar,Anguil,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,LaPampa,Oeste,-36.63311,-63.87264,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
 Completar,Balcarce,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,-37.83381,-57.95486,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
 Completar,BalcarceINTA-Infectario,Contractor,Sunflower,Infectarioverticillium,Early,AA,BuenosAires,Sudeste,-37.770839,-58.305833,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
-Completar,Bocayuva,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.22944,-63.05554,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Trial,,Yes
+Completar,Bocayuva,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.22944,-63.05554,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
 Completar,Bordenave,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Sudeste,-37.41957,-63.1659,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
 ACFY04NCEREN,Ceres,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AC,SantaFe,NEA,-29.87085,-62.19403,,,30kgMicrostarCMB+60kgUREA,,Arias,Oggero,Trial,,Yes
 XLFY04NCHIHN,Chihuahua,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,-17.196517,-62.175131,04/04/2026,,SinFertilizacion,,Miranda,NA,Trial,,Yes
 ANFY04NBANDN,CuatroBocas,Mixed,Sunflower,IMPACT3R,Early,AN,SantiagodelEstero,NEA,-28.93401,-61.87217,,,30kgMicrostarCMB+60kgUREA,,New FTS-Quimili,Oggero,Trial,,Yes
-Completar,CuerodeZorro,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,-35.75321,-63.14698,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Trial,,Yes
-Completar,Garre,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.07265,-63.00261,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Trial,,Yes
-Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,-35.57697,-63.55558,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Trial,,Yes
-Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,-34.98708,-62.86372,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Trial,,Yes
+Completar,CuerodeZorro,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,-35.75321,-63.14698,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Trial,,Yes
+Completar,Garre,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,-36.07265,-63.00261,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
+Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,-35.57697,-63.55558,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Trial,,Yes
+Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,-34.98708,-62.86372,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Trial,,Yes
 ANFY04NLBREN-ANFY04NLBRDN,LasBreñas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-27.01034,-61.02176,08/07/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Trial,,Yes
 XLFY04NSANDN,LasConchas,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,-17.364214,-62.535392,04/14/2026,,SinFertilizacion,,Miranda,NA,Trial,,Yes
 XLFY04NLTRON,LosTroncos,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,-17.106744,-62.617869,04/06/2026,,SinFertilizacion,,Miranda,NA,Trial,,Yes
@@ -239,7 +239,7 @@ XLFY04NMSINN,SanJulian,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,-
 ACFY04NSJUSN,SanJusto,Mixed,Sunflower,IMPACT3R,Early,AC,SantaFe,NEA,-30.7777,-60.59055,,,30kgMicrostarCMB+60kgUREA,,Arias,Oggero,Trial,,Yes
 Completar,Serrano,Contractor,Sunflower,IMPACT3R,Early,AC,Córdoba,Oeste,-33.902675,-64.34973,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Milani,Open Rio IV,Trial,,Yes
 Completar,Tandil,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,-37.44663,-58.95398,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
-Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,-35.92648,-62.79512,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Trial,,Yes
+Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,-35.92648,-62.79512,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
 Completar,TresArroyos,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,-38.09632,-60.21547,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
 ANFY04NTISLN-ANFY04NTISDN,TresIsletas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-26.22589,-60.62126,08/24/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Trial,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT3R,Early,AC,SantaFe,Centro,-31.146384,-61.415785,,,30kgMicrostarCMB+60kgUREA,,Arias,Traggiay,Trial,,Yes
@@ -293,7 +293,7 @@ NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Complet
 NA,LaVirginiaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
 NA,LaCochaTCD,SPD-TCD,Corn-Stewarded,NA,Late,AN,Tucuman,NOA,Completar,Completar,12/15/2026,,Completar,,Lourdes Suarez,NA,Trial,,No
 AARY07FACEVN,Acevedo,Contractor,Canola,R5,Early,XL,BuenosAires,Nucleo,,,05/06/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Access,,Yes
-AARY07FAMERN,America,Contractor,Canola,R5,Early,XL,BuenosAires,Oeste,,,05/13/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Antunes,PeraltaMartinez,Access,,Yes
+AARY07FAMERN,America,Contractor,Canola,R5,Early,XL,BuenosAires,Oeste,,,05/13/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Antunes,Peralta Martinez,Access,,Yes
 AARY07FBAL1N,Balcarce,Contractor,Canola,R5,Early,XL,BuenosAires,Sudeste,,,06/02/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Cantero,Sarlangue,Access,,Yes
 AARY07FBAL2N,Balcarce2,Contractor,Canola,R5,Early,XL,BuenosAires,Sudeste,,,07/01/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Cantero,Sarlangue,Access,,Yes
 AARY07FFERRN,Ferre,Contractor,Canola,R5,Early,XL,BuenosAires,Nucleo,,,05/05/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Access,,Yes
@@ -312,8 +312,8 @@ AARB07FRAN1N,Rancagua1,Contractor,Canola-ParentChr,PC,Early,XL,BuenosAires,Nucle
 AARB07FRAN2N,Rancagua2,Contractor,Canola-ParentChr,PC,Early,XL,BuenosAires,Nucleo,,,05/29/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Romero Cuny,Mazzini,Access,,Yes
 AARB07FRNOGN,RincondeNogoya,Contractor,Canola-ParentChr,PC,Early,XL,EntreRíos,Litoral,,,05/14/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Vilchez,Bernardi,Access,,Yes
 AACY04NALCOT,Alcorta,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Mazzini,Access,,Yes
-AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
-AACY04NAMERT,America,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NAMG1T,Ameghino,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NAMERT,America,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NARR1T,Arrecifes,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 ACCY04NCARNT,Carnerillo,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
 ACCB02FMRC1T,ChajanMRCV1,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
@@ -325,18 +325,18 @@ ACCY04NCMOLT,CoronelMoldes,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,
 ACCY04NELT1T,ElTrebol,SPD,Corn,IMPACT3R,Early,AC,SantaFe,Centro,,,,,Alta,,Arias,Traggiay,Access,,Yes
 AACY04NFER1T,Ferre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,,,,,Alta,,Romero Cuny,Mazzini,Access,,Yes
 ACCY04NGAL1T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
-AACY04NGARRT,Garre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,PeraltaMartinez,Access,,Yes
+AACY04NGARRT,Garre,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,Peralta Martinez,Access,,Yes
 AACY04NGUALT,Gualeguay,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,,,,,Baja,,Vilchez,Bernardi,Access,,Yes
 AACY04NBALCT-AACY04NBA1HT,Balcarce,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
 AACY04NGCH1T,Gualeguaychu,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 ACCY04NHER1T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
-AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NINTET,IntendenteAlvear,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NJUNIT,Junin,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NLCART,LaCarlota,SPD,Corn,IMPACT3R,Early,AA,Córdoba,Oeste,,,,,Baja,,Perassi,Paz,Access,,Yes
 AACY04NLBORT,Laborde,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
 AACY04NMJUAT,MarcosJuarez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,Córdoba,Nucleo,,,,,Alta,,Perassi,Paz,Access,,Yes
-AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Focke,PeraltaMartinez,Access,,Yes
-AACY04NMONET,MonesCazon,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,PeraltaMartinez,Access,,Yes
+AACY04NPEHUT,Pehuajó,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Focke,Peralta Martinez,Access,,Yes
+AACY04NMONET,MonesCazon,SPD,Corn,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,Alta,,Focke,Peralta Martinez,Access,,Yes
 AACY04NPAR1T,Paraná,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 AACY04NPERGT,Pergamino,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NPIERT-AACY04NPIEHT,Pieres,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
@@ -347,7 +347,7 @@ ACCB02FMRCST,SampachoMRCV,SPD,Corn,OGCA+Obs,Early,AC,Córdoba,Oeste,,,,,Estandar
 ACCY04NSBAST,SanBasilio,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSJENT,SanJeronimoNorte,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
 AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT3R;R3;HYPER,Early,AA,BuenosAires,Sudeste,,,,,Baja,,Cantero,Sarlangue,Access,,Yes
-AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Focke,PeraltaMartinez,Access,,Yes
+AACY04NTRENT,TrenqueLauquen,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,BuenosAires,Oeste,,,,,Estandar,,Focke,Peralta Martinez,Access,,Yes
 AACY04NTR1HT,TresArroyos,Mixed,Corn,HYPER,Early,AA,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
 AACY04NURANT,Uranga,SPD,Corn,IMPACT3R,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Mazzini,Access,,Yes
 AACY04NVICTT,Victoria,Contractor,Corn,IMPACT3R,Early,XL,EntreRíos,Litoral,,,,,Baja,,Vilchez,Bernardi,Access,,Yes
@@ -357,8 +357,8 @@ AACY04NVGU1T,Villaguay,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Early,AA,EntreRíos,Li
 AACY04NZAVAT,Zavalla,SPD,Corn,IMPACT3R;R3;R2;OGCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
 ACCY04NADEMT,AdeliaMaria,SPD,Corn,IMPACT3R,Late,AC,Córdoba,Oeste,,,,,Ultrabaja,,Milani,Open Rio IV,Access,,Yes
 ACCY04NALCHT,AltosdeChipion,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,,,,,Alta,,Arias,Traggiay,Access,,Yes
-AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
-AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,,,,,Baja,,Focke,PeraltaMartinez,Access,,Yes
+AACY04NAMG2T,Ameghino,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NANGUT,Anguil,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,LaPampa,Oeste,,,,,Baja,,Focke,Peralta Martinez,Access,,Yes
 AACY04NARR2T,Arrecifes,SPD,Corn,IMPACT3R,Late,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NBA2HT,Balcarce,Contractor,Corn,HYPER,Late,XL,BuenosAires,Sudeste,,,,,Estandar,,Cantero,Sarlangue,Access,,Yes
 ANCY04NBANDT,Bandera,SPD,Corn,IMPACT3R;IMPACTTROP;R3;R2;OGCA,Late,AN,SantiagoDelEstero,NEA,,,,,Ultrabaja,,New FTS-Quimili,Oggero,Access,,Yes
@@ -371,8 +371,8 @@ ACCY04NELT2T,ElTrebol,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,,,,,Ba
 AACY04NFER2T,Ferre,SPD,Corn,IMPACT3R;R3;R2;OGCA;HYPER,Late,AA,BuenosAires,Nucleo,,,,,Alta,,Romero Cuny,Mazzini,Access,,Yes
 ACCY04NGAL2T,Galvez,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,SantaFe,Centro,,,,,Estandar,,Arias,Traggiay,Access,,Yes
 ANCY04NGCAPT,GeneralCapdevilla,SPD,Corn,IMPACT3R;IMPACTTROP,Late,AN,Chaco,NEA,,,,,Estandar,,Puntano,Oggero,Access,,Yes
-AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,,,,,Baja,,Antunes,PeraltaMartinez,Access,,Yes
-AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NGPICT,GeneralPico,SPD,Corn,IMPACT3R,Late,AA,LaPampa,Oeste,,,,,Baja,,Antunes,Peralta Martinez,Access,,Yes
+AACY04NGVLLT,GeneralVillegas,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NGCH2T,Gualeguaychu,SPD,Corn,IMPACT3R,Late,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 ACCY04NHER2T,Hernando,SPD,Corn,IMPACT3R;R3;R2;OGCA,Late,AC,Córdoba,Centro,,,,,Estandar,,Gomez,Open Rio IV,Access,,Yes
 ACCY04NHRENT,HuincaRenancó,Contractor,Corn,IMPACT3R,Late,XL,Córdoba,Oeste,,,,,Ultrabaja,,Milani,Open Rio IV,Access,,Yes
@@ -410,7 +410,7 @@ Completar,PergaminoRes1,SPD,Corn-ParentChr,ARPCRestoration,Early,AA,BuenosAires,
 Completar,PergaminoRes2,SPD,Corn-ParentChr,ARPCRestoration,Early,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
 Completar,PergaminoRes3,SPD,Corn-ParentChr,ARPCRestoration,Late,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
 Completar,PergaminoRes4,SPD,Corn-ParentChr,ARPCRestoration,Late,AA,BuenosAires,Nucleo,,,,,,,Cogo,Mazzini,Access,,Yes
-AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NAME1S,America,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Oeste,,,,,Alta,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NCAS1S,Casilda,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
 AACY04NGCHUS,Gualeguaychu,SPD,Corn-Stewarded,R3;GCA,Early,AA,EntreRíos,Litoral,,,,,Estandar,,Vilchez,Bernardi,Access,,Yes
 AACY04NCARLS,LaCarlota,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Oeste,,,,,Baja,,Perassi,Paz,Access,,Yes
@@ -418,9 +418,9 @@ ACCY04NMAL1S,Malena,SPD,Corn-Stewarded,R3;GCA,Early,AC,Córdoba,Oeste,,,,,Estand
 AACY04NMBU1S,MonteBuey,SPD,Corn-Stewarded,R3;GCA,Early,AA,Córdoba,Nucleo,,,,,Estandar,,Perassi,Paz,Access,,Yes
 AACY04NFERRS,Ferre,Mixed,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
 AACY04NROJAS,Rojas,SPD,Corn-Stewarded,R3;GCA,Early,AA,BuenosAires,Nucleo,,,,,Estandar,,Romero Cuny,Mazzini,Access,,Yes
-AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NSARAS,Sarah,SPD,Corn-Stewarded,R3;GCA,Early,AA,LaPampa,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NZAVAS,Zavalla,SPD,Corn-Stewarded,R3;GCA,Early,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
-AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,PeraltaMartinez,Access,,Yes
+AACY04NAME2S,America,SPD,Corn-Stewarded,R3;GCA,Late,AA,BuenosAires,Oeste,,,,,Estandar,,Antunes,Peralta Martinez,Access,,Yes
 AACY04NCAS2S,Casilda,SPD,Corn-Stewarded,R3;GCA,Late,AA,SantaFe,Nucleo,,,,,Estandar,,Vilchez,Traggiay,Access,,Yes
 ACCY04NCHAJS,Chajan,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Oeste,,,,,Estandar,,Milani,Open Rio IV,Access,,Yes
 ACCY04NCVIDS,ColoniaVidela,SPD,Corn-Stewarded,R3;GCA,Late,AC,Córdoba,Centro,,,,,Baja,,Gomez,Capristo,Access,,Yes
@@ -439,8 +439,8 @@ AAJY07NFERRS,Ferre,Contractor,Mustard-Stewarded,R0,Early,XL,BuenosAires,Nucleo,,
 AAJY07NLCEJS,LasCejas,Contractor,Mustard-Stewarded,R0,Early,XL,Tucuman,NOA,,,06/11/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Guzman,Oggero,Access,,Yes
 AAJY07NRNOGS,RincondeNogoya,Contractor,Mustard-Stewarded,R0,Early,XL,EntreRíos,Litoral,,,06/19/2026,,60kgMAP+150kgUREA+100kgSulfatoAmonio,,Vilchez,Bernardi,Access,,Yes
 Completar,AltosdeChipion,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-1,,,,,30KgMicrostarCMB,,Arias,Traggiay,Access,,Yes
-Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Access,,Yes
-Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Access,,Yes
+Completar,Ameghino,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Access,,Yes
+Completar,America,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Access,,Yes
 Completar,Arrecifes,SPD,Soybean,R44E-R44L-R45E,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,Bandera,SPD,Soybean,--/--R36H-R37H,Early,AN,SantiagoDelEstero,I-2,,,,,30KgMicrostarCMB,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,Bigand,SPD,Soybean,R44E-R44L-R45E,Early,AA,SantaFe,II-4,,,,,30KgMicrostarCMB,,Vilchez,Mazzini,Access,,Yes
@@ -459,7 +459,7 @@ Completar,ElTrebol,SPD,Soybean,R44E-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,San
 Completar,Esperanza,SPD,Soybean,--R45E/--R25E---R35H,Early,AC,Cordoba,II-4,,,,,30KgMicrostarCMB,,Arias,Traggiay,Access,,Yes
 Completar,Ferré,SPD,Soybean,R44E-R44L-/-R24H--R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,Galvez,SPD,Soybean,R44E-R44L-R45E/--R25E--R34L-R35H,Early,AC,SantaFe,II-4,,,,,30KgMicrostarCMB,,Arias,Traggiay,Access,,Yes
-Completar,GeneralVillegas,SPD,Soybean,R44E--/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Antunes,PeraltaMartinez,Access,,Yes
+Completar,GeneralVillegas,SPD,Soybean,R44E--/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Antunes,Peralta Martinez,Access,,Yes
 Completar,Gualeguaychu,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AA,EntreRíos,II-8,,,,,30KgMicrostarCMB,,Vilchez,Bernardi,Access,,Yes
 Completar,Hernando,SPD,Soybean,-R44L-R45E/--R25E--R34L-R35H,Early,AC,Cordoba,II-3,,,,,30KgMicrostarCMB,,Gomez,Open Rio IV,Access,,Yes
 Completar,JesusMaria,SPD,Soybean,-R44L-R45E/--R25E---R35H,Early,AC,Cordoba,II-1,,,,,30KgMicrostarCMB,,Attme,Capristo,Access,,Yes
@@ -476,7 +476,7 @@ Completar,Murphy,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,A
 Completar,Oncativo,SPD,Soybean,-R44L-R45E/-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-1,,,,,30KgMicrostarCMB,,Gomez,Capristo,Access,,Yes
 Completar,Otumpa,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,SantiagodelEstero,I-2,,,,,30KgMicrostarCMB,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,PampadelInfierno,SPD,Soybean,--/--R36H-R37H,Early,AN,Chaco,I-2,,,,,30KgMicrostarCMB,,Puntano,Oggero,Access,,Yes
-Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Focke,PeraltaMartinez,Access,,Yes
+Completar,Pehuajó,SPD,Soybean,R44E-R44L-/---R34E--,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Focke,Peralta Martinez,Access,,Yes
 AABY08NPER1T-AABY04NPER1T,Pergamino1,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E-R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,Pergamino2,SPD,Soybean,R44E-R44L-R45E/VarM0-1---R34E-R34L-,Early,AA,BuenosAires,II-6,,,,,30KgMicrostarCMB,,Romero Cuny,Mazzini,Access,,Yes
 Completar,PiqueteCabado,SPD,Soybean,--/-VarM2-R36H-R37H,Early,AN,Salta,I-1,,,,,30KgMicrostarCMB,,Miranda,Aris,Access,,Yes
@@ -495,24 +495,24 @@ Completar,Salto,SPD,Soybean,R44E-R44L-/VarM0-1-R24H--R34E-R34L-,Early,AA,BuenosA
 Completar,Sampacho,SPD,Soybean,--R45E/-----R35H,Early,AC,Cordoba,II-3,,,,,30KgMicrostarCMB,,Milani,Open Rio IV,Access,,Yes
 Completar,SanctiSpiritu,SPD,Soybean,R44E--/-R24H--R34E--,Early,AA,SantaFe,II-6,,,,,30KgMicrostarCMB,,Perassi,Paz,Access,,Yes
 Completar,Suardi,SPD,Soybean,--R45E/-----R35H,Early,AC,SantaFe,II-1,,,,,30KgMicrostarCMB,,Arias,Traggiay,Access,,Yes
-Completar,TrenqueLauquen,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Focke,PeraltaMartinez,Access,,Yes
+Completar,TrenqueLauquen,SPD,Soybean,R44E-R44L-/-R24H--R34E--,Early,AA,BuenosAires,II-5,,,,,30KgMicrostarCMB,,Focke,Peralta Martinez,Access,,Yes
 Completar,VicuñaMackena,SPD,Soybean,R44E-R44L-/-R24H-R25E-R34E-R34L-,Early,AC,Cordoba,II-3,,,,,30KgMicrostarCMB,,Milani,Open Rio IV,Access,,Yes
 Completar,VillaMaria,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-4,,,,,30KgMicrostarCMB,,Gomez,Capristo,Access,,Yes
 Completar,Villaguay,SPD,Soybean,R44L-R45E,Early,AA,EntreRíos,II-8,,,,,30KgMicrostarCMB,,Vilchez,Bernardi,Access,,Yes
 Completar,Zavalla/Casilda,SPD,Soybean,R44E-R44L-/--R25E-R34E-R34L-,Early,AA,SantaFe,II-4,,,,,30KgMicrostarCMB,,Vilchez,Traggiay,Access,,Yes
-Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Access,,Yes
-Completar,Anguil,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,LaPampa,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Access,,Yes
+Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
+Completar,Anguil,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,LaPampa,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
 Completar,Balcarce,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
 Completar,BalcarceINTA-Infectario,Contractor,Sunflower,Infectarioverticillium,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
-Completar,Bocayuva,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Access,,Yes
+Completar,Bocayuva,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
 Completar,Bordenave,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
 ACFY04NCEREN,Ceres,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AC,SantaFe,NEA,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Oggero,Access,,Yes
 XLFY04NCHIHN,Chihuahua,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/04/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
 ANFY04NBANDN,CuatroBocas,Mixed,Sunflower,IMPACT3R,Early,AN,SantiagodelEstero,NEA,,,,,30kgMicrostarCMB+60kgUREA,,New FTS-Quimili,Oggero,Access,,Yes
-Completar,CuerodeZorro,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Access,,Yes
-Completar,Garre,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Access,,Yes
-Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Access,,Yes
-Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,PeraltaMartinez,Access,,Yes
+Completar,CuerodeZorro,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
+Completar,Garre,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
+Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
+Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
 ANFY04NLBREN-ANFY04NLBRDN,LasBreñas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-27.027361,-61.005517,08/07/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 XLFY04NSANDN,LasConchas,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/14/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
 XLFY04NLTRON,LosTroncos,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/06/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
@@ -532,7 +532,7 @@ XLFY04NMSINN,SanJulian,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,
 ACFY04NSJUSN,SanJusto,Mixed,Sunflower,IMPACT3R,Early,AC,SantaFe,NEA,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Oggero,Access,,Yes
 Completar,Serrano,Contractor,Sunflower,IMPACT3R,Early,AC,Córdoba,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Milani,Open Rio IV,Access,,Yes
 Completar,Tandil,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
-Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,PeraltaMartinez,Access,,Yes
+Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
 Completar,TresArroyos,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
 ANFY04NTISLN-ANFY04NTISDN,TresIsletas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-26.210644,-60.48419,,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT3R,Early,AC,SantaFe,Centro,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Traggiay,Access,,Yes
