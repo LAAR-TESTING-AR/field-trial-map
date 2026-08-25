@@ -280,10 +280,10 @@ NA,MarcosJuarezTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Nucleo,Completar,C
 NA,ChivilcoyTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,Completar,Completar,11/15/2026,,Completar,,Yesica Chazarreta,NA,Trial,,No
 NA,ChivilcoyTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,Completar,Completar,11/15/2026,,Completar,,Yesica Chazarreta,NA,Trial,,No
 NA,ColoniaVidelaTCD,SPD-TCD,Corn-Regulated,NA,Late,AC,Córdoba,Centro,Completar,Completar,11/15/2026,,Completar,,Paula Colla,NA,Trial,,No
-ACCY02FBOR1T,Boreas1(ACstation),SPD,Corn,R5;R4;R3;R2;ONEGCA;HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
-ACCY02FBOR2T,Boreas2(ACstation),SPD,Corn,R5;R4;R3;R2;HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
-ACCY02FBOR3T,Boreas3(ACstation),SPD,Corn,R5;R4;R3;R2;HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
-ACCY02FBOR4T,Boreas4(ACstation),SPD,Corn,R5;R4;R3;R2;ONEGCA;HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
+ACCY02FBOR1T,Boreas1(ACstation),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
+ACCY02FBOR2T,Boreas2(ACstation),SPD,Corn,R5; R4; R3; R2; HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
+ACCY02FBOR3T,Boreas3(ACstation),SPD,Corn,R5; R4; R3; R2; HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
+ACCY02FBOR4T,Boreas4(ACstation),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,Completar,Completar,,,Alta,,Cano,NA,Trial,,Yes
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,Yesica Chazarreta,NA,Trial,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,Completar,Completar,09/15/2026,,Completar,,Yesica Chazarreta,NA,Trial,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Late,AA,BuenosAires,Nucleo,Completar,Completar,11/15/2026,,Completar,,Yesica Chazarreta,NA,Trial,,No
@@ -573,10 +573,10 @@ NA,MarcosJuarezTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,Córdoba,Nucleo,,,11/15/202
 NA,ChivilcoyTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,Yesica Chazarreta,NA,Access,,No
 NA,ChivilcoyTCD,SPD-TCD,Corn-Regulated,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,Yesica Chazarreta,NA,Access,,No
 NA,ColoniaVidelaTCD,SPD-TCD,Corn-Regulated,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,Completar,,Paula Colla,NA,Access,,No
-ACCY02FBOR1T,Boreas1(ACstation),SPD,Corn,R5;R4;R3;R2;ONEGCA;HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
-ACCY02FBOR2T,Boreas2(ACstation),SPD,Corn,R5;R4;R3;R2;HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
-ACCY02FBOR3T,Boreas3(ACstation),SPD,Corn,R5;R4;R3;R2;HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
-ACCY02FBOR4T,Boreas4(ACstation),SPD,Corn,R5;R4;R3;R2;ONEGCA;HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
+ACCY02FBOR1T,Boreas1(ACstation),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
+ACCY02FBOR2T,Boreas2(ACstation),SPD,Corn,R5; R4; R3; R2; HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
+ACCY02FBOR3T,Boreas3(ACstation),SPD,Corn,R5; R4; R3; R2; HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
+ACCY02FBOR4T,Boreas4(ACstation),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,Alta,,Cano,NA,Access,,Yes
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,Yesica Chazarreta,NA,Access,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Early,AA,BuenosAires,Nucleo,,,09/15/2026,,Completar,,Yesica Chazarreta,NA,Access,,No
 NA,EstaciónPergaminoTCD,SPD-TCD,Corn-Stewarded,NA,Late,AA,BuenosAires,Nucleo,,,11/15/2026,,Completar,,Yesica Chazarreta,NA,Access,,No
