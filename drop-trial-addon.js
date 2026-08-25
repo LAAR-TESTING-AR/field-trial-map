@@ -1,0 +1,157 @@
+(function () {
+  "use strict";
+
+  function esTrialDrop(sitio) {
+    return String(sitio?.description ?? "")
+      .trim()
+      .toLowerCase()
+      .includes("drop");
+  }
+
+  const crearIconoTrialOriginal = window.crearIconoTrial;
+  const crearPopupTrialOriginal = window.crearPopupTrial;
+  const actualizarLeyendaOriginal = window.actualizarLeyenda;
+
+  if (
+    typeof crearIconoTrialOriginal !== "function" ||
+    typeof crearPopupTrialOriginal !== "function" ||
+    typeof actualizarLeyendaOriginal !== "function"
+  ) {
+    console.error("drop-trial-addon.js debe cargarse después de app.js.");
+    return;
+  }
+
+  window.crearIconoTrial = function (cultivo, sitio) {
+    if (!esTrialDrop(sitio)) {
+      return crearIconoTrialOriginal(cultivo);
+    }
+
+    const cfg = configuracionCultivo(cultivo);
+
+    return L.divIcon({
+      className: "marcador-drop-contenedor",
+      html: `
+        <span class="marcador-drop cultivo-${cfg.tipo}" aria-label="Trial Drop - No visitar">
+          <span class="icono-drop-cultivo">${cfg.icono}</span>
+          <span class="equis-drop" aria-hidden="true">×</span>
+        </span>
+      `,
+      iconSize: [42, 48],
+      iconAnchor: [21, 48],
+      popupAnchor: [0, -45]
+    });
+  };
+
+  window.crearPopupTrial = function (sitio) {
+    let html = crearPopupTrialOriginal(sitio);
+    if (!esTrialDrop(sitio)) return html;
+
+    const aviso = `
+      <div class="aviso-trial-drop" role="status">
+        <strong>DROP — NO VISITAR</strong>
+        ${sitio.description ? `<span>${escaparHTML(sitio.description)}</span>` : ""}
+      </div>
+    `;
+
+    html = html.replace(
+      '<div class="popup-detalles">',
+      `${aviso}<div class="popup-detalles">`
+    );
+
+    /* Oculta navegación del Trial descartado para evitar visitas accidentales. */
+    html = html.replace(
+      /<div class="botones-navegacion">[\s\S]*?<\/div>\s*<\/div>$/,
+      '</div>'
+    );
+
+    return html;
+  };
+
+  window.actualizarLeyenda = function (sitiosFiltrados) {
+    actualizarLeyendaOriginal(sitiosFiltrados);
+
+    const hayDrop = sitiosFiltrados.some(
+      sitio => tieneTrial(sitio) && esTrialDrop(sitio)
+    );
+
+    if (!hayDrop || !contenidoLeyenda) return;
+
+    contenidoLeyenda.insertAdjacentHTML(
+      "beforeend",
+      `
+        <div class="item-leyenda item-leyenda-drop">
+          <span class="muestra-drop-leyenda" aria-hidden="true">
+            <span>×</span>
+          </span>
+          <span>Trial Drop — No visitar</span>
+        </div>
+      `
+    );
+  };
+
+  /* actualizarMapa invoca crearIconoTrial(cultivo). Necesitamos pasar también el sitio. */
+  const actualizarMapaOriginal = window.actualizarMapa;
+  window.actualizarMapa = function () {
+    capaMarcadores.clearLayers();
+    const sitiosFiltrados = sitios.filter(coincideConFiltros);
+    const coordenadas = [];
+    let cantidadTrials = 0;
+    let cantidadAccess = 0;
+    let cantidadDrop = 0;
+
+    sitiosFiltrados.forEach(sitio => {
+      if (tieneTrial(sitio)) {
+        L.marker(
+          [sitio.latitudeTrial, sitio.longitudeTrial],
+          { icon: window.crearIconoTrial(sitio.crop, sitio) }
+        )
+          .bindPopup(window.crearPopupTrial(sitio), {
+            maxWidth: 390,
+            minWidth: 285,
+            maxHeight: 520
+          })
+          .addTo(capaMarcadores);
+
+        coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
+        cantidadTrials += 1;
+        if (esTrialDrop(sitio)) cantidadDrop += 1;
+      }
+
+      if (tieneAccess(sitio)) {
+        const sitioAccess = {
+          ...sitio,
+          latitude: sitio.latitudeAccess,
+          longitude: sitio.longitudeAccess
+        };
+
+        L.marker(
+          [sitio.latitudeAccess, sitio.longitudeAccess],
+          { icon: crearIconoAccess(), zIndexOffset: 1000 }
+        )
+          .bindPopup(crearPopupAccess(sitioAccess), {
+            maxWidth: 390,
+            minWidth: 285,
+            maxHeight: 520,
+            sitioAccess
+          })
+          .addTo(capaMarcadores);
+
+        coordenadas.push([sitio.latitudeAccess, sitio.longitudeAccess]);
+        cantidadAccess += 1;
+      }
+    });
+
+    const total = cantidadTrials + cantidadAccess;
+    contadorSitios.textContent =
+      `${total} puntos visibles · ${cantidadTrials} Trials · ` +
+      `${cantidadAccess} Access${cantidadDrop ? ` · ${cantidadDrop} Drop` : ""}`;
+
+    window.actualizarLeyenda(sitiosFiltrados);
+
+    if (coordenadas.length) {
+      mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
+    }
+  };
+
+  console.log("Visualización de Trials Drop habilitada.");
+})();
