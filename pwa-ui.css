@@ -1,0 +1,135 @@
+.pwa-barra-estado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 38px;
+  padding: 6px 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #d7e2dc;
+  background: #f2f7f4;
+  font-family: inherit;
+}
+
+.pwa-identidad,
+.pwa-acciones {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.pwa-nombre {
+  color: #0b6b3a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pwa-version {
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #0b6b3a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.pwa-conexion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #34483e;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pwa-punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.pwa-online .pwa-punto { background: #20a35a; }
+.pwa-offline .pwa-punto { background: #d92d27; }
+
+.pwa-boton-instalar {
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 7px;
+  color: #ffffff;
+  background: #0b72c1;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pwa-boton-instalar:hover,
+.pwa-boton-instalar:focus-visible {
+  background: #075b9b;
+  outline: none;
+}
+
+.pwa-modal-fondo {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(17, 31, 24, 0.58);
+  z-index: 5000;
+}
+
+.pwa-modal {
+  position: relative;
+  width: min(420px, 100%);
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  color: #20302a;
+  background: #ffffff;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+.pwa-modal h2 {
+  margin: 0 36px 14px 0;
+  color: #0b6b3a;
+  font-size: 21px;
+}
+
+.pwa-modal ol {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.55;
+}
+
+.pwa-modal li + li { margin-top: 7px; }
+
+.pwa-modal-cerrar {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #0b6b3a;
+  font-size: 23px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .pwa-barra-estado {
+    min-height: 34px;
+    padding: 5px 10px;
+  }
+
+  .pwa-nombre { display: none; }
+  .pwa-version { font-size: 9px; }
+  .pwa-conexion { font-size: 11px; }
+  .pwa-boton-instalar { min-height: 28px; padding: 4px 8px; font-size: 10px; }
+}
