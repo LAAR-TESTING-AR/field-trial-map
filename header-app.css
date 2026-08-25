@@ -1,0 +1,109 @@
+/* Encabezado principal estilo aplicación */
+.encabezado {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 104px;
+  padding: 14px 22px;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(115deg, #075a31 0%, #0b6b3a 55%, #16804a 100%);
+  border-top: 5px solid #445c68;
+  box-shadow: 0 4px 14px rgba(10, 55, 34, 0.22);
+}
+
+.encabezado::after {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -55px;
+  width: 245px;
+  height: 245px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px rgba(255, 255, 255, 0.035),
+    0 0 0 75px rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+.encabezado-app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.encabezado-logo {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  border: 3px solid rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  object-fit: cover;
+  background: #ffffff;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
+}
+
+.encabezado-textos {
+  min-width: 0;
+}
+
+.encabezado h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(24px, 2.1vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -0.4px;
+}
+
+.encabezado-subtitulo {
+  margin: 6px 0 0;
+  color: #d9eee2;
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.encabezado-funciones {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+@media (max-width: 700px) {
+  .encabezado {
+    min-height: 84px;
+    padding: 10px 12px;
+    border-top-width: 4px;
+  }
+
+  .encabezado-app {
+    gap: 11px;
+  }
+
+  .encabezado-logo {
+    width: 58px;
+    height: 58px;
+    flex-basis: 58px;
+    border-width: 2px;
+    border-radius: 14px;
+  }
+
+  .encabezado h1 {
+    font-size: 21px;
+  }
+
+  .encabezado-subtitulo {
+    margin-top: 4px;
+    font-size: 12.5px;
+  }
+
+  .encabezado-funciones {
+    display: none;
+  }
+}
