@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Field Trial Map — Sin conexión</title>
+
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      color: #24342c;
+      background: #f2f7f4;
+      text-align: center;
+    }
+
+    .offline-card {
+      max-width: 430px;
+      padding: 30px;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      color: #0b6b3a;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 11px 20px;
+      border: 0;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #0b6b3a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="offline-card">
+    <h1>Sin conexión</h1>
+
+    <p>
+      No fue posible conectarse al mapa.
+      Verificá la señal e intentá nuevamente.
+    </p>
+
+    <p>
+      Si el mapa fue abierto anteriormente, algunos datos
+      pueden seguir disponibles desde la aplicación instalada.
+    </p>
+
+    <button type="button" onclick="window.location.reload()">
+      Reintentar
+    </button>
+  </main>
+</body>
+</html>
