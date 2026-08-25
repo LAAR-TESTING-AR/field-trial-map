@@ -3,36 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Mapa de Ensayos 2026-27</title>
+
+  <meta
+    name="description"
+    content="Mapa de ensayos y accesos de Research Argentina"
+  >
+
+  <meta name="theme-color" content="#0b6b3a">
+
+  <link rel="bmanifest
+
+  <link rel="apple-touch-icon" href="applee-mobile-web-app-capable" content="yes">
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Trial Map"
+  >
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="foto-access-addon.css?v=2">
   <link rel="stylesheet" href="popup-mobile-addon.css?v=2">
 </head>
+
 <body>
+
   <header class="encabezado">
     <h1>Mapa de Ensayos 2026-27</h1>
     <p>Giras técnicas y visitas a campo</p>
   </header>
 
   <section class="panel">
-    <input type="search" id="busqueda" placeholder="Buscar localidad..." aria-label="Buscar localidad">
-    <select id="filtroCultivo"><option value="">Todos los cultivos</option></select>
-    <select id="filtroRegion"><option value="">Todas las regiones</option></select>
-    <select id="filtroLocalidad"><option value="">Todas las localidades</option></select>
-    <select id="filtroFTS"><option value="">Todos los FTS</option></select>
-    <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+    <input
+      type="search"
+      id="busqueda"
+      placeholder="Buscar localidad..."
+      aria-label="Buscar localidad"
+    >
+
+    <select id="filtroCultivo">
+      <option value="">Todos los cultivos</option>
+    </select>
+
+    <select id="filtroRegion">
+      <option value="">Todas las regiones</option>
+    </select>
+
+    <select id="filtroLocalidad">
+      <option value="">Todas las localidades</option>
+    </select>
+
+    <select id="filtroFTS">
+      <option value="">Todos los FTS</option>
+    </select>
+
+    <button id="limpiarFiltros" type="button">
+      Limpiar filtros
+    </button>
   </section>
 
-  <div class="resumen"><span id="contadorSitios">Cargando sitios...</span></div>
+  <div class="resumen">
+    <span id="contadorSitios">Cargando sitios...</span>
+  </div>
+
   <main id="mapa"></main>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
   <script src="app.js?v=9"></script>
   <script src="foto-access-addon.js?v=2"></script>
   <script src="popup-mobile-addon.js?v=2"></script>
   <script src="filtros-dependientes-v2.js?v=2"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./service-worker.js")
+          .then(registration => {
+            console.log(
+              "Service Worker registrado:",
+              registration.scope
+            );
+          })
+          .catch(error => {
+            console.error(
+              "Error al registrar Service Worker:",
+              error
+            );
+          });
+      });
+    }
+  </script>
+
 </body>
 </html>
