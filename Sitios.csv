@@ -207,7 +207,7 @@ Completar,VicuñaMackena,SPD,Soybean,R44E-R44L-/-R24H-R25E-R34E-R34L-,Early,AC,C
 Completar,VillaMaria,SPD,Soybean,R44E-R44L-R45E/VarM0-1-R24H-R25E--R34L-R35H,Early,AC,Cordoba,II-4,-32.414319,-63.246552,,,30KgMicrostarCMB,,Gomez,Capristo,Trial,,Yes
 Completar,Villaguay,SPD,Soybean,R44L-R45E,Early,AA,EntreRíos,II-8,-32.08565,-59.00467,,,30KgMicrostarCMB,,Vilchez,Bernardi,Trial,,Yes
 Completar,Zavalla/Casilda,SPD,Soybean,R44E-R44L-/--R25E-R34E-R34L-,Early,AA,SantaFe,II-4,-32.9631,-60.9923,,,30KgMicrostarCMB,,Vilchez,Traggiay,Trial,,Yes
-Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.5043,-62.61253,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
+Completar,30deAgosto,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Oeste,-36.5043,-62.61253,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Focke,Peralta Martinez,Trial,,Yes
 Completar,Anguil,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,LaPampa,Oeste,-36.63311,-63.87264,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Trial,,Yes
 Completar,Balcarce,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,-37.83381,-57.95486,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
 Completar,BalcarceINTA-Infectario,Contractor,Sunflower,Infectarioverticillium,Early,AA,BuenosAires,Sudeste,-37.770839,-58.305833,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Trial,,Yes
@@ -511,29 +511,29 @@ XLFY04NCHIHN,Chihuahua,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,
 ANFY04NBANDN,CuatroBocas,Mixed,Sunflower,IMPACT3R,Early,AN,SantiagodelEstero,NEA,,,,,30kgMicrostarCMB+60kgUREA,,New FTS-Quimili,Oggero,Access,,Yes
 Completar,CuerodeZorro,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
 Completar,Garre,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
-Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
-Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Antunes,Peralta Martinez,Access,,Yes
+Completar,GeneralPico,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,LaPampa,Oeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Antunes,Peralta Martinez,Access,,Yes
+Completar,GeneralVillegas,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Oeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Antunes,Peralta Martinez,Access,,Yes
 ANFY04NLBREN-ANFY04NLBRDN,LasBreñas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-27.027361,-61.005517,08/07/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 XLFY04NSANDN,LasConchas,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/14/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
 XLFY04NLTRON,LosTroncos,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/06/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
-Completar,Madariaga,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Madariaga,Contractor,Sunflower,IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 ANFY04NMFIEN,MesondeFierro(HermosoCampo),SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AN,Chaco,NEA,-27.4562380985829,-61.0782786307949,08/05/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
-Completar,Miramar,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
-Completar,Miramar-Infectario,Contractor,Sunflower,Infectariophomopsis,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
-Completar,Necochea,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Miramar,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Miramar-Infectario,Contractor,Sunflower,Infectariophomopsis,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Necochea,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 XLFY04NNU11N,Nucleo29,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/24/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
 XLFY04NNU53N-XLFY04NN532N,Nucleo47,Contractor,Sunflower,OrobancheEvaluation,Early,XL,Bolivia,Bolivia,,,04/29/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
-Completar,Orense,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Orense,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 Completar,Pergamino-Densidad,Mixed,Sunflower,Densidad,Early,AA,BuenosAires,Nucleo,,,,,,,Romero Cuny,Mazzini,Access,,Yes
 ANFY04NRECON,Reconquista,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AN,SantaFe,NEA,,,,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 ANFY04NROMAN-ANFY04NROMDN,Romang,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,SantaFe,NEA,,,,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 ANFY04NSBERN,SanBernardo,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AN,Chaco,NEA,-27.272682,-60.84636,08/06/2026,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 XLFY04NMSINN,SanJulian,Contractor,Sunflower,R3Bolivia,Early,XL,Bolivia,Bolivia,,,04/27/2026,,SinFertilizacion,,Miranda,NA,Access,,Yes
 ACFY04NSJUSN,SanJusto,Mixed,Sunflower,IMPACT3R,Early,AC,SantaFe,NEA,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Oggero,Access,,Yes
-Completar,Serrano,Contractor,Sunflower,IMPACT3R,Early,AC,Córdoba,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Milani,Open Rio IV,Access,,Yes
-Completar,Tandil,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
-Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Focke,Peralta Martinez,Access,,Yes
-Completar,TresArroyos,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30kg/HaMicrostarCMB+100Kg/HaUREA,,Cantero,Sarlangue,Access,,Yes
+Completar,Serrano,Contractor,Sunflower,IMPACT3R,Early,AC,Córdoba,Oeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Milani,Open Rio IV,Access,,Yes
+Completar,Tandil,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
+Completar,TrenqueLauquen,Mixed,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AA,BuenosAires,Oeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Focke,Peralta Martinez,Access,,Yes
+Completar,TresArroyos,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R,Early,AA,BuenosAires,Sudeste,,,,,30 kg/Ha Microstar CMB + 100 Kg/Ha UREA,,Cantero,Sarlangue,Access,,Yes
 ANFY04NTISLN-ANFY04NTISDN,TresIsletas,SPD,Sunflower,ONEGCA;R1;R2;R3;IMPACT3R;Dens,Early,AN,Chaco,NEA,-26.210644,-60.48419,,,30kgMicrostarCMB+60kgUREA,,Puntano,Oggero,Access,,Yes
 ACFY04NRAFAN,Rafaela,SPD,Sunflower,IMPACT3R,Early,AC,SantaFe,Centro,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Traggiay,Access,,Yes
 ACFY04NSFRAN,SanFrancisco,SPD,Sunflower,IMPACT3R,Early,AC,Córdoba,Centro,,,,,30kgMicrostarCMB+60kgUREA,,Arias,Traggiay,Access,,Yes
