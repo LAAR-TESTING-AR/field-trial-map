@@ -255,52 +255,52 @@ NA,Gancedo TCD,SPD-TCD,Soybean - Regulated,NA,Early,AN,Chaco,NEA,,,,,,,NA,NA,Tri
 NA,Colonia Videla TCD,SPD-TCD,Soybean - Regulated,NA,Early,AC,Córdoba,II - 2,,,,,,,NA,NA,Trial,,No
 NA,Campo Escuela TCD,SPD-TCD,Soybean - Regulated,NA,Early,AC,Córdoba,II - 2,,,,,,,NA,NA,Trial,,No
 NA,General Cabrera TCD,SPD-TCD,Soybean - Regulated,NA,Early,AC,Córdoba,II - 3,,,,,,,NA,NA,Trial,,No
-NA,Junin TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,Rojas TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,Chivilcoy TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,Ferre TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,La Virginia TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,La Cocha TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,Cejolao TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,Trial,,No
-NA,Vilelas TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,Trial,,No
-NA,Gancedo TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,Trial,,No
-NA,Rancagua TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,Densidad variable,,Mailen Riveira,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,Trial,,No
-NA,Ferre TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Ferre TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,America TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Oeste,,,09/15/2026,,D3 - 75000,,Yesica Chazarreta,NA,Trial,,No
-NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Santa Fe,Nucleo,,,09/15/2026,,Densidad variable,,Mailen Riveira,NA,Trial,,No
-NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Santa Fe,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,Trial,,No
-NA,Marcos Juarez TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Córdoba,Nucleo,,,09/15/2026,,D4 - 88000,,Paula Colla,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,Densidad variable,,Mailen Riveira,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Mailen Riveira,NA,Trial,,No
-NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Densidad variable,,Mailen Riveira,NA,Trial,,No
-NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,D4 - 88000,,Mailen Riveira,NA,Trial,,No
-NA,America TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Oeste,,,11/15/2026,,D3 - 75000,,Yesica Chazarreta,NA,Trial,,No
-NA,Marcos Juarez TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Nucleo,,,11/15/2026,,D4 - 88000,,Paula Colla,NA,Trial,,No
-NA,Chivilcoy TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Chivilcoy TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Colonia Videla TCD,SPD-TCD,Corn - Regulated,NA,Late,AC,Córdoba,Centro ,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,Trial,,No
-ACCY02FBOR1T,Boreas 1 (AC station),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,Trial,,Yes
-ACCY02FBOR2T,Boreas 2 (AC station),SPD,Corn,R5; R4; R3; R2 ; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,Trial,,Yes
-ACCY02FBOR3T,Boreas 3 (AC station),SPD,Corn,R5; R4; R3; R2 ; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,Trial,,Yes
-ACCY02FBOR4T,Boreas 4 (AC station),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,Trial,,Yes
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,Trial,,No
-NA,Campo Escuela TCD,SPD-TCD,Corn - Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,Trial,,No
-NA,Campo Escuela TCD,SPD-TCD,Corn - Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,D4 - 88000,,Paula Colla,NA,Trial,,No
-NA,La Virginia TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,La Virginia TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D4 - 88000,,Lourdes Suarez,NA,Trial,,No
-NA,La Cocha TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,Trial,,No
-NA,La Virginia TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,La Cocha TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,Trial,,No
-NA,Cejolao TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,Trial,,No
-NA,Gancedo TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,Trial,,No
-NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D3 - 75000,,Yésica Chazarreta,NA,Trial,,No
-NA,Cordoba TCD (Campo Escuela),SPD-TCD,Corn - Regulated,NA,Late,AC,Córdoba,Centro ,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,Trial,,No
-NA,La Virginia TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AN,Tucuman,NOA,,,,,,,NA,NA,Trial,,No
-NA,La Cocha TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AN,Tucuman,NOA,,,,,,,NA,NA,Trial,,No
+NA,Junin TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,Rojas TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,Chivilcoy TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,Ferre TCD,SPD-TCD,Soybean - Regulated,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,La Virginia TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,La Cocha TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,Cejolao TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,,,No
+NA,Vilelas TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,,,No
+NA,Gancedo TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,,,No
+NA,Rancagua TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,Densidad variable,,Mailen Riveira,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,,,No
+NA,Ferre TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Ferre TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,America TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Buenos Aires,Oeste,,,09/15/2026,,D3 - 75000,,Yesica Chazarreta,NA,,,No
+NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Santa Fe,Nucleo,,,09/15/2026,,Densidad variable,,Mailen Riveira,NA,,,No
+NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Santa Fe,Nucleo,,,09/15/2026,,D4 - 88000,,Mailen Riveira,NA,,,No
+NA,Marcos Juarez TCD,SPD-TCD,Corn - Regulated,NA,Early,AA,Córdoba,Nucleo,,,09/15/2026,,D4 - 88000,,Paula Colla,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,Densidad variable,,Mailen Riveira,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Mailen Riveira,NA,,,No
+NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,Densidad variable,,Mailen Riveira,NA,,,No
+NA,San Eduardo TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Centro,,,11/15/2026,,D4 - 88000,,Mailen Riveira,NA,,,No
+NA,America TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Oeste,,,11/15/2026,,D3 - 75000,,Yesica Chazarreta,NA,,,No
+NA,Marcos Juarez TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Córdoba,Nucleo,,,11/15/2026,,D4 - 88000,,Paula Colla,NA,,,No
+NA,Chivilcoy TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Chivilcoy TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Colonia Videla TCD,SPD-TCD,Corn - Regulated,NA,Late,AC,Córdoba,Centro ,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,,,No
+ACCY02FBOR1T,Boreas 1 (AC station),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,,,Yes
+ACCY02FBOR2T,Boreas 2 (AC station),SPD,Corn,R5; R4; R3; R2 ; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,,,Yes
+ACCY02FBOR3T,Boreas 3 (AC station),SPD,Corn,R5; R4; R3; R2 ; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,,,Yes
+ACCY02FBOR4T,Boreas 4 (AC station),SPD,Corn,R5; R4; R3; R2; ONE GCA; HYPER,Late,AC,Córdoba,Centro,,,,,D4 - 88000,,Cano,NA,,,Yes
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Early,AA,Buenos Aires,Nucleo,,,09/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Stewarded,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D4 - 88000,,Yesica Chazarreta,NA,,,No
+NA,Campo Escuela TCD,SPD-TCD,Corn - Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,,,No
+NA,Campo Escuela TCD,SPD-TCD,Corn - Stewarded,NA,Late,AC,Córdoba,Centro,,,11/15/2026,,D4 - 88000,,Paula Colla,NA,,,No
+NA,La Virginia TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,La Virginia TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D4 - 88000,,Lourdes Suarez,NA,,,No
+NA,La Cocha TCD,SPD-TCD,Corn - Stewarded,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AA,Buenos Aires,II - 6,,,,,,,NA,NA,,,No
+NA,La Virginia TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,La Cocha TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Tucuman,NOA,,,12/15/2026,,D2 - 65000,,Lourdes Suarez,NA,,,No
+NA,Cejolao TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Santiago Del Estero,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,,,No
+NA,Gancedo TCD,SPD-TCD,Corn - Regulated,NA,Late,AN,Chaco,NEA,,,12/15/2026,,D1 - 55000,,Lourdes Suarez,NA,,,No
+NA,Estación Pergamino TCD,SPD-TCD,Corn - Regulated,NA,Late,AA,Buenos Aires,Nucleo,,,11/15/2026,,D3 - 75000,,Yésica Chazarreta,NA,,,No
+NA,Cordoba TCD (Campo Escuela),SPD-TCD,Corn - Regulated,NA,Late,AC,Córdoba,Centro ,,,11/15/2026,,D3 - 75000,,Paula Colla,NA,,,No
+NA,La Virginia TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AN,Tucuman,NOA,,,,,,,NA,NA,,,No
+NA,La Cocha TCD,SPD-TCD,Soybean - Stewarded,NA,Early,AN,Tucuman,NOA,,,,,,,NA,NA,,,No
