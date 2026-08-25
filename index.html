@@ -2,20 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
   <title>Mapa de Ensayos 2026-27</title>
 
   <meta
     name="description"
-    content="Mapa de ensayos y accesos de Research Argentina"
+    content="Mapa de ensayos, accesos e información de campo de Research Argentina."
   >
 
   <meta name="theme-color" content="#0b6b3a">
 
-  <link rel="bmanifest
+  <!-- Configuración PWA -->
+  manifest.webmanifest
 
-  <link rel="apple-touch-icon" href="applee-mobile-web-app-capable" content="yes">
+  <!-- Ícono para iPhone y iPad -->
+  apple-touch-icon.png
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
 
   <meta
     name="apple-mobile-web-app-status-bar-style"
@@ -27,7 +38,12 @@
     content="Trial Map"
   >
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Estilos -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="foto-access-addon.css?v=2">
   <link rel="stylesheet" href="popup-mobile-addon.css?v=2">
@@ -70,19 +86,25 @@
   </section>
 
   <div class="resumen">
-    <span id="contadorSitios">Cargando sitios...</span>
+    <span id="contadorSitios">
+      Cargando sitios...
+    </span>
   </div>
 
   <main id="mapa"></main>
 
+  <!-- Librerías -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
+  <!-- Aplicación -->
   <script src="app.js?v=9"></script>
   <script src="foto-access-addon.js?v=2"></script>
   <script src="popup-mobile-addon.js?v=2"></script>
   <script src="filtros-dependientes-v2.js?v=2"></script>
 
+  <!-- Registro de la PWA -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
