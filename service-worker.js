@@ -1,45 +1,62 @@
-const CACHE_NAME = "field-trial-map-v1";
+const CACHE_NAME = "field-trial-map-v2";
+
+const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
-  "/field-trial-map/",
-  "/field-trial-map/index.html",
-  "/field-trial-map/style.css",
-  "/field-trial-map/app.js",
-  "/field-trial-map/foto-access-addon.css",
-  "/field-trial-map/foto-access-addon.js",
-  "/field-trial-map/popup-mobile-addon.css",
-  "/field-trial-map/popup-mobile-addon.js",
-  "/field-trial-map/filtros-dependientes-v2.js",
-  "/field-trial-map/manifest.webmanifest",
-  "/field-trial-map/offline.html",
-  "/field-trial-map/icon-192.png",
-"/field-trial-map/icon-512.png"
+  BASE_PATH,
+  `${BASE_PATH}index.html`,
+  `${BASE_PATH}style.css`,
+  `${BASE_PATH}app.js`,
+  `${BASE_PATH}foto-access-addon.css`,
+  `${BASE_PATH}foto-access-addon.js`,
+  `${BASE_PATH}popup-mobile-addon.css`,
+  `${BASE_PATH}popup-mobile-addon.js`,
+  `${BASE_PATH}filtros-dependientes-v2.js`,
+  `${BASE_PATH}pwa-ui.css`,
+  `${BASE_PATH}pwa-ui.js`,
+  `${BASE_PATH}header-app.css`,
+  `${BASE_PATH}manifest.webmanifest`,
+  `${BASE_PATH}offline.html`,
+  `${BASE_PATH}icon-192.png`,
+  `${BASE_PATH}icon-512.png`,
+  `${BASE_PATH}apple-touch-icon.png`
 ];
 
+/*
+  Instalar la nueva versión del Service Worker
+  y guardar los recursos principales.
+*/
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL))
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(APP_SHELL);
+    })
   );
 
   self.skipWaiting();
 });
 
+/*
+  Eliminar automáticamente las versiones anteriores
+  del caché.
+*/
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches
-      .keys()
-      .then(keys =>
-        Promise.all(
-          keys
-            .filter(key => key !== CACHE_NAME)
-            .map(key => caches.delete(key))
-        )
-      )
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames
+          .filter(cacheName => cacheName !== CACHE_NAME)
+          .map(cacheName => caches.delete(cacheName))
+      );
+    })
   );
 
   self.clients.claim();
 });
 
+/*
+  Controlar las solicitudes de la aplicación.
+*/
 self.addEventListener("fetch", event => {
   const request = event.request;
   const url = new URL(request.url);
@@ -48,6 +65,39 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  /*
+    Para index.html y navegación:
+    primero buscar la versión más reciente en la red.
+  */
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copia = response.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(`${BASE_PATH}index.html`, copia);
+          });
+
+          return response;
+        })
+        .catch(async () => {
+          return (
+            await caches.match(`${BASE_PATH}index.html`)
+          ) || (
+            await caches.match(`${BASE_PATH}offline.html`)
+          );
+        })
+    );
+
+    return;
+  }
+
+  /*
+    Para Sitios.csv y AccessPhotos.csv:
+    primero red para obtener la información actualizada.
+    Si no hay conexión, usar la última versión guardada.
+  */
   if (
     url.pathname.endsWith("/Sitios.csv") ||
     url.pathname.endsWith("/AccessPhotos.csv")
@@ -69,22 +119,14 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  event.respondWith(
-    caches.match(request).then(cachedResponse => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request)
+  /*
+    Para imágenes públicas de los accesos:
+    red primero y caché como respaldo.
+  */
+  if (url.pathname.includes("/images/access/")) {
+    event.respondWith(
+      fetch(request)
         .then(response => {
-          if (
-            !response ||
-            response.status !== 200 ||
-            response.type === "opaque"
-          ) {
-            return response;
-          }
-
           const copia = response.clone();
 
           caches.open(CACHE_NAME).then(cache => {
@@ -93,13 +135,39 @@ self.addEventListener("fetch", event => {
 
           return response;
         })
-        .catch(() => {
-          if (request.mode === "navigate") {
-            return caches.match("/field-trial-map/offline.html");
-          }
+        .catch(() => caches.match(request))
+    );
 
-          return Response.error();
+    return;
+  }
+
+  /*
+    Para CSS, JavaScript, íconos y demás recursos:
+    usar caché primero y descargar si todavía no existe.
+  */
+  event.respondWith(
+    caches.match(request).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(request).then(response => {
+        if (
+          !response ||
+          response.status !== 200 ||
+          response.type === "opaque"
+        ) {
+          return response;
+        }
+
+        const copia = response.clone();
+
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(request, copia);
         });
+
+        return response;
+      });
     })
   );
 });
