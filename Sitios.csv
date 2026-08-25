@@ -359,8 +359,7 @@ ACCY04NSAMPT,Sampacho,SPD,Corn,IMPACT 3R; R3,Early,AC,Córdoba,Oeste,Completar,C
 ACCB02FMRCST,Sampacho MRCV,SPD,Corn,OGCA+ Obs,Early,AC,Córdoba,Oeste,Completar,Completar,,,D2 - 65000,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSBAST,San Basilio,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Córdoba,Oeste,Completar,Completar,,,D3 - 75000,,Milani,Open Rio IV,Access,,Yes
 ACCY04NSJENT,San Jeronimo Norte,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AC,Santa Fe,Centro,Completar,Completar,,,D3 - 75000,,Arias,Traggiay,Access,,Yes
-"AACY04NTANDT
--AACY04NTANHT",Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,Buenos Aires,Sudeste,Completar,Completar,,,D3 - 75000,,Cantero,Sarlangue,Access,,Yes
+AACY04NTANDT-AACY04NTANHT,Tandil,Mixed,Corn,IMPACT 3R; R3; HYPER,Early,AA,Buenos Aires,Sudeste,Completar,Completar,,,D3 - 75000,,Cantero,Sarlangue,Access,,Yes
 AACY04NTRENT,Trenque Lauquen,SPD,Corn,IMPACT 3R; R3; R2; OGCA,Early,AA,Buenos Aires,Oeste,Completar,Completar,,,D4 - 88000,,Focke,Peralta Martinez,Access,,Yes
 AACY04NTR1HT,Tres Arroyos,Mixed,Corn,HYPER,Early,AA,Buenos Aires,Sudeste,Completar,Completar,,,D3 - 75000,,Cantero,Sarlangue,Access,,Yes
 AACY04NURANT,Uranga,SPD,Corn,IMPACT 3R,Early,AA,Santa Fe,Nucleo,Completar,Completar,,,D3 - 75000,,Vilchez,Mazzini,Access,,Yes
