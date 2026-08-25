@@ -12,8 +12,8 @@ const APP_SHELL = [
   "/field-trial-map/filtros-dependientes-v2.js",
   "/field-trial-map/manifest.webmanifest",
   "/field-trial-map/offline.html",
-  "/field-trial-map/icons/icon-192.png",
-  "/field-trial-map/icons/icon-512.png"
+  "/field-trial-map/icon-192.png",
+"/field-trial-map/icon-512.png"
 ];
 
 self.addEventListener("install", event => {
