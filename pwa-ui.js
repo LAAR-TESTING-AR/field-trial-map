@@ -155,7 +155,58 @@
 
     actualizarEstadoConexion();
     actualizarBotonInstalacion();
+    actualizarFotosPendientes();
   }
+async function actualizarFotosPendientes() {
+  const boton = document.getElementById(
+    "pwaFotosPendientes"
+  );
+
+  const cantidadElemento = document.getElementById(
+    "pwaCantidadPendientes"
+  );
+
+  if (!boton || !cantidadElemento) {
+    return;
+  }
+
+  if (
+    !window.FieldPhotoStorage ||
+    typeof window.FieldPhotoStorage
+      .contarFotosPendientes !== "function"
+  ) {
+    boton.hidden = true;
+    return;
+  }
+
+  try {
+    const cantidad =
+      await window.FieldPhotoStorage
+        .contarFotosPendientes();
+
+    cantidadElemento.textContent =
+      String(cantidad);
+
+    boton.hidden = cantidad === 0;
+
+    boton.title =
+      cantidad === 1
+        ? "1 fotografía pendiente de sincronización"
+        : `${cantidad} fotografías pendientes de sincronización`;
+
+    console.log(
+      "Fotografías pendientes en este dispositivo:",
+      cantidad
+    );
+  } catch (error) {
+    console.error(
+      "No fue posible actualizar el contador de fotografías:",
+      error
+    );
+
+    boton.hidden = true;
+  }
+}
 
   function actualizarEstadoConexion() {
     const estado =
