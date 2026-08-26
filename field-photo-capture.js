@@ -364,22 +364,40 @@ window.FieldPhotoCapture = {
             Fotografía
           </label>
 
-          <button
-            id="fieldPhotoCameraButton"
-            class="field-photo-boton-camara"
-            type="button"
-          >
-            <span aria-hidden="true">📷</span>
-            Abrir cámara
-          </button>
+          <div class="field-photo-acciones">
+  <button
+    id="fieldPhotoCameraButton"
+    class="field-photo-boton-camara"
+    type="button"
+  >
+    <span aria-hidden="true">📷</span>
+    Tomar foto
+  </button>
 
-          <input
-            id="fieldPhotoFileInput"
-            class="field-photo-capture-hidden"
-            type="file"
-            accept="image/*"
-            capture="environment"
-          >
+  <button
+    id="fieldPhotoGalleryButton"
+    class="field-photo-boton-camara"
+    type="button"
+  >
+    <span aria-hidden="true">🖼️</span>
+    Elegir foto
+  </button>
+</div>
+
+<input
+  id="fieldPhotoCameraInput"
+  class="field-photo-capture-hidden"
+  type="file"
+  accept="image/*"
+  capture="environment"
+>
+
+<input
+  id="fieldPhotoGalleryInput"
+  class="field-photo-capture-hidden"
+  type="file"
+  accept="image/*"
+>
 
           <img
             id="fieldPhotoPreview"
@@ -440,17 +458,29 @@ window.FieldPhotoCapture = {
       }
     });
 
-    const botonCamara = fondo.querySelector(
-      "#fieldPhotoCameraButton"
-    );
+   const botonCamara = fondo.querySelector(
+  "#fieldPhotoCameraButton"
+);
 
-    const entradaArchivo = fondo.querySelector(
-      "#fieldPhotoFileInput"
-    );
+const botonGaleria = fondo.querySelector(
+  "#fieldPhotoGalleryButton"
+);
 
-    botonCamara.addEventListener("click", () => {
-      entradaArchivo.click();
-    });
+const entradaCamara = fondo.querySelector(
+  "#fieldPhotoCameraInput"
+);
+
+const entradaGaleria = fondo.querySelector(
+  "#fieldPhotoGalleryInput"
+);
+
+botonCamara.addEventListener("click", () => {
+  entradaCamara.click();
+});
+
+botonGaleria.addEventListener("click", () => {
+  entradaGaleria.click();
+});
 
     console.log(
       "Panel Field Photos abierto:",
