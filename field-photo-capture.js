@@ -241,11 +241,220 @@
     });
 })();
 window.FieldPhotoCapture = {
-  abrirPanelCaptura(configuracion) {
+  abrirPanelCaptura(configuracion = {}) {
+    const sitio = {
+      aoiId: String(configuracion.aoiId || "").trim(),
+      location: String(configuracion.location || "").trim(),
+      crop: String(configuracion.crop || "").trim(),
+      photoType: String(
+        configuracion.photoType || "Trial"
+      ).trim()
+    };
+
+    document
+      .getElementById("fieldPhotoModal")
+      ?.remove();
+
+    const esTrial =
+      sitio.photoType.toLowerCase() === "trial";
+
+    const fondo = document.createElement("div");
+
+    fondo.id = "fieldPhotoModal";
+    fondo.className = "field-photo-modal-fondo";
+
+    fondo.innerHTML = `
+      <section
+        class="field-photo-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="fieldPhotoTitulo"
+      >
+        <button
+          class="field-photo-modal-cerrar"
+          type="button"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+
+        <h2 id="fieldPhotoTitulo">
+          ${
+            esTrial
+              ? "Registrar visita al Trial"
+              : "Registrar foto del Access"
+          }
+        </h2>
+
+        <p class="field-photo-contexto">
+          <strong>${sitio.location || "Localidad"}</strong>
+          ${
+            sitio.aoiId
+              ? ` · AOI ID: ${sitio.aoiId}`
+              : ""
+          }
+          ${
+            sitio.crop
+              ? ` · ${sitio.crop}`
+              : ""
+          }
+        </p>
+
+        ${
+          esTrial
+            ? `
+              <div class="field-photo-campo">
+                <label for="fieldPhotoCropStage">
+                  Estadio del cultivo
+                </label>
+
+                <select id="fieldPhotoCropStage">
+                  <option value="">
+                    Seleccionar estadio
+                  </option>
+
+                  <option value="VE">VE</option>
+                  <option value="V1">V1</option>
+                  <option value="V2">V2</option>
+                  <option value="V3">V3</option>
+                  <option value="V4">V4</option>
+                  <option value="V6">V6</option>
+                  <option value="V8">V8</option>
+                  <option value="V10">V10</option>
+                  <option value="VT">VT</option>
+                  <option value="R1">R1</option>
+                  <option value="R2">R2</option>
+                  <option value="R3">R3</option>
+                  <option value="R4">R4</option>
+                  <option value="R5">R5</option>
+                  <option value="R6">R6</option>
+                  <option value="Pre-harvest">
+                    Pre-harvest
+                  </option>
+                  <option value="Harvest">
+                    Harvest
+                  </option>
+                  <option value="Other">
+                    Otro
+                  </option>
+                </select>
+              </div>
+            `
+            : ""
+        }
+
+        <div class="field-photo-campo">
+          <label for="fieldPhotoComments">
+            Comentario u observación
+          </label>
+
+          <textarea
+            id="fieldPhotoComments"
+            maxlength="600"
+            placeholder="${
+              esTrial
+                ? "Ejemplo: crecimiento normal, buena uniformidad y sin síntomas visibles."
+                : "Ejemplo: ingreso por tranquera blanca; camino transitable."
+            }"
+          ></textarea>
+        </div>
+
+        <div class="field-photo-campo">
+          <label>
+            Fotografía
+          </label>
+
+          <button
+            id="fieldPhotoCameraButton"
+            class="field-photo-boton-camara"
+            type="button"
+          >
+            <span aria-hidden="true">📷</span>
+            Abrir cámara
+          </button>
+
+          <input
+            id="fieldPhotoFileInput"
+            class="field-photo-capture-hidden"
+            type="file"
+            accept="image/*"
+            capture="environment"
+          >
+
+          <img
+            id="fieldPhotoPreview"
+            class="field-photo-vista-previa"
+            alt="Vista previa de la fotografía"
+          >
+
+          <div
+            id="fieldPhotoFileInfo"
+            class="field-photo-info-archivo"
+          >
+            Todavía no se seleccionó ninguna fotografía.
+          </div>
+        </div>
+
+        <div
+          id="fieldPhotoMessage"
+          class="field-photo-aviso"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <div class="field-photo-acciones">
+          <button
+            class="field-photo-cancelar"
+            type="button"
+          >
+            Cancelar
+          </button>
+
+          <button
+            id="fieldPhotoSaveButton"
+            class="field-photo-guardar"
+            type="button"
+            disabled
+          >
+            Guardar en el dispositivo
+          </button>
+        </div>
+      </section>
+    `;
+
+    document.body.appendChild(fondo);
+
+    const cerrarPanel = () => fondo.remove();
+
+    fondo
+      .querySelector(".field-photo-modal-cerrar")
+      .addEventListener("click", cerrarPanel);
+
+    fondo
+      .querySelector(".field-photo-cancelar")
+      .addEventListener("click", cerrarPanel);
+
+    fondo.addEventListener("click", evento => {
+      if (evento.target === fondo) {
+        cerrarPanel();
+      }
+    });
+
+    const botonCamara = fondo.querySelector(
+      "#fieldPhotoCameraButton"
+    );
+
+    const entradaArchivo = fondo.querySelector(
+      "#fieldPhotoFileInput"
+    );
+
+    botonCamara.addEventListener("click", () => {
+      entradaArchivo.click();
+    });
+
     console.log(
-      "Abrir panel captura:",
-      configuracion
+      "Panel Field Photos abierto:",
+      sitio
     );
   }
 };
-
