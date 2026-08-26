@@ -1,91 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Field Trial Map Argentina 2026-27</title>
 
-  <meta
-    name="description"
-    content="Mapa de ensayos, accesos e información de campo de Research Argentina."
-  >
-
+  <meta name="description" content="Mapa de ensayos, accesos e información de campo de Research Argentina.">
   <meta name="theme-color" content="#0b6b3a">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trial Map">
 
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
-  >
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="Trial Map"
-  >
-
-  <!-- Configuración PWA -->
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" href="icon-192.png">
 
-  <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  >
-
-  <!-- Estilos principales -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Fotos de Access -->
-  <link
-    rel="stylesheet"
-    href="foto-access-addon.css?v=3"
-  >
-
-  <!-- Popups móviles -->
-  <link
-    rel="stylesheet"
-    href="popup-mobile-addon.css?v=3"
-  >
-
-  <!-- Trials Drop -->
-  <link
-    rel="stylesheet"
-    href="drop-trial-addon.css?v=1"
-  >
-
-  <!-- Filtros dependientes y selección múltiple de FTS -->
-  <link
-    rel="stylesheet"
-    href="filtros-dependientes-v3.css?v=1"
-  >
-
-  <!-- Captura y almacenamiento offline de fotografías -->
-  <link
-    relapture.css?v=1
-
-  <!-- Interfaz PWA -->
-  <link
-    rel="stylesheet"
-    href="pwa-ui.css?v=2"
-  >
-
-  <!-- Encabezado de la aplicación -->
-  <link
-    rel="stylesheet"
-    href="header-app.css?v=2"
-  >
+  <link rel="stylesheet" href="foto-access-addon.css?v=3">
+  <link rel="stylesheet" href="popup-mobile-addon.css?v=3">
+  <link rel="stylesheet" href="drop-trial-addon.css?v=1">
+  <link rel="stylesheet" href="filtros-dependientes-v3.css?v=1">
+  <link rel="stylesheet" href="field-photo-capture.css?v=1">
+  <link rel="stylesheet" href="pwa-ui.css?v=2">
+  <link rel="stylesheet" href="header-app.css?v=2">
 </head>
 
 <body>
+  <header class="encabezado">
+    <div class="encabezado-app">
+      <img class="encabezado-logo" src="icon-192.png" alt="Ícono de Field Trial Map">
 
-  <!-- Encabezado principal -->
-  <
+      <div class="encabezado-textos">
+        <h1>Field Trial Map</h1>
+        <p class="encabezado-subtitulo">Research Argentina 2026-27</p>
+        <p class="encabezado-funciones">Ensayos • Accesos • Fotografías • Navegación</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="panel">
+    <input type="search" id="busqueda" placeholder="Buscar localidad..." aria-label="Buscar localidad">
+
+    <select id="filtroCultivo">
+      <option value="">Todos los cultivos</option>
+    </select>
+
+    <select id="filtroRegion">
+      <option value="">Todas las regiones</option>
+    </select>
+
+    <select id="filtroLocalidad">
+      <option value="">Todas las localidades</option>
+    </select>
+
+    <select id="filtroFTS">
+      <option value="">Todos los FTS</option>
+    </select>
+
+    <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+  </section>
+
+  <div class="resumen">
+    <span id="contadorSitios">Cargando sitios...</span>
+  </div>
+
+  <main id="mapa"></main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <script src="app.js?v=10"></script>
+  <script src="drop-trial-addon.js?v=1"></script>
+  <script src="foto-access-addon.js?v=3"></script>
+  <script src="popup-mobile-addon.js?v=3"></script>
+  <script src="filtros-dependientes-v3.js?v=1"></script>
+  <script src="field-photo-capture.js?v=1"></script>
+  <script src="pwa-ui.js?v=2"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./service-worker.js")
+          .then(registration => {
+            registration.update();
+            console.log("Service Worker registrado:", registration.scope);
+          })
+          .catch(error => {
+            console.error("Error al registrar Service Worker:", error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
