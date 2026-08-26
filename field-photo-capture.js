@@ -706,7 +706,16 @@ botonGuardar.addEventListener(
       const cantidadPendientes =
         await window.FieldPhotoStorage
           .contarFotosPendientes();
-
+window.dispatchEvent(
+  new CustomEvent(
+    "fieldphotos:pending-updated",
+    {
+      detail: {
+        count: cantidadPendientes
+      }
+    }
+  )
+);
       mostrarMensaje(
         `Fotografía guardada en el dispositivo. ` +
         `Pendientes de sincronización: ` +
