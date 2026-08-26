@@ -474,13 +474,94 @@ const entradaGaleria = fondo.querySelector(
   "#fieldPhotoGalleryInput"
 );
 
+const vistaPrevia = fondo.querySelector(
+  "#fieldPhotoPreview"
+);
+
+const informacionArchivo = fondo.querySelector(
+  "#fieldPhotoFileInfo"
+);
+
+const botonGuardar = fondo.querySelector(
+  "#fieldPhotoSaveButton"
+);
+
+let archivoSeleccionado = null;
+let urlVistaPrevia = null;
+
 botonCamara.addEventListener("click", () => {
+  entradaCamara.value = "";
   entradaCamara.click();
 });
 
 botonGaleria.addEventListener("click", () => {
+  entradaGaleria.value = "";
   entradaGaleria.click();
 });
+
+function mostrarArchivoSeleccionado(archivo) {
+  if (!archivo) {
+    return;
+  }
+
+  if (!archivo.type.startsWith("image/")) {
+    informacionArchivo.textContent =
+      "El archivo seleccionado no es una imagen válida.";
+
+    botonGuardar.disabled = true;
+
+    return;
+  }
+
+  archivoSeleccionado = archivo;
+
+  if (urlVistaPrevia) {
+    URL.revokeObjectURL(urlVistaPrevia);
+  }
+
+  urlVistaPrevia = URL.createObjectURL(
+    archivoSeleccionado
+  );
+
+  vistaPrevia.src = urlVistaPrevia;
+  vistaPrevia.classList.add("visible");
+
+  const tamañoMB =
+    archivoSeleccionado.size / 1024 / 1024;
+
+  informacionArchivo.textContent =
+    `${archivoSeleccionado.name} · ` +
+    `${tamañoMB.toFixed(2)} MB`;
+
+  botonGuardar.disabled = false;
+
+  console.log(
+    "Fotografía seleccionada:",
+    {
+      name: archivoSeleccionado.name,
+      type: archivoSeleccionado.type,
+      size: archivoSeleccionado.size
+    }
+  );
+}
+
+entradaCamara.addEventListener(
+  "change",
+  evento => {
+    mostrarArchivoSeleccionado(
+      evento.target.files?.[0]
+    );
+  }
+);
+
+entradaGaleria.addEventListener(
+  "change",
+  evento => {
+    mostrarArchivoSeleccionado(
+      evento.target.files?.[0]
+    );
+  }
+);
 
     console.log(
       "Panel Field Photos abierto:",
