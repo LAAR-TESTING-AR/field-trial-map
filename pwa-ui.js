@@ -398,7 +398,10 @@ async function actualizarFotosPendientes() {
     "offline",
     actualizarEstadoConexion
   );
-
+window.addEventListener(
+  "fieldphotos:pending-updated",
+  actualizarFotosPendientes
+);
   if (
     document.readyState ===
     "loading"
