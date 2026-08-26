@@ -562,7 +562,207 @@ entradaGaleria.addEventListener(
     );
   }
 );
+botonGuardar.addEventListener(
+  "click",
+  async () => {
+    const mensaje = fondo.querySelector(
+      "#fieldPhotoMessage"
+    );
 
+    const comentarios = String(
+      fondo.querySelector(
+        "#fieldPhotoComments"
+      )?.value || ""
+    ).trim();
+
+    const cropStage = esTrial
+      ? String(
+          fondo.querySelector(
+            "#fieldPhotoCropStage"
+          )?.value || ""
+        ).trim()
+      : "";
+
+    function mostrarMensaje(
+      texto,
+      tipo
+    ) {
+      mensaje.textContent = texto;
+
+      mensaje.className =
+        "field-photo-aviso visible " +
+        (
+          tipo === "error"
+            ? "field-photo-aviso-error"
+            : "field-photo-aviso-exito"
+        );
+    }
+
+    if (!archivoSeleccionado) {
+      mostrarMensaje(
+        "Primero seleccioná o tomá una fotografía.",
+        "error"
+      );
+
+      return;
+    }
+
+    if (
+      esTrial &&
+      !cropStage
+    ) {
+      mostrarMensaje(
+        "Seleccioná el estadio del cultivo.",
+        "error"
+      );
+
+      return;
+    }
+
+    if (
+      !window.FieldPhotoStorage ||
+      typeof window.FieldPhotoStorage
+        .guardarFotoPendiente !== "function"
+    ) {
+      mostrarMensaje(
+        "El almacenamiento offline no está disponible.",
+        "error"
+      );
+
+      return;
+    }
+
+    botonGuardar.disabled = true;
+    botonGuardar.textContent =
+      "Guardando...";
+
+    try {
+      const fechaCaptura =
+        new Date();
+
+      const fechaId =
+        fechaCaptura
+          .toISOString()
+          .replace(/[-:]/g, "")
+          .replace(/\.\d{3}Z$/, "Z");
+
+      const aoiLimpio =
+        (sitio.aoiId || "SIN-AOI")
+          .replace(/[\/\\\s]+/g, "-");
+
+      const recordId =
+        `${aoiLimpio}-${sitio.photoType}-${fechaId}`;
+
+      const extensionOriginal =
+        archivoSeleccionado.name
+          .split(".")
+          .pop()
+          ?.toLowerCase();
+
+      const extension =
+        ["jpg", "jpeg", "png", "webp"]
+          .includes(extensionOriginal)
+          ? extensionOriginal
+          : "jpg";
+
+      const fileName =
+        `${recordId}.${extension}`;
+
+      const registro = {
+        recordId,
+        aoiId: sitio.aoiId,
+        location: sitio.location,
+        photoType: sitio.photoType,
+        crop: sitio.crop,
+        cropStage,
+        comments: comentarios,
+        captureDate:
+          fechaCaptura.toISOString(),
+        fileName,
+        mimeType:
+          archivoSeleccionado.type ||
+          "image/jpeg",
+        originalFileName:
+          archivoSeleccionado.name,
+        originalFileSize:
+          archivoSeleccionado.size,
+
+        /*
+          IndexedDB permite almacenar directamente
+          archivos y objetos Blob.
+        */
+        photoBlob:
+          archivoSeleccionado,
+
+        syncStatus: "pending",
+        syncAttempts: 0
+      };
+
+      await window.FieldPhotoStorage
+        .guardarFotoPendiente(
+          registro
+        );
+
+      const cantidadPendientes =
+        await window.FieldPhotoStorage
+          .contarFotosPendientes();
+
+      mostrarMensaje(
+        `Fotografía guardada en el dispositivo. ` +
+        `Pendientes de sincronización: ` +
+        `${cantidadPendientes}.`,
+        "success"
+      );
+
+      botonGuardar.textContent =
+        "Guardado";
+
+      console.log(
+        "Field Photo guardada localmente:",
+        {
+          recordId:
+            registro.recordId,
+          aoiId:
+            registro.aoiId,
+          photoType:
+            registro.photoType,
+          cropStage:
+            registro.cropStage,
+          pendingPhotos:
+            cantidadPendientes
+        }
+      );
+
+      window.setTimeout(
+        () => {
+          if (urlVistaPrevia) {
+            URL.revokeObjectURL(
+              urlVistaPrevia
+            );
+          }
+
+          fondo.remove();
+        },
+        1800
+      );
+    } catch (error) {
+      console.error(
+        "Error al guardar Field Photo:",
+        error
+      );
+
+      mostrarMensaje(
+        error?.message ||
+          "No fue posible guardar la fotografía.",
+        "error"
+      );
+
+      botonGuardar.disabled = false;
+      botonGuardar.textContent =
+        "Guardar en el dispositivo";
+    }
+  }
+);
     console.log(
       "Panel Field Photos abierto:",
       sitio
