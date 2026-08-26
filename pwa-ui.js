@@ -58,7 +58,16 @@
           role="status"
           aria-live="polite"
         ></span>
-
+<button
+  id="pwaFotosPendientes"
+  class="pwa-boton-instalar"
+  type="button"
+  hidden
+>
+  <span aria-hidden="true">📷</span>
+  <span id="pwaCantidadPendientes">0</span>
+  pendientes
+</button>
         <button
           id="pwaBotonInstalar"
           class="pwa-boton-instalar"
