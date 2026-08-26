@@ -240,4 +240,12 @@
       );
     });
 })();
-// deployment test
+window.FieldPhotoCapture = {
+  abrirPanelCaptura(configuracion) {
+    console.log(
+      "Abrir panel captura:",
+      configuracion
+    );
+  }
+};
+
