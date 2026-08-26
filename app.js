@@ -328,20 +328,50 @@ function agregarLeyendaPremium() {
 }
 
 function cargarSitios() {
-  Papa.parse(`Sitios.csv?v=${Date.now()}`, {
+  Papa.parse("Sitios.csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
-    transformHeader: encabezado => encabezado.replace(/^\uFEFF/, "").trim(),
+
+    transformHeader: encabezado =>
+      encabezado
+        .replace(/^\uFEFF/, "")
+        .trim(),
+
     complete: resultado => {
-      sitios = resultado.data.map(transformarFila).filter(s => s.aoiId && s.location);
+      sitios = resultado.data
+        .map(transformarFila)
+        .filter(
+          sitio =>
+            sitio.aoiId &&
+            sitio.location
+        );
+
       completarFiltros();
       actualizarMapa();
-      if (resultado.errors.length) console.warn("Advertencias CSV:", resultado.errors);
+
+      if (resultado.errors.length) {
+        console.warn(
+          "Advertencias CSV:",
+          resultado.errors
+        );
+      }
+
+      console.log(
+        `${sitios.length} sitios cargados desde Sitios.csv.`
+      );
     },
+
     error: error => {
-      console.error("Error al cargar Sitios.csv:", error);
-      contadorSitios.textContent = "No fue posible cargar los sitios.";
+      console.error(
+        "Error al cargar Sitios.csv:",
+        error
+      );
+
+      contadorSitios.textContent =
+        navigator.onLine
+          ? "No fue posible cargar los sitios."
+          : "No hay una copia offline de los sitios disponible.";
     }
   });
 }
