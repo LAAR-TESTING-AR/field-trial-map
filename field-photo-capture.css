@@ -254,7 +254,87 @@
    CORRECCIÓN MÓVIL DEL PANEL DE PENDIENTES
    Prioriza información y limita la miniatura
    ========================================================= */
+/* Base obligatoria del panel de pendientes */
 
+.field-pending-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 6100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: rgba(20, 34, 27, 0.72);
+}
+
+.field-pending-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(560px, 100%);
+  max-width: calc(100vw - 20px);
+  max-height: 90vh;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 16px;
+  color: #20302a;
+  background: #ffffff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.34);
+}
+
+.field-pending-modal-cerrar {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #0b6b3a;
+  font-size: 24px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.field-pending-modal h2 {
+  margin: 0 42px 5px 0;
+  color: #0b6b3a;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.field-pending-resumen {
+  margin: 0 42px 14px 0;
+  color: #66736d;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.field-pending-lista {
+  min-height: 100px;
+  max-height: 58vh;
+  padding: 2px 3px 2px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.field-pending-pie {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  flex: 0 0 auto;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #d7e2dc;
+}
 @media (max-width: 700px) {
   .field-pending-modal-fondo {
     align-items: flex-end !important;
