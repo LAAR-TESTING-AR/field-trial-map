@@ -67,13 +67,23 @@
         (a, b) => new Date(a.captureDate) - new Date(b.captureDate)
       );
   }
+const cerrarVisor = () => {
+  const imagen = visor.querySelector(
+    ".field-photo-viewer-imagen"
+  );
 
-  function abrirVisorFoto(urlFoto, descripcion) {
-    document.getElementById("fieldPhotoViewer")?.remove();
+  if (imagen) {
+    imagen.src = "";
+    imagen.remove();
+  }
 
-    const visor = document.createElement("div");
-    visor.id = "fieldPhotoViewer";
-    visor.className = "field-photo-viewer-fondo";
+  visor.style.display = "none";
+  visor.remove();
+
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+};
+  
 
     visor.innerHTML = `
       <div
@@ -335,11 +345,39 @@
     `;
 
     document.body.appendChild(fondo);
+const cerrarPanel = () => {
+  const visorAbierto =
+    document.getElementById("fieldPhotoViewer");
 
-    const cerrarPanel = () => {
-      liberarUrlsTemporales();
-      fondo.remove();
-    };
+  if (visorAbierto) {
+    visorAbierto
+      .querySelectorAll("img")
+      .forEach(imagen => {
+        imagen.src = "";
+        imagen.remove();
+      });
+
+    visorAbierto.style.display = "none";
+    visorAbierto.remove();
+  }
+
+  liberarUrlsTemporales();
+
+  fondo.style.display = "none";
+  fondo.remove();
+
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+
+  window.setTimeout(() => {
+    document
+      .querySelectorAll(
+        "#fieldPhotoViewer, .field-photo-viewer-fondo"
+      )
+      .forEach(elemento => elemento.remove());
+  }, 50);
+};
+    
 
     fondo
       .querySelector(".field-pending-modal-cerrar")
