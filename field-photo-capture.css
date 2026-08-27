@@ -986,3 +986,105 @@
     );
   }
 }
+/* =========================================================
+   MINIATURAS COMPACTAS DURANTE LA CAPTURA
+   Hasta tres imágenes por visita
+   ========================================================= */
+
+.field-photo-preview-grid {
+  d*splay: grid;
+  grid-template-colum*s: repeat(3, minmax(0, 1fr));
+  ga*: 8px;
+  width: 100%;
+  margin-top* 10px;
+}
+
+.field-photo-preview-ite* {
+  position: relative;
+  width: *00%;
+  min-width: 0;
+  aspect-rati*: 1 / 1;
+  overflow: hidden;
+  box*sizing: border-box;
+  border: 1px *olid #ccd8d1;
+  border-radius: 9px*
+  background: #edf2ef;
+}
+
+.field-*hoto-preview-item img {
+  display:*block;
+  width: 100%;
+  height: 10*%;
+  margin: 0;
+  object-fit: cove*;
+  object-position: center;
+}
+
+.f*eld-photo-preview-item button {
+  *osition: absolute;
+  top: 4px;
+  r*ght: 4px;
+  display: flex;
+  align*items: center;
+  justify-content: *enter;
+  width: 27px;
+  height: 27*x;
+  padding: 0;
+  border: 2px sol*d #ffffff;
+  border-radius: 50%;
+ *color: #ffffff;
+  background: rgba*181, 42, 42, 0.95);
+  font-family:*Arial, sans-serif;
+  font-size: 20*x;
+  font-weight: 700;
+  line-heig*t: 1;
+  cursor: pointer;
+}
+
+.field*photo-preview-order {
+  position: *bsolute;
+  bottom: 4px;
+  left: 4p*;
+  display: flex;
+  align-items: *enter;
+  justify-content: center;
+* min-width: 25px;
+  height: 25px;
+* padding: 0 6px;
+  box-sizing: bor*er-box;
+  border-radius: 999px;
+  *olor: #ffffff;
+  background: rgba(*1, 107, 58, 0.92);
+  font-size: 11*x;
+  font-weight* 800;
+}
+
+/* Android, iPhone y otras pantallas pequeñas */
+
+@media (max-width: 700px) {
+  .field-photo-preview-grid {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .field-photo-preview-item {
+    max-height: 105px;
+    border-radius: 8px;
+  }
+
+  .field-photo-preview-item button {
+    top: 3px;
+    right: 3px;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+  }
+
+  .field-photo-preview-order {
+    bottom: 3px;
+    left: 3px;
+    min-width: 23px;
+    height: 23px;
+    font-size: 10px;
+  }
+}
