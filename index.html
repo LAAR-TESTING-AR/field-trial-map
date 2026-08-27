@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -18,6 +19,7 @@
   <link rel="icon" type="image/png" href="icon-192.png">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="foto-access-addon.css?v=3">
   <link rel="stylesheet" href="popup-mobile-addon.css?v=3">
@@ -29,47 +31,77 @@
 </head>
 
 <body>
+
   <header class="encabezado">
     <div class="encabezado-app">
-      <img class="encabezado-logo" src="icon-192.png" alt="Ícono de Field Trial Map">
+      <img
+        class="encabezado-logo"
+        src="icon-192.png"
+        alt="Ícono de Field Trial Map"
+      >
 
       <div class="encabezado-textos">
         <h1>Field Trial Map</h1>
-        <p class="encabezado-subtitulo">Research Argentina 2026-27</p>
-        <p class="encabezado-funciones">Ensayos • Accesos • Fotografías • Navegación</p>
+        <p class="encabezado-subtitulo">
+          Research Argentina 2026-27
+        </p>
+        <p class="encabezado-funciones">
+          Ensayos • Accesos • Fotografías • Navegación
+        </p>
       </div>
     </div>
   </header>
 
   <section class="panel">
-    <input type="search" id="busqueda" placeholder="Buscar localidad..." aria-label="Buscar localidad">
+    <input
+      type="search"
+      id="busqueda"
+      placeholder="Buscar localidad..."
+      aria-label="Buscar localidad"
+    >
 
     <select id="filtroCultivo">
-      <option value="">Todos los cultivos</option>
+      <option value="">
+        Todos los cultivos
+      </option>
     </select>
 
     <select id="filtroRegion">
-      <option value="">Todas las regiones</option>
+      <option value="">
+        Todas las regiones
+      </option>
     </select>
 
     <select id="filtroLocalidad">
-      <option value="">Todas las localidades</option>
+      <option value="">
+        Todas las localidades
+      </option>
     </select>
 
     <select id="filtroFTS">
-      <option value="">Todos los FTS</option>
+      <option value="">
+        Todos los FTS
+      </option>
     </select>
 
-    <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+    <button
+      id="limpiarFiltros"
+      type="button"
+    >
+      Limpiar filtros
+    </button>
   </section>
 
   <div class="resumen">
-    <span id="contadorSitios">Cargando sitios...</span>
+    <span id="contadorSitios">
+      Cargando sitios...
+    </span>
   </div>
 
   <main id="mapa"></main>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
   <script src="app.js?v=10"></script>
@@ -77,10 +109,12 @@
   <script src="foto-access-addon.js?v=3"></script>
   <script src="popup-mobile-addon.js?v=3"></script>
   <script src="filtros-dependientes-v3.js?v=1"></script>
+
   <script src="field-photo-capture.js?v=1"></script>
-  <script src="field-photo-sync.js?v=1script>
+  field-photo-sync.js?v=1script>
   <script src="field-photo-pending.js?v=1"></script>
-  <script src="pwa-ui.js?v=2"/script>
+
+  <script src="pwa-ui.js?v=2"></script>
 
   <script>
     if ("serviceWorker" in navigator) {
@@ -89,13 +123,21 @@
           .register("./service-worker.js")
           .then(registration => {
             registration.update();
-            console.log("Service Worker registrado:", registration.scope);
+
+            console.log(
+              "Service Worker registrado:",
+              registration.scope
+            );
           })
           .catch(error => {
-            console.error("Error al registrar Service Worker:", error);
+            console.error(
+              "Error al registrar Service Worker:",
+              error
+            );
           });
       });
     }
   </script>
+
 </body>
 </html>
