@@ -1,0 +1,5 @@
+/* Historial sincronizado de visitas y fotografías */
+
+.field-photo-history-hidden {
+  display: none !important;
+}
