@@ -289,14 +289,17 @@
           ${
             esTrial
               ? `
-                          ${
-            esTrial
-              ? `
+                <div class="field-photo-campo">
+                  <label for="fieldPhotoCropStage">Estadio del cultivo</label>
+                  <select id="fieldPhotoCropStage">
+                    ${crearOpcionesEtapa(sitio.crop)}
+                  </select>
+                </div>
+
                 <div class="field-photo-campo">
                   <label for="fieldPhotoVisitScore">
                     Evaluación general de la visita
                   </label>
-
                   <select id="fieldPhotoVisitScore">
                     <option value="">Sin evaluar</option>
                     <option value="9">9 · Excelente</option>
@@ -308,15 +311,6 @@
                     <option value="3">3 · Descartable</option>
                     <option value="2">2 · Descartable</option>
                     <option value="1">1 · Descartable</option>
-                  </select>
-                </div>
-              `
-              : ""
-          }
-                <div class="field-photo-campo">
-                  <label for="fieldPhotoCropStage">Estadio del cultivo</label>
-                  <select id="fieldPhotoCropStage">
-                    ${crearOpcionesEtapa(sitio.crop)}
                   </select>
                 </div>
               `
@@ -532,7 +526,12 @@
         agregarArchivos(evento.target.files || []);
       });
 
-              const cropStage = esTrial
+      botonGuardar.addEventListener("click", async () => {
+        const comentarios = String(
+          fondo.querySelector("#fieldPhotoComments")?.value || ""
+        ).trim();
+
+        const cropStage = esTrial
           ? String(
               fondo.querySelector("#fieldPhotoCropStage")?.value || ""
             ).trim()
@@ -602,7 +601,6 @@
               crop: sitio.crop,
               cropStage,
               visitScore,
-              comments: comentarios,
               comments: comentarios,
               captureDate: fechaCaptura.toISOString(),
               fileName: `${recordId}.${extension}`,
