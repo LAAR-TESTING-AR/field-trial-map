@@ -1088,3 +1088,344 @@
     font-size: 10px;
   }
 }
+/* =========================================================
+   CORRECCIÓN DEFINITIVA DE MINIATURAS
+   Captura y pendientes agrupados
+   iPhone, Android y PC
+   ========================================================= */
+
+/* ---------- CAPTURA DE 1 A 3 FOTOS ---------- */
+
+.field-photo-preview-grid {
+  d*splay: grid !important;
+  grid-tem*late-columns: repeat(3, minmax(0, *fr)) !important;
+  gap: 8px !impor*ant;
+  width: 100% !important;
+  m*x-width: 100% !important;
+  margin* 10px 0 0 !important;
+  padding: 0*!important;
+  box-sizing: border-b*x !important;
+  overflow: hidden !*mportant;
+}
+
+.field-photo-preview-*tem {
+  position: relative !import*nt;
+  display: block !important;
+ *width: 100% !important;
+  min-widt*: 0 !important;
+  max-width: 100% *important;
+  height: auto !importa*t;
+  min-height: 0 !important;
+  m*x-height: none !important;
+  aspect-ratio: 1 / 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  border: 1px solid #ccd8d1 !important;
+  border-radius: 9px !important;
+  background: #edf2ef !important;
+}
+
+/*
+  Esta regla evita que estilos antiguos de imágenes
+  agranden las nuevas vistas previas.
+*/
+.field-photo-preview-item > img {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+.field-photo-preview-item > button {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  z-index: 3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 27px !important;
+  min-width: 27px !important;
+  max-width: 27px !important;
+  height: 27px !important;
+  min-height: 27px !important;
+  max-height: 27px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 50% !important;
+  color: #ffffff !important;
+  background: rgba(181, 42, 42, 0.96) !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.field-photo-preview-order {
+  position: absolute !important;
+  bottom: 4px !important;
+  left: 4px !important;
+  z-index: 3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 24px !important;
+  height: 24px !important;
+  padding: 0 6px !important;
+  box-sizing: border-box !important;
+  border-radius: 999px !important;
+  color: #ffffff !important;
+  background: rgba(11, 107, 58, 0.94) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+/*
+  La vista previa antigua ya no debe ocupar espacio.
+  El nuevo sistema usa field-photo-preview-grid.
+*/
+#fieldPhotoPreview.field-photo-vista-previa {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+
+/* ---------- PENDIENTES AGRUPADOS POR VISITA ---------- */
+
+.field-pending-visit-item {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.field-pending-visit-item .field-pending-contenido {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.field-pending-visit-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.field-pending-photo-thumb {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 1 / 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 9px !important;
+  background: #e7eeea !important;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18) !important;
+  cursor: pointer !important;
+}
+
+.field-pending-photo-thumb > img {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+.field-pending-photo-thumb > span {
+  position: absolute !important;
+  right: 5px !important;
+  bottom: 5px !important;
+  z-index: 3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 24px !important;
+  height: 24px !important;
+  padding: 0 6px !important;
+  box-sizing: border-box !important;
+  border-radius: 999px !important;
+  color: #ffffff !important;
+  background: rgba(11, 107, 58, 0.94) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+
+/* ---------- CELULAR: IPHONE Y ANDROID ---------- */
+
+@media (max-width: 700px) {
+  .field-photo-modal {
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .field-photo-preview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  .field-photo-preview-item {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 105px !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .field-photo-preview-item > img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 105px !important;
+  }
+
+  .field-photo-info-archivo {
+    margin-top: 7px !important;
+    font-size: 11px !important;
+  }
+
+  .field-pending-visit-item {
+    display: block !important;
+    padding: 10px !important;
+  }
+
+  .field-pending-visit-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    margin-top: 9px !important;
+  }
+
+  .field-pending-photo-thumb {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 100px !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .field-pending-photo-thumb > img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100px !important;
+  }
+
+  /*
+    Oculta cualquier miniatura antigua que pudiera
+    seguir existiendo en una tarjeta agrupada.
+  */
+  .field-pending-visit-item > .field-pending-miniatura {
+    display: none !important;
+  }
+
+  .field-pending-visit-actions {
+    grid-template-columns: 1fr !important;
+    margin-top: 10px !important;
+  }
+
+  .field-pending-visit-actions button {
+    width: 100% !important;
+    min-height: 40px !important;
+  }
+}
+
+
+/* ---------- PC Y PANTALLAS GRANDES ---------- */
+
+@media (min-width: 701px) {
+  .field-photo-preview-grid {
+    grid-template-columns: repeat(3, minmax(0, 180px)) !important;
+    justify-content: start !important;
+  }
+
+  .field-photo-preview-item {
+    width: 180px !important;
+    max-width: 180px !important;
+    height: 150px !important;
+    aspect-ratio: auto !important;
+  }
+
+  .field-photo-preview-item > img {
+    width: 100% !important;
+    height: 150px !important;
+    max-height: 150px !important;
+  }
+
+  .field-pending-visit-gallery {
+    grid-template-columns: repeat(3, minmax(0, 220px)) !important;
+    justify-content: start !important;
+    gap: 12px !important;
+  }
+
+  .field-pending-photo-thumb {
+    width: 220px !important;
+    max-width: 220px !important;
+    height: 160px !important;
+    aspect-ratio: auto !important;
+  }
+
+  .field-pending-photo-thumb > img {
+    width: 220px !important;
+    height: 160px !important;
+    max-height: 160px !important;
+  }
+
+  .field-pending-visit-item > .field-pending-miniatura {
+    display: none !important;
+  }
+
+  .field-pending-visit-actions {
+    grid-template-columns: minmax(180px, 280px) !important;
+    justify-content: start !important;
+  }
+}
