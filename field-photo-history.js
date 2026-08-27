@@ -9,9 +9,48 @@
     return String(valor ?? "").trim();
   }
 
+  function limpiarComentario(valor) {
+    const original = texto(valor);
+
+    if (!original) {
+      return "";
+    }
+
+    const contenedor = document.createElement("div");
+    contenedor.innerHTML = original;
+
+    contenedor
+      .querySelectorAll("br")
+      .forEach(elemento => {
+        elemento.replaceWith("\n");
+      });
+
+    contenedor
+      .querySelectorAll("p, div, li")
+      .forEach(elemento => {
+        elemento.appendChild(
+          document.createTextNode("\n")
+        );
+      });
+
+    return String(
+      contenedor.textContent ||
+      contenedor.innerText ||
+      ""
+    )
+      .replace(/\u00a0/g, " ")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n[ \t]+/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .replace(/[ \t]{2,}/g, " ")
+      .trim();
+  }
+
   function numero(valor, predeterminado = 0) {
     const convertido = Number(texto(valor));
-    return Number.isFinite(convertido) ? convertido : predeterminado;
+    return Number.isFinite(convertido)
+      ? convertido
+      : predeterminado;
   }
 
   function transformarFila(fila) {
@@ -19,7 +58,7 @@
       title: texto(fila["Title"]),
       aoiId: texto(fila["AccessID"]),
       location: texto(fila["Location"]),
-      comments: texto(fila["Comments"]),
+      comments: limpiarComentario(fila["Comments"]),
       photoLink: texto(fila["PhotoLink"]),
       captureDate: texto(fila["CaptureDate"]),
       publicPhotoUrl: texto(fila["PublicPhotoUrl"]),
@@ -41,8 +80,12 @@
         download: true,
         header: true,
         skipEmptyLines: true,
+
         transformHeader: encabezado =>
-          encabezado.replace(/^\uFEFF/, "").trim(),
+          encabezado
+            .replace(/^\uFEFF/, "")
+            .trim(),
+
         complete: resultado => {
           registros = resultado.data
             .map(transformarFila)
@@ -64,12 +107,15 @@
 
           resolve(registros);
         },
+
         error: error => {
           cargaPromise = null;
+
           console.error(
             "No fue posible cargar el historial de fotografías:",
             error
           );
+
           reject(error);
         }
       });
@@ -87,8 +133,10 @@
 
     return registros
       .filter(registro =>
-        normalizar(registro.aoiId) === normalizar(aoiId) &&
-        normalizar(registro.photoType) === normalizar(photoType)
+        normalizar(registro.aoiId) ===
+          normalizar(aoiId) &&
+        normalizar(registro.photoType) ===
+          normalizar(photoType)
       )
       .sort((a, b) => {
         const diferenciaFecha =
@@ -104,7 +152,11 @@
   }
 
   async function obtenerVisitas(aoiId, photoType) {
-    const fotos = await obtenerFotos(aoiId, photoType);
+    const fotos = await obtenerFotos(
+      aoiId,
+      photoType
+    );
+
     const grupos = new Map();
 
     fotos.forEach(foto => {
@@ -130,8 +182,10 @@
     return [...grupos.values()]
       .map(visita => {
         visita.photos.sort(
-          (a, b) => a.photoOrder - b.photoOrder
+          (a, b) =>
+            a.photoOrder - b.photoOrder
         );
+
         return visita;
       })
       .sort(
@@ -144,7 +198,8 @@
   window.FieldPhotoHistory = {
     cargarHistorial,
     obtenerFotos,
-    obtenerVisitas
+    obtenerVisitas,
+    limpiarComentario
   };
 
   cargarHistorial().catch(() => {
