@@ -657,3 +657,214 @@
     font-weight: 700 !important;
   }
 }
+/* =========================================================
+   CORRECCIÓN FINAL PARA PENDIENTES EN PC
+   Tarjetas completas, imagen ajustada y scroll vertical
+   ========================================================= */
+
+@media (min-width: 701px) {
+  .field-pending-modal {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(920px, calc(100vw - 48px)) !important;
+    max-width: 920px !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    padding: 24px 28px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .field-pending-modal h2 {
+    flex: 0 0 auto !important;
+    margin: 0 52px 5px 0 !important;
+    font-size: 28px !important;
+  }
+
+  .field-pending-resumen {
+    flex: 0 0 auto !important;
+    margin: 0 52px 18px 0 !important;
+    font-size: 15px !important;
+  }
+
+  /*
+    Esta zona contiene todas las tarjetas.
+    Si hay varias, se desplaza verticalmente.
+  */
+  .field-pending-lista {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    min-height: 0 !important;
+    max-height: calc(90vh - 205px) !important;
+    width: 100% !important;
+    padding: 0 10px 4px 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    scrollbar-gutter: stable !important;
+  }
+
+  /*
+    Cada pendiente tiene altura automática.
+    No se permite que la tarjeta recorte la foto ni los botones.
+  */
+  .field-pending-item {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 18px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    border: 1px solid #d7e2dc !important;
+    border-radius: 13px !important;
+    background: #f8fbf9 !important;
+  }
+
+  /*
+    Información siempre arriba.
+  */
+  .field-pending-contenido {
+    order: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .field-pending-cabecera {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .field-pending-tipo {
+    display: inline-flex !important;
+    min-height: 27px !important;
+    padding: 4px 11px !important;
+    box-sizing: border-box !important;
+    font-size: 11px !important;
+  }
+
+  .field-pending-fecha {
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+
+  .field-pending-localidad {
+    margin: 12px 0 6px !important;
+    color: #17324d !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+  }
+
+  .field-pending-detalle {
+    margin: 5px 0 !important;
+    color: #45594f !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  .field-pending-comentario {
+    margin: 11px 0 0 !important;
+    padding: 11px 13px !important;
+    border-left: 4px solid #0b6b3a !important;
+    border-radius: 8px !important;
+    color: #294136 !important;
+    background: #eaf4ee !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  /*
+    Botones completos y visibles.
+  */
+  .field-pending-acciones-item {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 14px 0 0 !important;
+  }
+
+  .field-pending-acciones-item button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .field-pending-ver {
+    background: #0b72c1 !important;
+  }
+
+  .field-pending-eliminar {
+    background: #b52a2a !important;
+  }
+
+  /*
+    Fotografía debajo de la información.
+    Usa todo el ancho de la tarjeta, sin desbordarse.
+  */
+  .field-pending-miniatura {
+    order: 2 !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    max-height: 300px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 11px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #e9efec !important;
+  }
+
+  /*
+    Pie siempre visible mientras la lista se desplaza.
+  */
+  .field-pending-pie {
+    flex: 0 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin-top: 14px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid #d7e2dc !important;
+    background: #ffffff !important;
+  }
+
+  .field-pending-pie button {
+    min-height: 46px !important;
+    padding: 8px 12px !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+  }
+}
