@@ -868,3 +868,121 @@
     font-weight: 700 !important;
   }
 }
+/* =========================================================
+   VISOR DE FOTOGRAFÍAS
+   Compatible con Android, iPhone y PC
+   ========================================================= */
+
+.field-photo-viewer-fondo *
+  position: fixed;
+  inset: 0;
+  *-index: 7000;
+  display: flex;
+  a*ign-items: center;
+  justify-conte*t: center;
+  padding: 12px;
+  box-*izing: border-box;
+  overflow: hid*en;
+  background: rgba(0, 0, 0, 0.*2);
+}
+
+.field-photo-viewer {
+  pos*tion: relative;
+  display: flex;
+ *align-items: center;
+  justify-con*ent: center;
+  width: 100%;
+  heig*t: 100%;
+  overflow: auto;
+  box*sizing: border-box*
+  overscroll-behavior: contain;
+ *-webkit-overflow-scrolling: touch;*}
+
+.field-photo-viewer-imagen {
+  *isplay: block;
+  width: auto;
+  ma*-width: 100%;
+  height: auto;
+  ma*-height: calc(100vh - 90px);
+  mar*in: auto;
+  object-fit: contain;
+ *object-position: center;
+  user-se*ect: none;
+  -webkit-user-select: *one;
+  touch-action: pinch-zoom;
+}*
+*field-photo-view*r-cerrar {
+  position: fixed;
+  to*: max(12px, env(safe-area-inset-to*));
+  right* 14px;
+  z-index: 7002;
+  display:*flex;
+  align-items: center;
+  jus*ify-content: center;
+  width: 44px*
+  height: 44px;
+  padding: 0;
+  b*rder: 2px solid rgba(255, 255, 255* 0.8);
+  border*radius: 50%;
+  color: #ffffff;
+  b*ckground: rgba(11, 107, 58, 0.96);*  font-family: Arial, sans-serif;
+* font-size: 30px;
+  line*height: 1;
+  cursor: pointer;
+}
+
+.*ield-photo-viewer-ayuda {
+  positi*n: fixed;
+  right* 12px;
+  bottom: max(12px, env(saf*-area-inset-bottom));
+  left: 12px*
+  z-index: 7001;
+  margin* 0 auto*
+  padding* 7px 12px;
+  border*radius: 999px;
+  color: #ffffff;
+ *background* rgba(0, 0, 0, 0.62);
+  font-size:*11px;
+  line-height: 1.25;
+  text*align: center;
+* pointer-events: none;
+}
+
+/* Vista en computadora */
+
+@media (min-width: 701px) {
+  .field-photo-viewer-fondo {
+    padding: 24px;
+  }
+
+  .field-photo-viewer-imagen {
+    max-width: calc(100vw - 100px);
+    max-height: calc(100vh - 90px);
+  }
+
+  .field-photo-viewer-ayuda {
+    width: fit-content;
+    max-width: 500px;
+  }
+}
+
+/* Vista en Android, iPhone y pantallas pequeñas */
+
+@media (max-width: 700px) {
+  .field-photo-viewer-fondo {
+    padding:
+      max(8px, env(safe-area-inset-top))
+      8px
+      max(8px, env(safe-area-inset-bottom));
+  }
+
+  .field-photo-viewer-imagen {
+    max-width: 100%;
+    max-height: calc(
+      100vh -
+      env(safe-area-inset-top) -
+      env(safe-area-inset-bottom) -
+      80px
+    );
+  }
+}
