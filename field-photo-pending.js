@@ -33,6 +33,20 @@
     urlsTemporales.clear();
   }
 
+  function limpiarVisoresAbiertos() {
+    document
+      .querySelectorAll("#fieldPhotoViewer, .field-photo-viewer-fondo")
+      .forEach(elemento => {
+        elemento.querySelectorAll("img").forEach(imagen => {
+          imagen.removeAttribute("src");
+        });
+        elemento.remove();
+      });
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
   function agruparPorVisita(registros) {
     const grupos = new Map();
 
@@ -63,27 +77,15 @@
         );
         return visita;
       })
-      .sort(
-        (a, b) => new Date(a.captureDate) - new Date(b.captureDate)
-      );
-  }
-const cerrarVisor = () => {
-  const imagen = visor.querySelector(
-    ".field-photo-viewer-imagen"
-  );
-
-  if (imagen) {
-    imagen.src = "";
-    imagen.remove();
+      .sort((a, b) => new Date(a.captureDate) - new Date(b.captureDate));
   }
 
-  visor.style.display = "none";
-  visor.remove();
+  function abrirVisorFoto(urlFoto, descripcion) {
+    limpiarVisoresAbiertos();
 
-  document.body.style.overflow = "";
-  document.documentElement.style.overflow = "";
-};
-  
+    const visor = document.createElement("div");
+    visor.id = "fieldPhotoViewer";
+    visor.className = "field-photo-viewer-fondo";
 
     visor.innerHTML = `
       <div
@@ -111,8 +113,16 @@ const cerrarVisor = () => {
     `;
 
     document.body.appendChild(visor);
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
-    const cerrarVisor = () => visor.remove();
+    const cerrarVisor = () => {
+      const imagen = visor.querySelector(".field-photo-viewer-imagen");
+      if (imagen) imagen.removeAttribute("src");
+      visor.remove();
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
 
     visor
       .querySelector(".field-photo-viewer-cerrar")
@@ -157,18 +167,27 @@ const cerrarVisor = () => {
       ? fotosConUrl
           .map(
             foto => `
-              <button
-                class="field-pending-photo-thumb"
-                type="button"
-                data-photo-order="${foto.order}"
-                aria-label="Ver fotografía ${foto.order}"
-              >
-                <img
-                  src="${foto.url}"
-                  alt="Fotografía ${foto.order} de ${escaparHTML(visita.location)}"
+              <div class="field-pending-photo-wrapper">
+                <button
+                  class="field-pending-photo-thumb"
+                  type="button"
+                  data-record-id="${escaparHTML(foto.registro.recordId)}"
+                  aria-label="Ver fotografía ${foto.order}"
                 >
-                <span>${foto.order}</span>
-              </button>
+                  <img
+                    src="${foto.url}"
+                    alt="Fotografía ${foto.order} de ${escaparHTML(visita.location)}"
+                  >
+                  <span>${foto.order}</span>
+                </button>
+
+                <button
+                  class="field-pending-photo-delete"
+                  type="button"
+                  data-record-id="${escaparHTML(foto.registro.recordId)}"
+                  aria-label="Eliminar fotografía ${foto.order}"
+                >×</button>
+              </div>
             `
           )
           .join("")
@@ -253,6 +272,44 @@ const cerrarVisor = () => {
       });
 
     item
+      .querySelectorAll(".field-pending-photo-delete")
+      .forEach(boton => {
+        boton.addEventListener("click", async evento => {
+          evento.stopPropagation();
+
+          if (visita.photos.length <= 1) {
+            window.alert(
+              "La visita debe conservar al menos una fotografía. Para quitar la última, usá Eliminar visita."
+            );
+            return;
+          }
+
+          const recordId = boton.dataset.recordId;
+          const confirmar = window.confirm(
+            "¿Eliminar solamente esta fotografía pendiente?"
+          );
+
+          if (!confirmar) return;
+
+          try {
+            await window.FieldPhotoStorage.eliminarFotoLocal(recordId);
+
+            window.dispatchEvent(
+              new CustomEvent("fieldphotos:pending-updated")
+            );
+
+            await refrescarPanel();
+          } catch (error) {
+            console.error(
+              "No fue posible eliminar la fotografía pendiente:",
+              error
+            );
+            window.alert("No fue posible eliminar la fotografía pendiente.");
+          }
+        });
+      });
+
+    item
       .querySelector(".field-pending-eliminar")
       .addEventListener("click", async () => {
         const confirmar = window.confirm(
@@ -302,6 +359,7 @@ const cerrarVisor = () => {
     }
 
     document.getElementById("fieldPendingModal")?.remove();
+    limpiarVisoresAbiertos();
     liberarUrlsTemporales();
 
     const fondo = document.createElement("div");
@@ -345,39 +403,16 @@ const cerrarVisor = () => {
     `;
 
     document.body.appendChild(fondo);
-const cerrarPanel = () => {
-  const visorAbierto =
-    document.getElementById("fieldPhotoViewer");
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
-  if (visorAbierto) {
-    visorAbierto
-      .querySelectorAll("img")
-      .forEach(imagen => {
-        imagen.src = "";
-        imagen.remove();
-      });
-
-    visorAbierto.style.display = "none";
-    visorAbierto.remove();
-  }
-
-  liberarUrlsTemporales();
-
-  fondo.style.display = "none";
-  fondo.remove();
-
-  document.body.style.overflow = "";
-  document.documentElement.style.overflow = "";
-
-  window.setTimeout(() => {
-    document
-      .querySelectorAll(
-        "#fieldPhotoViewer, .field-photo-viewer-fondo"
-      )
-      .forEach(elemento => elemento.remove());
-  }, 50);
-};
-    
+    const cerrarPanel = () => {
+      limpiarVisoresAbiertos();
+      liberarUrlsTemporales();
+      fondo.remove();
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
 
     fondo
       .querySelector(".field-pending-modal-cerrar")
@@ -392,6 +427,7 @@ const cerrarPanel = () => {
     });
 
     async function refrescarPanel() {
+      limpiarVisoresAbiertos();
       liberarUrlsTemporales();
 
       const lista = fondo.querySelector("#fieldPendingLista");
