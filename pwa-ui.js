@@ -5,50 +5,30 @@
   let eventoInstalacion = null;
 
   function esIOS() {
-    return /iphone|ipad|ipod/i.test(
-      window.navigator.userAgent
-    );
+    return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
   }
 
   function estaInstalada() {
     return (
-      window.matchMedia(
-        "(display-mode: standalone)"
-      ).matches ||
+      window.matchMedia("(display-mode: standalone)").matches ||
       window.navigator.standalone === true
     );
   }
 
   function crearInterfaz() {
-    if (
-      document.getElementById(
-        "pwaBarraEstado"
-      )
-    ) {
+    if (document.getElementById("pwaBarraEstado")) {
       return;
     }
 
-    const barra = document.createElement(
-      "section"
-    );
-
+    const barra = document.createElement("section");
     barra.id = "pwaBarraEstado";
     barra.className = "pwa-barra-estado";
-
-    barra.setAttribute(
-      "aria-label",
-      "Estado de la aplicación"
-    );
+    barra.setAttribute("aria-label", "Estado de la aplicación");
 
     barra.innerHTML = `
       <div class="pwa-identidad">
-        <span class="pwa-nombre">
-          Field Trial Map
-        </span>
-
-        <span class="pwa-version">
-          ${APP_VERSION}
-        </span>
+        <span class="pwa-nombre">Field Trial Map</span>
+        <span class="pwa-version">${APP_VERSION}</span>
       </div>
 
       <div class="pwa-acciones">
@@ -58,161 +38,93 @@
           role="status"
           aria-live="polite"
         ></span>
-<button
-  id="pwaFotosPendientes"
-  class="pwa-boton-instalar"
-  type="button"
-  hidden
->
-  <span aria-hidden="true">📷</span>
-  <span id="pwaCantidadPendientes">0</span>
-  pendientes
-</button>
+
+        <button
+          id="pwaFotosPendientes"
+          class="pwa-boton-instalar"
+          type="button"
+          hidden
+        >
+          <span aria-hidden="true">📷</span>
+          <span id="pwaCantidadPendientes">0</span>
+          pendientes
+        </button>
+
         <button
           id="pwaBotonInstalar"
           class="pwa-boton-instalar"
           type="button"
           hidden
         >
-          <span aria-hidden="true">
-            📱
-          </span>
-
+          <span aria-hidden="true">📱</span>
           Instalar App
-        </button>
-
-        <button
-          id="pwaPruebaCamara"
-          class="pwa-boton-instalar"
-          type="button"
-        >
-          <span aria-hidden="true">
-            📷
-          </span>
-
-          Probar cámara
         </button>
       </div>
     `;
 
-    const encabezado =
-      document.querySelector(
-        ".encabezado"
-      );
+    const encabezado = document.querySelector(".encabezado");
 
     if (encabezado) {
-      encabezado.insertAdjacentElement(
-        "afterend",
-        barra
-      );
+      encabezado.insertAdjacentElement("afterend", barra);
     } else {
-      document.body.insertAdjacentElement(
-        "afterbegin",
-        barra
-      );
+      document.body.insertAdjacentElement("afterbegin", barra);
     }
 
-    const botonInstalar =
-      document.getElementById(
-        "pwaBotonInstalar"
-      );
-
-    botonInstalar.addEventListener(
-      "click",
-      instalarAplicacion
-    );
-
-    const botonPruebaCamara =
-      document.getElementById(
-        "pwaPruebaCamara"
-      );
-
-    botonPruebaCamara.addEventListener(
-      "click",
-      () => {
-        if (
-          !window.FieldPhotoCapture ||
-          typeof window.FieldPhotoCapture
-            .abrirPanelCaptura !== "function"
-        ) {
-          console.error(
-            "El módulo Field Photo Capture no está disponible."
-          );
-
-          return;
-        }
-
-        window.FieldPhotoCapture
-          .abrirPanelCaptura({
-            aoiId: "AOI-PRUEBA",
-            location:
-              "Localidad de prueba",
-            crop: "Sunflower",
-            photoType: "Trial"
-          });
-      }
-    );
+    document
+      .getElementById("pwaBotonInstalar")
+      .addEventListener("click", instalarAplicacion);
 
     actualizarEstadoConexion();
     actualizarBotonInstalacion();
     actualizarFotosPendientes();
   }
-async function actualizarFotosPendientes() {
-  const boton = document.getElementById(
-    "pwaFotosPendientes"
-  );
 
-  const cantidadElemento = document.getElementById(
-    "pwaCantidadPendientes"
-  );
-
-  if (!boton || !cantidadElemento) {
-    return;
-  }
-
-  if (
-    !window.FieldPhotoStorage ||
-    typeof window.FieldPhotoStorage
-      .contarFotosPendientes !== "function"
-  ) {
-    boton.hidden = true;
-    return;
-  }
-
-  try {
-    const cantidad =
-      await window.FieldPhotoStorage
-        .contarFotosPendientes();
-
-    cantidadElemento.textContent =
-      String(cantidad);
-
-    boton.hidden = cantidad === 0;
-
-    boton.title =
-      cantidad === 1
-        ? "1 fotografía pendiente de sincronización"
-        : `${cantidad} fotografías pendientes de sincronización`;
-
-    console.log(
-      "Fotografías pendientes en este dispositivo:",
-      cantidad
-    );
-  } catch (error) {
-    console.error(
-      "No fue posible actualizar el contador de fotografías:",
-      error
+  async function actualizarFotosPendientes() {
+    const boton = document.getElementById("pwaFotosPendientes");
+    const cantidadElemento = document.getElementById(
+      "pwaCantidadPendientes"
     );
 
-    boton.hidden = true;
+    if (!boton || !cantidadElemento) {
+      return;
+    }
+
+    if (
+      !window.FieldPhotoStorage ||
+      typeof window.FieldPhotoStorage.contarFotosPendientes !== "function"
+    ) {
+      boton.hidden = true;
+      return;
+    }
+
+    try {
+      const cantidad =
+        await window.FieldPhotoStorage.contarFotosPendientes();
+
+      cantidadElemento.textContent = String(cantidad);
+      boton.hidden = cantidad === 0;
+
+      boton.title =
+        cantidad === 1
+          ? "1 visita pendiente de sincronización"
+          : `${cantidad} visitas pendientes de sincronización`;
+
+      console.log(
+        "Visitas pendientes en este dispositivo:",
+        cantidad
+      );
+    } catch (error) {
+      console.error(
+        "No fue posible actualizar el contador de visitas:",
+        error
+      );
+
+      boton.hidden = true;
+    }
   }
-}
 
   function actualizarEstadoConexion() {
-    const estado =
-      document.getElementById(
-        "pwaEstadoConexion"
-      );
+    const estado = document.getElementById("pwaEstadoConexion");
 
     if (!estado) {
       return;
@@ -220,37 +132,17 @@ async function actualizarFotosPendientes() {
 
     const online = navigator.onLine;
 
-    estado.className =
-      `pwa-conexion ${
-        online
-          ? "pwa-online"
-          : "pwa-offline"
-      }`;
+    estado.className = `pwa-conexion ${
+      online ? "pwa-online" : "pwa-offline"
+    }`;
 
     estado.innerHTML = online
-      ? `
-        <span
-          class="pwa-punto"
-          aria-hidden="true"
-        ></span>
-
-        Online
-      `
-      : `
-        <span
-          class="pwa-punto"
-          aria-hidden="true"
-        ></span>
-
-        Sin conexión
-      `;
+      ? '<span class="pwa-punto" aria-hidden="true"></span> Online'
+      : '<span class="pwa-punto" aria-hidden="true"></span> Sin conexión';
   }
 
   function actualizarBotonInstalacion() {
-    const boton =
-      document.getElementById(
-        "pwaBotonInstalar"
-      );
+    const boton = document.getElementById("pwaBotonInstalar");
 
     if (!boton) {
       return;
@@ -261,22 +153,15 @@ async function actualizarFotosPendientes() {
       return;
     }
 
-    boton.hidden = !(
-      eventoInstalacion ||
-      esIOS()
-    );
+    boton.hidden = !(eventoInstalacion || esIOS());
   }
 
   async function instalarAplicacion() {
     if (eventoInstalacion) {
       eventoInstalacion.prompt();
-
       await eventoInstalacion.userChoice;
-
       eventoInstalacion = null;
-
       actualizarBotonInstalacion();
-
       return;
     }
 
@@ -286,16 +171,11 @@ async function actualizarFotosPendientes() {
   }
 
   function mostrarAyudaIOS() {
-    document
-      .getElementById("pwaAyudaIOS")
-      ?.remove();
+    document.getElementById("pwaAyudaIOS")?.remove();
 
-    const fondo =
-      document.createElement("div");
-
+    const fondo = document.createElement("div");
     fondo.id = "pwaAyudaIOS";
-    fondo.className =
-      "pwa-modal-fondo";
+    fondo.className = "pwa-modal-fondo";
 
     fondo.innerHTML = `
       <section
@@ -308,108 +188,55 @@ async function actualizarFotosPendientes() {
           class="pwa-modal-cerrar"
           type="button"
           aria-label="Cerrar"
-        >
-          ×
-        </button>
+        >×</button>
 
-        <h2 id="pwaTituloIOS">
-          Instalar en iPhone o iPad
-        </h2>
+        <h2 id="pwaTituloIOS">Instalar en iPhone o iPad</h2>
 
         <ol>
+          <li>Abrí el mapa con <strong>Safari</strong>.</li>
+          <li>Tocá el botón <strong>Compartir</strong>.</li>
           <li>
-            Abrí el mapa con
-            <strong>Safari</strong>.
+            Elegí <strong>Agregar a pantalla de inicio</strong>.
           </li>
-
-          <li>
-            Tocá el botón
-            <strong>Compartir</strong>.
-          </li>
-
-          <li>
-            Elegí
-            <strong>
-              Agregar a pantalla de inicio
-            </strong>.
-          </li>
-
-          <li>
-            Confirmá con
-            <strong>Agregar</strong>.
-          </li>
+          <li>Confirmá con <strong>Agregar</strong>.</li>
         </ol>
       </section>
     `;
 
-    document.body.appendChild(
-      fondo
-    );
+    document.body.appendChild(fondo);
 
     fondo
-      .querySelector(
-        ".pwa-modal-cerrar"
-      )
-      .addEventListener(
-        "click",
-        () => fondo.remove()
-      );
+      .querySelector(".pwa-modal-cerrar")
+      .addEventListener("click", () => fondo.remove());
 
-    fondo.addEventListener(
-      "click",
-      evento => {
-        if (
-          evento.target === fondo
-        ) {
-          fondo.remove();
-        }
+    fondo.addEventListener("click", evento => {
+      if (evento.target === fondo) {
+        fondo.remove();
       }
-    );
+    });
   }
 
-  window.addEventListener(
-    "beforeinstallprompt",
-    evento => {
-      evento.preventDefault();
+  window.addEventListener("beforeinstallprompt", evento => {
+    evento.preventDefault();
+    eventoInstalacion = evento;
+    actualizarBotonInstalacion();
+  });
 
-      eventoInstalacion =
-        evento;
+  window.addEventListener("appinstalled", () => {
+    eventoInstalacion = null;
+    actualizarBotonInstalacion();
+  });
 
-      actualizarBotonInstalacion();
-    }
-  );
-
-  window.addEventListener(
-    "appinstalled",
-    () => {
-      eventoInstalacion =
-        null;
-
-      actualizarBotonInstalacion();
-    }
-  );
+  window.addEventListener("online", actualizarEstadoConexion);
+  window.addEventListener("offline", actualizarEstadoConexion);
 
   window.addEventListener(
-    "online",
-    actualizarEstadoConexion
+    "fieldphotos:pending-updated",
+    actualizarFotosPendientes
   );
 
-  window.addEventListener(
-    "offline",
-    actualizarEstadoConexion
-  );
-window.addEventListener(
-  "fieldphotos:pending-updated",
-  actualizarFotosPendientes
-);
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-    document.addEventListener(
-      "DOMContentLoaded",
-      crearInterfaz
-    );
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", crearInterfaz);
   } else {
     crearInterfaz();
   }
