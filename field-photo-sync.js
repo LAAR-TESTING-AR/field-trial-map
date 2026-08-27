@@ -127,8 +127,14 @@
       location: String(registro.location || ""),
       photoType: String(registro.photoType || ""),
       crop: String(registro.crop || ""),
-      cropStage: String(registro.cropStage || ""),
-      comments: String(registro.comments || ""),
+cropStage: String(registro.cropStage || ""),
+visitScore:
+  registro.visitScore === null ||
+  registro.visitScore === undefined ||
+  registro.visitScore === ""
+    ? null
+    : Number(registro.visitScore),
+comments: String(registro.comments || ""),
       captureDate: String(
         registro.captureDate || new Date().toISOString()
       ),
