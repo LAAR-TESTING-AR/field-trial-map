@@ -52,7 +52,21 @@
       ? convertido
       : predeterminado;
   }
+function colorScore(score) {
+  const valor = Number(score);
 
+  if (valor === 9) return "#146b32";
+  if (valor === 8) return "#238b45";
+  if (valor === 7) return "#66bd63";
+  if (valor === 6) return "#d9d83f";
+  if (valor === 5) return "#f4b942";
+  if (valor === 4) return "#f07c28";
+  if (valor === 3) return "#e85c4a";
+  if (valor === 2) return "#cc3434";
+  if (valor === 1) return "#8f1d1d";
+
+  return "#9aa39e";
+}
   function transformarFila(fila) {
     return {
       title: texto(fila["Title"]),
@@ -66,7 +80,8 @@
       crop: texto(fila["Crop"]),
       cropStage: texto(fila["CropStage"]),
       visitId: texto(fila["VisitId"]),
-      photoOrder: numero(fila["PhotoOrder"], 1)
+visitScore: numero(fila["VisitScore"], null),
+photoOrder: numero(fila["PhotoOrder"], 1)
     };
   }
 
@@ -170,6 +185,7 @@
           photoType: foto.photoType,
           crop: foto.crop,
           cropStage: foto.cropStage,
+          visitScore: foto.visitScore,
           comments: foto.comments,
           captureDate: foto.captureDate,
           photos: []
@@ -199,7 +215,8 @@
     cargarHistorial,
     obtenerFotos,
     obtenerVisitas,
-    limpiarComentario
+    limpiarComentario,
+    colorScore
   };
 
   cargarHistorial().catch(() => {
