@@ -121,16 +121,79 @@
       </div>
     `;
 
-    item
-      .querySelector(".field-pending-ver")
-      .addEventListener("click", () => {
-        if (!urlFoto) {
-          window.alert("La fotografía no está disponible.");
-          return;
-        }
+item
+  .querySelector(".field-pending-ver")
+  .addEventListener("click", () => {
+    if (!urlFoto) {
+      window.alert(
+        "La fotografía no está disponible."
+      );
 
-        window.open(urlFoto, "_blank", "noopener,noreferrer");
-      });
+      return;
+    }
+
+    document
+      .getElementById("fieldPhotoViewer")
+      ?.remove();
+
+    const visor = document.createElement("div");
+
+    visor.id = "fieldPhotoViewer";
+    visor.className =
+      "field-photo-viewer-fondo";
+
+    visor.innerHTML = `
+      <div
+        class="field-photo-viewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Vista ampliada de la fotografía"
+      >
+        <button
+          class="field-photo-viewer-cerrar"
+          type="button"
+          aria-label="Cerrar fotografía"
+        >
+          ×
+        </button>
+
+        <img
+          class="field-photo-viewer-imagen"
+          src="${urlFoto}"
+          alt="s para ampliar o reducir la imagen
+        </p>
+      </div>
+    `;
+
+    document.body.appendChild(visor);
+
+    const cerrarVisor = () => {
+      visor.remove();
+    };
+
+    visor
+      .querySelector(
+        ".field-photo-viewer-cerrar"
+      )
+      .addEventListener(
+        "click",
+        cerrarVisor
+      );
+
+    visor.addEventListener(
+      "click",
+      evento => {
+        if (
+          evento.target === visor ||
+          evento.target.classList.contains(
+            "field-photo-viewer"
+          )
+        ) {
+          cerrarVisor();
+        }
+      }
+    );
+  });
 
     item
       .querySelector(".field-pending-eliminar")
