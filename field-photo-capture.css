@@ -488,3 +488,172 @@
     min-height: 44px;
   }
 }
+/* =========================================================
+   DISEÑO DE PENDIENTES PARA PC Y PANTALLAS GRANDES
+   Información arriba y fotografía grande pero controlada
+   ========================================================= */
+
+@media (min-width: 701px) {
+  .field-pending-modal {
+    width: min(840px, calc(100vw - 50px)) !important;
+    max-width: 840px !important;
+    max-height: 88vh !important;
+    padding: 24px 28px !important;
+  }
+
+  .field-pending-modal h2 {
+    margin: 0 50px 5px 0 !important;
+    font-size: 28px !important;
+  }
+
+  .field-pending-resumen {
+    margin: 0 50px 18px 0 !important;
+    font-size: 15px !important;
+  }
+
+  .field-pending-lista {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-height: 62vh !important;
+    padding: 0 8px 0 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  /*
+    Cada fotografía pendiente queda como una tarjeta vertical:
+    1. Información
+    2. Fotografía
+  */
+  .field-pending-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border: 1px solid #d7e2dc !important;
+    border-radius: 13px !important;
+    background: #f8fbf9 !important;
+  }
+
+  /*
+    Aunque la imagen aparece primero en el HTML,
+    visualmente ponemos la información arriba.
+  */
+  .field-pending-contenido {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .field-pending-miniatura {
+    order: 2 !important;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: clamp(220px, 34vh, 360px) !important;
+    min-height: 220px !important;
+    max-height: 360px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 11px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #e9efec !important;
+  }
+
+  .field-pending-cabecera {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .field-pending-tipo {
+    min-height: 27px !important;
+    padding: 4px 11px !important;
+    font-size: 11px !important;
+  }
+
+  .field-pending-fecha {
+    font-size: 12px !important;
+  }
+
+  .field-pending-localidad {
+    margin: 12px 0 5px !important;
+    color: #17324d !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+  }
+
+  .field-pending-detalle {
+    margin: 5px 0 !important;
+    color: #45594f !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  .field-pending-comentario {
+    margin: 11px 0 0 !important;
+    padding: 11px 13px !important;
+    border-left: 4px solid #0b6b3a !important;
+    border-radius: 8px !important;
+    color: #294136 !important;
+    background: #eaf4ee !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  .field-pending-acciones-item {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 13px !important;
+  }
+
+  .field-pending-acciones-item button {
+    min-height: 42px !important;
+    padding: 8px 12px !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .field-pending-ver {
+    background: #0b72c1 !important;
+  }
+
+  .field-pending-eliminar {
+    background: #b52a2a !important;
+  }
+
+  .field-pending-pie {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+    padding-top: 14px !important;
+  }
+
+  .field-pending-pie button {
+    min-height: 44px !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+  }
+}
