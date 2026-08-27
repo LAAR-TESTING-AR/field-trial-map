@@ -21,6 +21,7 @@ const APP_SHELL = [
 
   `${BASE_PATH}field-photo-capture.css`,
   `${BASE_PATH}field-photo-capture.js`,
+  `${BASE_PATH}field-photo-pending.js`,
 
   `${BASE_PATH}pwa-ui.css`,
   `${BASE_PATH}pwa-ui.js`,
@@ -33,7 +34,6 @@ const APP_SHELL = [
   `${BASE_PATH}icon-512.png`,
   `${BASE_PATH}apple-touch-icon.png`
 ];
-
 self.addEventListener("install", event => {
   event.waitUntil(
     caches
