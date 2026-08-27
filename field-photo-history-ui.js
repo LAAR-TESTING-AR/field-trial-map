@@ -30,12 +30,39 @@
     }).format(fecha);
   }
 
-  function abrirFoto(url, descripcion) {
+  function formatearFechaBreve(valor) {
+    const fecha = new Date(valor);
+
+    if (Number.isNaN(fecha.getTime())) {
+      return "Sin fecha";
+    }
+
+    return new Intl.DateTimeFormat("es-AR", {
+      day: "2-digit",
+      month: "2-digit"
+    }).format(fecha);
+  }
+
+  function etiquetaScore(score) {
+    const valor = Number(score);
+
+    if (valor === 9) return "Excelente";
+    if (valor === 8) return "Muy bueno";
+    if (valor === 7) return "Bueno";
+    if (valor === 6) return "Aceptable";
+    if (valor === 5 || valor === 4) return "Cuestionable";
+    if (valor >= 1 && valor <= 3) return "Descartable";
+
+    return "Sin evaluar";
+  }
+
+  function abrirFoto(url) {
     window.open(url, "_blank", "noopener,noreferrer");
   }
 
-  function crearTarjetaVisita(visita) {
+  function crearTarjetaVisita(visita, indice) {
     const tarjeta = document.createElement("article");
+    tarjeta.id = `fieldHistoryVisit-${indice}`;
     tarjeta.className = "field-history-visita";
 
     const esAccess =
@@ -45,23 +72,25 @@
       ? "field-history-tipo field-history-tipo-access"
       : "field-history-tipo";
 
+    const score = Number(visita.visitScore);
+    const scoreValido = Number.isInteger(score) && score >= 1 && score <= 9;
+
     const fotosHTML = visita.photos
       .filter(foto => texto(foto.publicPhotoUrl))
       .map(
-        (foto, indice) => `
+        (foto, fotoIndice) => `
           <button
             class="field-history-foto"
             type="button"
             data-photo-url="${escaparHTML(foto.publicPhotoUrl)}"
-            data-photo-description="Fotografía ${indice + 1} de ${escaparHTML(visita.location)}"
-            aria-label="Ver fotografía ${indice + 1}"
+            aria-label="Ver fotografía ${fotoIndice + 1}"
           >
             <img
               src="${escaparHTML(foto.publicPhotoUrl)}"
-              alt="Fotografía ${indice + 1} de ${escaparHTML(visita.location)}"
+              alt="Fotografía ${fotoIndice + 1} de ${escaparHTML(visita.location)}"
               loading="lazy"
             >
-            <span>${foto.photoOrder || indice + 1}</span>
+            <span>${foto.photoOrder || fotoIndice + 1}</span>
           </button>
         `
       )
@@ -77,6 +106,14 @@
           ${escaparHTML(formatearFecha(visita.captureDate))}
         </span>
       </div>
+
+      ${
+        scoreValido
+          ? `<p class="field-history-estadio">
+              Score: ${score} · ${escaparHTML(etiquetaScore(score))}
+            </p>`
+          : `<p class="field-history-estadio">Score: Sin evaluar</p>`
+      }
 
       ${
         visita.cropStage
@@ -103,14 +140,101 @@
       .querySelectorAll(".field-history-foto")
       .forEach(boton => {
         boton.addEventListener("click", () => {
-          abrirFoto(
-            boton.dataset.photoUrl,
-            boton.dataset.photoDescription
-          );
+          abrirFoto(boton.dataset.photoUrl);
         });
       });
 
     return tarjeta;
+  }
+
+  function crearLineaTiempo(visitas, crop) {
+    const contenedor = document.createElement("section");
+    contenedor.className = "field-timeline-section";
+    contenedor.setAttribute("aria-label", "Línea de tiempo del Trial");
+
+    const titulo = document.createElement("h3");
+    titulo.className = "field-timeline-title";
+    titulo.textContent = "Línea de tiempo del Trial";
+    contenedor.appendChild(titulo);
+
+    const desplazable = document.createElement("div");
+    desplazable.className = "field-timeline-scroll";
+
+    const linea = document.createElement("div");
+    linea.className = "field-timeline-line";
+
+    const cronologicas = [...visitas].reverse();
+
+    cronologicas.forEach(visita => {
+      const indiceOriginal = visitas.indexOf(visita);
+      const score = Number(visita.visitScore);
+      const scoreValido =
+        Number.isInteger(score) && score >= 1 && score <= 9;
+
+      const color = window.FieldPhotoHistory.colorScore(
+        scoreValido ? score : null
+      );
+
+      const hito = document.createElement("button");
+      hito.className = "field-timeline-milestone";
+      hito.type = "button";
+      hito.setAttribute(
+        "aria-label",
+        `${formatearFecha(visita.captureDate)}, ${visita.cropStage || "sin estadio"}, ${scoreValido ? `score ${score}` : "sin evaluar"}`
+      );
+
+      hito.innerHTML = `
+        <span class="field-timeline-date">
+          ${escaparHTML(formatearFechaBreve(visita.captureDate))}
+        </span>
+
+        <span class="field-timeline-icon-wrap" style="--timeline-color: ${escaparHTML(color)};">
+          ${window.FieldPhotoTimelineIcons.obtenerIcono(crop, {
+            color,
+            titulo: `${crop || "Cultivo"}, score ${scoreValido ? score : "sin evaluar"}`
+          })}
+        </span>
+
+        <span class="field-timeline-score">
+          ${scoreValido ? score : "–"}
+        </span>
+
+        <span class="field-timeline-stage">
+          ${escaparHTML(visita.cropStage || "Sin estadio")}
+        </span>
+      `;
+
+      hito.addEventListener("click", () => {
+        const tarjeta = document.getElementById(
+          `fieldHistoryVisit-${indiceOriginal}`
+        );
+
+        if (!tarjeta) return;
+
+        document
+          .querySelectorAll(".field-history-visita-destacada")
+          .forEach(elemento => {
+            elemento.classList.remove("field-history-visita-destacada");
+          });
+
+        tarjeta.classList.add("field-history-visita-destacada");
+        tarjeta.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        window.setTimeout(() => {
+          tarjeta.classList.remove("field-history-visita-destacada");
+        }, 2200);
+      });
+
+      linea.appendChild(hito);
+    });
+
+    desplazable.appendChild(linea);
+    contenedor.appendChild(desplazable);
+
+    return contenedor;
   }
 
   async function abrirHistorial(configuracion = {}) {
@@ -152,9 +276,11 @@
         >×</button>
 
         <h2 id="fieldHistoryTitulo">
-          ${photoType.toLowerCase() === "trial"
-            ? "Historial de visitas"
-            : "Historial de fotografías del Access"}
+          ${
+            photoType.toLowerCase() === "trial"
+              ? "Historial de visitas"
+              : "Historial de fotografías del Access"
+          }
         </h2>
 
         <p class="field-history-contexto">
@@ -164,9 +290,7 @@
         </p>
 
         <div id="fieldHistoryLista" class="field-history-lista">
-          <div class="field-history-cargando">
-            Cargando historial...
-          </div>
+          <div class="field-history-cargando">Cargando historial...</div>
         </div>
 
         <div class="field-history-pie">
@@ -194,9 +318,7 @@
       .addEventListener("click", cerrar);
 
     fondo.addEventListener("click", evento => {
-      if (evento.target === fondo) {
-        cerrar();
-      }
+      if (evento.target === fondo) cerrar();
     });
 
     const lista = fondo.querySelector("#fieldHistoryLista");
@@ -220,8 +342,16 @@
         return;
       }
 
-      visitas.forEach(visita => {
-        lista.appendChild(crearTarjetaVisita(visita));
+      if (
+        photoType.toLowerCase() === "trial" &&
+        window.FieldPhotoTimelineIcons &&
+        typeof window.FieldPhotoTimelineIcons.obtenerIcono === "function"
+      ) {
+        lista.appendChild(crearLineaTiempo(visitas, crop));
+      }
+
+      visitas.forEach((visita, indice) => {
+        lista.appendChild(crearTarjetaVisita(visita, indice));
       });
     } catch (error) {
       console.error("No fue posible abrir el historial:", error);
@@ -238,5 +368,7 @@
     abrirHistorial
   };
 
-  console.log("Interfaz del historial Field Photos preparada.");
+  console.log(
+    "Interfaz del historial con línea de tiempo preparada."
+  );
 })();
