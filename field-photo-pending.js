@@ -33,114 +33,47 @@
     urlsTemporales.clear();
   }
 
-  function crearTarjetaPendiente(registro, refrescarPanel) {
-    const item = document.createElement("article");
-    item.className = "field-pending-item";
-    item.dataset.recordId = registro.recordId;
+  function agruparPorVisita(registros) {
+    const grupos = new Map();
 
-    let urlFoto = "";
+    registros.forEach(registro => {
+      const visitId = registro.visitId || registro.recordId;
 
-    if (registro.photoBlob instanceof Blob) {
-      urlFoto = URL.createObjectURL(registro.photoBlob);
-      urlsTemporales.add(urlFoto);
-    }
-
-    const esAccess =
-      String(registro.photoType || "").toLowerCase() === "access";
-
-    const claseTipo = esAccess
-      ? "field-pending-tipo field-pending-tipo-access"
-      : "field-pending-tipo";
-
-    item.innerHTML = `
-      ${
-        urlFoto
-          ? `<img
-              class="field-pending-miniatura"
-              src="${urlFoto}"
-              alt="Fotografía pendiente de ${escaparHTML(registro.location)}"
-            >`
-          : `<div class="field-pending-miniatura"></div>`
+      if (!grupos.has(visitId)) {
+        grupos.set(visitId, {
+          visitId,
+          aoiId: registro.aoiId,
+          location: registro.location,
+          photoType: registro.photoType,
+          crop: registro.crop,
+          cropStage: registro.cropStage,
+          comments: registro.comments,
+          captureDate: registro.captureDate,
+          photos: []
+        });
       }
 
-      <div class="field-pending-contenido">
-        <div class="field-pending-cabecera">
-          <span class="${claseTipo}">
-            ${escaparHTML(registro.photoType || "Foto")}
-          </span>
+      grupos.get(visitId).photos.push(registro);
+    });
 
-          <span class="field-pending-fecha">
-            ${escaparHTML(formatearFecha(registro.captureDate))}
-          </span>
-        </div>
-
-        <h3 class="field-pending-localidad">
-          ${escaparHTML(registro.location || "Localidad sin informar")}
-        </h3>
-
-        <p class="field-pending-detalle">
-          <strong>AOI ID:</strong>
-          ${escaparHTML(registro.aoiId || "Sin AOI ID")}
-        </p>
-
-        ${
-          registro.crop
-            ? `<p class="field-pending-detalle">
-                <strong>Cultivo:</strong>
-                ${escaparHTML(registro.crop)}
-              </p>`
-            : ""
-        }
-
-        ${
-          registro.cropStage
-            ? `<p class="field-pending-detalle">
-                <strong>Estadio:</strong>
-                ${escaparHTML(registro.cropStage)}
-              </p>`
-            : ""
-        }
-
-        ${
-          registro.comments
-            ? `<p class="field-pending-comentario">
-                ${escaparHTML(registro.comments)}
-              </p>`
-            : ""
-        }
-
-        <div class="field-pending-acciones-item">
-          <button class="field-pending-ver" type="button">
-            Ver foto
-          </button>
-
-          <button class="field-pending-eliminar" type="button">
-            Eliminar
-          </button>
-        </div>
-      </div>
-    `;
-
-item
-  .querySelector(".field-pending-ver")
-  .addEventListener("click", () => {
-    if (!urlFoto) {
-      window.alert(
-        "La fotografía no está disponible."
+    return [...grupos.values()]
+      .map(visita => {
+        visita.photos.sort(
+          (a, b) => Number(a.photoOrder || 1) - Number(b.photoOrder || 1)
+        );
+        return visita;
+      })
+      .sort(
+        (a, b) => new Date(a.captureDate) - new Date(b.captureDate)
       );
+  }
 
-      return;
-    }
-
-    document
-      .getElementById("fieldPhotoViewer")
-      ?.remove();
+  function abrirVisorFoto(urlFoto, descripcion) {
+    document.getElementById("fieldPhotoViewer")?.remove();
 
     const visor = document.createElement("div");
-
     visor.id = "fieldPhotoViewer";
-    visor.className =
-      "field-photo-viewer-fondo";
+    visor.className = "field-photo-viewer-fondo";
 
     visor.innerHTML = `
       <div
@@ -153,61 +86,185 @@ item
           class="field-photo-viewer-cerrar"
           type="button"
           aria-label="Cerrar fotografía"
-        >
-          ×
-        </button>
+        >×</button>
 
         <img
           class="field-photo-viewer-imagen"
           src="${urlFoto}"
-          alt="s para ampliar o reducir la imagen
+          alt="${escaparHTML(descripcion)}"
+        >
+
+        <p class="field-photo-viewer-ayuda">
+          Fotografía ajustada a la pantalla
         </p>
       </div>
     `;
 
     document.body.appendChild(visor);
 
-    const cerrarVisor = () => {
-      visor.remove();
-    };
+    const cerrarVisor = () => visor.remove();
 
     visor
-      .querySelector(
-        ".field-photo-viewer-cerrar"
-      )
-      .addEventListener(
-        "click",
-        cerrarVisor
-      );
+      .querySelector(".field-photo-viewer-cerrar")
+      .addEventListener("click", cerrarVisor);
 
-    visor.addEventListener(
-      "click",
-      evento => {
-        if (
-          evento.target === visor ||
-          evento.target.classList.contains(
-            "field-photo-viewer"
-          )
-        ) {
-          cerrarVisor();
-        }
+    visor.addEventListener("click", evento => {
+      if (
+        evento.target === visor ||
+        evento.target.classList.contains("field-photo-viewer")
+      ) {
+        cerrarVisor();
       }
-    );
-  });
+    });
+  }
+
+  function crearTarjetaVisita(visita, refrescarPanel) {
+    const item = document.createElement("article");
+    item.className = "field-pending-item field-pending-visit-item";
+    item.dataset.visitId = visita.visitId;
+
+    const esAccess =
+      String(visita.photoType || "").toLowerCase() === "access";
+
+    const claseTipo = esAccess
+      ? "field-pending-tipo field-pending-tipo-access"
+      : "field-pending-tipo";
+
+    const fotosConUrl = visita.photos
+      .filter(registro => registro.photoBlob instanceof Blob)
+      .map((registro, indice) => {
+        const url = URL.createObjectURL(registro.photoBlob);
+        urlsTemporales.add(url);
+
+        return {
+          registro,
+          url,
+          order: Number(registro.photoOrder || indice + 1)
+        };
+      });
+
+    const galeriaHTML = fotosConUrl.length
+      ? fotosConUrl
+          .map(
+            foto => `
+              <button
+                class="field-pending-photo-thumb"
+                type="button"
+                data-photo-order="${foto.order}"
+                aria-label="Ver fotografía ${foto.order}"
+              >
+                <img
+                  src="${foto.url}"
+                  alt="Fotografía ${foto.order} de ${escaparHTML(visita.location)}"
+                >
+                <span>${foto.order}</span>
+              </button>
+            `
+          )
+          .join("")
+      : `<div class="field-pending-vacio">Las fotografías no están disponibles.</div>`;
+
+    item.innerHTML = `
+      <div class="field-pending-contenido">
+        <div class="field-pending-cabecera">
+          <span class="${claseTipo}">
+            ${escaparHTML(visita.photoType || "Foto")}
+          </span>
+
+          <span class="field-pending-fecha">
+            ${escaparHTML(formatearFecha(visita.captureDate))}
+          </span>
+        </div>
+
+        <h3 class="field-pending-localidad">
+          ${escaparHTML(visita.location || "Localidad sin informar")}
+        </h3>
+
+        <p class="field-pending-detalle">
+          <strong>AOI ID:</strong>
+          ${escaparHTML(visita.aoiId || "Sin AOI ID")}
+        </p>
+
+        ${
+          visita.crop
+            ? `<p class="field-pending-detalle">
+                <strong>Cultivo:</strong>
+                ${escaparHTML(visita.crop)}
+              </p>`
+            : ""
+        }
+
+        ${
+          visita.cropStage
+            ? `<p class="field-pending-detalle">
+                <strong>Estadio:</strong>
+                ${escaparHTML(visita.cropStage)}
+              </p>`
+            : ""
+        }
+
+        <p class="field-pending-detalle">
+          <strong>Fotografías:</strong>
+          ${visita.photos.length}
+        </p>
+
+        ${
+          visita.comments
+            ? `<p class="field-pending-comentario">
+                ${escaparHTML(visita.comments)}
+              </p>`
+            : ""
+        }
+
+        <div class="field-pending-visit-gallery">
+          ${galeriaHTML}
+        </div>
+
+        <div class="field-pending-acciones-item field-pending-visit-actions">
+          <button class="field-pending-eliminar" type="button">
+            Eliminar visita
+          </button>
+        </div>
+      </div>
+    `;
+
+    item
+      .querySelectorAll(".field-pending-photo-thumb")
+      .forEach((boton, indice) => {
+        boton.addEventListener("click", () => {
+          const foto = fotosConUrl[indice];
+          if (!foto) return;
+
+          abrirVisorFoto(
+            foto.url,
+            `Fotografía ${foto.order} de ${visita.location || "la visita"}`
+          );
+        });
+      });
 
     item
       .querySelector(".field-pending-eliminar")
       .addEventListener("click", async () => {
         const confirmar = window.confirm(
-          "¿Eliminar esta fotografía pendiente del dispositivo?"
+          `¿Eliminar esta visita y sus ${visita.photos.length} fotografía${
+            visita.photos.length === 1 ? "" : "s"
+          } del dispositivo?`
         );
 
         if (!confirmar) return;
 
         try {
-          await window.FieldPhotoStorage.eliminarFotoLocal(
-            registro.recordId
-          );
+          if (
+            typeof window.FieldPhotoStorage.eliminarVisitaLocal === "function"
+          ) {
+            await window.FieldPhotoStorage.eliminarVisitaLocal(visita.visitId);
+          } else {
+            await Promise.all(
+              visita.photos.map(registro =>
+                window.FieldPhotoStorage.eliminarFotoLocal(registro.recordId)
+              )
+            );
+          }
 
           window.dispatchEvent(
             new CustomEvent("fieldphotos:pending-updated")
@@ -215,14 +272,8 @@ item
 
           await refrescarPanel();
         } catch (error) {
-          console.error(
-            "No fue posible eliminar la fotografía pendiente:",
-            error
-          );
-
-          window.alert(
-            "No fue posible eliminar la fotografía pendiente."
-          );
+          console.error("No fue posible eliminar la visita pendiente:", error);
+          window.alert("No fue posible eliminar la visita pendiente.");
         }
       });
 
@@ -237,7 +288,6 @@ item
       console.error(
         "El almacenamiento offline de Field Photos no está disponible."
       );
-
       return;
     }
 
@@ -259,24 +309,18 @@ item
           class="field-pending-modal-cerrar"
           type="button"
           aria-label="Cerrar"
-        >
-          ×
-        </button>
+        >×</button>
 
-        <h2 id="fieldPendingTitulo">
-          Pendientes de sincronización
-        </h2>
+        <h2 id="fieldPendingTitulo">Pendientes de sincronización</h2>
 
         <p id="fieldPendingResumen" class="field-pending-resumen">
-          Consultando registros guardados en este dispositivo...
+          Consultando visitas guardadas en este dispositivo...
         </p>
 
         <div id="fieldPendingLista" class="field-pending-lista"></div>
 
         <div class="field-pending-pie">
-          <button class="field-pending-cerrar" type="button">
-            Cerrar
-          </button>
+          <button class="field-pending-cerrar" type="button">Cerrar</button>
 
           <button
             id="fieldPendingSyncButton"
@@ -314,71 +358,57 @@ item
 
       const lista = fondo.querySelector("#fieldPendingLista");
       const resumen = fondo.querySelector("#fieldPendingResumen");
-      const botonSincronizar = fondo.querySelector(
-        "#fieldPendingSyncButton"
-      );
+      const botonSincronizar = fondo.querySelector("#fieldPendingSyncButton");
 
       const registros =
         await window.FieldPhotoStorage.obtenerFotosPendientes();
+      const visitas = agruparPorVisita(registros);
 
       lista.replaceChildren();
 
       resumen.textContent =
-        registros.length === 1
-          ? "1 fotografía pendiente en este dispositivo."
-          : `${registros.length} fotografías pendientes en este dispositivo.`;
+        visitas.length === 1
+          ? `1 visita pendiente con ${registros.length} fotografía${
+              registros.length === 1 ? "" : "s"
+            }.`
+          : `${visitas.length} visitas pendientes con ${registros.length} fotografías.`;
 
       botonSincronizar.disabled = true;
       botonSincronizar.title =
         "La sincronización se habilitará en el próximo paso.";
 
-      if (!registros.length) {
+      if (!visitas.length) {
         const vacio = document.createElement("div");
         vacio.className = "field-pending-vacio";
-        vacio.textContent =
-          "No hay fotografías pendientes de sincronización.";
+        vacio.textContent = "No hay visitas pendientes de sincronización.";
         lista.appendChild(vacio);
       } else {
-        registros.forEach(registro => {
-          lista.appendChild(
-            crearTarjetaPendiente(registro, refrescarPanel)
-          );
+        visitas.forEach(visita => {
+          lista.appendChild(crearTarjetaVisita(visita, refrescarPanel));
         });
       }
 
-      console.log(
-        "Registros pendientes disponibles:",
-        registros
-      );
+      console.log("Visitas pendientes disponibles:", visitas);
     }
 
     try {
       await refrescarPanel();
     } catch (error) {
-      console.error(
-        "No fue posible mostrar los registros pendientes:",
-        error
-      );
-
+      console.error("No fue posible mostrar las visitas pendientes:", error);
       fondo.querySelector("#fieldPendingResumen").textContent =
-        "No fue posible consultar los registros pendientes.";
+        "No fue posible consultar las visitas pendientes.";
     }
   }
 
   function conectarBotonPendientes() {
     const boton = document.getElementById("pwaFotosPendientes");
-
     if (!boton) return false;
 
-    if (boton.dataset.pendingConnected === "true") {
-      return true;
-    }
+    if (boton.dataset.pendingConnected === "true") return true;
 
     boton.dataset.pendingConnected = "true";
     boton.addEventListener("click", abrirPanelPendientes);
-
     console.log("Botón de fotografías pendientes conectado.");
-
     return true;
   }
 
@@ -386,7 +416,6 @@ item
     if (conectarBotonPendientes()) return;
 
     let intentos = 0;
-
     const temporizador = window.setInterval(() => {
       intentos += 1;
 
