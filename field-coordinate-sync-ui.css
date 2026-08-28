@@ -1,0 +1,75 @@
+/* Field Coordinate Sync UI */
+.field-coordinate-sync-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.field-coordinate-sync-button,
+.field-coordinate-sync-configure {
+  width: 100%;
+  min-height: 46px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.field-coordinate-sync-button {
+  border: 1px solid #086035;
+  color: #ffffff;
+  background: #0b6b3a;
+}
+
+.field-coordinate-sync-configure {
+  border: 1px solid #9bad9f;
+  color: #173b27;
+  background: #ebf1ed;
+}
+
+.field-coordinate-sync-button:disabled,
+.field-coordinate-sync-configure:disabled {
+  border-color: #c6cec9;
+  color: #747d77;
+  background: #e3e7e4;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.field-coordinate-sync-message {
+  padding: 10px 12px;
+  border-left: 4px solid #718078;
+  border-radius: 8px;
+  color: #314139;
+  background: #eef1ef;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.field-coordinate-sync-message:empty,
+.field-coordinate-sync-message[hidden] {
+  display: none;
+}
+
+.field-coordinate-sync-message-success {
+  border-left-color: #168447;
+  color: #0d5b30;
+  background: #e8f6ee;
+}
+
+.field-coordinate-sync-message-error {
+  border-left-color: #c43333;
+  color: #761c1c;
+  background: #fdecec;
+}
+
+.field-coordinate-sync-message-info {
+  border-left-color: #1976c9;
+  color: #114e82;
+  background: #eaf4fd;
+}
