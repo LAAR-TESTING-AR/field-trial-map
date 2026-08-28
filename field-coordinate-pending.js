@@ -76,11 +76,9 @@
       "Ver coordenadas pendientes de sincronización"
     );
     boton.innerHTML = `
-      <span aria-hidden="true">📍</span>
-      <span>Coordenadas pendientes</span>
-      <strong data-field-coordinate-pending-count>0</strong>
-    `;
-
+  <span class="field-coordinate-pending-icon" aria-hidden="true">📍</span>
+  <strong data-field-coordinate-pending-count>0</strong>
+`;
     boton.addEventListener("click", () => {
       abrirPanelPendientes();
     });
