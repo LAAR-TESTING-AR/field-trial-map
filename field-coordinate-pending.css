@@ -16,7 +16,8 @@ body {
 .field-coordinate-pending-button {
   position: fixed !important;
   right: max(14px, env(safe-area-inset-right)) !important;
-  bottom: max(14px, calc(env(safe-area-inset-bottom) + 10px)) !important;
+  top: max(170px, calc(env(safe-area-inset-top) + 150px)) !important;
+bottom: auto !important;
   left: auto !important;
   top: auto !important;
   transform: none !important;
@@ -287,15 +288,10 @@ body.field-coordinate-modal-open {
 
 @media (max-width: 480px) {
   .field-coordinate-pending-button {
-    right: max(14px, env(safe-area-inset-right)) !important;
-    bottom: max(14px, calc(env(safe-area-inset-bottom) + 10px)) !important;
-    width: 46px !important;
-    min-width: 46px !important;
-    max-width: 46px !important;
-    height: 46px !important;
-    min-height: 46px !important;
-    max-height: 46px !important;
-  }
+  top: max(175px, calc(env(safe-area-inset-top) + 155px)) !important;
+  right: max(14px, env(safe-area-inset-right)) !important;
+  bottom: auto !important;
+}
 
   .field-coordinate-pending-modal-background {
     align-items: flex-end;
