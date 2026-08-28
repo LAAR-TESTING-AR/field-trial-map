@@ -1,28 +1,10 @@
 /* Field Coordinate Pending */
 .field-coordinate-pending-button{
   position:fixed;
-  right:16px;
-  bottom:16px;
-  z-index:44990;
-
-  width:52px;
-  height:52px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:0;
-
-  border:none;
-  border-radius:50%;
-
-  background:#0b6b3a;
-  color:#ffffff;
-
-  box-shadow:0 4px 14px rgba(0,0,0,.25);
-
-  overflow:visible;
+  right:18px;
+  bottom:18px;
+  width:54px;
+  height:54px;
 }
 .field-coordinate-pending-button strong{
   position:absolute;
