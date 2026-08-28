@@ -304,13 +304,16 @@
       ) {
         try {
           const resultadoHistorial =
-            await window.FieldPhotoHistory.refrescarHastaEncontrar({
-              recordId: registro.recordId,
-              visitId: registro.visitId,
-              aoiId: registro.aoiId,
-              photoType: registro.photoType,
-              photoOrder: registro.photoOrder
-            });
+            await window.FieldPhotoHistory.refrescarHastaEncontrar(
+              {
+                recordId: registro.recordId,
+                visitId: registro.visitId,
+                aoiId: registro.aoiId,
+                photoType: registro.photoType,
+                photoOrder: registro.photoOrder
+              },
+              60
+            );
 
           if (resultadoHistorial.found) {
             console.log(
