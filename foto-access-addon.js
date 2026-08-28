@@ -143,12 +143,7 @@
       ));
     }
 
-    fila.appendChild(crearBoton(
-      "boton-foto-access",
-      construirUrlFormulario(sitio),
-      '<span aria-hidden="true">📷</span> Cargar foto',
-      "Cargar foto del acceso"
-    ));
+   // Flujo antiguo basado en Forms eliminado.
 
     bloque.appendChild(fila);
     navegacion.parentNode.insertBefore(bloque, navegacion);
