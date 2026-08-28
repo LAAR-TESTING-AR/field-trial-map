@@ -6,7 +6,7 @@
 
   <title>Field Trial Map Argentina 2026-27</title>
 
-  <meta name="description" content="Mapa de ensayos, accesos e información de campo de Research Argentina.">
+  <meta name="description" content="Mapa de ensayos, accesos e informacion de campo de Research Argentina.">
   <meta name="theme-color" content="#0b6b3a">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,12 +32,12 @@
 <body>
   <header class="encabezado">
     <div class="encabezado-app">
-      <img class="encabezado-logo" src="icon-192.png" alt="Ícono de Field Trial Map">
+      <img class="encabezado-logo" src="icon-192.png" alt="Icono de Field Trial Map">
 
       <div class="encabezado-textos">
         <h1>Field Trial Map</h1>
         <p class="encabezado-subtitulo">Research Argentina 2026-27</p>
-        <p class="encabezado-funciones">Ensayos • Accesos • Fotografías • Navegación</p>
+        <p class="encabezado-funciones">Ensayos • Accesos • Fotografias • Navegacion</p>
       </div>
     </div>
   </header>
@@ -91,18 +91,67 @@
   <script src="pwa-ui.js?v=2"></script>
 
   <script>
+    let recargaPorActualizacion = false;
+
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("./service-worker.js")
-          .then(registration => {
-            registration.update();
-            console.log("Service Worker registrado:", registration.scope);
-          })
-          .catch(error => {
-            console.error("Error al registrar Service Worker:", error);
+      window.addEventListener("load", async () => {
+        try {
+          const registration = await navigator.serviceWorker.register(
+            "./service-worker.js",
+            { updateViaCache: "none" }
+          );
+
+          window.fieldTrialServiceWorkerRegistration = registration;
+
+          console.log(
+            "Service Worker registrado:",
+            registration.scope
+          );
+
+          if (registration.waiting) {
+            registration.waiting.postMessage({
+              type: "SKIP_WAITING"
+            });
+          }
+
+          registration.addEventListener("updatefound", () => {
+            const nuevoWorker = registration.installing;
+
+            if (!nuevoWorker) return;
+
+            nuevoWorker.addEventListener("statechange", () => {
+              if (
+                nuevoWorker.state === "installed" &&
+                navigator.serviceWorker.controller
+              ) {
+                nuevoWorker.postMessage({
+                  type: "SKIP_WAITING"
+                });
+              }
+            });
           });
+
+          await registration.update();
+        } catch (error) {
+          console.error(
+            "Error al registrar o actualizar Service Worker:",
+            error
+          );
+        }
       });
+
+      navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        () => {
+          if (recargaPorActualizacion) return;
+
+          recargaPorActualizacion = true;
+          console.log(
+            "Nueva version activa. Recargando la aplicacion."
+          );
+          window.location.reload();
+        }
+      );
     }
   </script>
 </body>
