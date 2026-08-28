@@ -1,0 +1,45 @@
+/* Field Coordinate Pending */
+.field-coordinate-pending-button{
+position:fixed;
+left:50%;
+bottom:max(12px,calc(env(safe-area-inset-bottom) + 8px));
+transform:translateX(-50%);
+z-index:45000;
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px 16px;
+border:1px solid #0b6b3a;
+border-radius:999px;
+background:#0b6b3a;
+color:#fff;
+font-weight:700;
+box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+.field-coordinate-pending-button strong{
+background:#fff;
+color:#0b6b3a;
+padding:2px 8px;
+border-radius:999px;
+}
+.field-coordinate-pending-modal-background{
+position:fixed;inset:0;z-index:60000;
+display:flex;align-items:center;justify-content:center;
+background:rgba(0,0,0,.55);padding:16px;
+}
+.field-coordinate-pending-modal{
+width:min(100%,700px);max-height:90vh;overflow:auto;
+background:#fff;border-radius:18px;padding:20px;position:relative;
+}
+.field-coordinate-pending-close{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;border:none;background:#0b6b3a;color:#fff;font-size:26px;}
+.field-coordinate-pending-list{display:grid;gap:12px;}
+.field-coordinate-pending-card{border:1px solid #d9e5dd;border-radius:12px;padding:12px;background:#fafcfb;}
+.field-coordinate-pending-card-header{display:flex;justify-content:space-between;gap:12px;}
+.field-coordinate-pending-data{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.field-coordinate-pending-delete,.field-coordinate-pending-close-footer{width:100%;min-height:44px;border:none;border-radius:10px;font-weight:700;}
+.field-coordinate-pending-delete{background:#c43333;color:#fff;}
+.field-coordinate-pending-close-footer{background:#0b6b3a;color:#fff;}
+@media(max-width:480px){
+.field-coordinate-pending-modal-background{align-items:flex-end;padding:0;}
+.field-coordinate-pending-modal{width:100%;max-height:92vh;border-radius:20px 20px 0 0;}
+}
