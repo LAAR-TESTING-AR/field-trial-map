@@ -2,25 +2,40 @@
 .field-coordinate-pending-button{
 position:fixed;
 right:16px;
-bottom:max(90px,calc(env(safe-area-inset-bottom) + 70px));
+bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));
 transform:none;
-z-index:45000;
+z-index:44990;
 display:flex;
 align-items:center;
-gap:8px;
-padding:10px 16px;
+justify-content:center;
+width:58px;
+height:58px;
+padding:0;
 border:1px solid #0b6b3a;
-border-radius:999px;
+border-radius:50%;
 background:#0b6b3a;
 color:#fff;
 font-weight:700;
 box-shadow:0 4px 14px rgba(0,0,0,.25);
 }
 .field-coordinate-pending-button strong{
+position:absolute;
+top:-4px;
+right:-4px;
+min-width:22px;
+height:22px;
+display:flex;
+align-items:center;
+justify-content:center;
 background:#fff;
 color:#0b6b3a;
-padding:2px 8px;
-border-radius:999px;
+border-radius:50%;
+font-size:12px;
+font-weight:700;
+padding:0;
+}
+.field-coordinate-pending-button span{
+  display:none;
 }
 .field-coordinate-pending-modal-background{
 position:fixed;inset:0;z-index:60000;
@@ -42,4 +57,5 @@ background:#fff;border-radius:18px;padding:20px;position:relative;
 @media(max-width:480px){
 .field-coordinate-pending-modal-background{align-items:flex-end;padding:0;}
 .field-coordinate-pending-modal{width:100%;max-height:92vh;border-radius:20px 20px 0 0;}
+  .field-coordinate-pending-button{right:16px;bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));}
 }
