@@ -300,6 +300,39 @@
 
       if (
         window.FieldPhotoHistory &&
+        typeof window.FieldPhotoHistory.refrescarHastaEncontrar === "function"
+      ) {
+        try {
+          const resultadoHistorial =
+            await window.FieldPhotoHistory.refrescarHastaEncontrar({
+              recordId: registro.recordId,
+              visitId: registro.visitId,
+              aoiId: registro.aoiId,
+              photoType: registro.photoType,
+              photoOrder: registro.photoOrder
+            });
+
+          if (resultadoHistorial.found) {
+            console.log(
+              "La visita sincronizada ya está disponible en el historial.",
+              {
+                recordId: registro.recordId,
+                attempts: resultadoHistorial.attempts
+              }
+            );
+          } else {
+            console.warn(
+              "La visita se sincronizó correctamente, pero GitHub todavía no la publicó en AccessPhotos.csv. El historial podrá actualizarse al volver a abrirlo."
+            );
+          }
+        } catch (error) {
+          console.warn(
+            "La visita se sincronizó correctamente, pero no fue posible refrescar el historial:",
+            error
+          );
+        }
+      } else if (
+        window.FieldPhotoHistory &&
         typeof window.FieldPhotoHistory.cargarHistorial === "function"
       ) {
         try {
