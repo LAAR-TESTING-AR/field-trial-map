@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v8";
+const CACHE_NAME = "field-trial-map-v9";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -34,28 +34,35 @@ const APP_SHELL = [
   `${BASE_PATH}icon-512.png`,
   `${BASE_PATH}apple-touch-icon.png`
 ];
+
 self.addEventListener("install", event => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
       .then(cache => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
   );
-
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames
-          .filter(cacheName => cacheName !== CACHE_NAME)
-          .map(cacheName => caches.delete(cacheName))
-      );
-    })
+    Promise.all([
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames
+            .filter(cacheName => cacheName !== CACHE_NAME)
+            .map(cacheName => caches.delete(cacheName))
+        );
+      }),
+      self.clients.claim()
+    ])
   );
+});
 
-  self.clients.claim();
+self.addEventListener("message", event => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("fetch", event => {
@@ -67,8 +74,8 @@ self.addEventListener("fetch", event => {
   }
 
   /*
-    Navegación:
-    primero red; si no hay conexión, usar index.html guardado.
+    Navegacion:
+    primero red; si no hay conexion, usar index.html guardado.
   */
   if (request.mode === "navigate") {
     event.respondWith(
@@ -76,24 +83,19 @@ self.addEventListener("fetch", event => {
         .then(response => {
           const copia = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(
-              `${BASE_PATH}index.html`,
-              copia
-            );
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(`${BASE_PATH}index.html`, copia);
+            })
+          );
 
           return response;
         })
         .catch(async () => {
           return (
-            await caches.match(
-              `${BASE_PATH}index.html`
-            )
+            await caches.match(`${BASE_PATH}index.html`)
           ) || (
-            await caches.match(
-              `${BASE_PATH}offline.html`
-            )
+            await caches.match(`${BASE_PATH}offline.html`)
           );
         })
     );
@@ -104,32 +106,29 @@ self.addEventListener("fetch", event => {
   /*
     Sitios.csv:
     se guarda siempre con una clave fija,
-    ignorando el parámetro ?v=...
+    ignorando el parametro ?v=...
   */
   if (url.pathname.endsWith("/Sitios.csv")) {
-    const claveSitios =
-      `${BASE_PATH}Sitios.csv`;
+    const claveSitios = `${BASE_PATH}Sitios.csv`;
 
     event.respondWith(
       fetch(request)
         .then(response => {
           if (!response || !response.ok) {
-            throw new Error(
-              "No fue posible actualizar Sitios.csv"
-            );
+            throw new Error("No fue posible actualizar Sitios.csv");
           }
 
           const copia = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(claveSitios, copia);
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(claveSitios, copia);
+            })
+          );
 
           return response;
         })
-        .catch(() => {
-          return caches.match(claveSitios);
-        })
+        .catch(() => caches.match(claveSitios))
     );
 
     return;
@@ -139,65 +138,54 @@ self.addEventListener("fetch", event => {
     AccessPhotos.csv:
     misma estrategia con una clave fija.
   */
-  if (
-    url.pathname.endsWith(
-      "/AccessPhotos.csv"
-    )
-  ) {
-    const claveFotos =
-      `${BASE_PATH}AccessPhotos.csv`;
+  if (url.pathname.endsWith("/AccessPhotos.csv")) {
+    const claveFotos = `${BASE_PATH}AccessPhotos.csv`;
 
     event.respondWith(
       fetch(request)
         .then(response => {
           if (!response || !response.ok) {
-            throw new Error(
-              "No fue posible actualizar AccessPhotos.csv"
-            );
+            throw new Error("No fue posible actualizar AccessPhotos.csv");
           }
 
           const copia = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(claveFotos, copia);
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(claveFotos, copia);
+            })
+          );
 
           return response;
         })
-        .catch(() => {
-          return caches.match(claveFotos);
-        })
+        .catch(() => caches.match(claveFotos))
     );
 
     return;
   }
 
   /*
-    Fotografías públicas:
-    red primero y caché como respaldo.
+    Fotografias publicas:
+    red primero y cache como respaldo.
   */
   if (
-    url.pathname.includes(
-      "/images/access/"
-    ) ||
-    url.pathname.includes(
-      "/images/trial/"
-    )
+    url.pathname.includes("/images/access/") ||
+    url.pathname.includes("/images/trial/")
   ) {
     event.respondWith(
       fetch(request)
         .then(response => {
           if (!response || !response.ok) {
-            throw new Error(
-              "No fue posible descargar la fotografía"
-            );
+            throw new Error("No fue posible descargar la fotografia");
           }
 
           const copia = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, copia);
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(request, copia);
+            })
+          );
 
           return response;
         })
@@ -212,8 +200,8 @@ self.addEventListener("fetch", event => {
   }
 
   /*
-    JavaScript, CSS, íconos y otros recursos:
-    ignorar parámetros como ?v=10 al buscar en caché.
+    JavaScript, CSS, iconos y otros recursos:
+    usar cache y recurrir a la red cuando el recurso no esta guardado.
   */
   event.respondWith(
     caches
@@ -236,9 +224,11 @@ self.addEventListener("fetch", event => {
 
           const copia = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, copia);
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(request, copia);
+            })
+          );
 
           return response;
         });
