@@ -1,0 +1,275 @@
+/* =========================================================
+   Field Coordinate Capture
+   Modal para captura GPS de Trial y Access
+   ========================================================= */
+
+.field-coordinate-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 60000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  padding:
+    max(14px, env(safe-area-inset-top))
+    max(14px, env(safe-area-inset-right))
+    max(14px, env(safe-area-inset-bottom))
+    max(14px, env(safe-area-inset-left));
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(8, 24, 17, 0.72);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.field-coordinate-modal {
+  position: relative;
+  width: min(100%, 520px);
+  max-height: calc(100dvh - 28px);
+  margin: auto;
+  padding: 24px 18px 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(11, 107, 58, 0.22);
+  border-radius: 18px;
+  color: #17231c;
+  background: #ffffff;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+.field-coordinate-modal h2 {
+  margin: 0 46px 8px 0;
+  color: #0b6b3a;
+  font-size: clamp(22px, 5.5vw, 28px);
+  line-height: 1.15;
+}
+
+.field-coordinate-modal h3 {
+  margin: 0 0 10px;
+  color: #1d3b2a;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.field-coordinate-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #0b6b3a;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.field-coordinate-context {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #34483b;
+  background: #edf5f0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.field-coordinate-current,
+.field-coordinate-capture {
+  margin: 0 0 14px;
+  padding: 14px;
+  border: 1px solid #d9e5dd;
+  border-radius: 12px;
+  background: #f9fbfa;
+}
+
+.field-coordinate-current p,
+.field-coordinate-result p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 7px 0;
+  color: #34483b;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.field-coordinate-current strong,
+.field-coordinate-result strong {
+  color: #122c1d;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.field-coordinate-status {
+  margin: 0;
+  padding: 11px 12px;
+  border-left: 4px solid #76877d;
+  border-radius: 8px;
+  color: #314139;
+  background: #eef1ef;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.field-coordinate-status-excelente,
+.field-coordinate-status-guardado {
+  border-left-color: #168447;
+  color: #0d5b30;
+  background: #e8f6ee;
+}
+
+.field-coordinate-status-aceptable {
+  border-left-color: #d49b16;
+  color: #674b08;
+  background: #fff7df;
+}
+
+.field-coordinate-status-baja {
+  border-left-color: #e4791f;
+  color: #743607;
+  background: #fff0e3;
+}
+
+.field-coordinate-status-error {
+  border-left-color: #c43333;
+  color: #761c1c;
+  background: #fdecec;
+}
+
+.field-coordinate-status-midiendo {
+  border-left-color: #1976c9;
+  color: #114e82;
+  background: #eaf4fd;
+}
+
+.field-coordinate-result {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #d9e5dd;
+}
+
+.field-coordinate-result[hidden] {
+  display: none !important;
+}
+
+.field-coordinate-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.field-coordinate-actions button {
+  min-height: 48px;
+  width: 100%;
+  margin: 0;
+  padding: 11px 14px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.field-coordinate-measure {
+  border: 1px solid #126fbe;
+  color: #ffffff;
+  background: #1976c9;
+}
+
+.field-coordinate-save {
+  border: 1px solid #086035;
+  color: #ffffff;
+  background: #0b6b3a;
+}
+
+.field-coordinate-cancel {
+  border: 1px solid #b8c3bc;
+  color: #33483b;
+  background: #f0f3f1;
+}
+
+.field-coordinate-actions button:disabled {
+  border-color: #c8cfca;
+  color: #747d77;
+  background: #e4e8e5;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.field-coordinate-popup-action {
+  margin: 8px 0;
+}
+
+.field-coordinate-popup-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 9px 12px;
+  border: 1px solid #b9c8bf;
+  border-radius: 10px;
+  color: #173b27;
+  background: #e8efe9;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+  .field-coordinate-modal-fondo {
+    align-items: flex-end;
+    padding:
+      max(8px, env(safe-area-inset-top))
+      0
+      0;
+  }
+
+  .field-coordinate-modal {
+    width: 100%;
+    max-height: calc(100dvh - max(8px, env(safe-area-inset-top)));
+    margin: auto 0 0;
+    padding:
+      22px
+      16px
+      max(18px, calc(env(safe-area-inset-bottom) + 10px));
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .field-coordinate-modal h2 {
+    font-size: 24px;
+  }
+}
