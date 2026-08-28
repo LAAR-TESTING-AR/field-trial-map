@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v10";
+const CACHE_NAME = "field-trial-map-v11";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -31,6 +31,9 @@ const APP_SHELL = [
   `${BASE_PATH}field-photo-history-ui.js`,
   `${BASE_PATH}field-photo-history-viewer.js`,
   `${BASE_PATH}field-photo-timeline-icons.js`,
+  `${BASE_PATH}field-coordinate-storage.js`,
+  `${BASE_PATH}field-coordinate-capture.js`,
+  `${BASE_PATH}field-coordinate-popup-integration.js`,
   `${BASE_PATH}pwa-ui.js`,
 
   `${BASE_PATH}icon-192.png`,
