@@ -195,12 +195,30 @@
           })}
         </span>
 
-        <span class="field-timeline-score">
-          ${scoreValido ? score : "–"}
+                <span
+          class="field-timeline-score"
+          data-score="${scoreValido ? score : "–"}"
+        >
+          SC ${scoreValido ? score : "–"}
         </span>
 
-        <span class="field-timeline-stage">
-          ${escaparHTML(visita.cropStage || "Sin estadio")}
+        <span class="field-timeline-score-label">
+          ${escaparHTML(
+            scoreValido
+              ? etiquetaScore(score)
+              : "Sin evaluar"
+          )}
+        </span>
+
+        <span
+          class="field-timeline-stage"
+          data-stage="${escaparHTML(
+            visita.cropStage || "Sin estadio"
+          )}"
+        >
+          Estadio ${escaparHTML(
+            visita.cropStage || "Sin estadio"
+          )}
         </span>
       `;
 
