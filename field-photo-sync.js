@@ -127,14 +127,14 @@
       location: String(registro.location || ""),
       photoType: String(registro.photoType || ""),
       crop: String(registro.crop || ""),
-cropStage: String(registro.cropStage || ""),
-visitScore:
-  registro.visitScore === null ||
-  registro.visitScore === undefined ||
-  registro.visitScore === ""
-    ? null
-    : Number(registro.visitScore),
-comments: String(registro.comments || ""),
+      cropStage: String(registro.cropStage || ""),
+      visitScore:
+        registro.visitScore === null ||
+        registro.visitScore === undefined ||
+        registro.visitScore === ""
+          ? null
+          : Number(registro.visitScore),
+      comments: String(registro.comments || ""),
       captureDate: String(
         registro.captureDate || new Date().toISOString()
       ),
@@ -154,6 +154,68 @@ comments: String(registro.comments || ""),
     } catch (_) {
       return { message: texto };
     }
+  }
+
+  async function buscarActualizacionPWA() {
+    if (!("serviceWorker" in navigator) || !navigator.onLine) {
+      return false;
+    }
+
+    try {
+      const registration =
+        window.fieldTrialServiceWorkerRegistration ||
+        await navigator.serviceWorker.getRegistration(
+          "/field-trial-map/"
+        );
+
+      if (!registration) {
+        console.warn(
+          "No se encontró el registro del Service Worker."
+        );
+        return false;
+      }
+
+      console.log(
+        "Sincronización finalizada. Buscando una actualización de la PWA..."
+      );
+
+      await registration.update();
+
+      if (registration.waiting) {
+        registration.waiting.postMessage({
+          type: "SKIP_WAITING"
+        });
+      }
+
+      return true;
+    } catch (error) {
+      console.warn(
+        "La sincronización terminó correctamente, pero no fue posible comprobar la actualización de la PWA:",
+        error
+      );
+      return false;
+    }
+  }
+
+  async function buscarActualizacionSiNoQuedanPendientes() {
+    if (
+      !window.FieldPhotoStorage ||
+      typeof window.FieldPhotoStorage.obtenerFotosPendientes !== "function"
+    ) {
+      return false;
+    }
+
+    const pendientes =
+      await window.FieldPhotoStorage.obtenerFotosPendientes();
+
+    if (pendientes.length > 0) {
+      console.log(
+        `Quedan ${pendientes.length} fotografía(s) pendiente(s). La actualización de la PWA se comprobará al finalizar.`
+      );
+      return false;
+    }
+
+    return buscarActualizacionPWA();
   }
 
   async function enviarRegistro(registro) {
@@ -235,24 +297,28 @@ comments: String(registro.comments || ""),
       window.dispatchEvent(
         new CustomEvent("fieldphotos:pending-updated")
       );
-if (
-  window.FieldPhotoHistory &&
-  typeof window.FieldPhotoHistory.cargarHistorial === "function"
-) {
-  try {
-    await window.FieldPhotoHistory.cargarHistorial(true);
-  } catch (error) {
-    console.warn(
-      "No fue posible refrescar el historial:",
-      error
-    );
-  }
-}
+
+      if (
+        window.FieldPhotoHistory &&
+        typeof window.FieldPhotoHistory.cargarHistorial === "function"
+      ) {
+        try {
+          await window.FieldPhotoHistory.cargarHistorial(true);
+        } catch (error) {
+          console.warn(
+            "No fue posible refrescar el historial:",
+            error
+          );
+        }
+      }
+
       console.log("Field Photo sincronizada:", {
         recordId: registro.recordId,
         visitId: registro.visitId,
         photoOrder: registro.photoOrder
       });
+
+      await buscarActualizacionSiNoQuedanPendientes();
 
       return {
         success: true,
@@ -296,6 +362,8 @@ if (
       await window.FieldPhotoStorage.obtenerFotosPendientes();
 
     if (!pendientes.length) {
+      await buscarActualizacionPWA();
+
       return {
         success: true,
         empty: true,
@@ -327,6 +395,7 @@ if (
     enviarRegistro,
     sincronizarRegistro,
     sincronizarPrimeraPendiente,
+    buscarActualizacionPWA,
     estaSincronizando
   };
 
