@@ -235,7 +235,19 @@ comments: String(registro.comments || ""),
       window.dispatchEvent(
         new CustomEvent("fieldphotos:pending-updated")
       );
-
+if (
+  window.FieldPhotoHistory &&
+  typeof window.FieldPhotoHistory.cargarHistorial === "function"
+) {
+  try {
+    await window.FieldPhotoHistory.cargarHistorial(true);
+  } catch (error) {
+    console.warn(
+      "No fue posible refrescar el historial:",
+      error
+    );
+  }
+}
       console.log("Field Photo sincronizada:", {
         recordId: registro.recordId,
         visitId: registro.visitId,
