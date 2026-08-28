@@ -15,11 +15,10 @@ body {
 
 .field-coordinate-pending-button {
   position: fixed !important;
-  right: max(14px, env(safe-area-inset-right)) !important;
-  top: max(170px, calc(env(safe-area-inset-top) + 150px)) !important;
-bottom: auto !important;
+ right: 14px !important;
+top: auto !important;
+bottom: 85px !important;
   left: auto !important;
-  top: auto !important;
   transform: none !important;
   z-index: 45010 !important;
   display: flex !important;
@@ -287,10 +286,12 @@ body.field-coordinate-modal-open {
 }
 
 @media (max-width: 480px) {
-  .field-coordinate-pending-button {
-  top: max(175px, calc(env(safe-area-inset-top) + 155px)) !important;
-  right: max(14px, env(safe-area-inset-right)) !important;
-  bottom: auto !important;
+.field-coordinate-pending-button {
+    right: 14px !important;
+    top: auto !important;
+    bottom: 85px !important;
+  }
+
 }
 
   .field-coordinate-pending-modal-background {
