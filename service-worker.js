@@ -1,34 +1,37 @@
-const CACHE_NAME = "field-trial-map-v9";
+const CACHE_NAME = "field-trial-map-v10";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
   BASE_PATH,
   `${BASE_PATH}index.html`,
+  `${BASE_PATH}offline.html`,
+  `${BASE_PATH}manifest.webmanifest`,
+
   `${BASE_PATH}style.css`,
-  `${BASE_PATH}app.js`,
-
-  `${BASE_PATH}drop-trial-addon.css`,
-  `${BASE_PATH}drop-trial-addon.js`,
-
   `${BASE_PATH}foto-access-addon.css`,
-  `${BASE_PATH}foto-access-addon.js`,
-
   `${BASE_PATH}popup-mobile-addon.css`,
-  `${BASE_PATH}popup-mobile-addon.js`,
-
+  `${BASE_PATH}drop-trial-addon.css`,
   `${BASE_PATH}filtros-dependientes-v3.css`,
-  `${BASE_PATH}filtros-dependientes-v3.js`,
-
   `${BASE_PATH}field-photo-capture.css`,
-  `${BASE_PATH}field-photo-capture.js`,
-  `${BASE_PATH}field-photo-pending.js`,
-
+  `${BASE_PATH}field-photo-history.css`,
   `${BASE_PATH}pwa-ui.css`,
-  `${BASE_PATH}pwa-ui.js`,
   `${BASE_PATH}header-app.css`,
 
-  `${BASE_PATH}manifest.webmanifest`,
-  `${BASE_PATH}offline.html`,
+  `${BASE_PATH}app.js`,
+  `${BASE_PATH}drop-trial-addon.js`,
+  `${BASE_PATH}foto-access-addon.js`,
+  `${BASE_PATH}popup-mobile-addon.js`,
+  `${BASE_PATH}filtros-dependientes-v3.js`,
+  `${BASE_PATH}field-photo-capture.js`,
+  `${BASE_PATH}field-photo-popup-integration.js`,
+  `${BASE_PATH}field-photo-sync.js`,
+  `${BASE_PATH}field-photo-pending.js`,
+  `${BASE_PATH}field-photo-sync-ui.js`,
+  `${BASE_PATH}field-photo-history.js`,
+  `${BASE_PATH}field-photo-history-ui.js`,
+  `${BASE_PATH}field-photo-history-viewer.js`,
+  `${BASE_PATH}field-photo-timeline-icons.js`,
+  `${BASE_PATH}pwa-ui.js`,
 
   `${BASE_PATH}icon-192.png`,
   `${BASE_PATH}icon-512.png`,
@@ -75,12 +78,16 @@ self.addEventListener("fetch", event => {
 
   /*
     Navegacion:
-    primero red; si no hay conexion, usar index.html guardado.
+    primero red; si no hay conexion, usar index.html u offline.html.
   */
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then(response => {
+          if (!response || !response.ok) {
+            throw new Error("No fue posible actualizar la pagina principal");
+          }
+
           const copia = response.clone();
 
           event.waitUntil(
@@ -105,14 +112,14 @@ self.addEventListener("fetch", event => {
 
   /*
     Sitios.csv:
-    se guarda siempre con una clave fija,
-    ignorando el parametro ?v=...
+    siempre intentar descargar la version mas reciente.
+    La copia se guarda con una clave fija, sin parametros ?v=...
   */
   if (url.pathname.endsWith("/Sitios.csv")) {
     const claveSitios = `${BASE_PATH}Sitios.csv`;
 
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then(response => {
           if (!response || !response.ok) {
             throw new Error("No fue posible actualizar Sitios.csv");
@@ -136,13 +143,14 @@ self.addEventListener("fetch", event => {
 
   /*
     AccessPhotos.csv:
-    misma estrategia con una clave fija.
+    siempre intentar descargar la version mas reciente.
+    La copia se guarda con una clave fija, sin parametros ?v=...
   */
   if (url.pathname.endsWith("/AccessPhotos.csv")) {
     const claveFotos = `${BASE_PATH}AccessPhotos.csv`;
 
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then(response => {
           if (!response || !response.ok) {
             throw new Error("No fue posible actualizar AccessPhotos.csv");
@@ -165,15 +173,52 @@ self.addEventListener("fetch", event => {
   }
 
   /*
+    JavaScript y CSS propios de la aplicacion:
+    red primero para recibir cambios nuevos sin Ctrl + Shift + R.
+    Si no hay conexion, usar la ultima copia guardada.
+  */
+  if (
+    url.origin === self.location.origin &&
+    (url.pathname.endsWith(".js") || url.pathname.endsWith(".css"))
+  ) {
+    event.respondWith(
+      fetch(request, { cache: "no-store" })
+        .then(response => {
+          if (!response || !response.ok) {
+            throw new Error("No fue posible actualizar el recurso");
+          }
+
+          const copia = response.clone();
+          const claveSinVersion = url.pathname;
+
+          event.waitUntil(
+            caches.open(CACHE_NAME).then(cache => {
+              return cache.put(claveSinVersion, copia);
+            })
+          );
+
+          return response;
+        })
+        .catch(() => {
+          return caches.match(url.pathname, {
+            ignoreSearch: true
+          });
+        })
+    );
+
+    return;
+  }
+
+  /*
     Fotografias publicas:
-    red primero y cache como respaldo.
+    red primero y cache como respaldo offline.
   */
   if (
     url.pathname.includes("/images/access/") ||
     url.pathname.includes("/images/trial/")
   ) {
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then(response => {
           if (!response || !response.ok) {
             throw new Error("No fue posible descargar la fotografia");
@@ -200,8 +245,8 @@ self.addEventListener("fetch", event => {
   }
 
   /*
-    JavaScript, CSS, iconos y otros recursos:
-    usar cache y recurrir a la red cuando el recurso no esta guardado.
+    Recursos externos, iconos y otros archivos:
+    usar cache primero y recurrir a la red si no estan guardados.
   */
   event.respondWith(
     caches
