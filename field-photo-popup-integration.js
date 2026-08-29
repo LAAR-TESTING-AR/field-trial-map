@@ -106,16 +106,32 @@
     return;
   }
 
-  window.crearPopupTrial = function (sitio) {
-    const html = crearPopupTrialAnterior(sitio);
-    const historial = botonHistorial(sitio, "Trial");
+ window.crearPopupTrial = function (sitio) {
+  const html = crearPopupTrialAnterior(sitio);
+  const historial = botonHistorial(sitio, "Trial");
 
-    if (esDrop(sitio)) {
-      return insertarAntesDeNavegacion(
-        html,
-        historial
-      );
-    }
+  if (esDrop(sitio)) {
+    return insertarAntesDeNavegacion(
+      html,
+      historial
+    );
+  }
+
+  if (
+    window.FieldTrialAppMode &&
+    window.FieldTrialAppMode.isViewer
+  ) {
+    return insertarAntesDeNavegacion(
+      html,
+      historial
+    );
+  }
+
+  return insertarAntesDeNavegacion(
+    html,
+    botonCaptura(sitio, "Trial") + historial
+  );
+};
 
     return insertarAntesDeNavegacion(
       html,
@@ -123,15 +139,25 @@
     );
   };
 
-  window.crearPopupAccess = function (sitio) {
-    const html = crearPopupAccessAnterior(sitio);
+window.crearPopupAccess = function (sitio) {
+  const html = crearPopupAccessAnterior(sitio);
 
+  if (
+    window.FieldTrialAppMode &&
+    window.FieldTrialAppMode.isViewer
+  ) {
     return insertarAntesDeNavegacion(
       html,
-      botonCaptura(sitio, "Access") +
-        botonHistorial(sitio, "Access")
+      botonHistorial(sitio, "Access")
     );
-  };
+  }
+
+  return insertarAntesDeNavegacion(
+    html,
+    botonCaptura(sitio, "Access") +
+      botonHistorial(sitio, "Access")
+  );
+};
 
   document.addEventListener("click", evento => {
     const boton = evento.target.closest(
