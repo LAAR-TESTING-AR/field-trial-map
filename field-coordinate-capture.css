@@ -222,18 +222,27 @@
 }
 
 .field-coordinate-popup-action {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 8px 0;
 }
 
-.field-coordinate-popup-button {
-  display: flex;
+.field-coordinate-popup-action .field-coordinate-popup-button {
+  display: flex !important;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  width: 100%;
-  padding: 10px 14px;
+  width: auto !important;
+  min-width: 190px;
+  max-width: calc(100% - 24px);
+  min-height: 42px;
 
+  margin: 0 auto !important;
+  padding: 9px 16px;
+
+  box-sizing: border-box;
   border: 1px solid #b9c8bf;
   border-radius: 10px;
 
@@ -244,11 +253,15 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
+  white-space: normal;
+  text-align: center;
+
+  visibility: visible !important;
+  opacity: 1 !important;
 
   cursor: pointer;
   touch-action: manipulation;
 }
-
 @media (max-width: 480px) {
   .field-coordinate-modal-fondo {
     align-items: flex-end;
