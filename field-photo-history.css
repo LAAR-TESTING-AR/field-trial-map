@@ -230,35 +230,36 @@
   margin: 7px 0;
 }
 
-.fie*d-photo-popup-action .boton-regist*ar-visita,
-.field-photo-popup-acti*n .boton-ver-historial {
-  display* flex;
+.field-photo-popup-action .boton-registrar-visita,
+.field-photo-popup-action .boton-ver-historial {
+  display: flex;
   align-items: center;
-  ju*tify-content: center;
+   justify-content: center;
   gap: 8px;
    width: auto;
    min-width: 230px;
-  min-height: 46px;*  margin: 0;
-  padding: 10px 14px;*
+   min-height: 46px;
+   margin: 0;
+  padding: 10px 14px;
   box-sizing: border-box;
-  borde*: 0;
+  borde: 0;
   border-radius: 9px;
 
-  colo*: #ffffff;
+  color: #ffffff;
   background: #1976d2;
-*  font-family: inherit;
-  font-siz*: 16px;
+   font-family: inherit;
+  font-size: 16px;
   font-weight: 700;
-  line*height: 1.2;
+  line-height: 1.2;
 
   cursor: pointer;
-}*
-.field-photo-popup-action .boton-*egistrar-visita:hover,
-.field-phot*-popup-action .boton-registrar-vis*ta:focus-visible,
-.field-photo-pop*p-action .boton-ver-historial:hove*,
+}
+.field-photo-popup-action .boton-registrar-visita:hover,
+.field-photo-popup-action .boton-registrar-visita:focus-visible,
+.field-photo-popup-action .boton-ver-historial:hove,
 .field-photo-popup-action .boton*ver-historial:focus-visible {
-  co*or: #ffffff;
-  background: #145ea8*
+  color: #ffffff;
+  background: #145ea8
   outline: none;
 }
 @media (max-width: 700px) {
