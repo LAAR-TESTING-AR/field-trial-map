@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v18";
+const CACHE_NAME = "field-trial-map-v19";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -11,6 +11,7 @@ const APP_SHELL = [
   `${BASE_PATH}manifest-selector.js`,
 
   `${BASE_PATH}style.css`,
+  `${BASE_PATH}summary-toolbar.css`,
   `${BASE_PATH}foto-access-addon.css`,
   `${BASE_PATH}popup-mobile-addon.css`,
   `${BASE_PATH}drop-trial-addon.css`,
@@ -28,6 +29,7 @@ const APP_SHELL = [
   `${BASE_PATH}header-app.css`,
   `${BASE_PATH}app.js`,
   `${BASE_PATH}drop-trial-addon.js`,
+  `${BASE_PATH}summary-toolbar.js`,
   `${BASE_PATH}foto-access-addon.js`,
   `${BASE_PATH}popup-mobile-addon.js`,
   `${BASE_PATH}filtros-dependientes-v3.js`,
