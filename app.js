@@ -190,8 +190,6 @@ function crearPopupTrial(sitio) {
       ${linea("Operación", sitio.operations)}
       ${linea("Cultivo", sitio.crop)}
       ${linea("Estado LAAR 2026-2027", sitio.laarStatus)}
-      ${linea("Temporada", sitio.season)}
-      ${linea("Estación", sitio.station)}
       ${linea("Provincia", sitio.province)}
       ${linea("Región", sitio.region)}
       ${linea("FTS", sitio.fts)}
