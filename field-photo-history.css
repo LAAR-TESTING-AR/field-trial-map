@@ -224,7 +224,9 @@
 
 /* Botones principales incorporados en los popups */
 .field-photo-popup-action {
-  wi*th: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 7px 0;
 }
 
@@ -234,7 +236,8 @@
   align-items: center;
   ju*tify-content: center;
   gap: 8px;
-*  width: 100%;
+   width: auto;
+   min-width: 230px;
   min-height: 46px;*  margin: 0;
   padding: 10px 14px;*
   box-sizing: border-box;
