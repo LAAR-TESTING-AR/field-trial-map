@@ -8,6 +8,12 @@
       .includes("drop");
   }
 
+  function busquedaEspecial() {
+    return typeof window.obtenerBusquedaEspecial === "function"
+      ? window.obtenerBusquedaEspecial()
+      : "";
+  }
+
   const crearIconoTrialOriginal = window.crearIconoTrial;
   const crearPopupTrialOriginal = window.crearPopupTrial;
   const actualizarLeyendaOriginal = window.actualizarLeyenda;
@@ -22,12 +28,9 @@
   }
 
   window.crearIconoTrial = function (cultivo, sitio) {
-    if (!esTrialDrop(sitio)) {
-      return crearIconoTrialOriginal(cultivo);
-    }
+    if (!esTrialDrop(sitio)) return crearIconoTrialOriginal(cultivo);
 
     const cfg = configuracionCultivo(cultivo);
-
     return L.divIcon({
       className: "marcador-drop-contenedor",
       html: `
@@ -48,7 +51,7 @@
 
     const aviso = `
       <div class="aviso-trial-drop" role="status">
-        <strong>DROP — NO VISITAR</strong>
+        <strong>DROP - NO VISITAR</strong>
         ${sitio.description ? `<span>${escaparHTML(sitio.description)}</span>` : ""}
       </div>
     `;
@@ -58,10 +61,9 @@
       `${aviso}<div class="popup-detalles">`
     );
 
-    /* Oculta navegación del Trial descartado para evitar visitas accidentales. */
     html = html.replace(
       /<div class="botones-navegacion">[\s\S]*?<\/div>\s*<\/div>$/,
-      '</div>'
+      "</div>"
     );
 
     return html;
@@ -80,27 +82,36 @@
       "beforeend",
       `
         <div class="item-leyenda item-leyenda-drop">
-          <span class="muestra-drop-leyenda" aria-hidden="true">
-            <span>×</span>
-          </span>
-          <span>Trial Drop — No visitar</span>
+          <span class="muestra-drop-leyenda" aria-hidden="true"><span>×</span></span>
+          <span>Trial Drop - No visitar</span>
         </div>
       `
     );
   };
 
-  /* actualizarMapa invoca crearIconoTrial(cultivo). Necesitamos pasar también el sitio. */
-  const actualizarMapaOriginal = window.actualizarMapa;
   window.actualizarMapa = function () {
     capaMarcadores.clearLayers();
+
     const sitiosFiltrados = sitios.filter(coincideConFiltros);
     const coordenadas = [];
+    const modo = busquedaEspecial();
     let cantidadTrials = 0;
     let cantidadAccess = 0;
     let cantidadDrop = 0;
 
     sitiosFiltrados.forEach(sitio => {
-      if (tieneTrial(sitio)) {
+      const esDrop = esTrialDrop(sitio);
+      const mostrarTrial =
+        tieneTrial(sitio) &&
+        modo !== "access" &&
+        (modo !== "drop" || esDrop);
+
+      const mostrarAccess =
+        tieneAccess(sitio) &&
+        modo !== "trial" &&
+        modo !== "drop";
+
+      if (mostrarTrial) {
         L.marker(
           [sitio.latitudeTrial, sitio.longitudeTrial],
           { icon: window.crearIconoTrial(sitio.crop, sitio) }
@@ -114,10 +125,10 @@
 
         coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
         cantidadTrials += 1;
-        if (esTrialDrop(sitio)) cantidadDrop += 1;
+        if (esDrop) cantidadDrop += 1;
       }
 
-      if (tieneAccess(sitio)) {
+      if (mostrarAccess) {
         const sitioAccess = {
           ...sitio,
           latitude: sitio.latitudeAccess,
@@ -153,5 +164,5 @@
     }
   };
 
-  console.log("Visualización de Trials Drop habilitada.");
+  console.log("Visualización de Trials Drop y búsqueda por tipo habilitadas.");
 })();
