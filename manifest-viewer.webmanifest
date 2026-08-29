@@ -1,0 +1,32 @@
+{
+  "id": "/field-trial-map/viewer",
+  "name": "Field Trial Map Viewer",
+  "short_name": "Trial Viewer",
+  "description": "Consulta de ensayos, accesos e historial de visitas.",
+  "start_url": "/field-trial-map/?mode=viewer",
+  "scope": "/field-trial-map/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0b6b3a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
