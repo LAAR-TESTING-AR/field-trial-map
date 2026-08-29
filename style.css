@@ -9,7 +9,11 @@ body { display: flex; flex-direction: column; }
 .panel button { border: none; background: #e8eee9; color: #24442e; font-weight: 600; cursor: pointer; }
 .resumen { padding: 8px 14px; background: #f0f4f1; border-bottom: 1px solid #d8ded9; font-size: 14px; font-weight: 600; }
 #mapa { width: 100%; flex: 1; min-height: 450px; }
-.leaflet-popup-content { min-width: 235px; margin: 14px; }
+.leaflet-popup-content {
+  width: 245px;
+  min-width: 245px;
+  margin: 12px;
+}
 .leaflet-popup-content h2 { margin: 0 0 10px; color: #176b3a; font-size: 19px; }
 .leaflet-popup-content p { margin: 5px 0; line-height: 1.35; }
 .botones-navegacion { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 12px; }
