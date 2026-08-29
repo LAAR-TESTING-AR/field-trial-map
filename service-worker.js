@@ -1,9 +1,10 @@
-const CACHE_NAME = "field-trial-map-v15";
+const CACHE_NAME = "field-trial-map-v16";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
   BASE_PATH,
   `${BASE_PATH}index.html`,
+  `${BASE_PATH}viewer.html`,
   `${BASE_PATH}offline.html`,
   `${BASE_PATH}manifest.webmanifest`,
   `${BASE_PATH}manifest-viewer.webmanifest`,
