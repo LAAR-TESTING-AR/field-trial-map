@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v14";
+const CACHE_NAME = "field-trial-map-v15";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -6,6 +6,8 @@ const APP_SHELL = [
   `${BASE_PATH}index.html`,
   `${BASE_PATH}offline.html`,
   `${BASE_PATH}manifest.webmanifest`,
+  `${BASE_PATH}manifest-viewer.webmanifest`,
+  `${BASE_PATH}manifest-selector.js`,
 
   `${BASE_PATH}style.css`,
   `${BASE_PATH}foto-access-addon.css`,
