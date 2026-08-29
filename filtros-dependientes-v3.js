@@ -10,9 +10,23 @@
 
   const limpiar = valor => String(valor ?? "").trim();
 
+  function obtenerBusquedaEspecial() {
+    const q = limpiar(busqueda.value).toLowerCase();
+    return ["trial", "access", "drop"].includes(q) ? q : "";
+  }
+
+  window.obtenerBusquedaEspecial = obtenerBusquedaEspecial;
+
   function coincideBusqueda(sitio) {
     const q = limpiar(busqueda.value).toLowerCase();
     if (!q) return true;
+
+    const especial = obtenerBusquedaEspecial();
+    if (especial === "trial") return tieneTrial(sitio);
+    if (especial === "access") return tieneAccess(sitio);
+    if (especial === "drop") {
+      return tieneTrial(sitio) && limpiar(sitio.description).toLowerCase().includes("drop");
+    }
 
     return [
       sitio.aoiId,
@@ -44,12 +58,10 @@
 
   function coincideExcepto(sitio, campoExcluido) {
     if (!esVisible(sitio) || !coincideBusqueda(sitio)) return false;
-
     if (campoExcluido !== "crop" && filtroCultivo.value && sitio.crop !== filtroCultivo.value) return false;
     if (campoExcluido !== "region" && filtroRegion.value && sitio.region !== filtroRegion.value) return false;
     if (campoExcluido !== "location" && filtroLocalidad.value && sitio.location !== filtroLocalidad.value) return false;
     if (campoExcluido !== "fts" && !coincideSeleccionFTS(sitio)) return false;
-
     return true;
   }
 
@@ -65,7 +77,6 @@
   function reconstruirSelect(control, campo, etiquetaTodos) {
     const seleccionAnterior = control.value;
     const valores = valoresDisponibles(campo);
-
     control.replaceChildren();
 
     const opcionTodos = document.createElement("option");
@@ -146,7 +157,6 @@
       check.addEventListener("change", () => {
         if (check.checked) ftsSeleccionados.add(fts);
         else ftsSeleccionados.delete(fts);
-
         actualizarFiltrosDependientes();
       });
 
@@ -171,25 +181,26 @@
     panelMultiFTS = document.createElement("div");
     panelMultiFTS.className = "multi-fts-panel";
     panelMultiFTS.hidden = true;
+
     const cabecera = document.createElement("div");
-cabecera.className = "multi-fts-cabecera";
+    cabecera.className = "multi-fts-cabecera";
 
-const titulo = document.createElement("span");
-titulo.className = "multi-fts-titulo";
-titulo.textContent = "Seleccionar FTS";
+    const titulo = document.createElement("span");
+    titulo.className = "multi-fts-titulo";
+    titulo.textContent = "Seleccionar FTS";
 
-const cerrar = document.createElement("button");
-cerrar.type = "button";
-cerrar.className = "multi-fts-cerrar";
-cerrar.textContent = "✕";
+    const cerrar = document.createElement("button");
+    cerrar.type = "button";
+    cerrar.className = "multi-fts-cerrar";
+    cerrar.textContent = "×";
+    cerrar.setAttribute("aria-label", "Cerrar selector de FTS");
 
-cerrar.addEventListener("click", () => {
-  panelMultiFTS.hidden = true;
-  botonMultiFTS.setAttribute("aria-expanded", "false");
-});
+    cerrar.addEventListener("click", () => {
+      panelMultiFTS.hidden = true;
+      botonMultiFTS.setAttribute("aria-expanded", "false");
+    });
 
-cabecera.append(titulo, cerrar);
-``
+    cabecera.append(titulo, cerrar);
 
     const acciones = document.createElement("div");
     acciones.className = "multi-fts-acciones";
@@ -230,7 +241,7 @@ cabecera.append(titulo, cerrar);
     });
 
     acciones.append(seleccionarTodos, limpiarSeleccion);
-    panelMultiFTS.append(cabecera,acciones,listaMultiFTS);
+    panelMultiFTS.append(cabecera, acciones, listaMultiFTS);
     contenedorMultiFTS.append(botonMultiFTS, panelMultiFTS);
     filtroFTS.insertAdjacentElement("afterend", contenedorMultiFTS);
   }
@@ -271,7 +282,7 @@ cabecera.append(titulo, cerrar);
     });
 
     actualizarFiltrosDependientes();
-    console.log("Filtro múltiple y dependiente de FTS habilitado.");
+    console.log("Filtro múltiple, dependiente y búsqueda por Trial/Access/Drop habilitados.");
     return true;
   }
 
