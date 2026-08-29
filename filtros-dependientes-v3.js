@@ -171,6 +171,25 @@
     panelMultiFTS = document.createElement("div");
     panelMultiFTS.className = "multi-fts-panel";
     panelMultiFTS.hidden = true;
+    const cabecera = document.createElement("div");
+cabecera.className = "multi-fts-cabecera";
+
+const titulo = document.createElement("span");
+titulo.className = "multi-fts-titulo";
+titulo.textContent = "Seleccionar FTS";
+
+const cerrar = document.createElement("button");
+cerrar.type = "button";
+cerrar.className = "multi-fts-cerrar";
+cerrar.textContent = "✕";
+
+cerrar.addEventListener("click", () => {
+  panelMultiFTS.hidden = true;
+  botonMultiFTS.setAttribute("aria-expanded", "false");
+});
+
+cabecera.append(titulo, cerrar);
+``
 
     const acciones = document.createElement("div");
     acciones.className = "multi-fts-acciones";
@@ -211,7 +230,7 @@
     });
 
     acciones.append(seleccionarTodos, limpiarSeleccion);
-    panelMultiFTS.append(acciones, listaMultiFTS);
+    panelMultiFTS.append(cabecera,acciones,listaMultiFTS);
     contenedorMultiFTS.append(botonMultiFTS, panelMultiFTS);
     filtroFTS.insertAdjacentElement("afterend", contenedorMultiFTS);
   }
