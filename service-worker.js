@@ -21,9 +21,11 @@ const APP_SHELL = [
   `${BASE_PATH}field-coordinate-pending.css`,
   `${BASE_PATH}field-coordinate-sync-ui.css`,
   `${BASE_PATH}pwa-ui.css`,
-  `${BASE_PATH}header-app.css`,
+  
 
   `${BASE_PATH}app-mode.js`,
+  `${BASE_PATH}app-viewer-controls.js`,
+  `${BASE_PATH}header-app.css`,
   `${BASE_PATH}app.js`,
   `${BASE_PATH}drop-trial-addon.js`,
   `${BASE_PATH}foto-access-addon.js`,
@@ -47,7 +49,6 @@ const APP_SHELL = [
   `${BASE_PATH}field-coordinate-sync.js`,
   `${BASE_PATH}field-coordinate-sync-ui.js`,
 
-  `${BASE_PATH}app-viewer-controls.js`,
   `${BASE_PATH}pwa-ui.js`,
 
   `${BASE_PATH}icon-192.png`,
