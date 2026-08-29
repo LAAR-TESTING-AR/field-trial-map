@@ -150,3 +150,41 @@
     max-height: calc(45vh - 62px);
   }
 }
+.multi-fts-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #e3e9e5;
+}
+
+.multi-fts-titulo {
+  color: #20302a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.multi-fts-cerrar {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  color: #4d5953;
+  background: transparent;
+
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.multi-fts-cerrar:hover,
+.multi-fts-cerrar:focus-visible {
+  color: #ffffff;
+  background: #0b6b3a;
+}
