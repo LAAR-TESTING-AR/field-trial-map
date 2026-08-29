@@ -228,7 +228,7 @@
   margin: 8px 0;
 }
 
-.field-coordinate-popup-action .field-coordinate-popup-button {
+.field-coordinate-popup-button {
   display: flex !important;
   align-items: center;
   justify-content: center;
