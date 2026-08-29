@@ -45,19 +45,45 @@ body { display: flex; flex-direction: column; }
 .leyenda-vacia { margin: 4px 0; font-size: 12px; }
 @media (max-width: 1050px) { .panel { grid-template-columns: repeat(3,minmax(140px,1fr)); } }
 @media (max-width: 600px) {
-  .encabezado { padding: 11px 13px; }
-  .encabezado h1 { font-size: 19px; }
-  .panel { grid-template-columns: 1fr 1fr; gap: 7px; padding: 8px; }
-  #busqueda, #limpiarFiltros { grid-column: 1 / -1; }
-  .panel input, .panel select, .panel button { min-height: 42px; font-size: 13px; }
-  #mapa { min-height: 400px; }
-  .leyenda-mapa { min-width: 150px; max-width: 230px; }
-}
-.control-leyenda-premium {
-  position: relative;
-  font-family: inherit;
-}
+  .encabezado {
+    padding: 11px 13px;
+  }
 
+  .encabezado h1 {
+    font-size: 19px;
+  }
+
+  .panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    padding: 8px;
+  }
+
+  #busqueda,
+  #limpiarFiltros {
+    grid-column: 1 / -1;
+  }
+
+  .panel input,
+  .panel select {
+    min-height: 42px;
+    font-size: 16px;
+  }
+
+  .panel button {
+    min-height: 42px;
+    font-size: 13px;
+  }
+
+  #mapa {
+    min-height: 400px;
+  }
+
+  .leyenda-mapa {
+    min-width: 150px;
+    max-width: 230px;
+  }
+}
 .boton-leyenda-flotante {
   display: flex;
   align-items: center;
