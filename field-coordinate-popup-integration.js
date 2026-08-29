@@ -42,8 +42,8 @@
           <span aria-hidden="true">📍</span>
           ${
             esTrial
-              ? "Actualizar ubicación del Trial"
-              : "Actualizar ubicación del Access"
+              ? "Actualizar ubicación"
+              : "Actualizar ubicación"
           }
         </button>
       </div>
