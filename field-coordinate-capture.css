@@ -230,10 +230,11 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
-  min-height: 42px;
-  margin: 0;
-  padding: 9px 12px;
+  width: fit-content;
+max-width: calc(100% - 28px);
+margin: 0 auto;
+padding-right: 18px;
+padding-left: 18px;
   border: 1px solid #b9c8bf;
   border-radius: 10px;
   color: #173b27;
