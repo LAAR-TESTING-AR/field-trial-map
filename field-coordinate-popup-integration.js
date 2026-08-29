@@ -18,6 +18,13 @@
       .replaceAll(">", "&gt;");
   }
 
+  function esModoViewer() {
+    return Boolean(
+      window.FieldTrialAppMode &&
+      window.FieldTrialAppMode.isViewer
+    );
+  }
+
   function crearBotonCoordenada(sitio, pointType) {
     const esTrial = pointType === "Trial";
     const latitude = esTrial
@@ -40,11 +47,7 @@
           data-previous-longitude="${longitude}"
         >
           <span aria-hidden="true">📍</span>
-          ${
-            esTrial
-              ? "Actualizar ubicación"
-              : "Actualizar ubicación"
-          }
+          Actualizar ubicación
         </button>
       </div>
     `;
@@ -82,6 +85,10 @@
   window.crearPopupTrial = function (sitio) {
     const html = crearPopupTrialAnterior(sitio);
 
+    if (esModoViewer()) {
+      return html;
+    }
+
     return insertarAntesDeNavegacion(
       html,
       crearBotonCoordenada(sitio, "Trial")
@@ -90,6 +97,10 @@
 
   window.crearPopupAccess = function (sitio) {
     const html = crearPopupAccessAnterior(sitio);
+
+    if (esModoViewer()) {
+      return html;
+    }
 
     return insertarAntesDeNavegacion(
       html,
@@ -102,12 +113,14 @@
       '[data-field-coordinate-open="true"]'
     );
 
-    if (!boton) {
-      return;
-    }
+    if (!boton) return;
 
     evento.preventDefault();
     evento.stopPropagation();
+
+    if (esModoViewer()) {
+      return;
+    }
 
     if (
       !window.FieldCoordinateCapture ||
@@ -129,6 +142,8 @@
   });
 
   console.log(
-    "Captura de coordenadas integrada en los popups Trial y Access."
+    esModoViewer()
+      ? "Modo consulta: actualización de coordenadas deshabilitada."
+      : "Captura de coordenadas integrada en los popups Trial y Access."
   );
 })();
