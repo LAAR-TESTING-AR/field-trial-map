@@ -222,31 +222,42 @@
   cursor: pointer;
 }
 
-/* Boton que se incorporara en los popups */
-.boton-ver-historial {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  min-height: 36px;
-  padding: 7px 9px;
-  box-sizing: border-box;
-  border: 0;
-  border-radius: 7px;
-  color: #ffffff;
-  background: #66736d;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
+/* Botones principales incorporados en los popups */
+.field-photo-popup-action {
+  wi*th: 100%;
+  margin: 7px 0;
 }
 
-.boton-ver-historial:hover,
-.boton-ver-historial:focus-visible {
-  background: #4e5a55;
+.fie*d-photo-popup-action .boton-regist*ar-visita,
+.field-photo-popup-acti*n .boton-ver-historial {
+  display* flex;
+  align-items: center;
+  ju*tify-content: center;
+  gap: 8px;
+*  width: 100%;
+  min-height: 46px;*  margin: 0;
+  padding: 10px 14px;*
+  box-sizing: border-box;
+  borde*: 0;
+  border-radius: 9px;
+
+  colo*: #ffffff;
+  background: #1976d2;
+*  font-family: inherit;
+  font-siz*: 16px;
+  font-weight: 700;
+  line*height: 1.2;
+
+  cursor: pointer;
+}*
+.field-photo-popup-action .boton-*egistrar-visita:hover,
+.field-phot*-popup-action .boton-registrar-vis*ta:focus-visible,
+.field-photo-pop*p-action .boton-ver-historial:hove*,
+.field-photo-popup-action .boton*ver-historial:focus-visible {
+  co*or: #ffffff;
+  background: #145ea8*
   outline: none;
 }
-
 @media (max-width: 700px) {
   .field-history-modal-fondo {
     align-items: flex-end;
