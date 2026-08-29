@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v16";
+const CACHE_NAME = "field-trial-map-v17";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
