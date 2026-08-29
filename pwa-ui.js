@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v1.0";
+  const APP_VERSION = "v1.1";
   let eventoInstalacion = null;
 
   function esIOS() {
