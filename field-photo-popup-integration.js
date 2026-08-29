@@ -54,7 +54,7 @@
     return `
       <div class="field-photo-popup-action">
         <button
-          class="boton-ver-historial"
+          class="${esTrial ? "boton-registrar-visita" : "boton-registrar-foto-access"} boton-ver-historial"
           type="button"
           data-field-history-open="true"
           data-aoi-id="${escaparAtributo(sitio.aoiId)}"
@@ -65,8 +65,8 @@
           <span aria-hidden="true">🕘</span>
           ${
             esTrial
-              ? "Ver historial de visitas"
-              : "Ver historial de fotos"
+              ? "Historial de visitas"
+              : "Historial de fotos"
           }
         </button>
       </div>
