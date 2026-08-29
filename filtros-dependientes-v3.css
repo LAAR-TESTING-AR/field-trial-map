@@ -140,10 +140,10 @@
     bottom: max(12px, env(safe-area-inset-bottom));
     left: 10px;
     min-width: 0;
-    max-height: 60vh;
+    max-height: 45vh;
   }
 
   .multi-fts-lista {
-    max-height: calc(60vh - 62px);
+    max-height: calc(45vh - 62px);
   }
 }
