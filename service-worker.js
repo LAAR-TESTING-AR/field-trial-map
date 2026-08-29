@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v12";
+const CACHE_NAME = "field-trial-map-v13";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -15,16 +15,18 @@ const APP_SHELL = [
   `${BASE_PATH}field-photo-capture.css`,
   `${BASE_PATH}field-photo-history.css`,
   `${BASE_PATH}field-coordinate-capture.css`,
-`${BASE_PATH}field-coordinate-pending.css`,
-`${BASE_PATH}field-coordinate-sync-ui.css`,
+  `${BASE_PATH}field-coordinate-pending.css`,
+  `${BASE_PATH}field-coordinate-sync-ui.css`,
   `${BASE_PATH}pwa-ui.css`,
   `${BASE_PATH}header-app.css`,
 
+  `${BASE_PATH}app-mode.js`,
   `${BASE_PATH}app.js`,
   `${BASE_PATH}drop-trial-addon.js`,
   `${BASE_PATH}foto-access-addon.js`,
   `${BASE_PATH}popup-mobile-addon.js`,
   `${BASE_PATH}filtros-dependientes-v3.js`,
+
   `${BASE_PATH}field-photo-capture.js`,
   `${BASE_PATH}field-photo-popup-integration.js`,
   `${BASE_PATH}field-photo-sync.js`,
@@ -34,12 +36,15 @@ const APP_SHELL = [
   `${BASE_PATH}field-photo-history-ui.js`,
   `${BASE_PATH}field-photo-history-viewer.js`,
   `${BASE_PATH}field-photo-timeline-icons.js`,
+
   `${BASE_PATH}field-coordinate-storage.js`,
   `${BASE_PATH}field-coordinate-capture.js`,
   `${BASE_PATH}field-coordinate-popup-integration.js`,
   `${BASE_PATH}field-coordinate-pending.js`,
-`${BASE_PATH}field-coordinate-sync.js`,
-`${BASE_PATH}field-coordinate-sync-ui.js`,
+  `${BASE_PATH}field-coordinate-sync.js`,
+  `${BASE_PATH}field-coordinate-sync-ui.js`,
+
+  `${BASE_PATH}app-viewer-controls.js`,
   `${BASE_PATH}pwa-ui.js`,
 
   `${BASE_PATH}icon-192.png`,
@@ -85,10 +90,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    Navegacion:
-    primero red; si no hay conexion, usar index.html u offline.html.
-  */
+  /* Navegacion: red primero y cache como respaldo offline. */
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request, { cache: "no-store" })
@@ -119,11 +121,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    Sitios.csv:
-    siempre intentar descargar la version mas reciente.
-    La copia se guarda con una clave fija, sin parametros ?v=...
-  */
+  /* Sitios.csv: red primero y clave fija sin parametros. */
   if (url.pathname.endsWith("/Sitios.csv")) {
     const claveSitios = `${BASE_PATH}Sitios.csv`;
 
@@ -150,11 +148,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    AccessPhotos.csv:
-    siempre intentar descargar la version mas reciente.
-    La copia se guarda con una clave fija, sin parametros ?v=...
-  */
+  /* AccessPhotos.csv: red primero y clave fija sin parametros. */
   if (url.pathname.endsWith("/AccessPhotos.csv")) {
     const claveFotos = `${BASE_PATH}AccessPhotos.csv`;
 
@@ -181,11 +175,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    JavaScript y CSS propios de la aplicacion:
-    red primero para recibir cambios nuevos sin Ctrl + Shift + R.
-    Si no hay conexion, usar la ultima copia guardada.
-  */
+  /* JavaScript y CSS locales: red primero para recibir cambios nuevos. */
   if (
     url.origin === self.location.origin &&
     (url.pathname.endsWith(".js") || url.pathname.endsWith(".css"))
@@ -198,11 +188,10 @@ self.addEventListener("fetch", event => {
           }
 
           const copia = response.clone();
-          const claveSinVersion = url.pathname;
 
           event.waitUntil(
             caches.open(CACHE_NAME).then(cache => {
-              return cache.put(claveSinVersion, copia);
+              return cache.put(url.pathname, copia);
             })
           );
 
@@ -218,10 +207,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    Fotografias publicas:
-    red primero y cache como respaldo offline.
-  */
+  /* Fotografias publicas: red primero y cache como respaldo. */
   if (
     url.pathname.includes("/images/access/") ||
     url.pathname.includes("/images/trial/")
@@ -253,10 +239,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /*
-    Recursos externos, iconos y otros archivos:
-    usar cache primero y recurrir a la red si no estan guardados.
-  */
+  /* Iconos y otros recursos: cache primero y red como alternativa. */
   event.respondWith(
     caches
       .match(request, {
