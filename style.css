@@ -235,3 +235,16 @@ body { display: flex; flex-direction: column; }
 .muestra-access-leyenda { width: 30px; height: 38px; flex: 0 0 30px; transform: scale(.82); transform-origin: center; }
 .item-leyenda-access { margin-top: 6px; padding-top: 10px !important; border-top: 2px solid #e6e9e7; }
 .popup-access h2 { color: #c91f1b; }
+@media (max-width: 600px) {
+
+  .leaflet-popup-content-wrapper {
+    max-width: 260px !important;
+  }
+
+  .leaflet-popup-content {
+    width: 210px !important;
+    min-width: 210px !important;
+    margin: 8px !important;
+  }
+
+}
