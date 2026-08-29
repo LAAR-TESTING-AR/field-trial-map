@@ -19,6 +19,13 @@
       .includes("drop");
   }
 
+  function esModoViewer() {
+    return Boolean(
+      window.FieldTrialAppMode &&
+      window.FieldTrialAppMode.isViewer
+    );
+  }
+
   function botonCaptura(sitio, photoType) {
     const esTrial = photoType === "Trial";
 
@@ -54,7 +61,11 @@
     return `
       <div class="field-photo-popup-action">
         <button
-          class="${esTrial ? "boton-registrar-visita" : "boton-registrar-foto-access"} boton-ver-historial"
+          class="${
+            esTrial
+              ? "boton-registrar-visita"
+              : "boton-registrar-foto-access"
+          } boton-ver-historial"
           type="button"
           data-field-history-open="true"
           data-aoi-id="${escaparAtributo(sitio.aoiId)}"
@@ -89,11 +100,8 @@
     );
   }
 
-  const crearPopupTrialAnterior =
-    window.crearPopupTrial;
-
-  const crearPopupAccessAnterior =
-    window.crearPopupAccess;
+  const crearPopupTrialAnterior = window.crearPopupTrial;
+  const crearPopupAccessAnterior = window.crearPopupAccess;
 
   if (
     typeof crearPopupTrialAnterior !== "function" ||
@@ -102,36 +110,19 @@
     console.error(
       "No fue posible integrar Field Photos: faltan las funciones de popup."
     );
-
     return;
   }
 
- window.crearPopupTrial = function (sitio) {
-  const html = crearPopupTrialAnterior(sitio);
-  const historial = botonHistorial(sitio, "Trial");
+  window.crearPopupTrial = function (sitio) {
+    const html = crearPopupTrialAnterior(sitio);
+    const historial = botonHistorial(sitio, "Trial");
 
-  if (esDrop(sitio)) {
-    return insertarAntesDeNavegacion(
-      html,
-      historial
-    );
-  }
-
-  if (
-    window.FieldTrialAppMode &&
-    window.FieldTrialAppMode.isViewer
-  ) {
-    return insertarAntesDeNavegacion(
-      html,
-      historial
-    );
-  }
-
-  return insertarAntesDeNavegacion(
-    html,
-    botonCaptura(sitio, "Trial") + historial
-  );
-};
+    if (esDrop(sitio) || esModoViewer()) {
+      return insertarAntesDeNavegacion(
+        html,
+        historial
+      );
+    }
 
     return insertarAntesDeNavegacion(
       html,
@@ -139,47 +130,42 @@
     );
   };
 
-window.crearPopupAccess = function (sitio) {
-  const html = crearPopupAccessAnterior(sitio);
+  window.crearPopupAccess = function (sitio) {
+    const html = crearPopupAccessAnterior(sitio);
+    const historial = botonHistorial(sitio, "Access");
 
-  if (
-    window.FieldTrialAppMode &&
-    window.FieldTrialAppMode.isViewer
-  ) {
+    if (esModoViewer()) {
+      return insertarAntesDeNavegacion(
+        html,
+        historial
+      );
+    }
+
     return insertarAntesDeNavegacion(
       html,
-      botonHistorial(sitio, "Access")
+      botonCaptura(sitio, "Access") + historial
     );
-  }
-
-  return insertarAntesDeNavegacion(
-    html,
-    botonCaptura(sitio, "Access") +
-      botonHistorial(sitio, "Access")
-  );
-};
+  };
 
   document.addEventListener("click", evento => {
     const boton = evento.target.closest(
       '[data-field-photo-open="true"]'
     );
 
-    if (!boton) {
-      return;
-    }
+    if (!boton) return;
 
     evento.preventDefault();
     evento.stopPropagation();
 
+    if (esModoViewer()) return;
+
     if (
       !window.FieldPhotoCapture ||
-      typeof window.FieldPhotoCapture
-        .abrirPanelCaptura !== "function"
+      typeof window.FieldPhotoCapture.abrirPanelCaptura !== "function"
     ) {
       window.alert(
         "La captura de fotografías todavía no está disponible."
       );
-
       return;
     }
 
@@ -187,8 +173,7 @@ window.crearPopupAccess = function (sitio) {
       aoiId: boton.dataset.aoiId || "",
       location: boton.dataset.location || "",
       crop: boton.dataset.crop || "",
-      photoType:
-        boton.dataset.photoType || "Trial"
+      photoType: boton.dataset.photoType || "Trial"
     });
   });
 
@@ -197,22 +182,18 @@ window.crearPopupAccess = function (sitio) {
       '[data-field-history-open="true"]'
     );
 
-    if (!boton) {
-      return;
-    }
+    if (!boton) return;
 
     evento.preventDefault();
     evento.stopPropagation();
 
     if (
       !window.FieldPhotoHistoryUI ||
-      typeof window.FieldPhotoHistoryUI
-        .abrirHistorial !== "function"
+      typeof window.FieldPhotoHistoryUI.abrirHistorial !== "function"
     ) {
       window.alert(
         "El historial de visitas todavía no está disponible."
       );
-
       return;
     }
 
@@ -220,12 +201,13 @@ window.crearPopupAccess = function (sitio) {
       aoiId: boton.dataset.aoiId || "",
       location: boton.dataset.location || "",
       crop: boton.dataset.crop || "",
-      photoType:
-        boton.dataset.photoType || "Trial"
+      photoType: boton.dataset.photoType || "Trial"
     });
   });
 
   console.log(
-    "Captura e historial Field Photos integrados en los popups reales."
+    esModoViewer()
+      ? "Modo consulta: historiales integrados en los popups."
+      : "Captura e historial Field Photos integrados en los popups."
   );
 })();
