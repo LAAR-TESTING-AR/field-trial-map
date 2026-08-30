@@ -1,0 +1,48 @@
+/* Controles exclusivos del modo administrador */
+.field-admin-visit-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #ead2d2;
+}
+
+.field-admin-delete-visit {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #a92323;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #b92b2b;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.field-admin-delete-visit:hover,
+.field-admin-delete-visit:focus-visible {
+  background: #8f1d1d;
+  outline: 2px solid rgba(185, 43, 43, 0.18);
+}
+
+.field-admin-delete-visit:disabled {
+  border-color: #b7bdb9;
+  color: #66706b;
+  background: #e4e8e5;
+  cursor: wait;
+}
+
+@media (max-width: 700px) {
+  .field-admin-visit-actions {
+    justify-content: stretch;
+  }
+
+  .field-admin-delete-visit {
+    width: 100%;
+    min-height: 40px;
+    font-size: 13px;
+  }
+}
