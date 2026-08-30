@@ -111,37 +111,16 @@
       bloque.appendChild(comentario);
     }
 
-    if (ultimaFoto?.publicPhotoUrl) {
-      const enlaceMiniatura = document.createElement("a");
-      enlaceMiniatura.className = "enlace-miniatura-access";
-      enlaceMiniatura.href = ultimaFoto.publicPhotoUrl;
-      enlaceMiniatura.target = "_blank";
-      enlaceMiniatura.rel = "noopener noreferrer";
-      enlaceMiniatura.setAttribute("aria-label", "Abrir foto completa del acceso");
+   if (ultimaFoto?.publicPhotoUrl) {
+  const miniatura = document.createElement("img");
+  miniatura.className = "miniatura-access";
+  miniatura.src = ultimaFoto.publicPhotoUrl + "?v=" + Date.now();
+  miniatura.alt = "Foto del acceso " + limpiar(sitio.location);
+  miniatura.loading = "eager";
+  miniatura.decoding = "async";
 
-      const miniatura = document.createElement("img");
-      miniatura.className = "miniatura-access";
-      miniatura.src = ultimaFoto.publicPhotoUrl + "?v=" + Date.now();
-      miniatura.alt = "Foto del acceso " + limpiar(sitio.location);
-      miniatura.loading = "eager";
-      miniatura.decoding = "async";
-
-      miniatura.addEventListener("error", () => enlaceMiniatura.remove());
-      enlaceMiniatura.appendChild(miniatura);
-      bloque.appendChild(enlaceMiniatura);
-    }
-
-    const fila = document.createElement("div");
-    fila.className = "fila-botones-foto";
-
-    if (urlFoto) {
-      fila.appendChild(crearBoton(
-        "boton-ver-foto-access",
-        urlFoto,
-        '<span aria-hidden="true">🖼️</span> Ver foto',
-        "Ver foto del acceso"
-      ));
-    }
+  miniatura.addEventListener("error", () => miniatura.remove());
+}
 
    // Flujo antiguo basado en Forms eliminado.
 
