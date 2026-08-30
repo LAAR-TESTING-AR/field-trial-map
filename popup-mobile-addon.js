@@ -27,8 +27,11 @@
     const detalles = popup.querySelector(".popup-detalles");
     if (!detalles) return;
 
-    const secundarios = Array.from(detalles.querySelectorAll(":scope > p"))
-      .filter(parrafo => ETIQUETAS_SECUNDARIAS.includes(textoEtiqueta(parrafo)));
+    const secundarios = Array.from(
+      detalles.querySelectorAll(":scope > p")
+    ).filter(parrafo =>
+      ETIQUETAS_SECUNDARIAS.includes(textoEtiqueta(parrafo))
+    );
 
     if (secundarios.length) {
       const desplegable = document.createElement("details");
@@ -40,6 +43,7 @@
 
       const contenido = document.createElement("div");
       contenido.className = "contenido-adicional-trial";
+
       secundarios.forEach(parrafo => contenido.appendChild(parrafo));
       desplegable.appendChild(contenido);
       detalles.appendChild(desplegable);
@@ -51,19 +55,35 @@
   function prepararPopupAccess(popup) {
     if (!popup || !popup.classList.contains("popup-access")) return;
 
-    /* La foto completa continúa disponible mediante el botón.
-       Se elimina cualquier miniatura incrustada para evitar fallas de SharePoint. */
-    popup.querySelectorAll(".enlace-miniatura-access, .miniatura-access")
-      .forEach(elemento => elemento.remove());
+    /*
+      Conserva la última miniatura como referencia visual.
+      Si una versión anterior todavía la envolvió en un enlace,
+      reemplaza el enlace por la imagen para impedir que sea clickeable.
+    */
+    popup.querySelectorAll(".enlace-miniatura-access").forEach(enlace => {
+      const miniatura = enlace.querySelector(".miniatura-access");
 
-    const botonVer = popup.querySelector(".boton-ver-foto-access");
-    if (botonVer) {
-      botonVer.innerHTML = '<span aria-hidden="true">🖼️</span> Ver última foto';
-    }
+      if (miniatura) {
+        enlace.replaceWith(miniatura);
+      } else {
+        enlace.remove();
+      }
+    });
+
+    /* El historial es el único lugar desde el cual se amplían las fotos. */
+    popup.querySelectorAll(".boton-ver-foto-access")
+      .forEach(boton => boton.remove());
+
+    popup.querySelectorAll(".fila-botones-foto").forEach(fila => {
+      if (!fila.children.length) fila.remove();
+    });
   }
 
   function prepararPopupAbierto() {
-    const popup = document.querySelector(".leaflet-popup-content .popup-sitio");
+    const popup = document.querySelector(
+      ".leaflet-popup-content .popup-sitio"
+    );
+
     if (!popup) return;
 
     if (popup.classList.contains("popup-access")) {
@@ -73,15 +93,19 @@
     }
   }
 
-  if (typeof mapa === "undefined" || !mapa || typeof mapa.on !== "function") {
+  if (
+    typeof mapa === "undefined" ||
+    !mapa ||
+    typeof mapa.on !== "function"
+  ) {
     console.error("popup-mobile-addon.js debe cargarse después de app.js.");
     return;
   }
 
   mapa.on("popupopen", function () {
-    /* Leaflet termina de insertar el contenido inmediatamente después del evento. */
     window.requestAnimationFrame(prepararPopupAbierto);
     window.setTimeout(prepararPopupAbierto, 80);
+    window.setTimeout(prepararPopupAbierto, 180);
   });
 
   console.log("Optimización móvil de popups habilitada.");
