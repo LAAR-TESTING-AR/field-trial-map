@@ -80,10 +80,12 @@
         <span class="${claseTipo}">${escaparHTML(visita.photoType || "Foto")}</span>
         <span class="field-history-fecha">${escaparHTML(formatearFecha(visita.captureDate))}</span>
       </div>
-      ${scoreValido
-        ? `<p class="field-history-estadio">Score: ${score} · ${escaparHTML(etiquetaScore(score))}</p>`
-        : `<p class="field-history-estadio">Score: Sin evaluar</p>`}
-      ${visita.cropStage
+      ${!esAccess
+        ? (scoreValido
+          ? `<p class="field-history-estadio">Score: ${score} · ${escaparHTML(etiquetaScore(score))}</p>`
+          : `<p class="field-history-estadio">Score: Sin evaluar</p>`)
+        : ""}
+      ${!esAccess && visita.cropStage
         ? `<p class="field-history-estadio">Estadio: ${escaparHTML(visita.cropStage)}</p>`
         : ""}
       ${visita.comments
