@@ -275,7 +275,7 @@ body { display: flex; flex-direction: column; }
     min-width: 210px !important;
     margin: 8px !important;
 
-    max-height: 60vh;
+    max-height: 75vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
