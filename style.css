@@ -274,10 +274,6 @@ body { display: flex; flex-direction: column; }
     width: 210px !important;
     min-width: 210px !important;
     margin: 8px !important;
-
-    max-height: 75vh;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 
 }
