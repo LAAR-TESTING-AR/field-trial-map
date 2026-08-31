@@ -347,6 +347,60 @@
     return item;
   }
 
+  async function obtenerEstadoPendienteAccess(aoiId) {
+    const aoiNormalizado = String(aoiId || "")
+      .trim()
+      .toLowerCase();
+
+    if (!aoiNormalizado) {
+      return {
+        tieneRegistrosPendientes: false,
+        tieneFotoPendiente: false,
+        tieneComentarioPendiente: false,
+        cantidadFotosPendientes: 0
+      };
+    }
+
+    if (
+      !window.FieldPhotoStorage ||
+      typeof window.FieldPhotoStorage.obtenerFotosPendientes !== "function"
+    ) {
+      return {
+        tieneRegistrosPendientes: false,
+        tieneFotoPendiente: false,
+        tieneComentarioPendiente: false,
+        cantidadFotosPendientes: 0
+      };
+    }
+
+    const registros =
+      await window.FieldPhotoStorage.obtenerFotosPendientes();
+
+    const registrosAccess = registros.filter(registro =>
+      String(registro.aoiId || "").trim().toLowerCase() ===
+        aoiNormalizado &&
+      String(registro.photoType || "").trim().toLowerCase() ===
+        "access"
+    );
+
+    const tieneFotoPendiente = registrosAccess.some(
+      registro => registro.photoBlob instanceof Blob
+    );
+
+    const tieneComentarioPendiente = registrosAccess.some(
+      registro => String(registro.comments || "").trim().length > 0
+    );
+
+    return {
+      tieneRegistrosPendientes: registrosAccess.length > 0,
+      tieneFotoPendiente,
+      tieneComentarioPendiente,
+      cantidadFotosPendientes: registrosAccess.filter(
+        registro => registro.photoBlob instanceof Blob
+      ).length
+    };
+  }
+
   async function abrirPanelPendientes() {
     if (
       !window.FieldPhotoStorage ||
@@ -500,7 +554,8 @@
   }
 
   window.FieldPhotoPending = {
-    abrirPanelPendientes
+    abrirPanelPendientes,
+    obtenerEstadoPendienteAccess
   };
 
   if (document.readyState === "loading") {
