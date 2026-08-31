@@ -212,6 +212,15 @@
     );
   }
 
+  async function tieneCoordenadaPendiente(aoiId, pointType) {
+    const pendientes = await obtenerPendientesPorSitio(
+      aoiId,
+      pointType
+    );
+
+    return pendientes.length > 0;
+  }
+
   async function eliminarCoordenadaLocal(recordId) {
     const db = await abrirBaseDeDatos();
 
@@ -270,6 +279,7 @@
     contarCoordenadasPendientes,
     obtenerCoordenadaPorId,
     obtenerPendientesPorSitio,
+    tieneCoordenadaPendiente,
     eliminarCoordenadaLocal,
     marcarIntentoFallido
   };
