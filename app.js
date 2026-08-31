@@ -277,7 +277,7 @@ function actualizarMapa() {
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
       L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
-        .bindPopup(crearPopupTrial(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 520 })
+        .bindPopup(crearPopupTrial(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 700 })
         .addTo(capaMarcadores);
       coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
       cantidadTrials += 1;
@@ -292,7 +292,7 @@ function actualizarMapa() {
         .bindPopup(crearPopupAccess(sitioAccess), {
           maxWidth: 390,
           minWidth: 285,
-          maxHeight: 520,
+          maxHeight: 700,
           sitioAccess
         })
         .addTo(capaMarcadores);
