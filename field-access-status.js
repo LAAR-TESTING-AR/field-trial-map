@@ -55,19 +55,42 @@
   }
 
   function coordenadaPublicada(popup) {
-    const estadoAnterior = popup?.querySelector(
-      ".field-access-progress"
-    );
-
-    if (!estadoAnterior) {
+    if (!popup) {
       return false;
     }
 
-    return estadoAnterior.classList.contains(
-      "field-access-status-ok"
-    );
-  }
+    if (
+      popup.dataset.accessCoordinatePublished === "true"
+    ) {
+      return true;
+    }
 
+    const estadoOriginal = popup.querySelector(
+      ".field-access-status"
+    );
+
+    if (
+      estadoOriginal &&
+      estadoOriginal.classList.contains(
+        "field-access-status-ok"
+      )
+    ) {
+      popup.dataset.accessCoordinatePublished = "true";
+      return true;
+    }
+
+    const botonCrearAccess = popup.querySelector(
+      '[data-point-type="Access"]' +
+      '[data-coordinate-action="create"]'
+    );
+
+    const publicada = !botonCrearAccess;
+
+    popup.dataset.accessCoordinatePublished =
+      String(publicada);
+
+    return publicada;
+  }
   async function consultarCoordenadaPendiente(aoiId) {
     if (
       !window.FieldCoordinateStorage ||
