@@ -124,7 +124,9 @@
           ? "Access"
           : "Trial",
       previousLatitude: numero(configuracion.previousLatitude),
-      previousLongitude: numero(configuracion.previousLongitude)
+      previousLongitude: numero(configuracion.previousLongitude),
+      crop: texto(configuracion.crop),
+      isNewAccess: Boolean(configuracion.isNewAccess)
     };
 
     if (!sitio.aoiId) {
@@ -135,6 +137,38 @@
     if (!("geolocation" in navigator)) {
       window.alert("Este dispositivo no permite capturar la ubicación GPS.");
       return;
+    }
+
+    function ofrecerRegistroFotoAccess() {
+      if (!sitio.isNewAccess || sitio.pointType !== "Access") {
+        return;
+      }
+
+      const registrarFoto = window.confirm(
+        "Ubicación del nuevo Access guardada en este dispositivo.\n\n" +
+        "¿Querés registrar ahora una fotografía y un comentario del Access?"
+      );
+
+      if (!registrarFoto) {
+        return;
+      }
+
+      if (
+        !window.FieldPhotoCapture ||
+        typeof window.FieldPhotoCapture.abrirPanelCaptura !== "function"
+      ) {
+        window.alert(
+          "La captura de fotografías todavía no está disponible en este dispositivo."
+        );
+        return;
+      }
+
+      window.FieldPhotoCapture.abrirPanelCaptura({
+        aoiId: sitio.aoiId,
+        location: sitio.location,
+        crop: sitio.crop,
+        photoType: "Access"
+      });
     }
 
     document.getElementById("fieldCoordinateModal")?.remove();
@@ -460,6 +494,10 @@
         window.setTimeout(() => {
           guardando = false;
           cerrarPanel();
+
+          window.setTimeout(() => {
+            ofrecerRegistroFotoAccess();
+          }, 250);
         }, 1800);
       } catch (error) {
         console.error("Error al guardar la coordenada:", error);
