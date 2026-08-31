@@ -56,7 +56,7 @@
 
   function coordenadaPublicada(popup) {
     const estadoAnterior = popup?.querySelector(
-      ".field-access-status"
+      ".field-access-progress"
     );
 
     if (!estadoAnterior) {
