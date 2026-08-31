@@ -317,7 +317,14 @@
       comentarioPublicado:
         estadoPublicado.tieneComentarioPublicado
     };
+if (!estado.coordenadaDisponible) {
 
+  estado.fotoPendiente = false;
+  estado.comentarioPendiente = false;
+
+  estado.fotoPublicada = false;
+  estado.comentarioPublicado = false;
+}
     estado.completo = Boolean(
       estado.coordenadaPublicada &&
       !estado.coordenadaPendiente &&
