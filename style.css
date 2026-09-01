@@ -4,7 +4,14 @@ body { display: flex; flex-direction: column; }
 .encabezado { padding: 14px 18px; background: #176b3a; color: #fff; }
 .encabezado h1 { margin: 0; font-size: 23px; }
 .encabezado p { margin: 4px 0 0; font-size: 14px; }
-.panel { display: grid; grid-template-columns: minmax(190px,1.5fr) repeat(4,minmax(145px,1fr)) auto; gap: 8px; padding: 10px; background: #fff; border-bottom: 1px solid #d8ded9; }
+.panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(145px, 1fr));
+  gap: 8px;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #d8ded9;
+}
 #busqueda {
   grid-column: span 4;
 }
