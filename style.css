@@ -13,9 +13,6 @@ body { display: flex; flex-direction: column; }
   width: 245px;
   min-width: 245px;
   margin: 12px;
-  max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 .leaflet-popup-content h2 { margin: 0 0 10px; color: #176b3a; font-size: 19px; }
 .leaflet-popup-content p { margin: 5px 0; line-height: 1.35; }
@@ -276,4 +273,32 @@ body { display: flex; flex-direction: column; }
     margin: 8px !important;
   }
 
+}
+
+
+/* iPhone/iPad: popup desplazable solo en la PWA instalada. */
+html.ios-pwa-standalone .leaflet-popup-content-wrapper {
+  overflow: hidden !important;
+}
+
+html.ios-pwa-standalone .leaflet-popup-content {
+  max-height: max(
+    260px,
+    calc(
+      var(--ios-pwa-visible-height, 100vh) -
+      env(safe-area-inset-top, 0px) -
+      env(safe-area-inset-bottom, 0px) -
+      190px
+    )
+  ) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+}
+
+html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
+  padding-bottom: max(4px, env(safe-area-inset-bottom, 0px));
 }
