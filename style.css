@@ -345,3 +345,27 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
   }
 
 }
+.marcador-siembra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+.marcador-siembra.sembrado {
+  background: #168052;
+}
+
+.marcador-siembra.pendiente {
+  background: #bfc5c1;
+}
