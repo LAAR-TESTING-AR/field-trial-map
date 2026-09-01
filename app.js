@@ -489,7 +489,7 @@ if (window.vistaMapaActual === "planting") {
   `;
 
 }
-``
+`
   else {
 
   contadorSitios.textContent =
