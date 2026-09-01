@@ -402,7 +402,7 @@ const iconoTrial =
   tieneAccess(sitio) &&
   window.vistaMapaActual === "master";
     
-    if (mostrarAccess(sitio)) {
+    if (mostrarAccess) {
       const sitioAccess = { ...sitio, latitude: sitio.latitudeAccess, longitude: sitio.longitudeAccess };
       L.marker([sitio.latitudeAccess, sitio.longitudeAccess], {
         icon: crearIconoAccess(),
