@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Field Trial Map Argentina 2026-27</title>
+  <meta name="description" content="Mapa de ensayos, accesos e informacion de campo de Research Argentina.">
+  <meta name="theme-color" content="#0b6b3a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trial Map">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <script src="manifest-selector.js?v=1"></script>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="summary-toolbar.css?v=1">
+  <link rel="stylesheet" href="foto-access-addon.css?v=3">
+  <link rel="stylesheet" href="popup-mobile-addon.css?v=3">
+  <link rel="stylesheet" href="drop-trial-addon.css?v=1">
+  <link rel="stylesheet" href="filtros-dependientes-v3.css?v=3">
+  <link rel="stylesheet" href="field-photo-capture.css?v=1">
+  <link rel="stylesheet" href="field-coordinate-capture.css?v=1">
+  <link rel="stylesheet" href="field-coordinate-pending.css?v=1">
+  <link rel="stylesheet" href="field-coordinate-sync-ui.css?v=1">
+  <link rel="stylesheet" href="field-photo-history.css?v=1">
+  <link rel="stylesheet" href="field-photo-admin.css?v=1">
+  <link rel="stylesheet" href="pwa-ui.css?v=2">
+  <link rel="stylesheet" href="header-app.css?v=2">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado-app">
+      <img class="encabezado-logo" src="icon-192.png" alt="Icono de Field Trial Map">
+      <div class="encabezado-textos">
+        <h1>Field Trial Map</h1>
+        <p class="encabezado-subtitulo">Research Argentina 2026-27</p>
+        <p class="encabezado-funciones">Ensayos • Accesos • Fotografias • Navegacion</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="panel">
+    <div class="fila-busqueda">
+      <input
+        type="search"
+        id="busqueda"
+        placeholder="Buscar AOI, localidad, cultivo, FTS..."
+        aria-label="Buscar por AOI ID, localidad, Trial, Access, Drop, descripción, cultivo, región, provincia, FTS, SPA u operación"
+      >
+      <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+    </div>
+
+    <div class="selector-vista-mapa">
+      <button id="vistaMaster" class="boton-vista activo" type="button">MASTER LIST</button>
+      <button id="vistaSiembra" class="boton-vista" type="button">SIEMBRA</button>
+      <button id="vistaCosecha" class="boton-vista" type="button">COSECHA</button>
+    </div>
+
+    <div class="fila-filtros">
+      <select id="filtroCultivo"><option value="">Todos los cultivos</option></select>
+      <select id="filtroRegion"><option value="">Todas las regiones</option></select>
+      <select id="filtroLocalidad"><option value="">Todas las localidades</option></select>
+      <select id="filtroFTS"><option value="">Todos los FTS</option></select>
+    </div>
+  </section>
+
+  <div class="resumen"><span id="contadorSitios">Cargando sitios...</span></div>
+  <main id="mapa"></main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="app-mode.js?v=1"></script>
+  <script src="app.js?v=12"></script>
+  <script src="summary-toolbar.js?v=1"></script>
+  <script src="drop-trial-addon.js?v=2"></script>
+  <script src="foto-access-addon.js?v=4"></script>
+  <script src="popup-mobile-addon.js?v=5"></script>
+  <script src="filtros-dependientes-v3.js?v=2"></script>
+  <script src="field-photo-capture.js?v=1"></script>
+  <script src="field-photo-popup-integration.js?v=3"></script>
+  <script src="field-photo-sync.js?v=2"></script>
+  <script src="field-photo-pending.js?v=2"></script>
+  <script src="field-photo-sync-ui.js?v=1"></script>
+  <script src="field-photo-history.js?v=2"></script>
+  <script src="field-photo-history-ui.js?v=2"></script>
+  <script src="field-photo-admin.js?v=1"></script>
+  <script src="field-photo-history-viewer.js?v=1"></script>
+  <script src="field-photo-timeline-icons.js?v=1"></script>
+  <script src="field-coordinate-storage.js?v=1"></script>
+  <script src="field-coordinate-capture.js?v=2"></script>
+  <script src="field-coordinate-popup-integration.js?v=3"></script>
+  <script src="field-coordinate-pending.js?v=1"></script>
+  <script src="field-coordinate-sync.js?v=1"></script>
+  <script src="field-coordinate-sync-ui.js?v=1"></script>
+  <script src="field-access-status.js?v=6"></script>
+  <script src="app-viewer-controls.js?v=1"></script>
+  <script src="pwa-ui.js?v=2"></script>
+
+  <script>
+    let recargaPorActualizacion = false;
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", async () => {
+        try {
+          const registration = await navigator.serviceWorker.register("./service-worker.js", { updateViaCache: "none" });
+          window.fieldTrialServiceWorkerRegistration = registration;
+          console.log("Service Worker registrado:", registration.scope);
+          if (registration.waiting) registration.waiting.postMessage({ type: "SKIP_WAITING" });
+          registration.addEventListener("updatefound", () => {
+            const nuevoWorker = registration.installing;
+            if (!nuevoWorker) return;
+            nuevoWorker.addEventListener("statechange", () => {
+              if (nuevoWorker.state === "installed" && navigator.serviceWorker.controller) {
+                nuevoWorker.postMessage({ type: "SKIP_WAITING" });
+              }
+            });
+          });
+          await registration.update();
+        } catch (error) {
+          console.error("Error al registrar o actualizar Service Worker:", error);
+        }
+      });
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (recargaPorActualizacion) return;
+        recargaPorActualizacion = true;
+        console.log("Nueva version activa. Recargando la aplicacion.");
+        window.location.reload();
+      });
+    }
+  </script>
+</body>
+</html>
