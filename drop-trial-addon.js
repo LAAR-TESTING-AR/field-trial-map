@@ -98,6 +98,7 @@
     let cantidadTrials = 0;
     let cantidadAccess = 0;
     let cantidadDrop = 0;
+    let cantidadSembrados = 0;
 
     sitiosFiltrados.forEach(sitio => {
       const esDrop = esTrialDrop(sitio);
@@ -143,8 +144,12 @@
 
         coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
         cantidadTrials += 1;
-        if (esDrop) cantidadDrop += 1;
-      }
+
+if (esDrop) {
+  cantidadDrop += 1;
+} else if (estaSembrado(sitio)) {
+  cantidadSembrados += 1;
+}
 
       if (mostrarAccess) {
         const sitioAccess = {
@@ -171,9 +176,33 @@
     });
 
     const total = cantidadTrials + cantidadAccess;
-    contadorSitios.textContent =
-      `${total} puntos visibles · ${cantidadTrials} Trials · ` +
-      `${cantidadAccess} Access${cantidadDrop ? ` · ${cantidadDrop} Drop` : ""}`;
+
+if (window.vistaMapaActual === "planting") {
+
+  const trialsValidos =
+    cantidadTrials - cantidadDrop;
+
+  const pendientes =
+    trialsValidos - cantidadSembrados;
+
+  const porcentaje =
+    trialsValidos > 0
+      ? Math.round(
+          (cantidadSembrados / trialsValidos) * 100
+        )
+      : 0;
+
+  contadorSitios.textContent =
+    `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
+    `${cantidadDrop ? ` · ⛔ ${cantidadDrop} Drop` : ""}`;
+
+} else {
+
+  contadorSitios.textContent =
+    `${total} puntos visibles · ${cantidadTrials} Trials · ` +
+    `${cantidadAccess} Access${cantidadDrop ? ` · ${cantidadDrop} Drop` : ""}`;
+
+}
 
     window.actualizarLeyenda(sitiosFiltrados);
 
