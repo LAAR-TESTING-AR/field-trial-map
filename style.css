@@ -123,3 +123,31 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion { padding-bot
   .resumen-avance-porcentaje { min-width: 42px; font-size: 21px; }
   .resumen-avance-detalle { font-size: 12px; }
 }
+.muestra-siembra,
+.muestra-cosecha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.muestra-siembra.sembrado {
+  background: #168052;
+}
+
+.muestra-siembra.pendiente {
+  background: #bfc5c1;
+}
+
+.muestra-cosecha.cosechado {
+  background: #9c6a21;
+}
+
+.muestra-cosecha.pendiente {
+  background: #bfc5c1;
+}
