@@ -14,7 +14,11 @@ const filtroLocalidad = document.getElementById("filtroLocalidad");
 const filtroFTS = document.getElementById("filtroFTS");
 const limpiarFiltros = document.getElementById("limpiarFiltros");
 const contadorSitios = document.getElementById("contadorSitios");
+const vistaMaster = document.getElementById("vistaMaster");
+const vistaSiembra = document.getElementById("vistaSiembra");
+const vistaCosecha = document.getElementById("vistaCosecha");
 
+let vistaMapaActual = "master";
 let sitios = [];
 let contenidoLeyenda = null;
 let panelLeyenda = null;
@@ -50,6 +54,12 @@ function tieneTrial(sitio) {
 
 function tieneAccess(sitio) {
   return Number.isFinite(sitio.latitudeAccess) && Number.isFinite(sitio.longitudeAccess);
+}
+
+function estaSembrado(sitio) {
+  return Boolean(
+    limpiarTexto(sitio.plantingDate)
+  );
 }
 
 function transformarFila(fila) {
@@ -398,4 +408,33 @@ limpiarFiltros.addEventListener("click", () => {
 mapa.on("popupopen", ocultarLeyenda);
 mapa.on("click", ocultarLeyenda);
 agregarLeyendaPremium();
+vistaMaster?.addEventListener("click", () => {
+  vistaMapaActual = "master";
+
+  vistaMaster.classList.add("activo");
+  vistaSiembra.classList.remove("activo");
+  vistaCosecha.classList.remove("activo");
+
+  actualizarMapa();
+});
+
+vistaSiembra?.addEventListener("click", () => {
+  vistaMapaActual = "planting";
+
+  vistaMaster.classList.remove("activo");
+  vistaSiembra.classList.add("activo");
+  vistaCosecha.classList.remove("activo");
+
+  actualizarMapa();
+});
+
+vistaCosecha?.addEventListener("click", () => {
+  vistaMapaActual = "harvest";
+
+  vistaMaster.classList.remove("activo");
+  vistaSiembra.classList.remove("activo");
+  vistaCosecha.classList.add("activo");
+
+  actualizarMapa();
+});
 cargarSitios();
