@@ -324,21 +324,101 @@ function alternarLeyenda() {
 }
 
 function actualizarLeyenda(sitiosFiltrados) {
+
   if (!contenidoLeyenda) return;
+
+  if (window.vistaMapaActual === "planting") {
+
+    contenidoLeyenda.innerHTML = `
+      <div class="item-leyenda">
+        <span class="muestra-siembra sembrado">✅</span>
+        <span>Sembrado</span>
+      </div>
+
+      <div class="item-leyenda">
+        <span class="muestra-siembra pendiente">⚪</span>
+        <span>Pendiente</span>
+      </div>
+
+      <div class="item-leyenda item-leyenda-drop">
+        <span class="muestra-drop-leyenda">
+          <span>×</span>
+        </span>
+        <span>Trial Drop - No visitar</span>
+      </div>
+    `;
+
+    return;
+  }
+
+  if (window.vistaMapaActual === "harvest") {
+
+    contenidoLeyenda.innerHTML = `
+      <div class="item-leyenda">
+        <span class="muestra-cosecha cosechado">🟤</span>
+        <span>Cosechado</span>
+      </div>
+
+      <div class="item-leyenda">
+        <span class="muestra-cosecha pendiente">⚪</span>
+        <span>Pendiente</span>
+      </div>
+
+      <div class="item-leyenda item-leyenda-drop">
+        <span class="muestra-drop-leyenda">
+          <span>×</span>
+        </span>
+        <span>Trial Drop - No visitar</span>
+      </div>
+    `;
+
+    return;
+  }
+
   const cultivos = [...new Set(
-    sitiosFiltrados.filter(tieneTrial).map(s => limpiarTexto(s.crop)).filter(Boolean)
-  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
-  const hayAccess = sitiosFiltrados.some(tieneAccess);
+    sitiosFiltrados
+      .filter(tieneTrial)
+      .map(s => limpiarTexto(s.crop))
+      .filter(Boolean)
+  )].sort((a, b) =>
+    a.localeCompare(
+      b,
+      "es",
+      { sensitivity: "base" }
+    )
+  );
+
+  const hayAccess =
+    sitiosFiltrados.some(tieneAccess);
 
   let html = cultivos.map(cultivo =>
-    `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`
+    `<div class="item-leyenda">
+        ${contenidoMarcador(cultivo, true)}
+        <span>${escaparHTML(cultivo)}</span>
+     </div>`
   ).join("");
 
   if (hayAccess) {
-    html += `<div class="item-leyenda item-leyenda-access">${contenidoIconoAccess(true)}<span>Bajada de ruta / Access</span></div>`;
+    html += `
+      <div class="item-leyenda item-leyenda-access">
+        ${contenidoIconoAccess(true)}
+        <span>Bajada de ruta / Access</span>
+      </div>
+    `;
   }
 
-  contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
+  html += `
+    <div class="item-leyenda item-leyenda-drop">
+      <span class="muestra-drop-leyenda">
+        <span>×</span>
+      </span>
+      <span>Trial Drop - No visitar</span>
+    </div>
+  `;
+
+  contenidoLeyenda.innerHTML =
+    html ||
+    '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
 
 function actualizarMapa() {
