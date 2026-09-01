@@ -425,3 +425,35 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
 .resumen-avance-detalle {
   font-size: 13px;
 }
+.fila-busqueda {
+  display: flex;
+  gap: 8px;
+  grid-column: 1 / -1;
+}
+
+.fila-busqueda #busqueda {
+  flex: 1;
+}
+
+.fila-busqueda #limpiarFiltros {
+  width: auto;
+  min-width: 130px;
+}
+
+@media (max-width: 600px) {
+
+  .fila-busqueda {
+    display: flex;
+    gap: 6px;
+  }
+
+  .fila-busqueda #busqueda {
+    flex: 1;
+  }
+
+  .fila-busqueda #limpiarFiltros {
+    min-width: 110px;
+    font-size: 12px;
+  }
+
+}
