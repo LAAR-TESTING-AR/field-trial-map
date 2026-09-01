@@ -49,9 +49,25 @@
   </header>
 
   <section class="panel">
-    <input type="search" id="busqueda" placeholder="Buscar AOI, localidad, cultivo, FTS..." aria-label="Buscar por AOI ID, localidad,Trial, Access, Drop, descripción, cultivo, región, provincia, FTS, SPA u operación">
+    <div class="fila-busqueda">
+
+  <input
+    type="search"
+    id="busqueda"
+    placeholder="Buscar AOI, localidad, cultivo, FTS..."
+    aria-label="Buscar por AOI ID, localidad, Trial, Access, Drop, descripción, cultivo, región, provincia, FTS, SPA u operación"
+  >
+
+  <button
+    id="limpiarFiltros"
+    type="button">
+    Limpiar filtros
+  </button>
+
+</div>
+
 <div class="selector-vista-mapa">
-  <button id="limpiarFiltros" type="button">Limpiar filtros</button>
+
   <button
     id="vistaMaster"
     class="boton-vista activo"
@@ -72,6 +88,7 @@
     type="button">
     COSECHA
   </button>
+
 </div>
     <select id="filtroCultivo">
       <option value="">Todos los cultivos</option>
