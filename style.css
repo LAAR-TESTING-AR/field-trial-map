@@ -302,3 +302,46 @@ html.ios-pwa-standalone .leaflet-popup-content {
 html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
   padding-bottom: max(4px, env(safe-area-inset-bottom, 0px));
 }
+.selector-vista-mapa {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.boton-vista {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #b8c3ba;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #24442e;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-vista:hover {
+  background: #f2f5f3;
+}
+
+.boton-vista.activo {
+  background: #176b3a;
+  color: #ffffff;
+  border-color: #176b3a;
+}
+
+@media (max-width: 600px) {
+
+  .selector-vista-mapa {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .boton-vista {
+    min-height: 42px;
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+
+}
