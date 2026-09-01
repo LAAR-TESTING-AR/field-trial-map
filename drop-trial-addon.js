@@ -112,10 +112,28 @@
         modo !== "drop";
 
       if (mostrarTrial) {
-        L.marker(
-          [sitio.latitudeTrial, sitio.longitudeTrial],
-          { icon: window.crearIconoTrial(sitio.crop, sitio) }
-        )
+
+  let iconoTrial;
+
+  if (window.vistaMapaActual === "planting") {
+
+    iconoTrial = crearIconoSiembra(
+      estaSembrado(sitio)
+    );
+
+  } else {
+
+    iconoTrial = window.crearIconoTrial(
+      sitio.crop,
+      sitio
+    );
+
+  }
+
+  L.marker(
+    [sitio.latitudeTrial, sitio.longitudeTrial],
+    { icon: iconoTrial }
+  )
           .bindPopup(window.crearPopupTrial(sitio), {
             maxWidth: 390,
             minWidth: 285,
