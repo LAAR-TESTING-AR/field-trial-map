@@ -90,119 +90,179 @@
   };
 
   window.actualizarMapa = function () {
-    capaMarcadores.clearLayers();
 
-    const sitiosFiltrados = sitios.filter(coincideConFiltros);
-    const coordenadas = [];
-    const modo = busquedaEspecial();
-    let cantidadTrials = 0;
-    let cantidadAccess = 0;
-    let cantidadDrop = 0;
-    let cantidadSembrados = 0;
+  capaMarcadores.clearLayers();
 
-    sitiosFiltrados.forEach(sitio => {
-      const esDrop = esTrialDrop(sitio);
-      const mostrarTrial =
-        tieneTrial(sitio) &&
-        modo !== "access" &&
-        (modo !== "drop" || esDrop);
+  const sitiosFiltrados = sitios.filter(
+    coincideConFiltros
+  );
 
-      const mostrarAccess =
-        tieneAccess(sitio) &&
-        modo !== "trial" &&
-        modo !== "drop";
+  const coordenadas = [];
 
-      if (mostrarTrial) {
+  const modo = busquedaEspecial();
 
-  let iconoTrial;
+  let cantidadTrials = 0;
+  let cantidadAccess = 0;
+  let cantidadDrop = 0;
+  let cantidadSembrados = 0;
 
-  if (window.vistaMapaActual === "planting") {
+  sitiosFiltrados.forEach(sitio => {
 
-    iconoTrial = crearIconoSiembra(
-      estaSembrado(sitio)
-    );
+    const esDrop = esTrialDrop(sitio);
+
+    const mostrarTrial =
+      tieneTrial(sitio) &&
+      modo !== "access" &&
+      (modo !== "drop" || esDrop);
+
+    const mostrarAccess =
+      tieneAccess(sitio) &&
+      modo !== "trial" &&
+      modo !== "drop";
+
+    if (mostrarTrial) {
+
+      let iconoTrial;
+
+      if (
+        window.vistaMapaActual === "planting"
+      ) {
+
+        iconoTrial = crearIconoSiembra(
+          estaSembrado(sitio)
+        );
+
+      } else {
+
+        iconoTrial = window.crearIconoTrial(
+          sitio.crop,
+          sitio
+        );
+
+      }
+
+      L.marker(
+        [
+          sitio.latitudeTrial,
+          sitio.longitudeTrial
+        ],
+        {
+          icon: iconoTrial
+        }
+      )
+        .bindPopup(
+          window.crearPopupTrial(sitio),
+          {
+            maxWidth: 390,
+            minWidth: 285,
+            maxHeight: 700,
+            autoPan: true,
+            autoPanPadding: [50, 120]
+          }
+        )
+        .addTo(capaMarcadores);
+
+      coordenadas.push([
+        sitio.latitudeTrial,
+        sitio.longitudeTrial
+      ]);
+
+      cantidadTrials += 1;
+
+      if (esDrop) {
+
+        cantidadDrop += 1;
+
+      } else if (
+        estaSembrado(sitio)
+      ) {
+
+        cantidadSembrados += 1;
+
+      }
+
+    } // cierre mostrarTrial
+
+    if (mostrarAccess) {
+
+      const sitioAccess = {
+        ...sitio,
+        latitude: sitio.latitudeAccess,
+        longitude: sitio.longitudeAccess
+      };
+
+      L.marker(
+        [
+          sitio.latitudeAccess,
+          sitio.longitudeAccess
+        ],
+        {
+          icon: crearIconoAccess(),
+          zIndexOffset: 1000
+        }
+      )
+        .bindPopup(
+          crearPopupAccess(sitioAccess),
+          {
+            maxWidth: 390,
+            minWidth: 285,
+            maxHeight: 700,
+            autoPan: true,
+            autoPanPadding: [50, 120],
+            sitioAccess
+          }
+        )
+        .addTo(capaMarcadores);
+
+      coordenadas.push([
+        sitio.latitudeAccess,
+        sitio.longitudeAccess
+      ]);
+
+      cantidadAccess += 1;
+
+    }
+
+  });
+
+  const total =
+    cantidadTrials + cantidadAccess;
+
+  if (
+    window.vistaMapaActual === "planting"
+  ) {
+
+    const trialsValidos =
+      cantidadTrials - cantidadDrop;
+
+    const pendientes =
+      trialsValidos - cantidadSembrados;
+
+    const porcentaje =
+      trialsValidos > 0
+        ? Math.round(
+            (
+              cantidadSembrados /
+              trialsValidos
+            ) * 100
+          )
+        : 0;
+
+    contadorSitios.textContent =
+      `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
+      (
+        cantidadDrop
+          ? ` · ⛔ ${cantidadDrop} Drop`
+          : ""
+      );
 
   } else {
 
-    iconoTrial = window.crearIconoTrial(
-      sitio.crop,
-      sitio
-    );
-
-  }
-
-  L.marker(
-    [sitio.latitudeTrial, sitio.longitudeTrial],
-    { icon: iconoTrial }
-  )
-          .bindPopup(window.crearPopupTrial(sitio), {
-            maxWidth: 390,
-            minWidth: 285,
-            maxHeight: 520
-          })
-          .addTo(capaMarcadores);
-
-        coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
-        cantidadTrials += 1;
-
-if (esDrop) {
-  cantidadDrop += 1;
-} else if (estaSembrado(sitio)) {
-  cantidadSembrados += 1;
-}
-
-      if (mostrarAccess) {
-        const sitioAccess = {
-          ...sitio,
-          latitude: sitio.latitudeAccess,
-          longitude: sitio.longitudeAccess
-        };
-
-        L.marker(
-          [sitio.latitudeAccess, sitio.longitudeAccess],
-          { icon: crearIconoAccess(), zIndexOffset: 1000 }
-        )
-          .bindPopup(crearPopupAccess(sitioAccess), {
-            maxWidth: 390,
-            minWidth: 285,
-            maxHeight: 520,
-            sitioAccess
-          })
-          .addTo(capaMarcadores);
-
-        coordenadas.push([sitio.latitudeAccess, sitio.longitudeAccess]);
-        cantidadAccess += 1;
-      }
-    });
-
-    const total = cantidadTrials + cantidadAccess;
-
-if (window.vistaMapaActual === "planting") {
-
-  const trialsValidos =
-    cantidadTrials - cantidadDrop;
-
-  const pendientes =
-    trialsValidos - cantidadSembrados;
-
-  const porcentaje =
-    trialsValidos > 0
-      ? Math.round(
-          (cantidadSembrados / trialsValidos) * 100
-        )
-      : 0;
-
-  contadorSitios.textContent =
-    `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
-    `${cantidadDrop ? ` · ⛔ ${cantidadDrop} Drop` : ""}`;
-
-} else {
-
-  contadorSitios.textContent =
-    `${total} puntos visibles · ${cantidadTrials} Trials · ` +
-    `${cantidadAccess} Access${cantidadDrop ? ` · ${cantidadDrop} Drop` : ""}`;
-
-}
+    contadorSitios.textContent =
+      `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
+      (
+        cantidadDrop
+          
 
     window.actualizarLeyenda(sitiosFiltrados);
 
