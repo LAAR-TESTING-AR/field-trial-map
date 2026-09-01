@@ -356,9 +356,58 @@ function actualizarMapa() {
     }
   });
 
-  const total = cantidadTrials + cantidadAccess;
-  contadorSitios.textContent = `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
-  actualizarLeyenda(sitiosFiltrados);
+  const cantidadDrop = sitiosFiltrados.filter(
+  sitio =>
+    tieneTrial(sitio) &&
+    String(sitio.description || "")
+      .toLowerCase()
+      .includes("drop")
+).length;
+
+const cantidadSembrados = sitiosFiltrados.filter(
+  sitio =>
+    tieneTrial(sitio) &&
+    !String(sitio.description || "")
+      .toLowerCase()
+      .includes("drop") &&
+    estaSembrado(sitio)
+).length;
+
+const trialsValidos =
+  cantidadTrials - cantidadDrop;
+
+const pendientes =
+  trialsValidos - cantidadSembrados;
+
+const porcentaje =
+  trialsValidos > 0
+    ? Math.round(
+        (cantidadSembrados / trialsValidos) * 100
+      )
+    : 0;
+
+const total =
+  cantidadTrials + cantidadAccess;
+
+if (window.vistaMapaActual === "planting") {
+
+  contadorSitios.textContent =
+    `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
+    (cantidadDrop
+      ? ` · ⛔ ${cantidadDrop} Drop`
+      : "");
+
+} else {
+
+  contadorSitios.textContent =
+    `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
+    (cantidadDrop
+      ? ` · ${cantidadDrop} Drop`
+      : "");
+
+}
+
+actualizarLeyenda(sitiosFiltrados);
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
