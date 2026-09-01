@@ -18,7 +18,7 @@ const vistaMaster = document.getElementById("vistaMaster");
 const vistaSiembra = document.getElementById("vistaSiembra");
 const vistaCosecha = document.getElementById("vistaCosecha");
 
-let vistaMapaActual = "master";
+window.vistaMapaActual = "master";
 let sitios = [];
 let contenidoLeyenda = null;
 let panelLeyenda = null;
@@ -446,7 +446,7 @@ mapa.on("popupopen", ocultarLeyenda);
 mapa.on("click", ocultarLeyenda);
 agregarLeyendaPremium();
 vistaMaster?.addEventListener("click", () => {
-  vistaMapaActual = "master";
+  window.vistaMapaActual = "master";
 
   vistaMaster.classList.add("activo");
   vistaSiembra.classList.remove("activo");
@@ -456,7 +456,7 @@ vistaMaster?.addEventListener("click", () => {
 });
 
 vistaSiembra?.addEventListener("click", () => {
-  vistaMapaActual = "planting";
+  window.vistaMapaActual = "planting";
 
   vistaMaster.classList.remove("activo");
   vistaSiembra.classList.add("activo");
@@ -466,7 +466,7 @@ vistaSiembra?.addEventListener("click", () => {
 });
 
 vistaCosecha?.addEventListener("click", () => {
-  vistaMapaActual = "harvest";
+  window.vistaMapaActual = "harvest";
 
   vistaMaster.classList.remove("activo");
   vistaSiembra.classList.remove("activo");
