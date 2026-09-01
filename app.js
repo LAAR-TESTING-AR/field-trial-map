@@ -457,13 +457,40 @@ const total =
 
 if (window.vistaMapaActual === "planting") {
 
-  contadorSitios.textContent =
-    `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
-    (cantidadDrop
-      ? ` · ⛔ ${cantidadDrop} Drop`
-      : "");
+  contadorSitios.innerHTML = `
+    <div class="resumen-avance">
 
-} else {
+      <div class="resumen-avance-titulo">
+        🌱 AVANCE DE SIEMBRA
+      </div>
+
+      <div class="resumen-avance-principal">
+        ${cantidadSembrados} / ${trialsValidos} Trials
+      </div>
+
+      <div class="resumen-avance-porcentaje">
+        ${porcentaje}%
+      </div>
+
+      <div class="barra-avance">
+        <div
+          class="barra-avance-llenado"
+          style="width:${porcentaje}%;">
+        </div>
+      </div>
+
+      <div class="resumen-avance-detalle">
+        ✅ ${cantidadSembrados} sembrados ·
+        ⚪ ${pendientes} pendientes ·
+        ⛔ ${cantidadDrop} Drop
+      </div>
+
+    </div>
+  `;
+
+}
+``
+  else {
 
   contadorSitios.textContent =
     `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
