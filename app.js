@@ -316,7 +316,7 @@ function actualizarMapa() {
 
 const iconoTrial =
   esDrop
-    ? crearIconoTrial(
+    ? window.crearIconoTrial(
         sitio.crop,
         sitio
       )
@@ -325,7 +325,7 @@ const iconoTrial =
           ? crearIconoSiembra(
               estaSembrado(sitio)
             )
-          : crearIconoTrial(
+          : window.crearIconoTrial(
               sitio.crop,
               sitio
             )
