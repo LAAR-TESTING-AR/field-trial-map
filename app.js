@@ -63,6 +63,14 @@ function estaSembrado(sitio) {
 }
 
 function esDrop(sitio) {
+  return String(
+    sitio.description || ""
+  )
+    .toLowerCase()
+    .includes("drop");
+}
+
+function esDrop(sitio) {
   return limpiarTexto(
     sitio.description
   )
@@ -349,7 +357,9 @@ function actualizarMapa() {
     .includes("drop");
 
 const iconoTrial =
-  esDrop(sitio)
+  String(sitio.description || "")
+  .toLowerCase()
+  .includes("drop")
 
     ? crearIconoDrop(
         sitio.crop
