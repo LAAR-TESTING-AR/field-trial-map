@@ -372,28 +372,36 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
 .resumen-avance {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
-.resumen-avance-titulo {
+.resumen-avance-cabecera {
   font-weight: 700;
   color: #176b3a;
 }
 
+.resumen-avance-linea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .resumen-avance-principal {
-  font-size: 16px;
+  min-width: 110px;
   font-weight: 700;
 }
 
 .resumen-avance-porcentaje {
-  font-size: 20px;
+  min-width: 45px;
+  text-align: right;
+  font-size: 24px;
   font-weight: 800;
   color: #176b3a;
 }
 
 .barra-avance {
-  width: 100%;
-  height: 10px;
+  flex: 1;
+  height: 12px;
   border-radius: 999px;
   background: #d9dedb;
   overflow: hidden;
@@ -402,7 +410,6 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
 .barra-avance-llenado {
   height: 100%;
   background: #168052;
-  transition: width .3s ease;
 }
 
 .resumen-avance-detalle {
