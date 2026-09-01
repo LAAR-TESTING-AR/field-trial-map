@@ -173,6 +173,28 @@ function crearIconoAccess() {
     iconSize: [34, 46], iconAnchor: [17, 46], popupAnchor: [0, -43]
   });
 }
+function crearIconoSiembra(sembrado) {
+
+  return L.divIcon({
+    className: "marcador-cultivo-contenedor",
+
+    html: sembrado
+      ? `
+        <span class="marcador-siembra sembrado">
+          ✅
+        </span>
+      `
+      : `
+        <span class="marcador-siembra pendiente">
+          ⚪
+        </span>
+      `,
+
+    iconSize: [38, 46],
+    iconAnchor: [19, 46],
+    popupAnchor: [0, -43]
+  });
+}
 
 function linea(etiqueta, valor, sufijo = "") {
   const contenido = limpiarTexto(valor);
