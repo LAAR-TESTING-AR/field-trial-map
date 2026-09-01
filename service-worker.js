@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-trial-map-v21";
+const CACHE_NAME = "field-trial-map-v22";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
@@ -28,6 +28,7 @@ const APP_SHELL = [
   `${BASE_PATH}app-viewer-controls.js`,
   `${BASE_PATH}header-app.css`,
   `${BASE_PATH}app.js`,
+  `${BASE_PATH}field-access-status.js`,
   `${BASE_PATH}drop-trial-addon.js`,
   `${BASE_PATH}summary-toolbar.js`,
   `${BASE_PATH}foto-access-addon.js`,
