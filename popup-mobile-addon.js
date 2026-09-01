@@ -15,6 +15,72 @@
     "Longitud"
   ];
 
+
+  function esIOSStandalone() {
+    const esIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const esStandalone =
+      window.navigator.standalone === true ||
+      window.matchMedia("(display-mode: standalone)").matches;
+
+    return esIOS && esStandalone;
+  }
+
+  function actualizarAlturaVisiblePWA() {
+    if (!esIOSStandalone()) {
+      document.documentElement.classList.remove("ios-pwa-standalone");
+      document.documentElement.style.removeProperty("--ios-pwa-visible-height");
+      return;
+    }
+
+    const alturaVisible = Math.round(
+      window.visualViewport?.height || window.innerHeight
+    );
+
+    document.documentElement.classList.add("ios-pwa-standalone");
+    document.documentElement.style.setProperty(
+      "--ios-pwa-visible-height",
+      `${alturaVisible}px`
+    );
+  }
+
+  function ajustarPopupIOSPWA() {
+    if (!esIOSStandalone()) return;
+
+    actualizarAlturaVisiblePWA();
+
+    const contenido = document.querySelector(
+      ".leaflet-popup-content"
+    );
+
+    if (!contenido) return;
+
+    contenido.scrollTop = 0;
+
+    window.setTimeout(() => {
+      const popup =
+        typeof mapa !== "undefined" && mapa
+          ? mapa._popup
+          : null;
+
+      if (
+        popup &&
+        typeof popup.update === "function"
+      ) {
+        popup.update();
+      }
+
+      if (
+        popup &&
+        typeof mapa.panInsidePopup === "function"
+      ) {
+        mapa.panInsidePopup(popup, {
+          paddingTopLeft: [18, 18],
+          paddingBottomRight: [18, 80]
+        });
+      }
+    }, 50);
+  }
+
   function textoEtiqueta(parrafo) {
     const strong = parrafo.querySelector("strong");
     return strong ? strong.textContent.replace(":", "").trim() : "";
@@ -103,10 +169,39 @@
   }
 
   mapa.on("popupopen", function () {
-    window.requestAnimationFrame(prepararPopupAbierto);
-    window.setTimeout(prepararPopupAbierto, 80);
-    window.setTimeout(prepararPopupAbierto, 180);
+    actualizarAlturaVisiblePWA();
+
+    window.requestAnimationFrame(() => {
+      prepararPopupAbierto();
+      ajustarPopupIOSPWA();
+    });
+
+    window.setTimeout(() => {
+      prepararPopupAbierto();
+      ajustarPopupIOSPWA();
+    }, 80);
+
+    window.setTimeout(() => {
+      prepararPopupAbierto();
+      ajustarPopupIOSPWA();
+    }, 250);
+
+    window.setTimeout(ajustarPopupIOSPWA, 600);
   });
+
+  window.addEventListener("resize", actualizarAlturaVisiblePWA);
+  window.addEventListener("orientationchange", () => {
+    window.setTimeout(actualizarAlturaVisiblePWA, 150);
+  });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener(
+      "resize",
+      actualizarAlturaVisiblePWA
+    );
+  }
+
+  actualizarAlturaVisiblePWA();
 
   console.log("Optimización móvil de popups habilitada.");
 })();
