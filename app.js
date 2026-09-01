@@ -158,7 +158,7 @@ function contenidoIconoAccess(modoLeyenda = false) {
   return `<span class="${modoLeyenda ? "muestra-access-leyenda" : "marcador-access"}" aria-hidden="true"><span class="pin-access-cabeza"></span><span class="pin-access-punta"></span></span>`;
 }
 
-function crearIconoTrial(cultivo) {
+function crearIconoTrial(cultivo,sitio) {
   return L.divIcon({
     className: "marcador-cultivo-contenedor",
     html: contenidoMarcador(cultivo),
@@ -309,14 +309,27 @@ function actualizarMapa() {
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
 
-  const iconoTrial =
-    vistaMapaActual === "planting"
-      ? crearIconoSiembra(
-          estaSembrado(sitio)
-        )
-      : crearIconoTrial(
-          sitio.crop
-        );
+  const esDrop =
+  String(sitio.description || "")
+    .toLowerCase()
+    .includes("drop");
+
+const iconoTrial =
+  esDrop
+    ? crearIconoTrial(
+        sitio.crop,
+        sitio
+      )
+    : (
+        vistaMapaActual === "planting"
+          ? crearIconoSiembra(
+              estaSembrado(sitio)
+            )
+          : crearIconoTrial(
+              sitio.crop,
+              sitio
+            )
+      );
 
   L.marker(
     [sitio.latitudeTrial, sitio.longitudeTrial],
