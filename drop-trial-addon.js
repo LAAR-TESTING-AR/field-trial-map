@@ -124,22 +124,29 @@
 
       let iconoTrial;
 
-      if (
-        window.vistaMapaActual === "planting"
-      ) {
+if (esDrop) {
 
-        iconoTrial = crearIconoSiembra(
-          estaSembrado(sitio)
-        );
+  iconoTrial = window.crearIconoTrial(
+    sitio.crop,
+    sitio
+  );
 
-      } else {
+} else if (
+  window.vistaMapaActual === "planting"
+) {
 
-        iconoTrial = window.crearIconoTrial(
-          sitio.crop,
-          sitio
-        );
+  iconoTrial = crearIconoSiembra(
+    estaSembrado(sitio)
+  );
 
-      }
+} else {
+
+  iconoTrial = window.crearIconoTrial(
+    sitio.crop,
+    sitio
+  );
+
+}
 
       L.marker(
         [
