@@ -308,7 +308,22 @@ function actualizarMapa() {
 
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
-      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
+
+  const iconoTrial =
+    vistaMapaActual === "planting"
+      ? crearIconoSiembra(
+          estaSembrado(sitio)
+        )
+      : crearIconoTrial(
+          sitio.crop
+        );
+
+  L.marker(
+    [sitio.latitudeTrial, sitio.longitudeTrial],
+    {
+      icon: iconoTrial
+    }
+  )
         .bindPopup(crearPopupTrial(sitio), {
   maxWidth: 390,
   minWidth: 285,
