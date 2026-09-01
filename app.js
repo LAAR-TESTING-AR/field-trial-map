@@ -457,19 +457,17 @@ const total =
 
 if (window.vistaMapaActual === "planting") {
 
-  contadorSitios.innerHTML = `
-    <div class="resumen-avance">
+contadorSitios.innerHTML = `
+  <div class="resumen-avance">
 
-      <div class="resumen-avance-titulo">
-        🌱 AVANCE DE SIEMBRA
-      </div>
+    <div class="resumen-avance-cabecera">
+      🌱 AVANCE DE SIEMBRA
+    </div>
+
+    <div class="resumen-avance-linea">
 
       <div class="resumen-avance-principal">
         ${cantidadSembrados} / ${trialsValidos} Trials
-      </div>
-
-      <div class="resumen-avance-porcentaje">
-        ${porcentaje}%
       </div>
 
       <div class="barra-avance">
@@ -479,14 +477,20 @@ if (window.vistaMapaActual === "planting") {
         </div>
       </div>
 
-      <div class="resumen-avance-detalle">
-        ✅ ${cantidadSembrados} sembrados ·
-        ⚪ ${pendientes} pendientes ·
-        ⛔ ${cantidadDrop} Drop
+      <div class="resumen-avance-porcentaje">
+        ${porcentaje}%
       </div>
 
     </div>
-  `;
+
+    <div class="resumen-avance-detalle">
+      ✅ ${cantidadSembrados} sembrados ·
+      ⚪ ${pendientes} pendientes ·
+      ⛔ ${cantidadDrop} Drop
+    </div>
+
+  </div>
+`; 
 
 }
   else {
