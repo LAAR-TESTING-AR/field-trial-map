@@ -62,6 +62,14 @@ function estaSembrado(sitio) {
   );
 }
 
+function esDrop(sitio) {
+  return limpiarTexto(
+    sitio.description
+  )
+    .toLowerCase()
+    .includes("drop");
+}
+
 function transformarFila(fila) {
   return {
     aoiId: limpiarTexto(fila["AOI ID"]),
@@ -196,6 +204,32 @@ function crearIconoSiembra(sembrado) {
   });
 }
 
+function crearIconoDrop(cultivo) {
+
+  const cfg =
+    configuracionCultivo(cultivo);
+
+  return L.divIcon({
+    className: "marcador-drop-contenedor",
+
+    html: `
+      <span class="marcador-drop cultivo-${cfg.tipo}">
+        <span class="icono-drop-cultivo">
+          ${cfg.icono}
+        </span>
+
+        <span class="equis-drop">
+          ×
+        </span>
+      </span>
+    `,
+
+    iconSize: [42, 48],
+    iconAnchor: [21, 48],
+    popupAnchor: [0, -45]
+  });
+}
+
 function linea(etiqueta, valor, sufijo = "") {
   const contenido = limpiarTexto(valor);
   return contenido
@@ -315,20 +349,25 @@ function actualizarMapa() {
     .includes("drop");
 
 const iconoTrial =
-  esDrop
-    ? window.crearIconoTrial(
-        sitio.crop,
-        sitio
+  esDrop(sitio)
+
+    ? crearIconoDrop(
+        sitio.crop
       )
+
     : (
-        vistaMapaActual === "planting"
+
+        vistaMapaActual ===
+        "planting"
+
           ? crearIconoSiembra(
               estaSembrado(sitio)
             )
-          : window.crearIconoTrial(
-              sitio.crop,
-              sitio
+
+          : crearIconoTrial(
+              sitio.crop
             )
+
       );
 
   L.marker(
