@@ -398,7 +398,11 @@ const iconoTrial =
       cantidadTrials += 1;
     }
 
-    if (tieneAccess(sitio)) {
+    const mostrarAccess =
+  tieneAccess(sitio) &&
+  window.vistaMapaActual === "master";
+    
+    if (mostrarAccess(sitio)) {
       const sitioAccess = { ...sitio, latitude: sitio.latitudeAccess, longitude: sitio.longitudeAccess };
       L.marker([sitio.latitudeAccess, sitio.longitudeAccess], {
         icon: crearIconoAccess(),
