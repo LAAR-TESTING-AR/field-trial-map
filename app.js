@@ -18,9 +18,8 @@ const vistaMaster = document.getElementById("vistaMaster");
 const vistaSiembra = document.getElementById("vistaSiembra");
 const vistaCosecha = document.getElementById("vistaCosecha");
 
-window.vistaMapaActual = "master";
+let vistaMapaActual = "master";
 let sitios = [];
-window.sitios = sitios;
 let contenidoLeyenda = null;
 let panelLeyenda = null;
 let botonLeyenda = null;
@@ -61,22 +60,6 @@ function estaSembrado(sitio) {
   return Boolean(
     limpiarTexto(sitio.plantingDate)
   );
-}
-
-function esDrop(sitio) {
-  return String(
-    sitio.description || ""
-  )
-    .toLowerCase()
-    .includes("drop");
-}
-
-function esDrop(sitio) {
-  return limpiarTexto(
-    sitio.description
-  )
-    .toLowerCase()
-    .includes("drop");
 }
 
 function transformarFila(fila) {
@@ -175,7 +158,7 @@ function contenidoIconoAccess(modoLeyenda = false) {
   return `<span class="${modoLeyenda ? "muestra-access-leyenda" : "marcador-access"}" aria-hidden="true"><span class="pin-access-cabeza"></span><span class="pin-access-punta"></span></span>`;
 }
 
-function crearIconoTrial(cultivo,sitio) {
+function crearIconoTrial(cultivo) {
   return L.divIcon({
     className: "marcador-cultivo-contenedor",
     html: contenidoMarcador(cultivo),
@@ -188,70 +171,6 @@ function crearIconoAccess() {
     className: "marcador-access-contenedor",
     html: contenidoIconoAccess(false),
     iconSize: [34, 46], iconAnchor: [17, 46], popupAnchor: [0, -43]
-  });
-}
-function crearIconoSiembra(sembrado) {
-
-  return L.divIcon({
-    className: "marcador-cultivo-contenedor",
-
-    html: sembrado
-      ? `
-        <span class="marcador-siembra sembrado">
-          ✅
-        </span>
-      `
-      : `
-        <span class="marcador-siembra pendiente">
-          ⚪
-        </span>
-      `,
-
-    iconSize: [38, 46],
-    iconAnchor: [19, 46],
-    popupAnchor: [0, -43]
-  });
-}
-
-function crearIconoDrop(cultivo) {
-function crearIconoDropSiembra() {
-
-  return L.divIcon({
-    className: "marcador-cultivo-contenedor",
-
-    html: `
-      <span class="marcador-siembra drop">
-        ⚪
-      </span>
-    `,
-
-    iconSize: [38, 46],
-    iconAnchor: [19, 46],
-    popupAnchor: [0, -43]
-  });
-
-}
-  const cfg =
-    configuracionCultivo(cultivo);
-
-  return L.divIcon({
-    className: "marcador-drop-contenedor",
-
-    html: `
-      <span class="marcador-drop cultivo-${cfg.tipo}">
-        <span class="icono-drop-cultivo">
-          ${cfg.icono}
-        </span>
-
-        <span class="marcador-siembra drop">
-  ⚪
-</span>
-      </span>
-    `,
-
-    iconSize: [42, 48],
-    iconAnchor: [21, 48],
-    popupAnchor: [0, -45]
   });
 }
 
@@ -341,101 +260,21 @@ function alternarLeyenda() {
 }
 
 function actualizarLeyenda(sitiosFiltrados) {
-
   if (!contenidoLeyenda) return;
-
-  if (window.vistaMapaActual === "planting") {
-
-    contenidoLeyenda.innerHTML = `
-      <div class="item-leyenda">
-        <span class="muestra-siembra sembrado">✅</span>
-        <span>Sembrado</span>
-      </div>
-
-      <div class="item-leyenda">
-        <span class="muestra-siembra pendiente">⚪</span>
-        <span>Pendiente</span>
-      </div>
-
-      <div class="item-leyenda item-leyenda-drop">
-        <span class="muestra-drop-leyenda">
-          <span>×</span>
-        </span>
-        <span>Trial Drop - No visitar</span>
-      </div>
-    `;
-
-    return;
-  }
-
-  if (window.vistaMapaActual === "harvest") {
-
-    contenidoLeyenda.innerHTML = `
-      <div class="item-leyenda">
-        <span class="muestra-cosecha cosechado">🟤</span>
-        <span>Cosechado</span>
-      </div>
-
-      <div class="item-leyenda">
-        <span class="muestra-cosecha pendiente">⚪</span>
-        <span>Pendiente</span>
-      </div>
-
-      <div class="item-leyenda item-leyenda-drop">
-        <span class="muestra-drop-leyenda">
-          <span>×</span>
-        </span>
-        <span>Trial Drop - No visitar</span>
-      </div>
-    `;
-
-    return;
-  }
-
   const cultivos = [...new Set(
-    sitiosFiltrados
-      .filter(tieneTrial)
-      .map(s => limpiarTexto(s.crop))
-      .filter(Boolean)
-  )].sort((a, b) =>
-    a.localeCompare(
-      b,
-      "es",
-      { sensitivity: "base" }
-    )
-  );
-
-  const hayAccess =
-    sitiosFiltrados.some(tieneAccess);
+    sitiosFiltrados.filter(tieneTrial).map(s => limpiarTexto(s.crop)).filter(Boolean)
+  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  const hayAccess = sitiosFiltrados.some(tieneAccess);
 
   let html = cultivos.map(cultivo =>
-    `<div class="item-leyenda">
-        ${contenidoMarcador(cultivo, true)}
-        <span>${escaparHTML(cultivo)}</span>
-     </div>`
+    `<div class="item-leyenda">${contenidoMarcador(cultivo, true)}<span>${escaparHTML(cultivo)}</span></div>`
   ).join("");
 
   if (hayAccess) {
-    html += `
-      <div class="item-leyenda item-leyenda-access">
-        ${contenidoIconoAccess(true)}
-        <span>Bajada de ruta / Access</span>
-      </div>
-    `;
+    html += `<div class="item-leyenda item-leyenda-access">${contenidoIconoAccess(true)}<span>Bajada de ruta / Access</span></div>`;
   }
 
-  html += `
-    <div class="item-leyenda item-leyenda-drop">
-      <span class="muestra-drop-leyenda">
-        <span>×</span>
-      </span>
-      <span>Trial Drop - No visitar</span>
-    </div>
-  `;
-
-  contenidoLeyenda.innerHTML =
-    html ||
-    '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
+  contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
 
 function actualizarMapa() {
@@ -447,74 +286,7 @@ function actualizarMapa() {
 
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
-
-  const trialDrop = esDrop(sitio);
-      
-if (trialDrop) {
-  console.log(
-    "DROP DETECTADO:",
-    sitio.aoiId,
-    sitio.location
-  );
-}
-let iconoTrial;
-
-if (
-  window.vistaMapaActual === "planting"
-) {
-
-  if (trialDrop) {
-
-    iconoTrial =
-      crearIconoDropSiembra();
-
-  } else {
-
-    iconoTrial = crearIconoSiembra(
-      estaSembrado(sitio)
-    );
-
-  }
-
-}
-      className: "marcador-cultivo-contenedor",
-      html: `
-        <span class="marcador-siembra drop">
-          ⚪
-        </span>
-      `,
-      iconSize: [38, 46],
-      iconAnchor: [19, 46],
-      popupAnchor: [0, -43]
-    });
-
-  } else {
-
-    iconoTrial = crearIconoSiembra(
-      estaSembrado(sitio)
-    );
-
-  }
-
-} else {
-
-  iconoTrial = trialDrop
-    ? crearIconoDrop(
-        sitio.crop
-      )
-    : crearIconoTrial(
-        sitio.crop
-      );
-
-}
-
-
-  L.marker(
-    [sitio.latitudeTrial, sitio.longitudeTrial],
-    {
-      icon: iconoTrial
-    }
-  )
+      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
         .bindPopup(crearPopupTrial(sitio), {
   maxWidth: 390,
   minWidth: 285,
@@ -527,11 +299,7 @@ if (
       cantidadTrials += 1;
     }
 
-    const mostrarAccess =
-  tieneAccess(sitio) &&
-  window.vistaMapaActual === "master";
-    
-    if (mostrarAccess) {
+    if (tieneAccess(sitio)) {
       const sitioAccess = { ...sitio, latitude: sitio.latitudeAccess, longitude: sitio.longitudeAccess };
       L.marker([sitio.latitudeAccess, sitio.longitudeAccess], {
         icon: crearIconoAccess(),
@@ -551,88 +319,9 @@ if (
     }
   });
 
-  const cantidadDrop = sitiosFiltrados.filter(
-  sitio =>
-    tieneTrial(sitio) &&
-    String(sitio.description || "")
-      .toLowerCase()
-      .includes("drop")
-).length;
-
-const cantidadSembrados = sitiosFiltrados.filter(
-  sitio =>
-    tieneTrial(sitio) &&
-    !String(sitio.description || "")
-      .toLowerCase()
-      .includes("drop") &&
-    estaSembrado(sitio)
-).length;
-
-const trialsValidos =
-  cantidadTrials - cantidadDrop;
-
-const pendientes =
-  trialsValidos - cantidadSembrados;
-
-const porcentaje =
-  trialsValidos > 0
-    ? Math.round(
-        (cantidadSembrados / trialsValidos) * 100
-      )
-    : 0;
-
-const total =
-  cantidadTrials + cantidadAccess;
-
-if (window.vistaMapaActual === "planting") {
-
-contadorSitios.innerHTML = `
-  <div class="resumen-avance">
-
-    <div class="resumen-avance-cabecera">
-      🌱 AVANCE DE SIEMBRA
-    </div>
-
-    <div class="resumen-avance-linea">
-
-      <div class="resumen-avance-principal">
-        ${cantidadSembrados} / ${trialsValidos} Trials
-      </div>
-
-      <div class="barra-avance">
-        <div
-          class="barra-avance-llenado"
-          style="width:${porcentaje}%;">
-        </div>
-      </div>
-
-      <div class="resumen-avance-porcentaje">
-        ${porcentaje}%
-      </div>
-
-    </div>
-
-    <div class="resumen-avance-detalle">
-      ✅ ${cantidadSembrados} sembrados ·
-      ⚪ ${pendientes} pendientes ·
-      ⛔ ${cantidadDrop} Drop
-    </div>
-
-  </div>
-`; 
-
-}
-  else {
-
-  contadorSitios.textContent =
-    `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
-    (cantidadDrop
-      ? ` · ${cantidadDrop} Drop`
-      : "");
-
-}
-
-actualizarLeyenda(sitiosFiltrados);
+  const total = cantidadTrials + cantidadAccess;
+  contadorSitios.textContent = `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
+  actualizarLeyenda(sitiosFiltrados);
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
@@ -667,7 +356,6 @@ function cargarSitios() {
 
     complete: resultado => {
       sitios = resultado.data
-        window.sitios = sitios;
         .map(transformarFila)
         .filter(
           sitio =>
@@ -721,7 +409,7 @@ mapa.on("popupopen", ocultarLeyenda);
 mapa.on("click", ocultarLeyenda);
 agregarLeyendaPremium();
 vistaMaster?.addEventListener("click", () => {
-  window.vistaMapaActual = "master";
+  vistaMapaActual = "master";
 
   vistaMaster.classList.add("activo");
   vistaSiembra.classList.remove("activo");
@@ -731,7 +419,7 @@ vistaMaster?.addEventListener("click", () => {
 });
 
 vistaSiembra?.addEventListener("click", () => {
-  window.vistaMapaActual = "planting";
+  vistaMapaActual = "planting";
 
   vistaMaster.classList.remove("activo");
   vistaSiembra.classList.add("activo");
@@ -741,7 +429,7 @@ vistaSiembra?.addEventListener("click", () => {
 });
 
 vistaCosecha?.addEventListener("click", () => {
-  window.vistaMapaActual = "harvest";
+  vistaMapaActual = "harvest";
 
   vistaMaster.classList.remove("activo");
   vistaSiembra.classList.remove("activo");
