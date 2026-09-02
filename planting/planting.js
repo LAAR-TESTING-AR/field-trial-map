@@ -113,7 +113,7 @@ document.getElementById("avance").textContent =
 
   marcador.addTo(mapa);
 
-};
+});
   
   error: error => {
     console.error("Error cargando Sitios.csv", error);
