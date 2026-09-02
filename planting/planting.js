@@ -347,6 +347,10 @@ configuracionFiltros.forEach(
     );
   }
 );
+busqueda.addEventListener(
+  "input",
+  actualizarVista
+);
 
 limpiarFiltros.addEventListener(
   "click",
