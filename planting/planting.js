@@ -12,6 +12,11 @@ L.tileLayer(
 
 let sitios = [];
 
+const filtroCrop = document.getElementById("filtroCrop");
+const filtroSeason = document.getElementById("filtroSeason");
+const filtroLaar = document.getElementById("filtroLaar");
+const filtroOperation = document.getElementById("filtroOperation");
+
 Papa.parse("../Sitios.csv", {
   download: true,
   header: true,
@@ -20,6 +25,7 @@ Papa.parse("../Sitios.csv", {
   complete: resultado => {
 
     sitios = resultado.data;
+    cargarFiltros();
 
     console.log(
       `Sitios cargados: ${sitios.length}`
@@ -122,8 +128,61 @@ if (coordenadas.length > 0) {
 }
 
 },
-  
-  error: error => {
+
+error: error => {
     console.error("Error cargando Sitios.csv", error);
   }
-})
+}),
+  
+  function obtenerValoresUnicos(campo) {
+  return [...new Set(
+    sitios
+      .map(sitio => String(sitio[campo] || "").trim())
+      .filter(Boolean)
+  )].sort();
+}
+
+function cargarOpciones(select, valores) {
+
+  while (select.options.length > 1) {
+    select.remove(1);
+  }
+
+  valores.forEach(valor => {
+
+    const opcion = document.createElement("option");
+
+    opcion.value = valor;
+
+    opcion.textContent = valor;
+
+    select.appendChild(opcion);
+
+  });
+
+}
+
+function cargarFiltros() {
+
+  cargarOpciones(
+    filtroCrop,
+    obtenerValoresUnicos("Crop")
+  );
+
+  cargarOpciones(
+    filtroSeason,
+    obtenerValoresUnicos("Season")
+  );
+
+  cargarOpciones(
+    filtroLaar,
+    obtenerValoresUnicos("LAAR Status 2026-2027")
+  );
+
+  cargarOpciones(
+    filtroOperation,
+    obtenerValoresUnicos("Operations")
+  );
+
+}
+  
