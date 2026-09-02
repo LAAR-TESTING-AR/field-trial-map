@@ -118,4 +118,4 @@ document.getElementById("avance").textContent =
   error: error => {
     console.error("Error cargando Sitios.csv", error);
   }
-});
+})
