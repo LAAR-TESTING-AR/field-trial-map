@@ -57,6 +57,30 @@ const configuracionFiltros = [
 function limpiarTexto(valor) {
   return String(valor ?? "").trim();
 }
+function normalizarTexto(valor) {
+  return limpiarTexto(valor)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function coincideConBusqueda(sitio) {
+  const palabras = normalizarTexto(busqueda.value)
+    .split(/\s+/)
+    .filter(Boolean);
+
+  if (palabras.length === 0) {
+    return true;
+  }
+
+  const contenidoCompleto = Object.values(sitio)
+    .map(normalizarTexto)
+    .join(" ");
+
+  return palabras.every(palabra =>
+    contenidoCompleto.includes(palabra)
+  );
+}
 
 function ordenarValores(valores) {
   return [...new Set(
