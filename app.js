@@ -213,7 +213,23 @@ function crearIconoSiembra(sembrado) {
 }
 
 function crearIconoDrop(cultivo) {
+function crearIconoDropSiembra() {
 
+  return L.divIcon({
+    className: "marcador-cultivo-contenedor",
+
+    html: `
+      <span class="marcador-siembra drop">
+        ⚪
+      </span>
+    `,
+
+    iconSize: [38, 46],
+    iconAnchor: [19, 46],
+    popupAnchor: [0, -43]
+  });
+
+}
   const cfg =
     configuracionCultivo(cultivo);
 
@@ -448,7 +464,18 @@ if (
 
   if (trialDrop) {
 
-    iconoTrial = L.divIcon({
+    iconoTrial =
+      crearIconoDropSiembra();
+
+  } else {
+
+    iconoTrial = crearIconoSiembra(
+      estaSembrado(sitio)
+    );
+
+  }
+
+}
       className: "marcador-cultivo-contenedor",
       html: `
         <span class="marcador-siembra drop">
