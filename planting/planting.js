@@ -63,7 +63,7 @@ document.getElementById("drop").textContent =
 
 document.getElementById("avance").textContent =
   `${avance}%`;
-
+const coordenadas = [];
   sitios.forEach(sitio => {
 
   const lat = Number(sitio["Latitude Trial"]);
@@ -112,8 +112,14 @@ document.getElementById("avance").textContent =
   `);
 
   marcador.addTo(mapa);
-
+coordenadas.push([lat, lon]);
 });
+    
+if (coordenadas.length > 0) {
+  mapa.fitBounds(coordenadas, {
+    padding: [30, 30]
+  });
+}
 
 },
   
