@@ -431,13 +431,7 @@ function actualizarMapa() {
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
 
-  const esDrop =
-  String(sitio.description || "")
-    .toLowerCase()
-    .includes("drop");
-
-      const trialDrop =
-  esDrop(sitio);
+  const trialDrop = esDrop(sitio);
 
 let iconoTrial;
 
@@ -478,7 +472,6 @@ if (
       );
 
 }
-``
 
 
   L.marker(
