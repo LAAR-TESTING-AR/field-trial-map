@@ -133,9 +133,11 @@ function coincideConFiltros(
 
 function obtenerSitiosFiltrados() {
   return sitios.filter(sitio =>
+    coincideConBusqueda(sitio) &&
     coincideConFiltros(sitio)
   );
 }
+
 
 function obtenerValoresDisponibles(campo) {
   return ordenarValores(
