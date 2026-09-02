@@ -88,27 +88,154 @@ function transformarFila(fila) {
   };
 }
 
-function valoresUnicos(campo) {
+const configuracionFiltros = [
+  {
+    elemento: filtroCultivo,
+    campo: "crop"
+  },
+  {
+    elemento: filtroRegion,
+    campo: "region"
+  },
+  {
+    elemento: filtroLocalidad,
+    campo: "location"
+  },
+  {
+    elemento: filtroFTS,
+    campo: "fts"
+  }
+];
+
+function ordenarValores(valores) {
   return [...new Set(
-    sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean)
-  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+    valores
+      .map(limpiarTexto)
+      .filter(Boolean)
+  )].sort((a, b) =>
+    a.localeCompare(b, "es", {
+      sensitivity: "base"
+    })
+  );
+}
+
+function sitioCoincideConSelecciones(
+  sitio,
+  campoIgnorado = null,
+  selecciones = null
+) {
+  if (!esVisible(sitio)) return false;
+
+  return configuracionFiltros.every(({ elemento, campo }) => {
+    if (campo === campoIgnorado) return true;
+
+    const valorSeleccionado = selecciones
+      ? selecciones[campo] || ""
+      : elemento.value;
+
+    return (
+      !valorSeleccionado ||
+      limpiarTexto(sitio[campo]) === valorSeleccionado
+    );
+  });
+}
+
+function valoresDisponiblesPara(campo) {
+  return ordenarValores(
+    sitios
+      .filter(sitio =>
+        sitioCoincideConSelecciones(sitio, campo)
+      )
+      .map(sitio => sitio[campo])
+  );
 }
 
 function completarFiltro(elemento, valores) {
-  while (elemento.options.length > 1) elemento.remove(1);
+  const valorActual = elemento.value;
+  const textoInicial =
+    elemento.options[0]?.textContent || "Todos";
+
+  elemento.innerHTML = "";
+
+  const opcionInicial = document.createElement("option");
+  opcionInicial.value = "";
+  opcionInicial.textContent = textoInicial;
+  elemento.appendChild(opcionInicial);
+
   valores.forEach(valor => {
     const opcion = document.createElement("option");
     opcion.value = valor;
     opcion.textContent = valor;
     elemento.appendChild(opcion);
   });
+
+  if (valores.includes(valorActual)) {
+    elemento.value = valorActual;
+  } else {
+    elemento.value = "";
+  }
+}
+
+function depurarSelecciones(controlPrioritario = null) {
+  const filtrosOrdenados = [...configuracionFiltros].sort((a, b) => {
+    if (a.elemento === controlPrioritario) return -1;
+    if (b.elemento === controlPrioritario) return 1;
+    return 0;
+  });
+
+  const seleccionesAceptadas = {};
+
+  filtrosOrdenados.forEach(({ elemento, campo }) => {
+    const valor = elemento.value;
+    if (!valor) return;
+
+    const seleccionCandidata = {
+      ...seleccionesAceptadas,
+      [campo]: valor
+    };
+
+    const existeCombinacion = sitios.some(sitio =>
+      sitioCoincideConSelecciones(
+        sitio,
+        null,
+        seleccionCandidata
+      )
+    );
+
+    if (existeCombinacion) {
+      seleccionesAceptadas[campo] = valor;
+    } else {
+      elemento.value = "";
+    }
+  });
+}
+
+function actualizarFiltrosDependientes(
+  controlPrioritario = null
+) {
+  /*
+   * Conserva primero el filtro que el usuario acaba de cambiar.
+   * Si alguna selección anterior resulta incompatible,
+   * se elimina antes de reconstruir las opciones.
+   */
+  depurarSelecciones(controlPrioritario);
+
+  /*
+   * Se realizan dos pasadas para estabilizar los desplegables
+   * cuando una opción incompatible acaba de ser eliminada.
+   */
+  for (let pasada = 0; pasada < 2; pasada += 1) {
+    configuracionFiltros.forEach(({ elemento, campo }) => {
+      completarFiltro(
+        elemento,
+        valoresDisponiblesPara(campo)
+      );
+    });
+  }
 }
 
 function completarFiltros() {
-  completarFiltro(filtroCultivo, valoresUnicos("crop"));
-  completarFiltro(filtroRegion, valoresUnicos("region"));
-  completarFiltro(filtroLocalidad, valoresUnicos("location"));
-  completarFiltro(filtroFTS, valoresUnicos("fts"));
+  actualizarFiltrosDependientes();
 }
 
 function coincideConFiltros(sitio) {
@@ -392,16 +519,21 @@ function cargarSitios() {
   });
 }
 
-[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => {
-  control.addEventListener("change", actualizarMapa);
+configuracionFiltros.forEach(({ elemento }) => {
+  elemento.addEventListener("change", () => {
+    actualizarFiltrosDependientes(elemento);
+    actualizarMapa();
+  });
 });
 busqueda.addEventListener("input", actualizarMapa);
 limpiarFiltros.addEventListener("click", () => {
   busqueda.value = "";
-  filtroCultivo.value = "";
-  filtroRegion.value = "";
-  filtroLocalidad.value = "";
-  filtroFTS.value = "";
+
+  configuracionFiltros.forEach(({ elemento }) => {
+    elemento.value = "";
+  });
+
+  actualizarFiltrosDependientes();
   actualizarMapa();
 });
 
