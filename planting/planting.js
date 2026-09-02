@@ -101,7 +101,6 @@ document.getElementById("avance").textContent =
       opacity: 1,
       fillOpacity: 0.95
     }
-  );
 
   marcador.bindPopup(`
     <b>${sitio["AOI ID"] || ""}</b><br>
