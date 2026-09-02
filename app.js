@@ -436,29 +436,50 @@ function actualizarMapa() {
     .toLowerCase()
     .includes("drop");
 
-const iconoTrial =
-  String(sitio.description || "")
-  .toLowerCase()
-  .includes("drop")
+      const trialDrop =
+  esDrop(sitio);
 
+let iconoTrial;
+
+if (
+  window.vistaMapaActual === "planting"
+) {
+
+  if (trialDrop) {
+
+    iconoTrial = L.divIcon({
+      className: "marcador-cultivo-contenedor",
+      html: `
+        <span class="marcador-siembra drop">
+          ⚪
+        </span>
+      `,
+      iconSize: [38, 46],
+      iconAnchor: [19, 46],
+      popupAnchor: [0, -43]
+    });
+
+  } else {
+
+    iconoTrial = crearIconoSiembra(
+      estaSembrado(sitio)
+    );
+
+  }
+
+} else {
+
+  iconoTrial = trialDrop
     ? crearIconoDrop(
         sitio.crop
       )
-
-    : (
-
-        vistaMapaActual ===
-        "planting"
-
-          ? crearIconoSiembra(
-              estaSembrado(sitio)
-            )
-
-          : crearIconoTrial(
-              sitio.crop
-            )
-
+    : crearIconoTrial(
+        sitio.crop
       );
+
+}
+``
+
 
   L.marker(
     [sitio.latitudeTrial, sitio.longitudeTrial],
