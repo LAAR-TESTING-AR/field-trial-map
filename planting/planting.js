@@ -16,6 +16,7 @@ const filtroCrop = document.getElementById("filtroCrop");
 const filtroSeason = document.getElementById("filtroSeason");
 const filtroLaar = document.getElementById("filtroLaar");
 const filtroOperation = document.getElementById("filtroOperation");
+filtroCrop.addEventListener("change", actualizarVista);
 
 Papa.parse("../Sitios.csv", {
   download: true,
@@ -186,4 +187,12 @@ function cargarFiltros() {
   );
 
 }
-  
+  function actualizarVista() {
+
+  console.log(
+    "Crop seleccionado:",
+    filtroCrop.value
+  );
+
+}
+
