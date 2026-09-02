@@ -25,7 +25,6 @@ Papa.parse("../Sitios.csv", {
   complete: resultado => {
 
     sitios = resultado.data;
-    cargarFiltros();
 
     console.log(
       `Sitios cargados: ${sitios.length}`
@@ -185,4 +184,4 @@ function cargarFiltros() {
   );
 
 }
-  
+cargarFiltros();  
