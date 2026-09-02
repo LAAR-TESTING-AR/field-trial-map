@@ -355,6 +355,8 @@ busqueda.addEventListener(
 limpiarFiltros.addEventListener(
   "click",
   () => {
+    busqueda.value = "";
+
     configuracionFiltros.forEach(
       ({ elemento }) => {
         elemento.value = "";
@@ -364,6 +366,7 @@ limpiarFiltros.addEventListener(
     actualizarVista();
   }
 );
+
 
 Papa.parse("../Sitios.csv", {
   download: true,
