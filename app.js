@@ -226,9 +226,9 @@ function crearIconoDrop(cultivo) {
           ${cfg.icono}
         </span>
 
-        <span class="equis-drop">
-          ⛔
-        </span>
+        <span class="marcador-siembra drop">
+  ⚪
+</span>
       </span>
     `,
 
