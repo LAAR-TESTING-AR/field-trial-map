@@ -69,14 +69,19 @@ function obtenerSitios() {
     return true;
   }
 
-  function valoresDisponibles(campo) {
-    return [...new Set(
-      obtenersitios()
-        .filter(sitio => coincideExcepto(sitio, campo))
-        .map(sitio => limpiar(sitio[campo]))
-        .filter(Boolean)
-    )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
-  }
+function valoresDisponibles(campo) {
+  return [...new Set(
+    obtenerSitios()
+      .filter(sitio => coincideExcepto(sitio, campo))
+      .map(sitio => limpiar(sitio[campo]))
+      .filter(Boolean)
+  )].sort((a, b) =>
+    a.localeCompare(b, "es", {
+      sensitivity: "base"
+    })
+  );
+}
+``
 
   function reconstruirSelect(control, campo, etiquetaTodos) {
     const seleccionAnterior = control.value;
@@ -268,7 +273,10 @@ function obtenerSitios() {
   }
 
   function iniciar() {
-    if (iniciado || !Array.isArray(sitios) || !obtenersitios.length) return false;
+    if (
+  iniciado ||
+  !obtenerSitios().length
+) return false;
 
     iniciado = true;
     reemplazarFiltroPrincipal();
