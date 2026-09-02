@@ -9,7 +9,11 @@
   let iniciado = false;
 
   const limpiar = valor => String(valor ?? "").trim();
-
+function obtenerSitios() {
+  return Array.isArray(window.sitios)
+    ? window.sitios
+    : [];
+}
   function obtenerBusquedaEspecial() {
     const q = limpiar(busqueda.value).toLowerCase();
     return ["trial", "access", "drop"].includes(q) ? q : "";
@@ -67,7 +71,7 @@
 
   function valoresDisponibles(campo) {
     return [...new Set(
-      sitios
+      obtenersitios()
         .filter(sitio => coincideExcepto(sitio, campo))
         .map(sitio => limpiar(sitio[campo]))
         .filter(Boolean)
@@ -264,7 +268,7 @@
   }
 
   function iniciar() {
-    if (iniciado || !Array.isArray(sitios) || !sitios.length) return false;
+    if (iniciado || !Array.isArray(sitios) || !obtenersitios.length) return false;
 
     iniciado = true;
     reemplazarFiltroPrincipal();
