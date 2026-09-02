@@ -432,7 +432,14 @@ function actualizarMapa() {
     if (tieneTrial(sitio)) {
 
   const trialDrop = esDrop(sitio);
-
+      
+if (trialDrop) {
+  console.log(
+    "DROP DETECTADO:",
+    sitio.aoiId,
+    sitio.location
+  );
+}
 let iconoTrial;
 
 if (
