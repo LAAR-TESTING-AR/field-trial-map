@@ -20,6 +20,7 @@ const vistaCosecha = document.getElementById("vistaCosecha");
 
 window.vistaMapaActual = "master";
 let sitios = [];
+window.sitios = sitios;
 let contenidoLeyenda = null;
 let panelLeyenda = null;
 let botonLeyenda = null;
@@ -666,6 +667,7 @@ function cargarSitios() {
 
     complete: resultado => {
       sitios = resultado.data
+        window.sitios = sitios;
         .map(transformarFila)
         .filter(
           sitio =>
