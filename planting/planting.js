@@ -27,6 +27,42 @@ Papa.parse("../Sitios.csv", {
 
     document.getElementById("totalAOI").textContent =
       sitios.length;
+    const drops = sitios.filter(sitio =>
+  String(sitio.Description || "")
+    .toLowerCase()
+    .includes("drop")
+).length;
+
+const sembradas = sitios.filter(sitio =>
+  String(
+    sitio["Planting Date (MM/DD/YYYY)"] || ""
+  ).trim() !== ""
+).length;
+
+const pendientes =
+  sitios.length -
+  sembradas -
+  drops;
+
+const avance =
+  sembradas + pendientes > 0
+    ? Math.round(
+        (sembradas /
+          (sembradas + pendientes)) * 100
+      )
+    : 0;
+
+document.getElementById("sembradas").textContent =
+  sembradas;
+
+document.getElementById("pendientes").textContent =
+  pendientes;
+
+document.getElementById("drop").textContent =
+  drops;
+
+document.getElementById("avance").textContent =
+  `${avance}%`;
   },
 
   error: error => {
