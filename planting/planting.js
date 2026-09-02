@@ -1,7 +1,7 @@
-console.log("Planting Tracker");
+console.log("Planting Tracker v2 - filtros dependientes");
 
 const mapa = L.map("mapa").setView([-34.5, -63.0], 5);
-const capaMarcadores = L.layerGroup().addTo(mapa);
+
 L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
@@ -10,199 +10,234 @@ L.tileLayer(
   }
 ).addTo(mapa);
 
+const capaMarcadores = L.layerGroup().addTo(mapa);
+
 let sitios = [];
 
-const filtroCrop = document.getElementById("filtroCrop");
-const filtroSeason = document.getElementById("filtroSeason");
-const filtroLaar = document.getElementById("filtroLaar");
-const filtroOperation = document.getElementById("filtroOperation");
-filtroCrop.addEventListener("change", actualizarVista);
+const filtroCrop =
+  document.getElementById("filtroCrop");
 
-Papa.parse("../Sitios.csv", {
-  download: true,
-  header: true,
-  skipEmptyLines: true,
+const filtroSeason =
+  document.getElementById("filtroSeason");
 
-  complete: resultado => {
+const filtroLaar =
+  document.getElementById("filtroLaar");
 
-    sitios = resultado.data;
-    
-cargarFiltros();
-    
-    console.log(
-      `Sitios cargados: ${sitios.length}`
-    );
+const filtroOperation =
+  document.getElementById("filtroOperation");
 
-    document.getElementById("totalAOI").textContent =
-      sitios.length;
-    const drops = sitios.filter(sitio =>
-  String(sitio.Description || "")
-    .toLowerCase()
-    .includes("drop")
-).length;
+const limpiarFiltros =
+  document.getElementById("limpiarFiltros");
 
-const sembradas = sitios.filter(sitio =>
-  String(
-    sitio["Planting Date (MM/DD/YYYY)"] || ""
-  ).trim() !== ""
-).length;
-
-const pendientes =
-  sitios.length -
-  sembradas -
-  drops;
-
-const avance =
-  sembradas + pendientes > 0
-    ? Math.round(
-        (sembradas /
-          (sembradas + pendientes)) * 100
-      )
-    : 0;
-
-document.getElementById("sembradas").textContent =
-  sembradas;
-
-document.getElementById("pendientes").textContent =
-  pendientes;
-
-document.getElementById("drop").textContent =
-  drops;
-
-document.getElementById("avance").textContent =
-  `${avance}%`;
-const coordenadas = [];
-  sitios.forEach(sitio => {
-
-  const lat = Number(sitio["Latitude Trial"]);
-  const lon = Number(sitio["Longitude Trial"]);
-
-  if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
-    return;
+const configuracionFiltros = [
+  {
+    elemento: filtroCrop,
+    campo: "Crop",
+    textoInicial: "Todos los cultivos"
+  },
+  {
+    elemento: filtroSeason,
+    campo: "Season",
+    textoInicial: "Todas las seasons"
+  },
+  {
+    elemento: filtroLaar,
+    campo: "LAAR Status 2026-2027",
+    textoInicial: "Todos los LAAR Status"
+  },
+  {
+    elemento: filtroOperation,
+    campo: "Operations",
+    textoInicial: "Todas las operaciones"
   }
+];
 
-  const esDrop =
-    String(sitio.Description || "")
-      .toLowerCase()
-      .includes("drop");
-
-  const sembrado =
-    String(
-      sitio["Planting Date (MM/DD/YYYY)"] || ""
-    ).trim() !== "";
-
-  let color = "#d32f2f";
-
-  if (esDrop) {
-    color = "#000000";
-  } else if (sembrado) {
-    color = "#2e7d32";
-  }
-
-  const marcador = L.circleMarker(
-    [lat, lon],
-    {
-      radius: 5,
-      fillColor: color,
-      color: "#ffffff",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.95
-    }
-);
-  marcador.bindPopup(`
-    <b>${sitio["AOI ID"] || ""}</b><br>
-    ${sitio.Location || ""}<br>
-    ${sitio.Crop || ""}<br>
-    ${esDrop ? "DROP" :
-      sembrado ? "SEMBRADO" :
-      "PENDIENTE"}
-  `);
-
-  marcador.addTo(capaMarcadores);
-coordenadas.push([lat, lon]);
-});
-    
-if (coordenadas.length > 0) {
-  mapa.fitBounds(coordenadas, {
-    padding: [30, 30]
-  });
+function limpiarTexto(valor) {
+  return String(valor ?? "").trim();
 }
-actualizarVista();
-},
 
-error: error => {
-    console.error("Error cargando Sitios.csv", error);
-  }
-})
-  
-  function obtenerValoresUnicos(campo) {
+function ordenarValores(valores) {
   return [...new Set(
-    sitios
-      .map(sitio => String(sitio[campo] || "").trim())
+    valores
+      .map(limpiarTexto)
       .filter(Boolean)
-  )].sort();
+  )].sort((a, b) =>
+    a.localeCompare(
+      b,
+      "es",
+      { sensitivity: "base" }
+    )
+  );
 }
 
-function cargarOpciones(select, valores) {
+function esDrop(sitio) {
+  return limpiarTexto(sitio.Description)
+    .toLowerCase()
+    .includes("drop");
+}
 
-  while (select.options.length > 1) {
-    select.remove(1);
-  }
+function estaSembrado(sitio) {
+  return Boolean(
+    limpiarTexto(
+      sitio["Planting Date (MM/DD/YYYY)"]
+    )
+  );
+}
+
+function coincideConFiltros(
+  sitio,
+  campoIgnorado = null
+) {
+  return configuracionFiltros.every(
+    ({ elemento, campo }) => {
+      if (campo === campoIgnorado) {
+        return true;
+      }
+
+      const valorSeleccionado =
+        limpiarTexto(elemento.value);
+
+      return (
+        !valorSeleccionado ||
+        limpiarTexto(sitio[campo]) === valorSeleccionado
+      );
+    }
+  );
+}
+
+function obtenerSitiosFiltrados() {
+  return sitios.filter(sitio =>
+    coincideConFiltros(sitio)
+  );
+}
+
+function obtenerValoresDisponibles(campo) {
+  return ordenarValores(
+    sitios
+      .filter(sitio =>
+        coincideConFiltros(sitio, campo)
+      )
+      .map(sitio => sitio[campo])
+  );
+}
+
+function reconstruirFiltro(
+  elemento,
+  valores,
+  textoInicial
+) {
+  const valorActual = elemento.value;
+
+  elemento.innerHTML = "";
+
+  const opcionTodos =
+    document.createElement("option");
+
+  opcionTodos.value = "";
+  opcionTodos.textContent = textoInicial;
+
+  elemento.appendChild(opcionTodos);
 
   valores.forEach(valor => {
-
-    const opcion = document.createElement("option");
+    const opcion =
+      document.createElement("option");
 
     opcion.value = valor;
-
     opcion.textContent = valor;
 
-    select.appendChild(opcion);
-
+    elemento.appendChild(opcion);
   });
 
+  if (valores.includes(valorActual)) {
+    elemento.value = valorActual;
+  } else {
+    elemento.value = "";
+  }
 }
 
-function cargarFiltros() {
-
-  cargarOpciones(
-    filtroCrop,
-    obtenerValoresUnicos("Crop")
+function actualizarFiltrosDependientes() {
+  configuracionFiltros.forEach(
+    ({ elemento, campo, textoInicial }) => {
+      reconstruirFiltro(
+        elemento,
+        obtenerValoresDisponibles(campo),
+        textoInicial
+      );
+    }
   );
-
-  cargarOpciones(
-    filtroSeason,
-    obtenerValoresUnicos("Season")
-  );
-
-  cargarOpciones(
-    filtroLaar,
-    obtenerValoresUnicos("LAAR Status 2026-2027")
-  );
-
-  cargarOpciones(
-    filtroOperation,
-    obtenerValoresUnicos("Operations")
-  );
-
 }
- function actualizarVista() {
 
-  const cultivoSeleccionado =
-    filtroCrop.value;
+function actualizarDashboard(sitiosFiltrados) {
+  const drops = sitiosFiltrados.filter(
+    esDrop
+  ).length;
 
+  const sembradas = sitiosFiltrados.filter(
+    sitio =>
+      !esDrop(sitio) &&
+      estaSembrado(sitio)
+  ).length;
+
+  const pendientes = sitiosFiltrados.filter(
+    sitio =>
+      !esDrop(sitio) &&
+      !estaSembrado(sitio)
+  ).length;
+
+  const totalOperativo =
+    sembradas + pendientes;
+
+  const avance =
+    totalOperativo > 0
+      ? Math.round(
+          (sembradas / totalOperativo) * 100
+        )
+      : 0;
+
+  document.getElementById("totalAOI").textContent =
+    sitiosFiltrados.length;
+
+  document.getElementById("sembradas").textContent =
+    sembradas;
+
+  document.getElementById("pendientes").textContent =
+    pendientes;
+
+  document.getElementById("drop").textContent =
+    drops;
+
+  document.getElementById("avance").textContent =
+    `${avance}%`;
+}
+
+function crearPopup(sitio, estado) {
+  return `
+    <strong>${limpiarTexto(
+      sitio["AOI ID"]
+    )}</strong><br>
+
+    ${limpiarTexto(sitio.Location)}<br>
+
+    ${limpiarTexto(sitio.Crop)}<br>
+
+    ${limpiarTexto(sitio.Season)}<br>
+
+    ${limpiarTexto(
+      sitio["LAAR Status 2026-2027"]
+    )}<br>
+
+    ${limpiarTexto(sitio.Operations)}<br>
+
+    <strong>${estado}</strong>
+  `;
+}
+
+function actualizarMapa(sitiosFiltrados) {
   capaMarcadores.clearLayers();
 
-  sitios.forEach(sitio => {
+  const coordenadas = [];
 
-    if (
-      cultivoSeleccionado &&
-      sitio.Crop !== cultivoSeleccionado
-    ) {
-      return;
-    }
-
+  sitiosFiltrados.forEach(sitio => {
     const lat = Number(
       sitio["Latitude Trial"]
     );
@@ -218,36 +253,119 @@ function cargarFiltros() {
       return;
     }
 
-    const esDrop =
-      String(sitio.Description || "")
-        .toLowerCase()
-        .includes("drop");
-
-    const sembrado =
-      String(
-        sitio["Planting Date (MM/DD/YYYY)"] || ""
-      ).trim() !== "";
+    const drop = esDrop(sitio);
+    const sembrado = estaSembrado(sitio);
 
     let color = "#d32f2f";
+    let estado = "PENDIENTE";
 
-    if (esDrop) {
+    if (drop) {
       color = "#000000";
+      estado = "DROP";
     } else if (sembrado) {
       color = "#2e7d32";
+      estado = "SEMBRADO";
     }
 
-    L.circleMarker(
+    const marcador = L.circleMarker(
       [lat, lon],
       {
-        radius: 3,
+        radius: 5,
         fillColor: color,
         color: "#ffffff",
         weight: 1,
         opacity: 1,
         fillOpacity: 0.95
       }
-    ).addTo(capaMarcadores);
+    );
 
+    marcador.bindPopup(
+      crearPopup(sitio, estado)
+    );
+
+    marcador.addTo(capaMarcadores);
+
+    coordenadas.push([lat, lon]);
   });
 
+  if (coordenadas.length > 0) {
+    mapa.fitBounds(
+      coordenadas,
+      {
+        padding: [30, 30],
+        maxZoom: 9
+      }
+    );
+  }
 }
+
+function actualizarVista() {
+  actualizarFiltrosDependientes();
+
+  const sitiosFiltrados =
+    obtenerSitiosFiltrados();
+
+  actualizarDashboard(sitiosFiltrados);
+  actualizarMapa(sitiosFiltrados);
+}
+
+configuracionFiltros.forEach(
+  ({ elemento }) => {
+    elemento.addEventListener(
+      "change",
+      actualizarVista
+    );
+  }
+);
+
+limpiarFiltros.addEventListener(
+  "click",
+  () => {
+    configuracionFiltros.forEach(
+      ({ elemento }) => {
+        elemento.value = "";
+      }
+    );
+
+    actualizarVista();
+  }
+);
+
+Papa.parse("../Sitios.csv", {
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+
+  transformHeader: encabezado =>
+    limpiarTexto(
+      encabezado.replace(/^\uFEFF/, "")
+    ),
+
+  complete: resultado => {
+    sitios = resultado.data.filter(
+      sitio =>
+        limpiarTexto(sitio["AOI ID"]) &&
+        limpiarTexto(sitio.Location)
+    );
+
+    console.log(
+      `Sitios cargados: ${sitios.length}`
+    );
+
+    actualizarVista();
+
+    if (resultado.errors.length) {
+      console.warn(
+        "Advertencias del CSV:",
+        resultado.errors
+      );
+    }
+  },
+
+  error: error => {
+    console.error(
+      "Error cargando Sitios.csv:",
+      error
+    );
+  }
+});
