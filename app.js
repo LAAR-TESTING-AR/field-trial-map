@@ -1,34 +1,10 @@
 console.log("app.js v10 - modelo unificado Trial + Access");
+
 const mapa = L.map("mapa").setView([-34.5, -63.0], 5);
-
-const mapaCalles = L.tileLayer(
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap contributors"
-  }
-);
-
-const mapaSatelite = L.tileLayer(
-  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  {
-    attribution: "&copy; Esri, Maxar"
-  }
-);
-
-// Fondo inicial
-mapaSatelite.addTo(mapa);
-
-// Selector de capas
-L.control.layers(
-  {
-    "🗺️ Mapa": mapaCalles,
-    "🛰️ Satélite": mapaSatelite
-  },
-  {}
-).addTo(mapa);
-`
-
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "&copy; OpenStreetMap contributors"
+}).addTo(mapa);
 
 const capaMarcadores = L.layerGroup().addTo(mapa);
 const busqueda = document.getElementById("busqueda");
