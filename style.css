@@ -109,9 +109,9 @@ body { display: flex; flex-direction: column; }
 .marcador-siembra.drop {
   color: #d62828;
 
-  -webkit-text-stroke: 1.5px #8b0000;
-
   font-size: 18px;
+
+  -webkit-text-stroke: 1.5px #8b0000;
 }
 .resumen-avance { display: flex; flex-direction: column; gap: 3px; }
 .resumen-avance-cabecera { font-weight: 700; color: #176b3a; }
