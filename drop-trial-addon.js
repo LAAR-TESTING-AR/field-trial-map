@@ -265,13 +265,17 @@ if (esDrop) {
 
   } else {
 
-    contadorSitios.textContent =
-      `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
-      (
-        cantidadDrop
-          
+  contadorSitios.textContent =
+    `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
+    (
+      cantidadDrop
+        ? ` · ${cantidadDrop} Drop`
+        : ""
+    );
 
-    window.actualizarLeyenda(sitiosFiltrados);
+}
+
+window.actualizarLeyenda(sitiosFiltrados);
 
     if (coordenadas.length) {
       mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
