@@ -101,7 +101,7 @@ document.getElementById("avance").textContent =
       opacity: 1,
       fillOpacity: 0.95
     }
-
+);
   marcador.bindPopup(`
     <b>${sitio["AOI ID"] || ""}</b><br>
     ${sitio.Location || ""}<br>
@@ -113,7 +113,7 @@ document.getElementById("avance").textContent =
 
   marcador.addTo(mapa);
 
-});
+};
   
   error: error => {
     console.error("Error cargando Sitios.csv", error);
