@@ -88,14 +88,14 @@ body { display: flex; flex-direction: column; }
 
   font-weight: 700;
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 .marcador-siembra.sembrado {
   background: transparent;
   color: #168052;
   border: 0;
   box-shadow: none;
-  font-size: 26px;
+  font-size: 18px;
 }
 
 .marcador-siembra.pendiente {
@@ -103,7 +103,7 @@ body { display: flex; flex-direction: column; }
   color: #d9d9d9;
   border: 0;
   box-shadow: none;
-  font-size: 26px;
+  font-size: 18px;
 
   -webkit-text-stroke: 1.5px #5f5f5f;
 }
