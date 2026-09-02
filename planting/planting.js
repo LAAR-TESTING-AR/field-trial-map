@@ -143,11 +143,13 @@ function obtenerValoresDisponibles(campo) {
   return ordenarValores(
     sitios
       .filter(sitio =>
+        coincideConBusqueda(sitio) &&
         coincideConFiltros(sitio, campo)
       )
       .map(sitio => sitio[campo])
   );
 }
+
 
 function reconstruirFiltro(
   elemento,
