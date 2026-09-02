@@ -133,7 +133,7 @@ if (coordenadas.length > 0) {
 error: error => {
     console.error("Error cargando Sitios.csv", error);
   }
-}),
+})
   
   function obtenerValoresUnicos(campo) {
   return [...new Set(
