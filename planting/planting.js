@@ -1,7 +1,7 @@
 console.log("Planting Tracker");
 
 const mapa = L.map("mapa").setView([-34.5, -63.0], 5);
-
+const capaMarcadores = L.layerGroup().addTo(mapa);
 L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
@@ -119,7 +119,7 @@ const coordenadas = [];
       "PENDIENTE"}
   `);
 
-  marcador.addTo(mapa);
+  marcador.addTo(capaMarcadores);
 coordenadas.push([lat, lon]);
 });
     
@@ -128,7 +128,7 @@ if (coordenadas.length > 0) {
     padding: [30, 30]
   });
 }
-
+actualizarVista();
 },
 
 error: error => {
@@ -187,12 +187,67 @@ function cargarFiltros() {
   );
 
 }
-  function actualizarVista() {
+ function actualizarVista() {
 
-  console.log(
-    "Crop seleccionado:",
-    filtroCrop.value
-  );
+  const cultivoSeleccionado =
+    filtroCrop.value;
+
+  capaMarcadores.clearLayers();
+
+  sitios.forEach(sitio => {
+
+    if (
+      cultivoSeleccionado &&
+      sitio.Crop !== cultivoSeleccionado
+    ) {
+      return;
+    }
+
+    const lat = Number(
+      sitio["Latitude Trial"]
+    );
+
+    const lon = Number(
+      sitio["Longitude Trial"]
+    );
+
+    if (
+      !Number.isFinite(lat) ||
+      !Number.isFinite(lon)
+    ) {
+      return;
+    }
+
+    const esDrop =
+      String(sitio.Description || "")
+        .toLowerCase()
+        .includes("drop");
+
+    const sembrado =
+      String(
+        sitio["Planting Date (MM/DD/YYYY)"] || ""
+      ).trim() !== "";
+
+    let color = "#d32f2f";
+
+    if (esDrop) {
+      color = "#000000";
+    } else if (sembrado) {
+      color = "#2e7d32";
+    }
+
+    L.circleMarker(
+      [lat, lon],
+      {
+        radius: 3,
+        fillColor: color,
+        color: "#ffffff",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.95
+      }
+    ).addTo(capaMarcadores);
+
+  });
 
 }
-
