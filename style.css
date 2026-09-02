@@ -78,9 +78,35 @@ body { display: flex; flex-direction: column; }
 .item-leyenda-access { margin-top: 6px; padding-top: 10px !important; border-top: 2px solid #e6e9e7; }
 .popup-access h2 { color: #c91f1b; }
 
-.marcador-siembra { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 3px solid #fff; font-size: 18px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
-.marcador-siembra.sembrado { background: #168052; }
-.marcador-siembra.pendiente { background: #bfc5c1; }
+.marcador-siembra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
+  font-weight: 700;
+
+  transform: translateY(-2px);
+}
+.marcador-siembra.sembrado {
+  background: transparent;
+  color: #168052;
+  border: 0;
+  box-shadow: none;
+  font-size: 26px;
+}
+
+.marcador-siembra.pendiente {
+  background: transparent;
+  color: #d9d9d9;
+  border: 0;
+  box-shadow: none;
+  font-size: 26px;
+
+  -webkit-text-stroke: 1.5px #5f5f5f;
+}
 
 .resumen-avance { display: flex; flex-direction: column; gap: 3px; }
 .resumen-avance-cabecera { font-weight: 700; color: #176b3a; }
