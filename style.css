@@ -345,3 +345,73 @@ html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
   }
 
 }
+.marcador-siembra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+.marcador-siembra.sembrado {
+  background: #168052;
+}
+
+.marcador-siembra.pendiente {
+  background: #bfc5c1;
+}
+.resumen-avance {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resumen-avance-cabecera {
+  font-weight: 700;
+  color: #176b3a;
+}
+
+.resumen-avance-linea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resumen-avance-principal {
+  min-width: 110px;
+  font-weight: 700;
+}
+
+.resumen-avance-porcentaje {
+  min-width: 45px;
+  text-align: right;
+  font-size: 24px;
+  font-weight: 800;
+  color: #176b3a;
+}
+
+.barra-avance {
+  flex: 1;
+  height: 12px;
+  border-radius: 999px;
+  background: #d9dedb;
+  overflow: hidden;
+}
+
+.barra-avance-llenado {
+  height: 100%;
+  background: #168052;
+}
+
+.resumen-avance-detalle {
+  font-size: 13px;
+}
