@@ -237,16 +237,33 @@ function actualizarFiltrosDependientes(
 function completarFiltros() {
   actualizarFiltrosDependientes();
 }
+function textoBuscable(sitio) {
+  return Object.values(sitio)
+    .map(valor => limpiarTexto(valor))
+    .join(" ")
+    .toLowerCase();
+}
 
+function coincideBusqueda(texto, termino) {
+  const regex = new RegExp(`\\b${termino}\\b`, "i");
+  return regex.test(texto);
+}
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [
-    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
-    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
-  ].join(" ").toLowerCase();
+ const buscable = textoBuscable(sitio);
+
+let cumpleBusqueda = true;
+
+if (q) {
+  if (q.length <= 3) {
+    cumpleBusqueda = coincideBusqueda(buscable, q);
+  } else {
+    cumpleBusqueda = buscable.includes(q);
+  }
+}
 
   return esVisible(sitio)
-    && (!q || buscable.includes(q))
+    && cumpleBusqueda
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
     && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
