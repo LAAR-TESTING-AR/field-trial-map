@@ -63,7 +63,6 @@ document.getElementById("drop").textContent =
 
 document.getElementById("avance").textContent =
   `${avance}%`;
-  },
 
   sitios.forEach(sitio => {
 
