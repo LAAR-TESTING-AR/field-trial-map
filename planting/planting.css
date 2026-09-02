@@ -2,3 +2,21 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+header {
+  background: #0b6b3a;
+  color: white;
+  padding: 12px;
+}
+
+#dashboard {
+  padding: 12px;
+  background: #f5f5f5;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+#mapa {
+  height: 75vh;
+}
