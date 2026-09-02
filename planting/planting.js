@@ -25,6 +25,8 @@ const filtroLaar =
 
 const filtroOperation =
   document.getElementById("filtroOperation");
+const busqueda =
+  document.getElementById("busqueda");
 
 const limpiarFiltros =
   document.getElementById("limpiarFiltros");
