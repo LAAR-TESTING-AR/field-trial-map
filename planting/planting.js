@@ -355,7 +355,6 @@ busqueda.addEventListener(
 limpiarFiltros.addEventListener(
   "click",
   () => {
-
     busqueda.value = "";
 
     configuracionFiltros.forEach(
@@ -363,12 +362,6 @@ limpiarFiltros.addEventListener(
         elemento.value = "";
       }
     );
-
-    actualizarVista();
-
-  }
-);
-
 
     actualizarVista();
   }
