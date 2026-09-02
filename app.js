@@ -227,7 +227,7 @@ function crearIconoDrop(cultivo) {
         </span>
 
         <span class="equis-drop">
-          ×
+          ⛔
         </span>
       </span>
     `,
