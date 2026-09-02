@@ -2,11 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planting Tracker</title>
-</head>
-<body>
 
-<h1>Planting Tracker</h1>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <link rel="stylesheet"body>
+
+<header>
+    <h1>🌱 Planting Tracker</h1>
+</header>
+
+<section id="dashboard">
+    <div>Total AOI: <span id="totalAOI">0</span></div>
+    <div>Sembradas: <span id="sembradas">0</span></div>
+    <div>Pendientes: <span id="pendientes">0</span></div>
+    <div>Drop: <span id="drop">0</span></div>
+    <div>Avance: <span id="avance">0%</span></div>
+</section>
+
+<div id="mapa"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+planting.jsscript>
 
 </body>
 </html>
