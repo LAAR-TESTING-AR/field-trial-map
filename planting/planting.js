@@ -65,6 +65,58 @@ document.getElementById("avance").textContent =
   `${avance}%`;
   },
 
+  sitios.forEach(sitio => {
+
+  const lat = Number(sitio["Latitude Trial"]);
+  const lon = Number(sitio["Longitude Trial"]);
+
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+    return;
+  }
+
+  const esDrop =
+    String(sitio.Description || "")
+      .toLowerCase()
+      .includes("drop");
+
+  const sembrado =
+    String(
+      sitio["Planting Date (MM/DD/YYYY)"] || ""
+    ).trim() !== "";
+
+  let color = "#d32f2f";
+
+  if (esDrop) {
+    color = "#000000";
+  } else if (sembrado) {
+    color = "#2e7d32";
+  }
+
+  const marcador = L.circleMarker(
+    [lat, lon],
+    {
+      radius: 5,
+      fillColor: color,
+      color: "#ffffff",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.95
+    }
+  );
+
+  marcador.bindPopup(`
+    <b>${sitio["AOI ID"] || ""}</b><br>
+    ${sitio.Location || ""}<br>
+    ${sitio.Crop || ""}<br>
+    ${esDrop ? "DROP" :
+      sembrado ? "SEMBRADO" :
+      "PENDIENTE"}
+  `);
+
+  marcador.addTo(mapa);
+
+});
+  
   error: error => {
     console.error("Error cargando Sitios.csv", error);
   }
