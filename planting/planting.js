@@ -73,7 +73,10 @@ btnGuardarSiembra.textContent =
               fecha
             );
 
-          if (ok) {
+if (
+  ok === true ||
+  ok === "OFFLINE"
+) {
 
   const sitioLocal =
     sitios.find(
@@ -100,9 +103,19 @@ btnGuardarSiembra.textContent =
 
   cerrarModalSiembra();
 
+if (ok === "OFFLINE") {
+
+  alert(
+    "📡 Sin conexión.\nLa siembra fue guardada localmente y se sincronizará automáticamente."
+  );
+
+} else {
+
   alert(
     "✅ Siembra registrada correctamente"
   );
+
+}
 
 }
           
