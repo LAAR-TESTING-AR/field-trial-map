@@ -46,9 +46,48 @@ document.addEventListener(
       );
 
     if (btnCancelarSiembra) {
-
       btnCancelarSiembra.onclick =
         cerrarModalSiembra;
+    }
+
+    if (btnGuardarSiembra) {
+
+      btnGuardarSiembra.onclick =
+        async () => {
+
+          const fecha =
+            modalFechaSiembra.value;
+
+          if (
+            !fecha ||
+            !aoiPendienteSiembra
+          ) {
+            return;
+          }
+
+          const ok =
+            await registrarSiembra(
+              aoiPendienteSiembra,
+              fecha
+            );
+
+          if (ok) {
+
+            cerrarModalSiembra();
+
+            alert(
+              "Siembra registrada correctamente"
+            );
+
+          } else {
+
+            alert(
+              "Error registrando siembra"
+            );
+
+          }
+
+        };
 
     }
 
@@ -696,41 +735,4 @@ async function registrarSiembra(
   }
 
 }
-if (btnGuardarSiembra) {
-btnGuardarSiembra.onclick =
-  async () => {
 
-    const fecha =
-      modalFechaSiembra.value;
-
-    if (
-      !fecha ||
-      !aoiPendienteSiembra
-    ) {
-      return;
-    }
-
-    const ok =
-      await registrarSiembra(
-        aoiPendienteSiembra,
-        fecha
-      );
-
-    if (ok) {
-
-      cerrarModalSiembra();
-
-      alert(
-        "Siembra registrada correctamente"
-      );
-
-    } else {
-
-      alert(
-        "Error registrando siembra"
-      );
-
-    }
-
-  };
-}
