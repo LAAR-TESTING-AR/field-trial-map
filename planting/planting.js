@@ -51,9 +51,7 @@ document.addEventListener(
     }
 
     if (btnGuardarSiembra) {
-btnGuardarSiembra.disabled = true;
-btnGuardarSiembra.textContent =
-  "Guardando...";
+
       btnGuardarSiembra.onclick =
         async () => {
 
@@ -66,7 +64,9 @@ btnGuardarSiembra.textContent =
           ) {
             return;
           }
-
+btnGuardarSiembra.disabled = true;
+btnGuardarSiembra.textContent =
+  "Guardando...";
           const ok =
             await registrarSiembra(
               aoiPendienteSiembra,
