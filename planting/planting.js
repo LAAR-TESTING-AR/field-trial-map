@@ -406,3 +406,15 @@ Papa.parse("../Sitios.csv", {
     );
   }
 });
+const botonLeyenda =
+  document.getElementById("botonLeyenda");
+
+const panelLeyenda =
+  document.getElementById("panelLeyenda");
+
+botonLeyenda.addEventListener(
+  "click",
+  () => {
+    panelLeyenda.classList.toggle("visible");
+  }
+);
