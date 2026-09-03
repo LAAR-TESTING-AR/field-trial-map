@@ -407,11 +407,83 @@ function actualizarMapa(sitiosFiltrados) {
       }
     );
 
-    marcador.bindPopup(
-      crearPopup(sitio, estado)
-    );
+marcador.bindPopup(
+  crearPopup(sitio, estado)
+);
 
-    marcador.addTo(capaMarcadores);
+marcador.on(
+  "popupopen",
+  () => {
+
+    const aoiId =
+      limpiarTexto(
+        sitio["AOI ID"]
+      );
+
+    const boton =
+      document.querySelector(
+        `.btn-registrar-siembra[data-aoi="${aoiId}"]`
+      );
+
+    if (!boton) {
+      return;
+    }
+
+    boton.onclick =
+      async () => {
+
+        const fechaInput =
+          document.getElementById(
+            `fecha_${aoiId}`
+          );
+
+        const fecha =
+          fechaInput?.value;
+
+        if (!fecha) {
+
+          alert(
+            "Seleccione una fecha de siembra"
+          );
+
+          return;
+        }
+
+        boton.disabled = true;
+        boton.textContent =
+          "Registrando...";
+
+        const ok =
+          await registrarSiembra(
+            aoiId,
+            fecha
+          );
+
+        if (ok) {
+
+          alert(
+            "Siembra registrada correctamente"
+          );
+
+        } else {
+
+          alert(
+            "Error registrando siembra"
+          );
+
+          boton.disabled = false;
+
+          boton.textContent =
+            "Registrar Siembra";
+
+        }
+
+      };
+
+  }
+);
+
+marcador.addTo(capaMarcadores);
 
     coordenadas.push([lat, lon]);
   });
