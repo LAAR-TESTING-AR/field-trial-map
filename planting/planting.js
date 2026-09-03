@@ -35,6 +35,24 @@ const btnGuardarSiembra =
     "btnGuardarSiembra"
   );
 
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    const btnCancelarSiembra =
+      document.getElementById(
+        "btnCancelarSiembra"
+      );
+
+    if (btnCancelarSiembra) {
+
+      btnCancelarSiembra.onclick =
+        cerrarModalSiembra;
+
+    }
+
+  }
+);
 
 const filtroCrop =
   document.getElementById("filtroCrop");
@@ -602,7 +620,10 @@ let aoiPendienteSiembra = null;
 function abrirModalSiembra(
   aoiId
 ) {
-
+console.log(
+  "Abriendo modal",
+  aoiId
+);
   aoiPendienteSiembra =
     aoiId;
 
