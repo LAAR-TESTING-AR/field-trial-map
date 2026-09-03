@@ -242,29 +242,122 @@ function actualizarDashboard(sitiosFiltrados) {
 document.getElementById("barraAvance").style.width =
   `${avance}%`;
 
-}
+}function crearPopup(sitio, estado) {
 
-function crearPopup(sitio, estado) {
-  return `
-    <strong>${limpiarTexto(
+  const aoiId =
+    limpiarTexto(
       sitio["AOI ID"]
-    )}</strong><br>
+    );
 
-    ${limpiarTexto(sitio.Location)}<br>
+  const plantingDate =
+    limpiarTexto(
+      sitio["Planting Date (MM/DD/YYYY)"]
+    );
 
-    ${limpiarTexto(sitio.Crop)}<br>
+  let bloqueAccion = "";
 
-    ${limpiarTexto(sitio.Season)}<br>
+  if (estado === "PENDIENTE") {
 
-    ${limpiarTexto(
-      sitio["LAAR Status 2026-2027"]
-    )}<br>
+    bloqueAccion = `
 
-    ${limpiarTexto(sitio.Operations)}<br>
+      <hr>
 
-    <strong>${estado}</strong>
+      <label
+        for="fecha_${aoiId}">
+        Fecha de siembra
+      </label>
+
+      <input
+        type="date"
+        id="fecha_${aoiId}"
+        class="popup-fecha-input">
+
+      <button
+        type="button"
+        class="btn-registrar-siembra"
+        data-aoi="${aoiId}">
+        Registrar Siembra
+      </button>
+
+    `;
+
+  } else if (estado === "SEMBRADO") {
+
+    bloqueAccion = `
+
+      <hr>
+
+      <div class="popup-fecha-registrada">
+
+        <strong>
+          Fecha de siembra
+        </strong>
+
+        <br>
+
+        ${plantingDate}
+
+      </div>
+
+    `;
+
+  }
+
+  return `
+
+    <div class="popup-planting">
+
+      <div class="popup-aoi">
+
+        ${aoiId}
+
+      </div>
+
+      <div class="popup-info">
+
+        ${limpiarTexto(
+          sitio.Location
+        )}
+
+        <br>
+
+        ${limpiarTexto(
+          sitio.Crop
+        )}
+
+        <br>
+
+        ${limpiarTexto(
+          sitio.Season
+        )}
+
+        <br>
+
+        ${limpiarTexto(
+          sitio["LAAR Status 2026-2027"]
+        )}
+
+        <br>
+
+        ${limpiarTexto(
+          sitio.Operations
+        )}
+
+      </div>
+
+      <div class="popup-estado">
+
+        Estado: ${estado}
+
+      </div>
+
+      ${bloqueAccion}
+
+    </div>
+
   `;
 }
+
 
 function actualizarMapa(sitiosFiltrados) {
   capaMarcadores.clearLayers();
