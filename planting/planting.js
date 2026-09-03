@@ -24,7 +24,10 @@ const modalFechaSiembra =
   document.getElementById(
     "modalFechaSiembra"
   );
-
+console.log(
+  "modalFechaSiembra:",
+  modalFechaSiembra
+);
 const btnCancelarSiembra =
   document.getElementById(
     "btnCancelarSiembra"
