@@ -397,7 +397,7 @@ function actualizarMapa(sitiosFiltrados) {
     const marcador = L.circleMarker(
       [lat, lon],
       {
-        radius: 5,
+        radius: 8,
         fillColor: color,
         color: "#ffffff",
         weight: 1,
