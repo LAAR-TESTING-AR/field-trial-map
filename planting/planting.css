@@ -35,7 +35,7 @@ header {
 
 #panelLateral select {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom:0px;
   padding: 10px;
   border: 1px solid #bfc7c1;
   border-radius: 8px;
@@ -133,7 +133,7 @@ header {
 }#contenedorFiltros {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 6px;
 }
 @media (max-width: 450px) {
 
