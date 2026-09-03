@@ -147,10 +147,11 @@ header {
 
 }
 .dashboard-titulo {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
+
 
 .dashboard-metricas {
   display: grid;
@@ -183,7 +184,7 @@ header {
 
 .barra-progreso {
   flex: 1;
-  height: 10px;
+  height: 14px;
   background: #d7d7d7;
   border-radius: 20px;
   overflow: hidden;
