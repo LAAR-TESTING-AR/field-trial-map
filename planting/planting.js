@@ -787,4 +787,17 @@ if (!navigator.onLine) {
   }
 
 }
+window.addEventListener(
+  "online",
+  async () => {
 
+    console.log(
+      "Sincronizando siembras pendientes..."
+    );
+
+    await sincronizarSiembrasPendientes();
+
+    actualizarVista();
+
+  }
+);
