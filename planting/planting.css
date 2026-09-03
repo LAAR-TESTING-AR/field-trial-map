@@ -27,9 +27,11 @@ header {
 #panelLateral {
   width: 260px;
   padding: 15px;
+  padding-bottom: 10px;
   background: #f7f7f7;
   border-right: 1px solid #ddd;
 }
+
 
 #panelLateral select {
   width: 100%;
