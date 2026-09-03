@@ -51,7 +51,9 @@ document.addEventListener(
     }
 
     if (btnGuardarSiembra) {
-
+btnGuardarSiembra.disabled = true;
+btnGuardarSiembra.textContent =
+  "Guardando...";
       btnGuardarSiembra.onclick =
         async () => {
 
@@ -72,7 +74,9 @@ document.addEventListener(
             );
 
           if (ok) {
-
+btnGuardarSiembra.disabled = false;
+btnGuardarSiembra.textContent =
+  "Guardar";
             cerrarModalSiembra();
 
             alert(
@@ -80,6 +84,9 @@ document.addEventListener(
             );
 
           } else {
+btnGuardarSiembra.disabled = false;
+btnGuardarSiembra.textContent =
+  "Guardar";
 
             alert(
               "Error registrando siembra"
