@@ -133,7 +133,7 @@ header {
 }#contenedorFiltros {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 2px;
 }
 @media (max-width: 450px) {
 
