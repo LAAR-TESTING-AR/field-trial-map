@@ -99,20 +99,26 @@ header {
 #busqueda::placeholder {
   color: #6d776f;
 }
-#botonLeyenda {
+#panelLeyenda {
+  display: none;
   position: fixed;
+
   right: 20px;
-  bottom: 20px;
-  width: 52px;
-  height: 52px;
-  border: none;
-  border-radius: 50%;
-  background: #0b6b3a;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
+  bottom: 85px;
+
+  width: 180px;
+
+  background: white;
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+
   z-index: 9999;
 }
+
 
 #panelLeyenda {
   display: none;
@@ -151,8 +157,8 @@ header {
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
   margin-bottom: 6px;
-  gap: 0;
 }
+
 
 .dashboard-metricas strong {
   display: block;
@@ -196,4 +202,13 @@ header {
   font-size: 34px;
   font-weight: 800;
   color: #0b6b3a;
+}
+#panelLeyenda h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+#panelLeyenda div {
+  font-size: 13px;
+  margin-bottom: 6px;
 }
