@@ -74,16 +74,39 @@ btnGuardarSiembra.textContent =
             );
 
           if (ok) {
-btnGuardarSiembra.disabled = false;
-btnGuardarSiembra.textContent =
-  "Guardar";
-            cerrarModalSiembra();
 
-            alert(
-              "Siembra registrada correctamente"
-            );
+  const sitioLocal =
+    sitios.find(
+      s =>
+        limpiarTexto(
+          s["AOI ID"]
+        ) === aoiPendienteSiembra
+    );
 
-          } else {
+  if (sitioLocal) {
+
+    sitioLocal[
+      "Planting Date (MM/DD/YYYY)"
+    ] = fecha;
+
+  }
+
+  actualizarVista();
+
+  btnGuardarSiembra.disabled = false;
+
+  btnGuardarSiembra.textContent =
+    "Guardar";
+
+  cerrarModalSiembra();
+
+  alert(
+    "✅ Siembra registrada correctamente"
+  );
+
+}
+          
+          else {
 btnGuardarSiembra.disabled = false;
 btnGuardarSiembra.textContent =
   "Guardar";
