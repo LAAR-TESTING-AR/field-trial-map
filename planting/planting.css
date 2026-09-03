@@ -141,7 +141,7 @@ header {
 
 }
 .dashboard-titulo {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -150,89 +150,34 @@ header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
-  margin-bottom: 10px;
-}
-
-.dashboard-metricas strong {
-  display: block;
-  font-size: 16px !important;
-  color: #193b2a;
-  font-weight: 700;
-  line-height: 1;
-}
-
-
-.dashboard-metricas span {
-  font-size: 9px;
-}
-
-.fila-avance {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.barra-progreso {
-  flex: 1;
-  height: 12px;
-  background: #d7d7d7;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.barra-progreso-relleno {
-  width: 0%;
-  height: 100%;
-  background: #0b6b3a;
-  transition: width .3s ease;
-}
-
-#avanceGrande {
-  min-width: 55px;
-  text-align: right;
-  font-size: 40px;
-  font-weight: 800;
-  color: #0b6b3a;
-}
-
-.dashboard-titulo {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.dashboard-metricas {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   gap: 0;
 }
 
-
 .dashboard-metricas strong {
   display: block;
-  font-size: 14px !important;
+  font-size: 14px;
   color: #193b2a;
   font-weight: 700;
   line-height: 1;
 }
 
 .dashboard-metricas span {
+  display: block;
+  margin-top: 2px;
   font-size: 8px;
-  color: #4b4b4b;
+  color: #666;
 }
-
 
 .fila-avance {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .barra-progreso {
   flex: 1;
-  height: 12px;
+  height: 10px;
   background: #d7d7d7;
   border-radius: 20px;
   overflow: hidden;
@@ -248,8 +193,7 @@ header {
 #avanceGrande {
   min-width: 55px;
   text-align: right;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 800;
   color: #0b6b3a;
 }
-
