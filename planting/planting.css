@@ -141,7 +141,7 @@ header {
 
 }
 .dashboard-titulo {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -206,7 +206,7 @@ header {
 
 .dashboard-metricas strong {
   display: block;
-  font-size: 26px;
+  font-size: 16px;
   color: #193b2a;
 }
 
