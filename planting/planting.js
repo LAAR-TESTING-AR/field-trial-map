@@ -696,6 +696,7 @@ async function registrarSiembra(
   }
 
 }
+if (btnGuardarSiembra) {
 btnGuardarSiembra.onclick =
   async () => {
 
@@ -732,3 +733,4 @@ btnGuardarSiembra.onclick =
     }
 
   };
+}
