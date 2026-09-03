@@ -323,3 +323,16 @@ header {
   background: #0b6b3a;
   color: white;
 }
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+#estadoSincronizacion {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #0b6b3a;
+}
