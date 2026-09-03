@@ -55,12 +55,54 @@
 
     </aside>
 <section id="dashboard">
-    <div>Total AOI: <span id="totalAOI">0</span></div>
-    <div>Sembradas: <span id="sembradas">0</span></div>
-    <div>Pendientes: <span id="pendientes">0</span></div>
-    <div>Drop: <span id="drop">0</span></div>
-    <div>Avance: <span id="avance">0%</span></div>
+
+    <div class="dashboard-titulo">
+        Avance de Siembra
+    </div>
+
+    <div class="dashboard-metricas">
+
+        <div>
+            <strong id="totalAOI">0</strong>
+            <span>AOI</span>
+        </div>
+
+        <div>
+            <strong id="sembradas">0</strong>
+            <span>Semb</span>
+        </div>
+
+        <div>
+            <strong id="pendientes">0</strong>
+            <span>Pend</span>
+        </div>
+
+        <div>
+            <strong id="drop">0</strong>
+            <span>Drop</span>
+        </div>
+
+    </div>
+
+    <div class="fila-avance">
+
+        <div class="barra-progreso">
+
+            <div
+                id="barraAvance"
+                class="barra-progreso-relleno">
+            </div>
+
+        </div>
+
+        <div id="avanceGrande">
+            0%
+        </div>
+
+    </div>
+
 </section>
+
     <div id="mapa"></div>
 <button id="botonLeyenda">
   ⓘ
