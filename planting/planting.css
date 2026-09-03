@@ -267,3 +267,59 @@ header {
   background: #edf5ee;
   border-radius: 8px;
 }
+.modal-siembra {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 20000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-siembra.visible {
+  display: flex;
+}
+
+.modal-siembra-contenido {
+  width: 90%;
+  max-width: 340px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.modal-siembra-contenido h3 {
+  margin-top: 0;
+}
+
+#modalFechaSiembra {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-botones button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+#btnCancelarSiembra {
+  background: #e5e5e5;
+}
+
+#btnGuardarSiembra {
+  background: #0b6b3a;
+  color: white;
+}
