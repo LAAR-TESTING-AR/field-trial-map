@@ -13,7 +13,8 @@ L.tileLayer(
 const capaMarcadores = L.layerGroup().addTo(mapa);
 
 let sitios = [];
-
+const URL_FLOW_SIEMBRA =
+  "https://default3e20ecb29cb04df1ad7b914e31dcdd.a4.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ba0bb4b2e7424a199e26e1bb9d749b37/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZH8hddf0UGFNdGOaV__Ao655IaUtxE6vcBNNaM_LaBs";
 const filtroCrop =
   document.getElementById("filtroCrop");
 
@@ -515,3 +516,49 @@ botonLeyenda.addEventListener(
     panelLeyenda.classList.toggle("visible");
   }
 );
+async function registrarSiembra(
+  aoiId,
+  fecha
+) {
+
+  try {
+
+    const respuesta =
+      await fetch(
+        URL_FLOW_SIEMBRA,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+          body: JSON.stringify({
+            aoiId: aoiId,
+            plantingDate: fecha,
+            registeredAt:
+              new Date().toISOString(),
+            source:
+              "Field Trial Map Planting"
+          })
+        }
+      );
+
+    if (!respuesta.ok) {
+
+      throw new Error(
+        "Error registrando siembra"
+      );
+
+    }
+
+    return true;
+
+  } catch (error) {
+
+    console.error(error);
+
+    return false;
+
+  }
+
+}
