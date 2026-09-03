@@ -670,7 +670,7 @@ Papa.parse("../Sitios.csv", {
     );
 
     actualizarVista();
-
+sincronizarSiembrasPendientes();
     if (resultado.errors.length) {
       console.warn(
         "Advertencias del CSV:",
