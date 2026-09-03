@@ -15,6 +15,27 @@ const capaMarcadores = L.layerGroup().addTo(mapa);
 let sitios = [];
 const URL_FLOW_SIEMBRA =
   "https://default3e20ecb29cb04df1ad7b914e31dcdd.a4.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ba0bb4b2e7424a199e26e1bb9d749b37/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZH8hddf0UGFNdGOaV__Ao655IaUtxE6vcBNNaM_LaBs";
+const modalSiembra =
+  document.getElementById(
+    "modalSiembra"
+  );
+
+const modalFechaSiembra =
+  document.getElementById(
+    "modalFechaSiembra"
+  );
+
+const btnCancelarSiembra =
+  document.getElementById(
+    "btnCancelarSiembra"
+  );
+
+const btnGuardarSiembra =
+  document.getElementById(
+    "btnGuardarSiembra"
+  );
+btnCancelarSiembra.onclick =
+  cerrarModalSiembra;
 const filtroCrop =
   document.getElementById("filtroCrop");
 
@@ -424,13 +445,11 @@ marcador.on(
     boton.onclick =
       async () => {
 
-        const fecha =
-  prompt(
-    "Ingrese fecha de siembra (AAAA-MM-DD)",
-    new Date()
-      .toISOString()
-      .split("T")[0]
-  );
+  abrirModalSiembra(
+  aoiId
+);
+
+return;
 
 if (
   !fecha ||
@@ -578,6 +597,37 @@ botonLeyenda.addEventListener(
     panelLeyenda.classList.toggle("visible");
   }
 );
+let aoiPendienteSiembra = null;
+
+function abrirModalSiembra(
+  aoiId
+) {
+
+  aoiPendienteSiembra =
+    aoiId;
+
+  modalFechaSiembra.value =
+    new Date()
+      .toISOString()
+      .split("T")[0];
+
+  modalSiembra.classList.add(
+    "visible"
+  );
+
+}
+
+function cerrarModalSiembra() {
+
+  modalSiembra.classList.remove(
+    "visible"
+  );
+
+  aoiPendienteSiembra =
+    null;
+
+}
+
 async function registrarSiembra(
   aoiId,
   fecha
@@ -624,3 +674,39 @@ async function registrarSiembra(
   }
 
 }
+btnGuardarSiembra.onclick =
+  async () => {
+
+    const fecha =
+      modalFechaSiembra.value;
+
+    if (
+      !fecha ||
+      !aoiPendienteSiembra
+    ) {
+      return;
+    }
+
+    const ok =
+      await registrarSiembra(
+        aoiPendienteSiembra,
+        fecha
+      );
+
+    if (ok) {
+
+      cerrarModalSiembra();
+
+      alert(
+        "Siembra registrada correctamente"
+      );
+
+    } else {
+
+      alert(
+        "Error registrando siembra"
+      );
+
+    }
+
+  };
