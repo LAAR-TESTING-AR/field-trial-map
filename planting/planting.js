@@ -723,7 +723,16 @@ async function registrarSiembra(
   aoiId,
   fecha
 ) {
+if (!navigator.onLine) {
 
+  agregarSiembraPendiente(
+    aoiId,
+    fecha
+  );
+
+  return "OFFLINE";
+
+}
   try {
 
     const respuesta =
