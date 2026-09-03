@@ -15,36 +15,34 @@ const capaMarcadores = L.layerGroup().addTo(mapa);
 let sitios = [];
 const URL_FLOW_SIEMBRA =
   "https://default3e20ecb29cb04df1ad7b914e31dcdd.a4.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ba0bb4b2e7424a199e26e1bb9d749b37/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZH8hddf0UGFNdGOaV__Ao655IaUtxE6vcBNNaM_LaBs";
-const modalSiembra =
-  document.getElementById(
-    "modalSiembra"
-  );
 
-const modalFechaSiembra =
-  document.getElementById(
-    "modalFechaSiembra"
-  );
-console.log(
-  "modalFechaSiembra:",
-  modalFechaSiembra
-);
-const btnCancelarSiembra =
-  document.getElementById(
-    "btnCancelarSiembra"
-  );
-
-const btnGuardarSiembra =
-  document.getElementById(
-    "btnGuardarSiembra"
-  );
+let modalSiembra;
+let modalFechaSiembra;
+let btnCancelarSiembra;
+let btnGuardarSiembra;
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
 
-    const btnCancelarSiembra =
+    modalSiembra =
+      document.getElementById(
+        "modalSiembra"
+      );
+
+    modalFechaSiembra =
+      document.getElementById(
+        "modalFechaSiembra"
+      );
+
+    btnCancelarSiembra =
       document.getElementById(
         "btnCancelarSiembra"
+      );
+
+    btnGuardarSiembra =
+      document.getElementById(
+        "btnGuardarSiembra"
       );
 
     if (btnCancelarSiembra) {
