@@ -195,14 +195,15 @@ header {
   background: #0b6b3a;
   transition: width .3s ease;
 }
-
 #avanceGrande {
-  min-width: 55px;
+  min-width: 44px;
   text-align: right;
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 800;
   color: #0b6b3a;
+  line-height: 1;
 }
+
 #panelLeyenda h3 {
   margin: 0 0 10px 0;
   font-size: 14px;
