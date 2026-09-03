@@ -34,7 +34,11 @@ function agregarSiembraPendiente(
   aoiId,
   fecha
 ) {
-
+console.log(
+  "Guardando pendiente:",
+  aoiId,
+  fecha
+);
   const pendientes =
     obtenerSiembrasPendientes();
 
@@ -46,8 +50,13 @@ function agregarSiembraPendiente(
   });
 
   guardarSiembrasPendientes(
-    pendientes
-  );
+  pendientes
+);
+
+console.log(
+  obtenerSiembrasPendientes()
+);
+
 actualizarIndicadorOffline();
 }
 
