@@ -48,7 +48,7 @@ function agregarSiembraPendiente(
   guardarSiembrasPendientes(
     pendientes
   );
-
+actualizarIndicadorOffline();
 }
 
 async function sincronizarSiembrasPendientes() {
