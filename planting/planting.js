@@ -243,7 +243,9 @@ function actualizarDashboard(sitiosFiltrados) {
 document.getElementById("barraAvance").style.width =
   `${avance}%`;
 
-}function crearPopup(sitio, estado) {
+}
+
+function crearPopup(sitio, estado) {
 
   const aoiId =
     limpiarTexto(
@@ -263,22 +265,12 @@ document.getElementById("barraAvance").style.width =
 
       <hr>
 
-      <label
-        for="fecha_${aoiId}">
-        Fecha de siembra
-      </label>
-
-      <input
-        type="date"
-        id="fecha_${aoiId}"
-        class="popup-fecha-input">
-
       <button
-        type="button"
-        class="btn-registrar-siembra"
-        data-aoi="${aoiId}">
-        Registrar Siembra
-      </button>
+  type="button"
+  class="btn-registrar-siembra"
+  data-aoi="${aoiId}">
+  Registrar Siembra
+</button>
 
     `;
 
@@ -432,23 +424,21 @@ marcador.on(
     boton.onclick =
       async () => {
 
-        const fechaInput =
-          document.getElementById(
-            `fecha_${aoiId}`
-          );
-
         const fecha =
-          fechaInput?.value;
+  prompt(
+    "Ingrese fecha de siembra (AAAA-MM-DD)",
+    new Date()
+      .toISOString()
+      .split("T")[0]
+  );
 
-        if (!fecha) {
-
-          alert(
-            "Seleccione una fecha de siembra"
-          );
-
-          return;
-        }
-
+if (
+  !fecha ||
+  fecha.trim() === ""
+) {
+  return;
+}
+      
         boton.disabled = true;
         boton.textContent =
           "Registrando...";
