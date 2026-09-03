@@ -736,17 +736,17 @@ async function registrarSiembra(
   aoiId,
   fecha
 ) {
-if (!navigator.onLine) {
 
-  agregarSiembraPendiente(
-    aoiId,
-    fecha
-  );
-
-  return "OFFLINE";
-
-}
   try {
+
+    const controlador =
+      new AbortController();
+
+    const timeout =
+      setTimeout(
+        () => controlador.abort(),
+        5000
+      );
 
     const respuesta =
       await fetch(
@@ -758,15 +758,19 @@ if (!navigator.onLine) {
               "application/json"
           },
           body: JSON.stringify({
-            aoiId: aoiId,
+            aoiId,
             plantingDate: fecha,
             registeredAt:
               new Date().toISOString(),
             source:
               "Field Trial Map Planting"
-          })
+          }),
+          signal:
+            controlador.signal
         }
       );
+
+    clearTimeout(timeout);
 
     if (!respuesta.ok) {
 
@@ -780,13 +784,22 @@ if (!navigator.onLine) {
 
   } catch (error) {
 
-    console.error(error);
+    console.log(
+      "Guardando offline:",
+      aoiId
+    );
 
-    return false;
+    agregarSiembraPendiente(
+      aoiId,
+      fecha
+    );
+
+    return "OFFLINE";
 
   }
 
 }
+
 window.addEventListener(
   "online",
   async () => {
