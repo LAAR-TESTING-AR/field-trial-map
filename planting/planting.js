@@ -34,8 +34,8 @@ const btnGuardarSiembra =
   document.getElementById(
     "btnGuardarSiembra"
   );
-btnCancelarSiembra.onclick =
-  cerrarModalSiembra;
+
+
 const filtroCrop =
   document.getElementById("filtroCrop");
 
