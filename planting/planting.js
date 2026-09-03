@@ -236,8 +236,12 @@ function actualizarDashboard(sitiosFiltrados) {
   document.getElementById("drop").textContent =
     drops;
 
-  document.getElementById("avance").textContent =
-    `${avance}%`;
+  document.getElementById("avanceGrande").textContent =
+  `${avance}%`;
+
+document.getElementById("barraAvance").style.width =
+  `${avance}%`;
+
 }
 
 function crearPopup(sitio, estado) {
