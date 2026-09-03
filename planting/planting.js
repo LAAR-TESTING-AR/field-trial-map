@@ -72,7 +72,11 @@ btnGuardarSiembra.textContent =
               aoiPendienteSiembra,
               fecha
             );
-
+console.log(
+"RESULTADO REGISTRO:",
+ok
+);
+          
 if (
   ok === true ||
   ok === "OFFLINE"
@@ -736,7 +740,11 @@ async function registrarSiembra(
   aoiId,
   fecha
 ) {
-
+console.log(
+  "INICIO REGISTRO",
+  aoiId,
+  fecha
+);
   try {
 
     const controlador =
@@ -788,7 +796,9 @@ async function registrarSiembra(
       "Guardando offline:",
       aoiId
     );
-
+console.log(
+  "ENTRO AL CATCH"
+);
     agregarSiembraPendiente(
       aoiId,
       fecha
