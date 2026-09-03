@@ -240,19 +240,26 @@ header {
   box-sizing: border-box;
   margin-top: 4px;
   margin-bottom: 8px;
-  padding: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cfd3d4;
+  font-size: 15px;
 }
+
 
 .btn-registrar-siembra {
   width: 100%;
   border: none;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 14px;
   background: #0b6b3a;
   color: white;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
+  margin-top: 6px;
 }
+
 
 .popup-fecha-registrada {
   margin-top: 8px;
