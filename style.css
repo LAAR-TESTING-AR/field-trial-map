@@ -327,10 +327,6 @@ body { display: flex; flex-direction: column; }
     z-index: 500;
   }
 
-  #limpiarFiltros {
-    display: none;
-  }
-
   #mapa {
     margin-left: 320px;
   }
