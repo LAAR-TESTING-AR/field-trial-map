@@ -26,7 +26,11 @@
     console.error("drop-trial-addon.js debe cargarse después de app.js.");
     return;
   }
-
+console.log(
+  "DROP ICON",
+  sitio?.aoiId,
+  esTrialDrop(sitio)
+);
   window.crearIconoTrial = function (cultivo, sitio) {
     if (!esTrialDrop(sitio)) return crearIconoTrialOriginal(cultivo);
 
