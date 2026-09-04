@@ -52,89 +52,70 @@ document.addEventListener(
 
     if (btnGuardarSiembra) {
 
-      btnGuardarSiembra.onclick =
-        async () => {
+btnGuardarSiembra.onclick =
+  async () => {
 
-          const fecha =
-            modalFechaSiembra.value;
+    const fecha =
+      modalFechaSiembra.value;
 
-          if (
-            !fecha ||
-            !aoiPendienteSiembra
-          ) {
-            return;
-          }
-btnGuardarSiembra.disabled = true;
-btnGuardarSiembra.textContent =
-  "Guardando...";
-          const ok =
-            await registrarSiembra(
-              aoiPendienteSiembra,
-              fecha
-            );
-console.log(
-"RESULTADO REGISTRO:",
-ok
-);
-          
-if (
-  ok === true ||
-  ok === "OFFLINE"
-) {
+    if (
+      !fecha ||
+      !aoiPendienteSiembra
+    ) {
+      return;
+    }
 
-  const sitioLocal =
-    sitios.find(
-      s =>
-        limpiarTexto(
-          s["AOI ID"]
-        ) === aoiPendienteSiembra
-    );
+    // Actualización visual inmediata
 
-  if (sitioLocal) {
+    const sitioLocal =
+      sitios.find(
+        s =>
+          limpiarTexto(
+            s["AOI ID"]
+          ) === aoiPendienteSiembra
+      );
 
-    sitioLocal[
-      "Planting Date (MM/DD/YYYY)"
-    ] = fecha;
+    if (sitioLocal) {
 
-  }
+      sitioLocal[
+        "Planting Date (MM/DD/YYYY)"
+      ] = fecha;
 
-  actualizarVista();
+    }
 
-  btnGuardarSiembra.disabled = false;
+    actualizarVista();
 
-  btnGuardarSiembra.textContent =
-    "Guardar";
+    cerrarModalSiembra();
 
-  cerrarModalSiembra();
+    // Intentar sincronizar en segundo plano
 
-if (ok === "OFFLINE") {
+    registrarSiembra(
+      aoiPendienteSiembra,
+      fecha
+    )
+    .then(ok => {
 
-  alert(
-    "📡 Sin conexión.\nLa siembra fue guardada localmente y se sincronizará automáticamente."
-  );
+      console.log(
+        "RESULTADO REGISTRO:",
+        ok
+      );
 
-} else {
+      if (ok === "OFFLINE") {
 
-  alert(
-    "✅ Siembra registrada correctamente"
-  );
+        alert(
+          "📡 Sin conexión. La siembra quedó pendiente de sincronización."
+        );
 
-}
+      }
 
-}
-          
-          else {
-btnGuardarSiembra.disabled = false;
-btnGuardarSiembra.textContent =
-  "Guardar";
+    })
+    .catch(error => {
 
-            alert(
-              "Error registrando siembra"
-            );
+      console.error(error);
 
-          }
+    });
 
-        };
+  };
 
     }
 
