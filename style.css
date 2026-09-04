@@ -308,6 +308,27 @@ height: auto;
 
     border: 1px solid #d8ded9;
     border-radius: 10px;
+    .panel {
+  min-height: auto;
+  padding-bottom: 12px;
+}
+
+.resumen {
+  position: absolute;
+  top: 600px;
+  left: 10px;
+
+  width: 280px;
+
+  z-index: 500;
+
+  background: rgba(255,255,255,.96);
+
+  border: 1px solid #d8ded9;
+  border-radius: 10px;
+
+  box-shadow: 0 3px 12px rgba(0,0,0,.12);
+}
 
     box-shadow: 0 3px 12px rgba(0,0,0,.12);
   }
