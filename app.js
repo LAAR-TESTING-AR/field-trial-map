@@ -61,7 +61,14 @@ function estaSembrado(sitio) {
     limpiarTexto(sitio.plantingDate)
   );
 }
-
+function esTrialDrop(sitio) {
+  return String(
+    sitio?.description ?? ""
+  )
+    .trim()
+    .toLowerCase()
+    .includes("drop");
+}
 function transformarFila(fila) {
   return {
     aoiId: limpiarTexto(fila["AOI ID"]),
@@ -309,6 +316,32 @@ function crearIconoTrial(cultivo) {
     iconSize: [38, 46], iconAnchor: [19, 46], popupAnchor: [0, -43]
   });
 }
+
+function crearIconoTrialDrop(cultivo) {
+
+  const cfg =
+    configuracionCultivo(cultivo);
+
+  return L.divIcon({
+    className:
+      "marcador-drop-contenedor",
+    html: `
+      <span class="marcador-drop cultivo-${cfg.tipo}">
+        <span class="icono-drop-cultivo">
+          ${cfg.icono}
+        </span>
+        <span class="equis-drop">
+          ×
+        </span>
+      </span>
+    `,
+    iconSize: [42, 48],
+    iconAnchor: [21, 48],
+    popupAnchor: [0, -45]
+  });
+
+}
+
 window.crearIconoTrial =
   crearIconoTrial;
 function crearIconoAccess() {
@@ -434,12 +467,16 @@ function actualizarMapa() {
   let cantidadAccess = 0;
 
   sitiosFiltrados.forEach(sitio => {
-  if (tieneTrial(sitio)) {
+if (tieneTrial(sitio)) {
 
   const iconoTrial =
-  crearIconoTrial(
-    sitio.crop
-  );
+    esTrialDrop(sitio)
+      ? crearIconoTrialDrop(
+          sitio.crop
+        )
+      : crearIconoTrial(
+          sitio.crop
+        );
 
   L.marker(
     [
@@ -449,6 +486,7 @@ function actualizarMapa() {
     {
       icon: iconoTrial
     }
+  )
   ) 
       
         .bindPopup(crearPopupTrial(sitio), {
