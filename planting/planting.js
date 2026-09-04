@@ -658,7 +658,10 @@ Papa.parse("../Sitios.csv", {
     );
 
     actualizarVista();
-
+console.log(
+"Pendientes guardados:",
+obtenerSiembrasPendientes()
+);
 reconciliarPendientesConSitios(
   sitios
 );
