@@ -267,13 +267,13 @@ body { display: flex; flex-direction: column; }
 @media (max-width: 600px) {
 
   .leaflet-popup-content-wrapper {
-    max-width: 92vw !important;
+    max-width: 245px !important;
   }
 
   .leaflet-popup-content {
-    width: 245px;
-    min-width: 245px;
-    margin: 12px;
+    width: 210px;
+    min-width: 210px;
+    margin: 10px;
 
     max-height: 80vh;
 
