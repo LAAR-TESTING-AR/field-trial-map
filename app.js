@@ -430,10 +430,7 @@ function actualizarMapa() {
 
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
-      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(
-  sitio.crop,
-  sitio
-) })
+      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
         .bindPopup(crearPopupTrial(sitio), {
   maxWidth: 390,
   minWidth: 285,
@@ -466,63 +463,9 @@ function actualizarMapa() {
     }
   });
 
-  const total =
-  cantidadTrials + cantidadAccess;
-const kpiTotalAOI =
-  document.getElementById(
-    "kpiTotalAOI"
-  );
-
-const kpiTrials =
-  document.getElementById(
-    "kpiTrials"
-  );
-
-const kpiAccess =
-  document.getElementById(
-    "kpiAccess"
-  );
-
-const kpiDrop =
-  document.getElementById(
-    "kpiDrop"
-  );
-
-if (kpiTotalAOI)
-  kpiTotalAOI.textContent =
-    total;
-
-if (kpiTrials)
-  kpiTrials.textContent =
-    cantidadTrials;
-
-if (kpiAccess)
-  kpiAccess.textContent =
-    cantidadAccess;
-
-if (kpiDrop)
-  kpiDrop.textContent =
-    sitiosFiltrados.filter(
-      sitio =>
-        limpiarTexto(
-          sitio.description
-        )
-          .toLowerCase()
-          .includes("drop")
-    ).length;
-const contadorSitios =
-  document.getElementById(
-    "contadorSitios"
-  );
-
-if (contadorSitios) {
-
-  contadorSitios.textContent =
-    `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
-
-}
-
-actualizarLeyenda(sitiosFiltrados);
+  const total = cantidadTrials + cantidadAccess;
+  contadorSitios.textContent = `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
+  actualizarLeyenda(sitiosFiltrados);
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
