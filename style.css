@@ -285,6 +285,7 @@ body { display: flex; flex-direction: column; }
 @media (min-width: 1400px) {
 
   .panel {
+    #limpiarFiltros { display: block; width: 100%; margin-top: 10px;
     position: fixed;
     top: 160px;
     left: 10px;
@@ -305,7 +306,7 @@ body { display: flex; flex-direction: column; }
     box-shadow: 0 3px 12px rgba(0,0,0,.12);
 
     z-index: 500;
-    #limpiarFiltros { display: block; width: 100%; margin-top: 10px;
+    
 }
   }
 
@@ -327,6 +328,10 @@ body { display: flex; flex-direction: column; }
     box-shadow: 0 3px 12px rgba(0,0,0,.12);
 
     z-index: 500;
+    font-size: 18px;
+line-height: 1.6;
+text-align: center;
+font-weight: 700;
   }
 
   #mapa {
