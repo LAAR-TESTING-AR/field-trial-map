@@ -361,6 +361,15 @@ if (!estado.coordenadaDisponible) {
       popupActual,
       crearBloqueEstado(estado)
     );
+    window.setTimeout(() => {
+  if (
+    typeof mapa !== "undefined" &&
+    mapa &&
+    mapa._popup
+  ) {
+    mapa.panInsidePopup(mapa._popup);
+  }
+}, 50);
   }
 
   function programarActualizacion() {
