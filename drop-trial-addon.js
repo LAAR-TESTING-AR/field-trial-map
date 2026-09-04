@@ -95,7 +95,9 @@
   };
 
   window.actualizarMapa = function () {
-
+console.log(
+"ACTUALIZAR MAPA DROP ADDON"
+);
   capaMarcadores.clearLayers();
 
   const sitiosFiltrados = sitios.filter(
