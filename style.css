@@ -285,7 +285,6 @@ body { display: flex; flex-direction: column; }
 @media (min-width: 1400px) {
 
   .panel {
-    #limpiarFiltros { display: block; width: 100%; margin-top: 10px;
     position: fixed;
     top: 160px;
     left: 10px;
@@ -304,7 +303,7 @@ body { display: flex; flex-direction: column; }
     border-radius: 10px;
 
     box-shadow: 0 3px 12px rgba(0,0,0,.12);
-
+#limpiarFiltros { display: block; width: 100%; margin-top: 10px;
     z-index: 500;
     
 }
