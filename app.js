@@ -302,8 +302,27 @@ function actualizarMapa() {
   });
 
   const total = cantidadTrials + cantidadAccess;
-  contadorSitios.textContent = `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access`;
-  actualizarLeyenda(sitiosFiltrados);
+  contadorSitios.innerHTML = `
+  <div class="kpi-item">
+    <span class="kpi-valor">${total}</span>
+    <span class="kpi-label">AOI</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadTrials}</span>
+    <span class="kpi-label">Trials</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadAccess}</span>
+    <span class="kpi-label">Access</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadDrop}</span>
+    <span class="kpi-label">Drop</span>
+  </div>
+`;
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
