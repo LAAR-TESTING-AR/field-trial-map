@@ -271,11 +271,14 @@ body { display: flex; flex-direction: column; }
   }
 
   .leaflet-popup-content {
-    width: 82vw !important;
-    min-width: 82vw !important;
-    margin: 8px !important;
-    max-height: 72vh !important;
+    width: 245px;
+    min-width: 245px;
+    margin: 12px;
+
+    max-height: 80vh;
+
     overflow-y: auto;
-  }
+    overflow-x: hidden;
+}
 
 }
