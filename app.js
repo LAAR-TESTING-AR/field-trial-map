@@ -309,7 +309,8 @@ function crearIconoTrial(cultivo) {
     iconSize: [38, 46], iconAnchor: [19, 46], popupAnchor: [0, -43]
   });
 }
-
+window.crearIconoTrial =
+  crearIconoTrial;
 function crearIconoAccess() {
   return L.divIcon({
     className: "marcador-access-contenedor",
@@ -361,6 +362,8 @@ function crearPopupTrial(sitio) {
     </div>
   </div>`;
 }
+window.crearPopupTrial =
+  crearPopupTrial;
 
 function crearPopupAccess(sitioAccess) {
   const lat = sitioAccess.latitudeAccess;
@@ -420,6 +423,8 @@ function actualizarLeyenda(sitiosFiltrados) {
 
   contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
+window.actualizarLeyenda =
+actualizarLeyenda;
 
 function actualizarMapa() {
   capaMarcadores.clearLayers();
