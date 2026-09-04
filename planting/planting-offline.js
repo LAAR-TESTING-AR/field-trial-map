@@ -234,18 +234,18 @@ function reconciliarPendientesConSitios(
        * significa que el registro llegó
        * correctamente al Excel.
        */
-      return fechaEnBase === "";*    });
+      return fechaEnBase === "";    });
 
-  guardarSiembrasPendient*s(
+  guardarSiembrasPendientes(
     pendientesReales
   );
 
-  co*sole.log(
-    "Pendientes después *e reconciliar:",
-    pendientesRea*es.length
+  console.log(
+    "Pendientes después de reconciliar:",
+    pendientesReales.length
   );
 
-  actualizarIndica*orOffline();
+  actualizarIndicadorOffline();
 }
 document.addEventListener(
   "DOMContentLoaded",
