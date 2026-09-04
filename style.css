@@ -288,6 +288,9 @@ body { display: flex; flex-direction: column; }
 margin-left: 300px;
 }
   .panel {
+height: auto;
+}
+  .panel {
     position: absolute;
     top: 125px;
     left: 10px;
