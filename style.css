@@ -312,7 +312,7 @@ body { display: flex; flex-direction: column; }
   .resumen {
     position: fixed;
 
-    top: 560px;
+    top: 520px;
     left: 10px;
 
     width: 300px;
@@ -327,7 +327,6 @@ body { display: flex; flex-direction: column; }
     box-shadow: 0 3px 12px rgba(0,0,0,.12);
 
     z-index: 500;
-    font-size: 18px;
   }
 
   #mapa {
