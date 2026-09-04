@@ -234,7 +234,41 @@ if (esDrop) {
 
   const total =
     cantidadTrials + cantidadAccess;
+const kpiTotalAOI =
+  document.getElementById(
+    "kpiTotalAOI"
+  );
 
+const kpiTrials =
+  document.getElementById(
+    "kpiTrials"
+  );
+
+const kpiAccess =
+  document.getElementById(
+    "kpiAccess"
+  );
+
+const kpiDrop =
+  document.getElementById(
+    "kpiDrop"
+  );
+
+if (kpiTotalAOI)
+  kpiTotalAOI.textContent =
+    total;
+
+if (kpiTrials)
+  kpiTrials.textContent =
+    cantidadTrials;
+
+if (kpiAccess)
+  kpiAccess.textContent =
+    cantidadAccess;
+
+if (kpiDrop)
+  kpiDrop.textContent =
+    cantidadDrop;
   if (
     window.vistaMapaActual === "planting"
   ) {
@@ -254,27 +288,7 @@ if (esDrop) {
             ) * 100
           )
         : 0;
-
-    contadorSitios.textContent =
-      `🌱 ${cantidadSembrados} sembrados de ${trialsValidos} Trials · ${porcentaje}% · ⚪ ${pendientes} pendientes` +
-      (
-        cantidadDrop
-          ? ` · ⛔ ${cantidadDrop} Drop`
-          : ""
-      );
-
-  } else {
-
-  contadorSitios.textContent =
-    `${total} puntos visibles · ${cantidadTrials} Trials · ${cantidadAccess} Access` +
-    (
-      cantidadDrop
-        ? ` · ${cantidadDrop} Drop`
-        : ""
-    );
-
-}
-
+  }
 window.actualizarLeyenda(sitiosFiltrados);
 
     if (coordenadas.length) {
@@ -283,4 +297,4 @@ window.actualizarLeyenda(sitiosFiltrados);
   };
 
   console.log("Visualización de Trials Drop y búsqueda por tipo habilitadas.");
-})();
+})
