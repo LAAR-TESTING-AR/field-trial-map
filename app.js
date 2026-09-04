@@ -61,14 +61,7 @@ function estaSembrado(sitio) {
     limpiarTexto(sitio.plantingDate)
   );
 }
-function esTrialDrop(sitio) {
-  return String(
-    sitio?.description ?? ""
-  )
-    .trim()
-    .toLowerCase()
-    .includes("drop");
-}
+
 function transformarFila(fila) {
   return {
     aoiId: limpiarTexto(fila["AOI ID"]),
@@ -317,33 +310,6 @@ function crearIconoTrial(cultivo) {
   });
 }
 
-function crearIconoTrialDrop(cultivo) {
-
-  const cfg =
-    configuracionCultivo(cultivo);
-
-  return L.divIcon({
-    className:
-      "marcador-drop-contenedor",
-    html: `
-      <span class="marcador-drop cultivo-${cfg.tipo}">
-        <span class="icono-drop-cultivo">
-          ${cfg.icono}
-        </span>
-        <span class="equis-drop">
-          ×
-        </span>
-      </span>
-    `,
-    iconSize: [42, 48],
-    iconAnchor: [21, 48],
-    popupAnchor: [0, -45]
-  });
-
-}
-
-window.crearIconoTrial =
-  crearIconoTrial;
 function crearIconoAccess() {
   return L.divIcon({
     className: "marcador-access-contenedor",
@@ -395,8 +361,6 @@ function crearPopupTrial(sitio) {
     </div>
   </div>`;
 }
-window.crearPopupTrial =
-  crearPopupTrial;
 
 function crearPopupAccess(sitioAccess) {
   const lat = sitioAccess.latitudeAccess;
@@ -419,8 +383,7 @@ function crearPopupAccess(sitioAccess) {
     </div>
   </div>`;
 }
-window.crearPopupAccess =
-  crearPopupAccess;
+
 function ocultarLeyenda() {
   if (!panelLeyenda || !botonLeyenda) return;
   panelLeyenda.classList.remove("visible");
@@ -457,8 +420,6 @@ function actualizarLeyenda(sitiosFiltrados) {
 
   contenidoLeyenda.innerHTML = html || '<p class="leyenda-vacia">No hay elementos para los filtros seleccionados.</p>';
 }
-window.actualizarLeyenda =
-actualizarLeyenda;
 
 function actualizarMapa() {
   capaMarcadores.clearLayers();
@@ -468,27 +429,11 @@ function actualizarMapa() {
   let cantidadAccess = 0;
 
   sitiosFiltrados.forEach(sitio => {
-if (tieneTrial(sitio)) {
-
-  const iconoTrial =
-    esTrialDrop(sitio)
-      ? crearIconoTrialDrop(
-          sitio.crop
-        )
-      : crearIconoTrial(
-          sitio.crop
-        );
-
-  L.marker(
-    [
-      sitio.latitudeTrial,
-      sitio.longitudeTrial
-    ],
-    {
-      icon: iconoTrial
-    }
-  ) 
-      
+    if (tieneTrial(sitio)) {
+      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(
+  sitio.crop,
+  sitio
+) })
         .bindPopup(crearPopupTrial(sitio), {
   maxWidth: 390,
   minWidth: 285,
@@ -581,8 +526,7 @@ actualizarLeyenda(sitiosFiltrados);
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
-window.actualizarMapa =
-  actualizarMapa;
+
 function agregarLeyendaPremium() {
   const control = L.control({ position: "bottomright" });
   control.onAdd = function () {
@@ -621,7 +565,7 @@ function cargarSitios() {
         );
 
       completarFiltros();
-      window.actualizarMapa();
+      actualizarMapa();
 
       if (resultado.errors.length) {
         console.warn(
@@ -652,7 +596,7 @@ function cargarSitios() {
 configuracionFiltros.forEach(({ elemento }) => {
   elemento.addEventListener("change", () => {
     actualizarFiltrosDependientes(elemento);
-    window.actualizarMapa();
+    actualizarMapa();
   });
 });
 busqueda.addEventListener("input", actualizarMapa);
@@ -664,7 +608,7 @@ limpiarFiltros.addEventListener("click", () => {
   });
 
   actualizarFiltrosDependientes();
-  window.actualizarMapa();
+  actualizarMapa();
 });
 
 mapa.on("popupopen", ocultarLeyenda);
@@ -677,7 +621,7 @@ vistaMaster?.addEventListener("click", () => {
   vistaSiembra.classList.remove("activo");
   vistaCosecha.classList.remove("activo");
 
- window.actualizarMapa();
+  actualizarMapa();
 });
 
 vistaSiembra?.addEventListener("click", () => {
@@ -687,7 +631,7 @@ vistaSiembra?.addEventListener("click", () => {
   vistaSiembra.classList.add("activo");
   vistaCosecha.classList.remove("activo");
 
-  window.actualizarMapa();
+  actualizarMapa();
 });
 
 vistaCosecha?.addEventListener("click", () => {
@@ -697,6 +641,6 @@ vistaCosecha?.addEventListener("click", () => {
   vistaSiembra.classList.remove("activo");
   vistaCosecha.classList.add("activo");
 
-  window.actualizarMapa();
+  actualizarMapa();
 });
 cargarSitios();
