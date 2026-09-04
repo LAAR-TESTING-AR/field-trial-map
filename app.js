@@ -486,7 +486,6 @@ if (tieneTrial(sitio)) {
     {
       icon: iconoTrial
     }
-  )
   ) 
       
         .bindPopup(crearPopupTrial(sitio), {
