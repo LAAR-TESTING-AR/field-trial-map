@@ -277,38 +277,3 @@ body { display: flex; flex-direction: column; }
   }
 
 }
-@media (min-width: 1200px) {
-
-  .layout-master {
-    display: flex;
-    gap: 12px;
-    height: calc(100vh - 180px);
-    padding: 10px;
-  }
-
-  .panel-lateral {
-    width: 320px;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .panel {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .panel input,
-  .panel select,
-  .panel button {
-    width: 100%;
-  }
-
-  #mapa {
-    flex: 1;
-    height: 100%;
-  }
-
-}
