@@ -16,7 +16,7 @@
   function esDrop(sitio) {
     return texto(sitio?.description)
       .toLowerCase()
-      .includes("drop");
+      .includes("");
   }
 
   function esModoViewer() {
