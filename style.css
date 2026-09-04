@@ -286,16 +286,24 @@ body { display: flex; flex-direction: column; }
 
   .panel {
     position: absolute;
-    top: 120px;
+    top: 125px;
     left: 10px;
 
     width: 280px;
 
     display: flex;
     flex-direction: column;
+
     gap: 10px;
 
     z-index: 500;
+
+    background: rgba(255,255,255,.96);
+
+    border: 1px solid #d8ded9;
+    border-radius: 10px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.12);
   }
 
 }
