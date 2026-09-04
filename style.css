@@ -285,10 +285,16 @@ body { display: flex; flex-direction: column; }
 @media (min-width: 1400px) {
 
   .panel {
-    width: 280px;
     position: absolute;
-    left: 0;
-    top: 45px;
+    top: 120px;
+    left: 10px;
+
+    width: 280px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
     z-index: 500;
   }
 
