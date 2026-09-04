@@ -419,7 +419,8 @@ function crearPopupAccess(sitioAccess) {
     </div>
   </div>`;
 }
-
+window.crearPopupAccess =
+  crearPopupAccess;
 function ocultarLeyenda() {
   if (!panelLeyenda || !botonLeyenda) return;
   panelLeyenda.classList.remove("visible");
