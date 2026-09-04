@@ -307,7 +307,16 @@ body { display: flex; flex-direction: column; }
 
     z-index: 500;
   }
+  
+#limpiarFiltros {
+  position: fixed;
+  top: 620px;
+  left: 22px;
 
+  width: 260px;
+
+  z-index: 501;
+}
   #mapa {
     margin-left: 310px;
   }
