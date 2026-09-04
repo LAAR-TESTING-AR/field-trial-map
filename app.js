@@ -437,17 +437,9 @@ function actualizarMapa() {
   if (tieneTrial(sitio)) {
 
   const iconoTrial =
-    String(
-      sitio.description || ""
-    )
-      .toLowerCase()
-      .includes("drop")
-      ? crearIconoTrialDrop(
-          sitio.crop
-        )
-      : crearIconoTrial(
-          sitio.crop
-        );
+  crearIconoTrial(
+    sitio.crop
+  );
 
   L.marker(
     [
