@@ -291,7 +291,7 @@ body { display: flex; flex-direction: column; }
 
     width: 300px;
 
-    display: flex;
+    display: block;
     flex-direction: column;
     gap: 10px;
 
