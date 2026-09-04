@@ -95,6 +95,7 @@
   };
 
   window.actualizarMapa = function () {
+    alert("DROP ADDON ACTIVO");
 console.log(
 "ACTUALIZAR MAPA DROP ADDON"
 );
