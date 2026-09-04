@@ -312,7 +312,7 @@ body { display: flex; flex-direction: column; }
   .resumen {
     position: fixed;
 
-    top: 520px;
+    top: 660px;
     left: 10px;
 
     width: 300px;
