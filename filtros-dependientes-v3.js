@@ -9,11 +9,7 @@
   let iniciado = false;
 
   const limpiar = valor => String(valor ?? "").trim();
-function obtenerSitios() {
-  return Array.isArray(window.sitios)
-    ? window.sitios
-    : [];
-}
+
   function obtenerBusquedaEspecial() {
     const q = limpiar(busqueda.value).toLowerCase();
     return ["trial", "access", "drop"].includes(q) ? q : "";
@@ -69,19 +65,14 @@ function obtenerSitios() {
     return true;
   }
 
-function valoresDisponibles(campo) {
-  return [...new Set(
-    obtenerSitios()
-      .filter(sitio => coincideExcepto(sitio, campo))
-      .map(sitio => limpiar(sitio[campo]))
-      .filter(Boolean)
-  )].sort((a, b) =>
-    a.localeCompare(b, "es", {
-      sensitivity: "base"
-    })
-  );
-}
-``
+  function valoresDisponibles(campo) {
+    return [...new Set(
+      sitios
+        .filter(sitio => coincideExcepto(sitio, campo))
+        .map(sitio => limpiar(sitio[campo]))
+        .filter(Boolean)
+    )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+  }
 
   function reconstruirSelect(control, campo, etiquetaTodos) {
     const seleccionAnterior = control.value;
@@ -273,10 +264,7 @@ function valoresDisponibles(campo) {
   }
 
   function iniciar() {
-    if (
-  iniciado ||
-  !obtenerSitios().length
-) return false;
+    if (iniciado || !Array.isArray(sitios) || !sitios.length) return false;
 
     iniciado = true;
     reemplazarFiltroPrincipal();
