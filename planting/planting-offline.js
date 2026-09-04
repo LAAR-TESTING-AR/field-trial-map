@@ -190,7 +190,63 @@ async function sincronizarSiembrasPendientes() {
     actualizarIndicadorOffline();
   }
 }
+function reconciliarPendientesConSitios(
+  sitiosActuales
+) {
+  const pendientes =
+    obtenerSiembrasPendientes();
 
+  if (
+    pendientes.length === 0 ||
+    !Array.isArray(sitiosActuales)
+  ) {
+    actualizarIndicadorOffline();
+    return;
+  }
+
+  const pendientesReales =
+    pendientes.filter(pendiente => {
+
+      const sitioBase =
+        sitiosActuales.find(
+          sitio =>
+            String(
+              sitio["AOI ID"] || ""
+            ).trim() ===
+            String(
+              pendiente.aoiId || ""
+            ).trim()
+        );
+
+      if (!sitioBase) {
+        return true;
+      }
+
+      const fechaEnBase =
+        String(
+          sitioBase[
+            "Planting Date (MM/DD/YYYY)"
+          ] || ""
+        ).trim();
+
+      /*
+       * Si el CSV ya tiene fecha,
+       * significa que el registro llegó
+       * correctamente al Excel.
+       */
+      return fechaEnBase === "";*    });
+
+  guardarSiembrasPendient*s(
+    pendientesReales
+  );
+
+  co*sole.log(
+    "Pendientes después *e reconciliar:",
+    pendientesRea*es.length
+  );
+
+  actualizarIndica*orOffline();
+}
 document.addEventListener(
   "DOMContentLoaded",
   actualizarIndicadorOffline
