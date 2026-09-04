@@ -4,24 +4,7 @@ body { display: flex; flex-direction: column; }
 .encabezado { padding: 14px 18px; background: #176b3a; color: #fff; }
 .encabezado h1 { margin: 0; font-size: 23px; }
 .encabezado p { margin: 4px 0 0; font-size: 14px; }
-.panel {display: flex; flex-direction: column; gap: 8px; padding: 10px; background: #fff; border-bottom: 1px solid #d8ded9;}
-.fila-busqueda {
-  display: grid;
-  grid-template-columns: 1fr 150px;
-  gap: 8px;
-}
-
-.selector-vista-mapa {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.fila-filtros {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
+.panel { display: grid; grid-template-columns: minmax(190px,1.5fr) repeat(4,minmax(145px,1fr)) auto; gap: 8px; padding: 10px; background: #fff; border-bottom: 1px solid #d8ded9; }
 .panel input, .panel select, .panel button { width: 100%; min-height: 40px; padding: 8px 10px; font-size: 14px; border: 1px solid #b8c3ba; border-radius: 6px; background: #fff; }
 .panel button { border: none; background: #e8eee9; color: #24442e; font-weight: 600; cursor: pointer; }
 .resumen { padding: 8px 14px; background: #f0f4f1; border-bottom: 1px solid #d8ded9; font-size: 14px; font-weight: 600; }
@@ -30,6 +13,9 @@ body { display: flex; flex-direction: column; }
   width: 245px;
   min-width: 245px;
   margin: 12px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .leaflet-popup-content h2 { margin: 0 0 10px; color: #176b3a; font-size: 19px; }
 .leaflet-popup-content p { margin: 5px 0; line-height: 1.35; }
@@ -62,13 +48,6 @@ body { display: flex; flex-direction: column; }
 .leyenda-vacia { margin: 4px 0; font-size: 12px; }
 @media (max-width: 1050px) { .panel { grid-template-columns: repeat(3,minmax(140px,1fr)); } }
 @media (max-width: 600px) {
-  .fila-busqueda {
-  grid-template-columns: 1fr 110px;
-}
-
-.fila-filtros {
-  grid-template-columns: 1fr 1fr;
-}
   .encabezado {
     padding: 11px 13px;
   }
@@ -81,6 +60,11 @@ body { display: flex; flex-direction: column; }
     grid-template-columns: 1fr 1fr;
     gap: 7px;
     padding: 8px;
+  }
+
+  #busqueda,
+  #limpiarFiltros {
+    grid-column: 1 / -1;
   }
 
   .panel input,
@@ -292,145 +276,4 @@ body { display: flex; flex-direction: column; }
     margin: 8px !important;
   }
 
-}
-
-
-/* iPhone/iPad: popup desplazable solo en la PWA instalada. */
-html.ios-pwa-standalone .leaflet-popup-content-wrapper {
-  overflow: hidden !important;
-}
-
-html.ios-pwa-standalone .leaflet-popup-content {
-  max-height: max(
-    260px,
-    calc(
-      var(--ios-pwa-visible-height, 100vh) -
-      env(safe-area-inset-top, 0px) -
-      env(safe-area-inset-bottom, 0px) -
-      190px
-    )
-  ) !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
-  scrollbar-width: thin;
-}
-
-html.ios-pwa-standalone .leaflet-popup-content .botones-navegacion {
-  padding-bottom: max(4px, env(safe-area-inset-bottom, 0px));
-}
-.selector-vista-mapa {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.boton-vista {
-  min-height: 40px;
-  padding: 8px 12px;
-  border: 1px solid #b8c3ba;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #24442e;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.boton-vista:hover {
-  background: #f2f5f3;
-}
-
-.boton-vista.activo {
-  background: #176b3a;
-  color: #ffffff;
-  border-color: #176b3a;
-}
-
-@media (max-width: 600px) {
-
-  .selector-vista-mapa {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .boton-vista {
-    min-height: 42px;
-    font-size: 12px;
-    padding: 8px 4px;
-  }
-
-}
-.marcador-siembra {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 38px;
-  height: 38px;
-
-  border-radius: 50%;
-  border: 3px solid #ffffff;
-
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 0 2px 8px rgba(0,0,0,.4);
-}
-
-.marcador-siembra.sembrado {
-  background: #168052;
-}
-
-.marcador-siembra.pendiente {
-  background: #bfc5c1;
-}
-.resumen-avance {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.resumen-avance-cabecera {
-  font-weight: 700;
-  color: #176b3a;
-}
-
-.resumen-avance-linea {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.resumen-avance-principal {
-  min-width: 110px;
-  font-weight: 700;
-}
-
-.resumen-avance-porcentaje {
-  min-width: 45px;
-  text-align: right;
-  font-size: 24px;
-  font-weight: 800;
-  color: #176b3a;
-}
-
-.barra-avance {
-  flex: 1;
-  height: 12px;
-  border-radius: 999px;
-  background: #d9dedb;
-  overflow: hidden;
-}
-
-.barra-avance-llenado {
-  height: 100%;
-  background: #168052;
-}
-
-.resumen-avance-detalle {
-  font-size: 13px;
 }
