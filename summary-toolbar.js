@@ -19,9 +19,7 @@
     boton.setAttribute("aria-label", "Limpiar todos los filtros");
     boton.title = "Limpiar todos los filtros";
 
-    if (boton.parentElement !== resumen) {
-      resumen.appendChild(boton);
-    }
+    // No mover el botón al resumen.
 
     return true;
   }
