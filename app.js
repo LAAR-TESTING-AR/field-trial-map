@@ -528,7 +528,8 @@ actualizarLeyenda(sitiosFiltrados);
 
   if (coordenadas.length) mapa.fitBounds(coordenadas, { padding: [30, 30], maxZoom: 10 });
 }
-
+window.actualizarMapa =
+  actualizarMapa;
 function agregarLeyendaPremium() {
   const control = L.control({ position: "bottomright" });
   control.onAdd = function () {
@@ -567,7 +568,7 @@ function cargarSitios() {
         );
 
       completarFiltros();
-      actualizarMapa();
+      window.actualizarMapa();
 
       if (resultado.errors.length) {
         console.warn(
@@ -598,7 +599,7 @@ function cargarSitios() {
 configuracionFiltros.forEach(({ elemento }) => {
   elemento.addEventListener("change", () => {
     actualizarFiltrosDependientes(elemento);
-    actualizarMapa();
+    window.actualizarMapa();
   });
 });
 busqueda.addEventListener("input", actualizarMapa);
@@ -610,7 +611,7 @@ limpiarFiltros.addEventListener("click", () => {
   });
 
   actualizarFiltrosDependientes();
-  actualizarMapa();
+  window.actualizarMapa();
 });
 
 mapa.on("popupopen", ocultarLeyenda);
@@ -623,7 +624,7 @@ vistaMaster?.addEventListener("click", () => {
   vistaSiembra.classList.remove("activo");
   vistaCosecha.classList.remove("activo");
 
-  actualizarMapa();
+ window.actualizarMapa();
 });
 
 vistaSiembra?.addEventListener("click", () => {
@@ -633,7 +634,7 @@ vistaSiembra?.addEventListener("click", () => {
   vistaSiembra.classList.add("activo");
   vistaCosecha.classList.remove("activo");
 
-  actualizarMapa();
+  window.actualizarMapa();
 });
 
 vistaCosecha?.addEventListener("click", () => {
@@ -643,6 +644,6 @@ vistaCosecha?.addEventListener("click", () => {
   vistaSiembra.classList.remove("activo");
   vistaCosecha.classList.add("activo");
 
-  actualizarMapa();
+  window.actualizarMapa();
 });
 cargarSitios();
