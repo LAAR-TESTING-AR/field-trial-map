@@ -286,6 +286,7 @@ body { display: flex; flex-direction: column; }
 
   .panel {
     width: 280px;
+    float: left;
     display: flex;
     flex-direction: column;
     gap: 10px;
