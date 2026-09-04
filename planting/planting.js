@@ -658,6 +658,9 @@ Papa.parse("../Sitios.csv", {
     );
 
     actualizarVista();
+    guardarSiembrasPendientes([]);
+
+actualizarIndicadorOffline();
 console.log(
 "Pendientes guardados:",
 obtenerSiembrasPendientes()
