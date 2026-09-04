@@ -284,54 +284,34 @@ body { display: flex; flex-direction: column; }
 }
 @media (min-width: 1400px) {
 
-  #mapa {
-margin-left: 300px;
-}
   .panel {
-height: auto;
-}
-  .panel {
-    position: absolute;
-    top: 125px;
+    position: fixed;
+
+    top: 180px;
     left: 10px;
 
     width: 280px;
 
     display: flex;
     flex-direction: column;
-
     gap: 10px;
 
-    z-index: 500;
+    padding: 12px;
 
     background: rgba(255,255,255,.96);
 
     border: 1px solid #d8ded9;
     border-radius: 10px;
-    .panel {
-  min-height: auto;
-  padding-bottom: 12px;
-}
 
-.resumen {
-  position: absolute;
-  top: 600px;
-  left: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.12);
 
-  width: 280px;
+    z-index: 500;
+  }
 
-  z-index: 500;
+  #mapa {
+    margin-left: 310px;
+  }
 
-  background: rgba(255,255,255,.96);
-
-  border: 1px solid #d8ded9;
-  border-radius: 10px;
-
-  box-shadow: 0 3px 12px rgba(0,0,0,.12);
-}
-.panel {
-  min-height: unset !important;
-  height: auto !important;
 }
 
 }
