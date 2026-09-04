@@ -658,8 +658,14 @@ Papa.parse("../Sitios.csv", {
     );
 
     actualizarVista();
+
+reconciliarPendientesConSitios(
+  sitios
+);
+
 sincronizarSiembrasPendientes();
-    if (resultado.errors.length) {
+
+if (resultado.errors.length) {
       console.warn(
         "Advertencias del CSV:",
         resultado.errors
