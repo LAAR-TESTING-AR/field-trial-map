@@ -1,125 +1,197 @@
 const CLAVE_SIEMBRAS_PENDIENTES =
   "plantingPendingSync";
 
+let sincronizacionSiembraEnCurso = false;
+
 function obtenerSiembrasPendientes() {
-
   try {
-
-    return JSON.parse(
+    const contenido =
       localStorage.getItem(
         CLAVE_SIEMBRAS_PENDIENTES
-      ) || "[]"
+      );
+
+    return contenido
+      ? JSON.parse(contenido)
+      : [];
+  } catch (error) {
+    console.error(
+      "Error leyendo siembras pendientes:",
+      error
     );
 
-  } catch {
-
     return [];
-
   }
-
 }
 
 function guardarSiembrasPendientes(
   pendientes
 ) {
-
   localStorage.setItem(
     CLAVE_SIEMBRAS_PENDIENTES,
     JSON.stringify(pendientes)
   );
 
+  actualizarIndicadorOffline();
 }
 
 function agregarSiembraPendiente(
   aoiId,
   fecha
 ) {
-console.log(
-  "Guardando pendiente:",
-  aoiId,
-  fecha
-);
   const pendientes =
     obtenerSiembrasPendientes();
 
-  pendientes.push({
-    aoiId,
+  /*
+   * Si el mismo AOI ya estaba pendiente,
+   * reemplazamos el registro para evitar
+   * enviar dos fechas distintas.
+   */
+  const sinDuplicado =
+    pendientes.filter(
+      registro =>
+        registro.aoiId !== aoiId
+    );
+
+  sinDuplicado.push({
+    aoiId: aoiId,
     plantingDate: fecha,
     registeredAt:
-      new Date().toISOString()
+      new Date().toISOString(),
+    source:
+      "Field Trial Map Planting Offline"
   });
 
   guardarSiembrasPendientes(
-  pendientes
-);
+    sinDuplicado
+  );
 
-console.log(
-  obtenerSiembrasPendientes()
-);
+  console.log(
+    "Siembra guardada localmente:",
+    aoiId,
+    fecha
+  );
+}
 
-actualizarIndicadorOffline();
+function actualizarIndicadorOffline() {
+  const indicador =
+    document.getElementById(
+      "estadoSincronizacion"
+    );
+
+  if (!indicador) {
+    return;
+  }
+
+  const cantidad =
+    obtenerSiembrasPendientes().length;
+
+  if (cantidad === 0) {
+    indicador.textContent =
+      "✅ Sync";
+
+    indicador.style.color =
+      "#0b6b3a";
+
+    indicador.title =
+      "Todos los registros están sincronizados";
+
+    return;
+  }
+
+  indicador.textContent =
+    cantidad === 1
+      ? "📡 1 pendiente"
+      : `📡 ${cantidad} pendientes`;
+
+  indicador.style.color =
+    "#c26800";
+
+  indicador.title =
+    "Siembras pendientes de sincronización";
 }
 
 async function sincronizarSiembrasPendientes() {
+  if (sincronizacionSiembraEnCurso) {
+    return;
+  }
 
   const pendientes =
     obtenerSiembrasPendientes();
 
-  if (
-    !navigator.onLine ||
-    pendientes.length === 0
-  ) {
+  if (pendientes.length === 0) {
+    actualizarIndicadorOffline();
     return;
   }
 
+  sincronizacionSiembraEnCurso = true;
+
+  console.log(
+    `Intentando sincronizar ${pendientes.length} siembra(s)`
+  );
+
   const pendientesRestantes = [];
 
-  for (const siembra of pendientes) {
+  try {
+    for (const siembra of pendientes) {
+      try {
+        const respuesta =
+          await fetch(
+            URL_FLOW_SIEMBRA,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+              body: JSON.stringify({
+                aoiId:
+                  siembra.aoiId,
+                plantingDate:
+                  siembra.plantingDate,
+                registeredAt:
+                  siembra.registeredAt,
+                source:
+                  "Field Trial Map Offline Sync"
+              })
+            }
+          );
 
-    try {
+        if (!respuesta.ok) {
+          pendientesRestantes.push(
+            siembra
+          );
 
-      const respuesta =
-        await fetch(
-          URL_FLOW_SIEMBRA,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-            body: JSON.stringify({
-              aoiId:
-                siembra.aoiId,
-              plantingDate:
-                siembra.plantingDate,
-              registeredAt:
-                siembra.registeredAt,
-              source:
-                "Field Trial Map Offline Sync"
-            })
-          }
+          continue;
+        }
+
+        console.log(
+          "Siembra sincronizada:",
+          siembra.aoiId
         );
 
-      if (!respuesta.ok) {
+      } catch (error) {
+        console.log(
+          "La siembra continúa pendiente:",
+          siembra.aoiId
+        );
 
         pendientesRestantes.push(
           siembra
         );
-
       }
-
-    } catch {
-
-      pendientesRestantes.push(
-        siembra
-      );
-
     }
 
+    guardarSiembrasPendientes(
+      pendientesRestantes
+    );
+
+  } finally {
+    sincronizacionSiembraEnCurso = false;
+    actualizarIndicadorOffline();
   }
-
-  guardarSiembrasPendientes(
-    pendientesRestantes
-  );
-
 }
+
+document.addEventListener(
+  "DOMContentLoaded",
+  actualizarIndicadorOffline
+);
