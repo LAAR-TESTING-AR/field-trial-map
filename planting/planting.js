@@ -53,68 +53,71 @@ document.addEventListener(
     if (btnGuardarSiembra) {
 
 btnGuardarSiembra.onclick =
-  async () => {
+  () => {
 
     const fecha =
       modalFechaSiembra.value;
 
-    if (
-      !fecha ||
-      !aoiPendienteSiembra
-    ) {
+    const aoiId =
+      aoiPendienteSiembra;
+
+    if (!fecha || !aoiId) {
+      alert(
+        "Seleccione una fecha de siembra"
+      );
+
       return;
     }
 
-    // Actualización visual inmediata
+    btnGuardarSiembra.disabled =
+      true;
 
+    btnGuardarSiembra.textContent =
+      "Guardando...";
+
+    /*
+     * Primero guardamos localmente.
+     * El registro ya es seguro aunque
+     * desaparezca la conexión.
+     */
+    agregarSiembraPendiente(
+      aoiId,
+      fecha
+    );
+
+    /*
+     * Actualización visual inmediata.
+     */
     const sitioLocal =
       sitios.find(
-        s =>
+        sitio =>
           limpiarTexto(
-            s["AOI ID"]
-          ) === aoiPendienteSiembra
+            sitio["AOI ID"]
+          ) === aoiId
       );
 
     if (sitioLocal) {
-
       sitioLocal[
         "Planting Date (MM/DD/YYYY)"
       ] = fecha;
-
     }
 
     actualizarVista();
 
+    btnGuardarSiembra.disabled =
+      false;
+
+    btnGuardarSiembra.textContent =
+      "Guardar";
+
     cerrarModalSiembra();
 
-    // Intentar sincronizar en segundo plano
-
-    registrarSiembra(
-      aoiPendienteSiembra,
-      fecha
-    )
-    .then(ok => {
-
-      console.log(
-        "RESULTADO REGISTRO:",
-        ok
-      );
-
-      if (ok === "OFFLINE") {
-
-        alert(
-          "📡 Sin conexión. La siembra quedó pendiente de sincronización."
-        );
-
-      }
-
-    })
-    .catch(error => {
-
-      console.error(error);
-
-    });
-
+    /*
+     * No usamos await.
+     * El usuario puede seguir trabajando
+     * mientras se intenta sincronizar.
+     */
+    sincronizarSiembrasPendientes();
   };
 
     }
@@ -717,79 +720,6 @@ function cerrarModalSiembra() {
 
 }
 
-async function registrarSiembra(
-  aoiId,
-  fecha
-) {
-console.log(
-  "INICIO REGISTRO",
-  aoiId,
-  fecha
-);
-  try {
-
-    const controlador =
-      new AbortController();
-
-    const timeout =
-      setTimeout(
-        () => controlador.abort(),
-        5000
-      );
-
-    const respuesta =
-      await fetch(
-        URL_FLOW_SIEMBRA,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json"
-          },
-          body: JSON.stringify({
-            aoiId,
-            plantingDate: fecha,
-            registeredAt:
-              new Date().toISOString(),
-            source:
-              "Field Trial Map Planting"
-          }),
-          signal:
-            controlador.signal
-        }
-      );
-
-    clearTimeout(timeout);
-
-    if (!respuesta.ok) {
-
-      throw new Error(
-        "Error registrando siembra"
-      );
-
-    }
-
-    return true;
-
-  } catch (error) {
-
-    console.log(
-      "Guardando offline:",
-      aoiId
-    );
-console.log(
-  "ENTRO AL CATCH"
-);
-    agregarSiembraPendiente(
-      aoiId,
-      fecha
-    );
-
-    return "OFFLINE";
-
-  }
-
-}
 
 window.addEventListener(
   "online",
@@ -800,8 +730,6 @@ window.addEventListener(
     );
 
     await sincronizarSiembrasPendientes();
-
-    actualizarVista();
 
   }
 );
