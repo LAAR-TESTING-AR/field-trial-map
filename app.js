@@ -434,8 +434,31 @@ function actualizarMapa() {
   let cantidadAccess = 0;
 
   sitiosFiltrados.forEach(sitio => {
-    if (tieneTrial(sitio)) {
-      L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: window.crearIconoTrial(sitio.crop, sitio) })
+  if (tieneTrial(sitio)) {
+
+  const iconoTrial =
+    String(
+      sitio.description || ""
+    )
+      .toLowerCase()
+      .includes("drop")
+      ? crearIconoTrialDrop(
+          sitio.crop
+        )
+      : crearIconoTrial(
+          sitio.crop
+        );
+
+  L.marker(
+    [
+      sitio.latitudeTrial,
+      sitio.longitudeTrial
+    ],
+    {
+      icon: iconoTrial
+    }
+  ) 
+      
         .bindPopup(crearPopupTrial(sitio), {
   maxWidth: 390,
   minWidth: 285,
