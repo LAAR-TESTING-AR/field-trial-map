@@ -14,11 +14,7 @@ const filtroLocalidad = document.getElementById("filtroLocalidad");
 const filtroFTS = document.getElementById("filtroFTS");
 const limpiarFiltros = document.getElementById("limpiarFiltros");
 const contadorSitios = document.getElementById("contadorSitios");
-const vistaMaster = document.getElementById("vistaMaster");
-const vistaSiembra = document.getElementById("vistaSiembra");
-const vistaCosecha = document.getElementById("vistaCosecha");
 
-let vistaMapaActual = "master";
 let sitios = [];
 let contenidoLeyenda = null;
 let panelLeyenda = null;
@@ -56,12 +52,6 @@ function tieneAccess(sitio) {
   return Number.isFinite(sitio.latitudeAccess) && Number.isFinite(sitio.longitudeAccess);
 }
 
-function estaSembrado(sitio) {
-  return Boolean(
-    limpiarTexto(sitio.plantingDate)
-  );
-}
-
 function transformarFila(fila) {
   return {
     aoiId: limpiarTexto(fila["AOI ID"]),
@@ -88,182 +78,38 @@ function transformarFila(fila) {
   };
 }
 
-const configuracionFiltros = [
-  {
-    elemento: filtroCultivo,
-    campo: "crop"
-  },
-  {
-    elemento: filtroRegion,
-    campo: "region"
-  },
-  {
-    elemento: filtroLocalidad,
-    campo: "location"
-  },
-  {
-    elemento: filtroFTS,
-    campo: "fts"
-  }
-];
-
-function ordenarValores(valores) {
+function valoresUnicos(campo) {
   return [...new Set(
-    valores
-      .map(limpiarTexto)
-      .filter(Boolean)
-  )].sort((a, b) =>
-    a.localeCompare(b, "es", {
-      sensitivity: "base"
-    })
-  );
-}
-
-function sitioCoincideConSelecciones(
-  sitio,
-  campoIgnorado = null,
-  selecciones = null
-) {
-  if (!esVisible(sitio)) return false;
-
-  return configuracionFiltros.every(({ elemento, campo }) => {
-    if (campo === campoIgnorado) return true;
-
-    const valorSeleccionado = selecciones
-      ? selecciones[campo] || ""
-      : elemento.value;
-
-    return (
-      !valorSeleccionado ||
-      limpiarTexto(sitio[campo]) === valorSeleccionado
-    );
-  });
-}
-
-function valoresDisponiblesPara(campo) {
-  return ordenarValores(
-    sitios
-      .filter(sitio =>
-        sitioCoincideConSelecciones(sitio, campo)
-      )
-      .map(sitio => sitio[campo])
-  );
+    sitios.filter(esVisible).map(s => limpiarTexto(s[campo])).filter(Boolean)
+  )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 }
 
 function completarFiltro(elemento, valores) {
-  const valorActual = elemento.value;
-  const textoInicial =
-    elemento.options[0]?.textContent || "Todos";
-
-  elemento.innerHTML = "";
-
-  const opcionInicial = document.createElement("option");
-  opcionInicial.value = "";
-  opcionInicial.textContent = textoInicial;
-  elemento.appendChild(opcionInicial);
-
+  while (elemento.options.length > 1) elemento.remove(1);
   valores.forEach(valor => {
     const opcion = document.createElement("option");
     opcion.value = valor;
     opcion.textContent = valor;
     elemento.appendChild(opcion);
   });
-
-  if (valores.includes(valorActual)) {
-    elemento.value = valorActual;
-  } else {
-    elemento.value = "";
-  }
-}
-
-function depurarSelecciones(controlPrioritario = null) {
-  const filtrosOrdenados = [...configuracionFiltros].sort((a, b) => {
-    if (a.elemento === controlPrioritario) return -1;
-    if (b.elemento === controlPrioritario) return 1;
-    return 0;
-  });
-
-  const seleccionesAceptadas = {};
-
-  filtrosOrdenados.forEach(({ elemento, campo }) => {
-    const valor = elemento.value;
-    if (!valor) return;
-
-    const seleccionCandidata = {
-      ...seleccionesAceptadas,
-      [campo]: valor
-    };
-
-    const existeCombinacion = sitios.some(sitio =>
-      sitioCoincideConSelecciones(
-        sitio,
-        null,
-        seleccionCandidata
-      )
-    );
-
-    if (existeCombinacion) {
-      seleccionesAceptadas[campo] = valor;
-    } else {
-      elemento.value = "";
-    }
-  });
-}
-
-function actualizarFiltrosDependientes(
-  controlPrioritario = null
-) {
-  /*
-   * Conserva primero el filtro que el usuario acaba de cambiar.
-   * Si alguna selección anterior resulta incompatible,
-   * se elimina antes de reconstruir las opciones.
-   */
-  depurarSelecciones(controlPrioritario);
-
-  /*
-   * Se realizan dos pasadas para estabilizar los desplegables
-   * cuando una opción incompatible acaba de ser eliminada.
-   */
-  for (let pasada = 0; pasada < 2; pasada += 1) {
-    configuracionFiltros.forEach(({ elemento, campo }) => {
-      completarFiltro(
-        elemento,
-        valoresDisponiblesPara(campo)
-      );
-    });
-  }
 }
 
 function completarFiltros() {
-  actualizarFiltrosDependientes();
-}
-function textoBuscable(sitio) {
-  return Object.values(sitio)
-    .map(valor => limpiarTexto(valor))
-    .join(" ")
-    .toLowerCase();
+  completarFiltro(filtroCultivo, valoresUnicos("crop"));
+  completarFiltro(filtroRegion, valoresUnicos("region"));
+  completarFiltro(filtroLocalidad, valoresUnicos("location"));
+  completarFiltro(filtroFTS, valoresUnicos("fts"));
 }
 
-function coincideBusqueda(texto, termino) {
-  const regex = new RegExp(`\\b${termino}\\b`, "i");
-  return regex.test(texto);
-}
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
- const buscable = textoBuscable(sitio);
-
-let cumpleBusqueda = true;
-
-if (q) {
-  if (q.length <= 3) {
-    cumpleBusqueda = coincideBusqueda(buscable, q);
-  } else {
-    cumpleBusqueda = buscable.includes(q);
-  }
-}
+  const buscable = [
+    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
+    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
+  ].join(" ").toLowerCase();
 
   return esVisible(sitio)
-    && cumpleBusqueda
+    && (!q || buscable.includes(q))
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
     && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
@@ -431,13 +277,7 @@ function actualizarMapa() {
   sitiosFiltrados.forEach(sitio => {
     if (tieneTrial(sitio)) {
       L.marker([sitio.latitudeTrial, sitio.longitudeTrial], { icon: crearIconoTrial(sitio.crop) })
-        .bindPopup(crearPopupTrial(sitio), {
-  maxWidth: 390,
-  minWidth: 285,
-  maxHeight: 700,
-  autoPan: true,
-  autoPanPadding: [50, 120]
-})
+        .bindPopup(crearPopupTrial(sitio), { maxWidth: 390, minWidth: 285, maxHeight: 700 })
         .addTo(capaMarcadores);
       coordenadas.push([sitio.latitudeTrial, sitio.longitudeTrial]);
       cantidadTrials += 1;
@@ -450,13 +290,11 @@ function actualizarMapa() {
         zIndexOffset: 1000
       })
         .bindPopup(crearPopupAccess(sitioAccess), {
-  maxWidth: 390,
-  minWidth: 285,
-  maxHeight: 700,
-  autoPan: true,
-  autoPanPadding: [50, 120],
-  sitioAccess
-})
+          maxWidth: 390,
+          minWidth: 285,
+          maxHeight: 700,
+          sitioAccess
+        })
         .addTo(capaMarcadores);
       coordenadas.push([sitio.latitudeAccess, sitio.longitudeAccess]);
       cantidadAccess += 1;
@@ -536,54 +374,20 @@ function cargarSitios() {
   });
 }
 
-configuracionFiltros.forEach(({ elemento }) => {
-  elemento.addEventListener("change", () => {
-    actualizarFiltrosDependientes(elemento);
-    actualizarMapa();
-  });
+[filtroCultivo, filtroRegion, filtroLocalidad, filtroFTS].forEach(control => {
+  control.addEventListener("change", actualizarMapa);
 });
 busqueda.addEventListener("input", actualizarMapa);
 limpiarFiltros.addEventListener("click", () => {
   busqueda.value = "";
-
-  configuracionFiltros.forEach(({ elemento }) => {
-    elemento.value = "";
-  });
-
-  actualizarFiltrosDependientes();
+  filtroCultivo.value = "";
+  filtroRegion.value = "";
+  filtroLocalidad.value = "";
+  filtroFTS.value = "";
   actualizarMapa();
 });
 
 mapa.on("popupopen", ocultarLeyenda);
 mapa.on("click", ocultarLeyenda);
 agregarLeyendaPremium();
-vistaMaster?.addEventListener("click", () => {
-  vistaMapaActual = "master";
-
-  vistaMaster.classList.add("activo");
-  vistaSiembra.classList.remove("activo");
-  vistaCosecha.classList.remove("activo");
-
-  actualizarMapa();
-});
-
-vistaSiembra?.addEventListener("click", () => {
-  vistaMapaActual = "planting";
-
-  vistaMaster.classList.remove("activo");
-  vistaSiembra.classList.add("activo");
-  vistaCosecha.classList.remove("activo");
-
-  actualizarMapa();
-});
-
-vistaCosecha?.addEventListener("click", () => {
-  vistaMapaActual = "harvest";
-
-  vistaMaster.classList.remove("activo");
-  vistaSiembra.classList.remove("activo");
-  vistaCosecha.classList.add("activo");
-
-  actualizarMapa();
-});
 cargarSitios();
