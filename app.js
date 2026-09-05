@@ -306,13 +306,18 @@ const cantidadDrop =
       String(sitio.description || "")
         .toLowerCase()
         .includes("drop")
-  ).length;
-  const total = cantidadTrials + cantidadAccess;
-  console.log({
-  sitiosFiltrados: sitiosFiltrados.length,
+  ).length;console.log(
+  "AOI:",
+  sitiosFiltrados.length,
+  "Trials:",
   cantidadTrials,
+  "Access:",
   cantidadAccess,
+  "Drop:",
   cantidadDrop
+);
+  const total = cantidadTrials + cantidadAccess;
+  
 });
   contadorSitios.innerHTML = `
   <div class="kpi-item">
