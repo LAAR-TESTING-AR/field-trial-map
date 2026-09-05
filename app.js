@@ -306,16 +306,7 @@ const cantidadDrop =
       String(sitio.description || "")
         .toLowerCase()
         .includes("drop")
-  ).length;console.log(
-  "AOI:",
-  sitiosFiltrados.length,
-  "Trials:",
-  cantidadTrials,
-  "Access:",
-  cantidadAccess,
-  "Drop:",
-  cantidadDrop
-);
+  ).length;
   const total = cantidadTrials + cantidadAccess;
   
 });
