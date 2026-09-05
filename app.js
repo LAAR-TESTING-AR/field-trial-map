@@ -308,8 +308,6 @@ const cantidadDrop =
         .includes("drop")
   ).length;
   const total = cantidadTrials + cantidadAccess;
-  
-});
   contadorSitios.innerHTML = `
   <div class="kpi-item">
     <span class="kpi-valor">${total}</span>
