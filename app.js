@@ -308,6 +308,12 @@ const cantidadDrop =
         .includes("drop")
   ).length;
   const total = cantidadTrials + cantidadAccess;
+  console.log({
+  sitiosFiltrados: sitiosFiltrados.length,
+  cantidadTrials,
+  cantidadAccess,
+  cantidadDrop
+});
   contadorSitios.innerHTML = `
   <div class="kpi-item">
     <span class="kpi-valor">${total}</span>
