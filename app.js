@@ -101,15 +101,29 @@ function completarFiltros() {
   completarFiltro(filtroFTS, valoresUnicos("fts"));
 }
 
-function coincideConFiltros(sitio) {
-  const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [
-    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
-    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
-  ].join(" ").toLowerCase();
+ffunction coincideConFiltros(sitio) {
+
+  const q =
+    limpiarTexto(busqueda.value)
+      .toLowerCase()
+      .trim();
+
+  const palabras =
+    q.split(/\s+/).filter(Boolean);
+
+  const buscable =
+    Object.values(sitio)
+      .join(" ")
+      .toLowerCase();
+
+  const coincideBusqueda =
+    !palabras.length ||
+    palabras.every(
+      palabra => buscable.includes(palabra)
+    );
 
   return esVisible(sitio)
-    && (!q || buscable.includes(q))
+    && coincideBusqueda
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
     && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
