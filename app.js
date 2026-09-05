@@ -300,7 +300,13 @@ function actualizarMapa() {
       cantidadAccess += 1;
     }
   });
-
+const cantidadDrop =
+  sitiosFiltrados.filter(
+    sitio =>
+      String(sitio.description || "")
+        .toLowerCase()
+        .includes("drop")
+  ).length;
   const total = cantidadTrials + cantidadAccess;
   contadorSitios.innerHTML = `
   <div class="kpi-item">
