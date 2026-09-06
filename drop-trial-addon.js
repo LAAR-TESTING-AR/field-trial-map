@@ -94,6 +94,7 @@
     console.log("DROP actualizarMapa");
     console.log("contadorSitios:", contadorSitios?.innerHTML);
     const sitiosFiltrados = sitios.filter(coincideConFiltros);
+    console.log("sitiosFiltrados:", sitiosFiltrados.length);
     const coordenadas = [];
     const modo = busquedaEspecial();
     let cantidadTrials = 0;
