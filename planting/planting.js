@@ -803,6 +803,9 @@ btnTimeline.addEventListener("click", () => {
 
   const datosTimeline =
   generarDatosTimeline();
+
+  console.log("TIMELINE");
+console.log(datosTimeline);
   
 console.table(datosTimeline);
 
