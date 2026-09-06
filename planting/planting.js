@@ -803,37 +803,67 @@ console.table(datosTimeline);
     chartTimeline.destroy();
   }
 
+  const cultivos =
+  generarDatosTimeline();
+
+const datasets = [];
+
+const colores = [
+  "#f28c28",
+  "#3b82f6",
+  "#22c55e",
+  "#e11d48",
+  "#a855f7",
+  "#f59e0b"
+];
+
+let indiceColor = 0;
+
+Object.entries(cultivos).forEach(
+  ([cultivo, fechas]) => {
+
+    const labels =
+      Object.keys(fechas);
+
+    const valores =
+      Object.values(fechas);
+
+    datasets.push({
+
+      label: cultivo,
+
+      data: valores,
+
+      borderColor:
+        colores[indiceColor % colores.length],
+
+      backgroundColor:
+        colores[indiceColor % colores.length],
+
+      tension: 0.3,
+
+      fill: false
+
+    });
+
+    indiceColor++;
+
+  }
+);
+  
   chartTimeline = new Chart(ctx, {
 
     type: "line",
 
     data: {
 
-      labels: [
-        "01-Oct",
-        "05-Oct",
-        "10-Oct",
-        "15-Oct",
-        "20-Oct"
-      ],
-
-      datasets: [
-        {
-          label: "Corn",
-
-          data: [2, 8, 15, 28, 40],
-
-          borderColor: "#f28c28",
-
-          backgroundColor: "#f28c28",
-
-          tension: 0.3,
-
-          pointRadius: [4, 6, 8, 10, 12],
-
-          fill: false
-        }
-      ]
+labels: Object.keys(
+  cultivos[
+    Object.keys(cultivos)[0]
+  ]
+),
+datasets: datasets
+   
     },
 
     options: {
