@@ -362,7 +362,7 @@ body { display: flex; flex-direction: column; }
     margin-left: 320px;
   }
 .leaflet-top.leaflet-left {
-  left: 420px;
+  left: 380px;
 }
 }
 @media (max-width: 600px) {
