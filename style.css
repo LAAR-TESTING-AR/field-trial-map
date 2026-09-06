@@ -361,7 +361,9 @@ body { display: flex; flex-direction: column; }
   #mapa {
     margin-left: 320px;
   }
-
+.leaflet-top.leaflet-left {
+  left: 420px;
+}
 }
 @media (max-width: 600px) {
 
