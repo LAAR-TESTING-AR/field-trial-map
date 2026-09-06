@@ -394,7 +394,9 @@ header {
   justify-content: center;
   gap: 10px;
 }
-
+.icono-timeline {
+font-size: 28px;
+}
 #btnTimeline:hover {
   background: #d9e8dd;
 }
