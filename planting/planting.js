@@ -801,9 +801,10 @@ btnTimeline.addEventListener("click", () => {
 
   modalTimeline.classList.add("visible");
 
-  console.log(
-    generarDatosTimeline()
-  );
+  const datosTimeline =
+  generarDatosTimeline();
+
+console.table(datosTimeline);
 
   const ctx =
     document.getElementById("graficoTimeline");
