@@ -153,13 +153,8 @@
         cantidadAccess += 1;
       }
     });
-// KPI controlado desde app.js
-/*
-    const total = cantidadTrials + cantidadAccess;
-    contadorSitios.textContent =
-      `${total} puntos visibles · ${cantidadTrials} Trials · ` +
-      `${cantidadAccess} Access${cantidadDrop ? ` · ${cantidadDrop} Drop` : ""}`;
-*/
+contadorSitios.textContent =
+  `AOI: ${sitiosFiltrados.length}`;
     window.actualizarLeyenda(sitiosFiltrados);
 
     if (coordenadas.length) {
