@@ -91,7 +91,8 @@
 
   window.actualizarMapa = function () {
     capaMarcadores.clearLayers();
-console.log("DROP actualizarMapa");
+    console.log("DROP actualizarMapa");
+    console.log("contadorSitios:", contadorSitios?.innerHTML);
     const sitiosFiltrados = sitios.filter(coincideConFiltros);
     const coordenadas = [];
     const modo = busquedaEspecial();
