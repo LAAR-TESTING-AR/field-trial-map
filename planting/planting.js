@@ -380,7 +380,7 @@ function generarDatosTimeline() {
       (resumen[clave] || 0) + 1;
 
   });
-
+console.table(resumen);
   console.log(resumen);
 
   return resumen;
