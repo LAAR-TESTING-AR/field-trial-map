@@ -380,11 +380,6 @@ function generarDatosTimeline() {
       (resumen[clave] || 0) + 1;
 
   });
-console.table(resumen);
-alert(
-  "RESUMEN:\n\n" +
-  JSON.stringify(resumen, null, 2)
-);
 
 return resumen;
 }
