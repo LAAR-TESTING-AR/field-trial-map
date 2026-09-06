@@ -382,7 +382,19 @@ function generarDatosTimeline() {
   });
 
   console.log(cultivos);
+const totalesPorCultivo = {};
 
+sitios.forEach(sitio => {
+
+  const cultivo = sitio.Crop;
+
+  totalesPorCultivo[cultivo] =
+    (totalesPorCultivo[cultivo] || 0) + 1;
+
+});
+
+console.log("TOTALES");
+console.log(totalesPorCultivo);
   return cultivos;
 }
 
