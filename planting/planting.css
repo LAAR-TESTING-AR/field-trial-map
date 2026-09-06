@@ -371,3 +371,23 @@ header {
 #botonLeyenda:active {
   transform: scale(0.96);
 }
+#btnTimeline {
+  width: 100%;
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #e6efe8;
+  color: #0b6b3a;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+#btnTimeline:hover {
+  background: #d9e8dd;
+}
