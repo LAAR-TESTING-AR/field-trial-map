@@ -153,8 +153,13 @@
         cantidadAccess += 1;
       }
     });
+
 contadorSitios.textContent =
-  `AOI: ${sitiosFiltrados.length}`;
+  `AOI: ${sitiosFiltrados.length}
+   | Trials: ${cantidadTrials}
+   | Access: ${cantidadAccess}
+   | Drop: ${cantidadDrop}`;
+    
     window.actualizarLeyenda(sitiosFiltrados);
 
     if (coordenadas.length) {
