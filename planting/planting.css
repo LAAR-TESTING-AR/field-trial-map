@@ -400,3 +400,58 @@ font-size: 28px;
 #btnTimeline:hover {
   background: #d9e8dd;
 }
+.modal-timeline {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.4);
+
+  z-index: 20000;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-timeline.visible {
+  display: flex;
+}
+
+.modal-timeline-contenido {
+  width: 90%;
+  max-width: 1000px;
+
+  height: 80vh;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 20px;
+}
+
+.modal-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cerrarTimeline {
+  border: none;
+  background: none;
+
+  font-size: 24px;
+
+  cursor: pointer;
+}
+
+#contenedorGraficoTimeline {
+  height: calc(100% - 60px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #666;
+}
