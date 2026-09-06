@@ -28,17 +28,23 @@
       return tieneTrial(sitio) && limpiar(sitio.description).toLowerCase().includes("drop");
     }
 
-    return [
-      sitio.aoiId,
-      sitio.location,
-      sitio.description,
-      sitio.crop,
-      sitio.region,
-      sitio.province,
-      sitio.fts,
-      sitio.spa,
-      sitio.operations
-    ].join(" ").toLowerCase().includes(q);
+    const buscable = [
+  sitio.aoiId,
+  sitio.location,
+  sitio.description,
+  sitio.crop,
+  sitio.region,
+  sitio.province,
+  sitio.fts,
+  sitio.spa,
+  sitio.operations
+].join(" ").toLowerCase();
+
+const palabras = q.split(/\s+/).filter(Boolean);
+
+return palabras.every(
+  palabra => buscable.includes(palabra)
+);
   }
 
   function coincideSeleccionFTS(sitio) {
