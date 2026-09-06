@@ -847,28 +847,30 @@ fechasOrdenadas.forEach(
         s => s.Crop === cultivo
       ).length;
 
-    let acumulado = 0;
+  let acumulado = 0;
 
-    const porcentajes = [];
+const puntos = [];
 
-    fechasOrdenadas.forEach(fecha => {
+fechasOrdenadas.forEach(fecha => {
 
-      acumulado += fechas[fecha];
+  acumulado += fechas[fecha];
 
-      porcentajes.push(
-        (
-          acumulado /
-          totalCultivo
-        ) * 100
-      );
+  puntos.push({
+    x: fecha,
+    y:
+      (
+        acumulado /
+        totalCultivo
+      ) * 100
+  });
 
-    });
+});
 
     datasets.push({
 
       label: cultivo,
 
-      data: porcentajes,
+      data: puntos,
 
       borderColor:
         colores[indiceColor % colores.length],
@@ -927,10 +929,12 @@ datasets: datasets
         },
 
         x: {
+          type: "category",
           title: {
             display: true,
             text: "Planting Date"
           }
+          
         }
       }
     }
