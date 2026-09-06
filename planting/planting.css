@@ -373,19 +373,26 @@ header {
 }
 #btnTimeline {
   width: 100%;
-  margin-top: 10px;
 
-  padding: 10px;
+  margin-top: 12px;
+
+  padding: 14px;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
 
   background: #e6efe8;
   color: #0b6b3a;
 
+  font-size: 16px;
   font-weight: 700;
 
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 #btnTimeline:hover {
