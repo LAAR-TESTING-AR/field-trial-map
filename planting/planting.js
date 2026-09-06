@@ -804,6 +804,10 @@ btnTimeline.addEventListener("click", () => {
   const datosTimeline =
   generarDatosTimeline();
 
+  alert(
+  JSON.stringify(datosTimeline, null, 2)
+);
+  
 console.table(datosTimeline);
 
   const ctx =
