@@ -154,11 +154,27 @@
       }
     });
 
-contadorSitios.textContent =
-  `AOI: ${sitiosFiltrados.length}
-   | Trials: ${cantidadTrials}
-   | Access: ${cantidadAccess}
-   | Drop: ${cantidadDrop}`;
+contadorSitios.innerHTML = `
+  <div class="kpi-item">
+    <span class="kpi-valor">${sitiosFiltrados.length}</span>
+    <span class="kpi-label">AOI</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadTrials}</span>
+    <span class="kpi-label">Trials</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadAccess}</span>
+    <span class="kpi-label">Access</span>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-valor">${cantidadDrop}</span>
+    <span class="kpi-label">Drop</span>
+  </div>
+`;
     
     window.actualizarLeyenda(sitiosFiltrados);
 
