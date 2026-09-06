@@ -751,8 +751,86 @@ const modalTimeline =
 const cerrarTimeline =
   document.getElementById("cerrarTimeline");
 
+let chartTimeline = null;
+
 btnTimeline.addEventListener("click", () => {
+
   modalTimeline.classList.add("visible");
+
+  const ctx =
+    document.getElementById("graficoTimeline");
+
+  if (chartTimeline) {
+    chartTimeline.destroy();
+  }
+
+  chartTimeline = new Chart(ctx, {
+
+    type: "line",
+
+    data: {
+
+      labels: [
+        "01-Oct",
+        "05-Oct",
+        "10-Oct",
+        "15-Oct",
+        "20-Oct"
+      ],
+
+      datasets: [
+        {
+          label: "Corn",
+
+          data: [2, 8, 15, 28, 40],
+
+          borderColor: "#f28c28",
+
+          backgroundColor: "#f28c28",
+
+          tension: 0.3,
+
+          pointRadius: [4, 6, 8, 10, 12],
+
+          fill: false
+        }
+      ]
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+      plugins: {
+        legend: {
+          display: true
+        }
+      },
+
+      scales: {
+
+        y: {
+          beginAtZero: true,
+          max: 100,
+
+          title: {
+            display: true,
+            text: "% Avance"
+          }
+        },
+
+        x: {
+          title: {
+            display: true,
+            text: "Planting Date"
+          }
+        }
+      }
+    }
+  });
+
 });
 
 cerrarTimeline.addEventListener("click", () => {
