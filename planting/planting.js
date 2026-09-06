@@ -766,8 +766,7 @@ const cerrarTimeline =
 
 let chartTimeline = null;
 
-btnTimeline.addEventListener("click", (
-  function generarDatosTimeline() {
+function generarDatosTimeline() {
 
   const sembrados = sitios.filter(
     sitio =>
@@ -779,9 +778,14 @@ btnTimeline.addEventListener("click", (
 
   return sembrados;
 }
-) => {
+
+btnTimeline.addEventListener("click", () => {
 
   modalTimeline.classList.add("visible");
+
+  console.log(
+    generarDatosTimeline()
+  );
 
   const ctx =
     document.getElementById("graficoTimeline");
@@ -862,4 +866,3 @@ btnTimeline.addEventListener("click", (
 cerrarTimeline.addEventListener("click", () => {
   modalTimeline.classList.remove("visible");
 });
-``
