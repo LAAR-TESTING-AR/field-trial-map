@@ -784,19 +784,6 @@ const cerrarTimeline =
 
 let chartTimeline = null;
 
-function generarDatosTimeline() {
-
-  const sembrados = sitios.filter(
-    sitio =>
-      !esDrop(sitio) &&
-      estaSembrado(sitio)
-  );
-
-  console.log(sembrados);
-
-  return sembrados;
-}
-
 btnTimeline.addEventListener("click", () => {
 
   modalTimeline.classList.add("visible");
