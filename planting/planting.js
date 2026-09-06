@@ -819,7 +819,7 @@ console.table(datosTimeline);
   generarDatosTimeline();
 
 const datasets = [];
-
+const todasLasFechas = new Set();
 const colores = [
   "#f28c28",
   "#3b82f6",
@@ -839,7 +839,9 @@ Object.entries(cultivos).forEach(
         (a, b) =>
           new Date(a) - new Date(b)
       );
-
+fechasOrdenadas.forEach(
+  fecha => todasLasFechas.add(fecha)
+);
     const totalCultivo =
       sitios.filter(
         s => s.Crop === cultivo
@@ -884,18 +886,18 @@ Object.entries(cultivos).forEach(
 
   }
 );
-  
+  const labelsGlobales =
+  Array.from(todasLasFechas).sort(
+    (a, b) =>
+      new Date(a) - new Date(b)
+  );
   chartTimeline = new Chart(ctx, {
 
     type: "line",
 
     data: {
 
-labels: Object.keys(
-  cultivos[
-    Object.keys(cultivos)[0]
-  ]
-),
+labels: labelsGlobales,
 datasets: datasets
    
     },
