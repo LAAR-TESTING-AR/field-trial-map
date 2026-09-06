@@ -742,3 +742,20 @@ window.addEventListener(
 
   }
 );
+const btnTimeline =
+  document.getElementById("btnTimeline");
+
+const modalTimeline =
+  document.getElementById("modalTimeline");
+
+const cerrarTimeline =
+  document.getElementById("cerrarTimeline");
+
+btnTimeline.addEventListener("click", () => {
+  modalTimeline.classList.add("visible");
+});
+
+cerrarTimeline.addEventListener("click", () => {
+  modalTimeline.classList.remove("visible");
+});
+``
