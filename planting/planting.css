@@ -336,3 +336,38 @@ header {
   white-space: nowrap;
   color: #0b6b3a;
 }
+#botonLeyenda {
+  position: fixed;
+
+  right: 15px;
+  bottom: 15px;
+
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #0b6b3a;
+  color: #fff;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.20);
+
+  z-index: 10000;
+}
+
+#botonLeyenda:hover {
+  background: #09562f;
+}
+#botonLeyenda:active {
+  transform: scale(0.96);
+}
