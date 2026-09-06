@@ -381,9 +381,12 @@ function generarDatosTimeline() {
 
   });
 console.table(resumen);
-  console.log(resumen);
+alert(
+  "RESUMEN:\n\n" +
+  JSON.stringify(resumen, null, 2)
+);
 
-  return resumen;
+return resumen;
 }
 
 function crearPopup(sitio, estado) {
@@ -803,10 +806,6 @@ btnTimeline.addEventListener("click", () => {
 
   const datosTimeline =
   generarDatosTimeline();
-
-  alert(
-  JSON.stringify(datosTimeline, null, 2)
-);
   
 console.table(datosTimeline);
 
