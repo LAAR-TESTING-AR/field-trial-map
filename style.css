@@ -363,3 +363,24 @@ body { display: flex; flex-direction: column; }
   }
 
 }
+@media (max-width: 600px) {
+
+  .resumen {
+    width: auto;
+    right: 8px;
+    left: 8px;
+  }
+
+  #contadorSitios {
+    display: flex;
+    justify-content: space-around;
+    gap: 6px;
+  }
+
+  .kpi-item {
+    flex-direction: column;
+    margin-bottom: 0;
+    min-width: 55px;
+  }
+
+}
