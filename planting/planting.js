@@ -355,6 +355,19 @@ document.getElementById("barraAvance").style.width =
 
 }
 
+function generarDatosTimeline() {
+
+  const sembrados = sitios.filter(
+    sitio =>
+      !esDrop(sitio) &&
+      estaSembrado(sitio)
+  );
+
+  console.log(sembrados);
+
+  return sembrados;
+}
+
 function crearPopup(sitio, estado) {
 
   const aoiId =
@@ -753,7 +766,20 @@ const cerrarTimeline =
 
 let chartTimeline = null;
 
-btnTimeline.addEventListener("click", () => {
+btnTimeline.addEventListener("click", (
+  function generarDatosTimeline() {
+
+  const sembrados = sitios.filter(
+    sitio =>
+      !esDrop(sitio) &&
+      estaSembrado(sitio)
+  );
+
+  console.log(sembrados);
+
+  return sembrados;
+}
+) => {
 
   modalTimeline.classList.add("visible");
 
