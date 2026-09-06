@@ -363,9 +363,27 @@ function generarDatosTimeline() {
       estaSembrado(sitio)
   );
 
-  console.log(sembrados);
+  const resumen = {};
 
-  return sembrados;
+  sembrados.forEach(sitio => {
+
+    const cultivo =
+      sitio.Crop;
+
+    const fecha =
+      sitio["Planting Date (MM/DD/YYYY)"];
+
+    const clave =
+      `${cultivo} | ${fecha}`;
+
+    resumen[clave] =
+      (resumen[clave] || 0) + 1;
+
+  });
+
+  console.log(resumen);
+
+  return resumen;
 }
 
 function crearPopup(sitio, estado) {
