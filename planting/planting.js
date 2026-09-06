@@ -834,17 +834,39 @@ let indiceColor = 0;
 Object.entries(cultivos).forEach(
   ([cultivo, fechas]) => {
 
-    const labels =
-      Object.keys(fechas);
+    const fechasOrdenadas =
+      Object.keys(fechas).sort(
+        (a, b) =>
+          new Date(a) - new Date(b)
+      );
 
-    const valores =
-      Object.values(fechas);
+    const totalCultivo =
+      sitios.filter(
+        s => s.Crop === cultivo
+      ).length;
+
+    let acumulado = 0;
+
+    const porcentajes = [];
+
+    fechasOrdenadas.forEach(fecha => {
+
+      acumulado += fechas[fecha];
+
+      porcentajes.push(
+        (
+          acumulado /
+          totalCultivo
+        ) * 100
+      );
+
+    });
 
     datasets.push({
 
       label: cultivo,
 
-      data: valores,
+      data: porcentajes,
 
       borderColor:
         colores[indiceColor % colores.length],
