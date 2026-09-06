@@ -42,7 +42,7 @@ header {
 
 #mapa {
   flex: 1;
-  height: 80vh;
+  height: calc(100vh - 102px);
 }
 
 @media (max-width: 900px) {
@@ -340,7 +340,7 @@ header {
   position: fixed;
 
   right: 15px;
-  bottom: 15px;
+  bottom: 80px;
 
   width: 46px;
   height: 46px;
