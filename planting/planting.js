@@ -957,6 +957,60 @@ ultimoAvance:
     (a, b) =>
       new Date(a) - new Date(b)
   );
+  const totalAOI =
+  sitios.filter(
+    s => !esDrop(s)
+  ).length;
+
+let acumuladoGeneral = 0;
+
+const puntosGenerales = [];
+
+labelsGlobales.forEach(fecha => {
+
+  const sembradosFecha =
+    sitios.filter(
+      s =>
+        !esDrop(s) &&
+        s["Planting Date (MM/DD/YYYY)"] === fecha
+    ).length;
+
+  acumuladoGeneral +=
+    sembradosFecha;
+
+  puntosGenerales.push({
+
+    x: fecha,
+
+    y:
+      (
+        acumuladoGeneral /
+        totalAOI
+      ) * 100
+
+  });
+
+});
+
+datasets.unshift({
+
+  label: "Avance Total",
+
+  data: puntosGenerales,
+
+  borderColor: "#b0b0b0",
+
+  backgroundColor: "#b0b0b0",
+
+  pointRadius: 0,
+
+  borderWidth: 3,
+
+  tension: 0.3,
+
+  fill: false
+
+});
   chartTimeline = new Chart(ctx, {
 
     type: "line",
