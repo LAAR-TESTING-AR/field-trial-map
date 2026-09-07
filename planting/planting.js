@@ -1708,10 +1708,12 @@ scales: {
         y: {
           beginAtZero: true,
           max: 105,
-
+ticks: {
+  stepSize: 5
+},
           title: {
             display: true,
-            text: "% Avance"
+            text: "% Avance Siembra"
           }
         },
 
@@ -1719,7 +1721,7 @@ scales: {
           type: "category",
           title: {
             display: true,
-            text: "Planting Date"
+            text: "Planting Week"
           }
           
         }
