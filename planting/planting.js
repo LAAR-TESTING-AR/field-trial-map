@@ -1576,11 +1576,6 @@ if (meta.hidden) {
 }
    
         
-        const meta =
-          chart.getDatasetMeta(
-            datasetIndex
-          );
-
         meta.data.forEach(
           (puntoGrafico, index) => {
 
