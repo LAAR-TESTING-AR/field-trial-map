@@ -496,7 +496,7 @@ font-size: 28px;
 }
 
 .timeline-sidebar {
-  width: 220px;
+  width: 180px;
   flex-shrink: 0;
 }
 
@@ -534,15 +534,15 @@ font-size: 28px;
 .region-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 
-  font-size: 18px;
+  font-size: 14px;
   color: #333;
 }
 
 .region-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   cursor: pointer;
 }
 
