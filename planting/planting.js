@@ -1707,7 +1707,7 @@ scales: {
 
         y: {
           beginAtZero: true,
-          max: 100,
+          max: 105,
 
           title: {
             display: true,
