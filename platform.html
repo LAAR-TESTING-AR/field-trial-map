@@ -1,117 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Field Trial Platform Argentina 2026-27</title>
+<title>Field Trial Platform</title>
 
 <style>
 
 *{
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f7f6;
-    color:#1f2937;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7f6;
 }
 
 header{
-    background:#0b6b3a;
-    color:white;
-    padding:20px;
+  background:#0b6b3a;
+  color:white;
+  padding:20px;
 }
 
 .header-container{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:20px;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
 }
 
 .logo{
-    width:70px;
-    height:70px;
+  width:70px;
+  height:70px;
 }
 
-.header-text h1{
-    margin:0;
-    font-size:38px;
+h1{
+  margin:0;
 }
 
-.header-text p{
-    margin:5px 0 0 0;
-    font-size:18px;
+.subtitulo{
+  margin-top:5px;
 }
 
 main{
-    max-width:1200px;
-    margin:auto;
-    padding:30px 20px;
+  max-width:1200px;
+  margin:auto;
+  padding:30px 20px;
 }
 
 .modulos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
 }
 
 .card{
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 4px 15px rgba(0,0,0,.10);
-}
-
-.card:hover{
-    transform:translateY(-3px);
-}
-
-.icono{
-    font-size:52px;
+  background:white;
+  border-radius:16px;
+  padding:25px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
 }
 
 .card h2{
-    color:#0b6b3a;
-    margin-top:10px;
+  color:#0b6b3a;
 }
 
-.card ul{
-    padding-left:18px;
-    color:#555;
+.icono{
+  font-size:48px;
 }
 
 .boton{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    border-radius:10px;
-    background:#0b6b3a;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 20px;
+  background:#0b6b3a;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
 }
 
-.boton-disabled{
-    background:#a9a9a9;
-    pointer-events:none;
+.disabled{
+  background:#999;
+  pointer-events:none;
 }
 
-@media (max-width:700px){
+@media(max-width:700px){
 
-    .header-container{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .header-text h1{
-        font-size:30px;
-    }
+  .header-container{
+    flex-direction:column;
+    text-align:center;
+  }
 
 }
 
@@ -123,89 +105,83 @@ main{
 
 <header>
 
-<div class="header-container">
+  <div class="header-container">
 
-icon-192.png
+    <img
+      src="icon-192.png"
+      class="logo"
+      alt="Field Trial Platform">
 
-<div class="header-text">
+    <div>
 
-<h1>Field Trial Platform</h1>
+      <h1>Field Trial7
+      </div>
 
-<p>Argentina 2026-27</p>
+    </div>
 
-</div>
-
-</div>
+  </div>
 
 </header>
 
 <main>
 
-<div class="modulos">
+  <div class="modulos">
 
-<div class="card">
+    <div class="card">
 
-<div class="icono">🗺️</div>
+      <div class="icono">🗺️</div>
 
-<h2>Master List</h2>
+      <h2>Master List</h2>
 
-<ul>
-<li>AOI</li>
-<li>Trials</li>
-<li>Access</li>
-<li>Photos</li>
-<li>Navigation</li>
-</ul>
+      <p>
+        AOI, Trials, Access, Photos y Navigation.
+      </p>
 
-<a
-   class="boton"
-   href="index.html">
-   Open Module
-</a>
+      <a
+        class="boton"
+        href="index.html">
+        Open Module
+      </a>
 
-</div>
+    </div>
 
-<div class="card">
+    <div class="card">
 
-<div class="icono">🌱</div>
+      <div class="icono">🌱</div>
 
-<h2>Sowing</h2>
+      <h2>Sowing</h2>
 
-<ul>
-<li>Planting Progress</li>
-<li>Dashboard</li>
-<li>Timeline</li>
-<li>Offline Sync</li>
-<li>KPIs</li>
-</ul>
+      <p>
+        Planting Tracker, KPIs, Timeline y Dashboard.
+      </p>
 
-<a
-   class="boton"
-   href="planting/">
-   Open Module
-</a>
+      <a
+        class="boton"
+        href="planting/">
+        Open Module
+      </a>
 
-< class="icono">🌾</div>
+    </div>
 
-<h2>Harvesting</h2>
+    <div class="card">
 
-<ul>
-<li>Future Module</li>
-<li>Harvest Progress</li>
-<li>Timeline</li>
-<li>KPIs</li>
-</ul>
+  2>Harvesting</h2>
 
-<a
-   class="boton boton-disabled"
-   href="#">
-   Coming Soon
-</a>
+      <p>
+        Future module.
+      </p>
 
-</div>
+      <a
+        class="boton disabled"
+        href="#">
+        Coming Soon
+      </a>
 
-</div>
+    </div>
+
+  </div>
 
 </main>
 
-</body
+</body>
+</html>
