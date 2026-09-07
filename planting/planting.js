@@ -822,7 +822,25 @@ const modalTimeline =
 
 const cerrarTimeline =
   document.getElementById("cerrarTimeline");
+const selectorRegionesTimeline =
+  document.getElementById(
+    "selectorRegionesTimeline"
+  );
 
+selectorRegionesTimeline.addEventListener(
+  "change",
+  () => {
+
+    if (
+      modalTimeline.classList.contains(
+        "visible"
+      )
+    ) {
+      btnTimeline.click();
+    }
+
+  }
+);
 let chartTimeline = null;
 
 btnTimeline.addEventListener("click", () => {
