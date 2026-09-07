@@ -855,13 +855,34 @@ fechasOrdenadas.forEach(fecha => {
 
   acumulado += fechas[fecha];
 
+  const aoiDelDia = sitios.filter(
+    s =>
+      s.Crop === cultivo &&
+      s["Planting Date (MM/DD/YYYY)"] === fecha
+  );
+
   puntos.push({
+
     x: fecha,
+
     y:
       (
         acumulado /
         totalCultivo
-      ) * 100
+      ) * 100,
+
+    aoiDia: fechas[fecha],
+
+    aoiIds:
+      aoiDelDia.map(
+        s => s["AOI ID"]
+      ),
+
+    localidades:
+      aoiDelDia.map(
+        s => s.Location
+      )
+
   });
 
 });
@@ -871,6 +892,12 @@ fechasOrdenadas.forEach(fecha => {
       label: cultivo,
 
       data: puntos,
+
+      pointRadius:
+  puntos.map(
+    p => Math.max(5, p.aoiDia * 2)
+  ),
+
 
       borderColor:
         colores[indiceColor % colores.length],
@@ -910,11 +937,40 @@ datasets: datasets
 
       maintainAspectRatio: false,
 
-      plugins: {
-        legend: {
-          display: true
-        }
-      },
+     plugins: {
+
+  legend: {
+    display: true
+  },
+
+  tooltip: {
+
+    callbacks: {
+
+      label: function(context) {
+
+        const punto =
+          context.raw;
+
+        return [
+
+          `Avance: ${punto.y.toFixed(1)}%`,
+
+          `AOI sembrados: ${punto.aoiDia}`,
+
+          `AOI: ${punto.aoiIds.join(", ")}`,
+
+          `Localidades: ${punto.localidades.join(", ")}`
+
+        ];
+
+      }
+
+    }
+
+  }
+
+}
 
       scales: {
 
