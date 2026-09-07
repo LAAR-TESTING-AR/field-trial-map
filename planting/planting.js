@@ -1365,7 +1365,7 @@ Object.entries(cultivos).forEach(
         2,
 
       tension:
-        0.25,
+        0,
 
       fill:
         false
@@ -1537,7 +1537,7 @@ datasets.unshift({
     },
 
   tension:
-    0.25,
+    0,
 
   fill:
     false
