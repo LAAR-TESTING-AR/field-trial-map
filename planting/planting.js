@@ -1194,7 +1194,7 @@ const cultivos =
   );
 
 const datasets = [];
-const todasLasFechas = new Set();
+
 const colores = [
   "#f28c28",
   "#3b82f6",
@@ -1204,87 +1204,171 @@ const colores = [
   "#f59e0b"
 ];
 
-let indiceColor = 0;
-
-Object.entries(cultivos).forEach(
-  ([cultivo, fechas]) => {
-
-    const fechasOrdenadas =
-      Object.keys(fechas).sort(
-        (a, b) =>
-          new Date(a) - new Date(b)
-      );
-fechasOrdenadas.forEach(
-  fecha => todasLasFechas.add(fecha)
-);
-    const totalCultivo =
-      sitios.filter(
-        s => s.Crop === cultivo
-      ).length;
-
-  let acumulado = 0;
-
-const puntos = [];
-
-fechasOrdenadas.forEach(fecha => {
-
-  acumulado += fechas[fecha];
-
-  const aoiDelDia = sitios.filter(
-    s =>
-      s.Crop === cultivo &&
-      s["Planting Date (MM/DD/YYYY)"] === fecha
+/*
+ * Calendario continuo por semanas.
+ * Usa únicamente las regiones seleccionadas.
+ */
+const calendarioSemanal =
+  generarCalendarioSemanal(
+    sitiosFiltradosRegion
   );
 
-  puntos.push({
-
-    x: fecha,
-
-    y:
-      (
-        acumulado /
-        totalCultivo
-      ) * 100,
-
-    aoiDia: fechas[fecha],
-
-    aoiIds:
-      aoiDelDia.map(
-        s => s["AOI ID"]
-      ),
-
-    localidades:
-      aoiDelDia.map(
-        s => s.Location
+const labelsGlobales =
+  calendarioSemanal.map(
+    semana =>
+      formatearSemanaTimeline(
+        semana
       )
+  );
 
-  });
+let indiceColor = 0;
 
-});
+/*
+ * Una línea por cultivo.
+ */
+Object.entries(cultivos).forEach(
+  ([cultivo, semanasCultivo]) => {
+
+    const totalCultivo =
+      sitiosFiltradosRegion.filter(
+        sitio =>
+          !esDrop(sitio) &&
+          limpiarTexto(
+            sitio.Crop
+          ) === cultivo
+      ).length;
+
+    if (totalCultivo === 0) {
+      return;
+    }
+
+    let acumulado = 0;
+
+    const puntos =
+      calendarioSemanal.map(
+        semana => {
+
+          const actividad =
+            semanasCultivo[semana];
+
+          const cantidadSemana =
+            actividad
+              ? actividad.cantidad
+              : 0;
+
+          acumulado += cantidadSemana;
+
+          return {
+            x:
+              formatearSemanaTimeline(
+                semana
+              ),
+
+            y:
+              (
+                acumulado /
+                totalCultivo
+              ) * 100,
+
+            aoiDia:
+              cantidadSemana,
+
+            aoiIds:
+              actividad
+                ? actividad.aoiIds
+                : [],
+
+            localidades:
+              actividad
+                ? actividad.localidades
+                : [],
+
+            semana:
+              semana
+          };
+
+        }
+      );
 
     datasets.push({
 
-      label: cultivo,
+      label:
+        cultivo,
 
-      data: puntos,
-ultimoAvance:
-  puntos[puntos.length - 1]?.y || 0,
+      data:
+        puntos,
 
+      ultimoAvance:
+        puntos.length
+          ? puntos[
+              puntos.length - 1
+            ].y
+          : 0,
+
+      /*
+       * No muestra círculo en semanas
+       * sin actividad.
+       */
       pointRadius:
-  puntos.map(
-    p => Math.max(5, p.aoiDia * 3)
-  ),
+        contexto => {
 
+          const punto =
+            contexto.raw;
+
+          if (
+            !punto ||
+            punto.aoiDia === 0
+          ) {
+            return 0;
+          }
+
+          return Math.max(
+            5,
+            punto.aoiDia * 3
+          );
+
+        },
+
+      pointHoverRadius:
+        contexto => {
+
+          const punto =
+            contexto.raw;
+
+          if (
+            !punto ||
+            punto.aoiDia === 0
+          ) {
+            return 0;
+          }
+
+          return Math.max(
+            7,
+            punto.aoiDia * 3 + 2
+          );
+
+        },
 
       borderColor:
-        colores[indiceColor % colores.length],
+        colores[
+          indiceColor %
+          colores.length
+        ],
 
       backgroundColor:
-        colores[indiceColor % colores.length],
+        colores[
+          indiceColor %
+          colores.length
+        ],
 
-      tension: 0.3,
+      borderWidth:
+        2,
 
-      fill: false
+      tension:
+        0.25,
+
+      fill:
+        false
 
     });
 
@@ -1293,91 +1377,173 @@ ultimoAvance:
   }
 );
 
-  datasets.sort(
+/*
+ * Ordenar la leyenda por avance final.
+ */
+datasets.sort(
   (a, b) =>
-    b.ultimoAvance - a.ultimoAvance
+    b.ultimoAvance -
+    a.ultimoAvance
 );
-  
-  const labelsGlobales =
-  Array.from(todasLasFechas).sort(
-    (a, b) =>
-      new Date(a) - new Date(b)
+
+/*
+ * Línea gris de avance total.
+ */
+const sitiosOperativos =
+  sitiosFiltradosRegion.filter(
+    sitio =>
+      !esDrop(sitio)
   );
-  const totalAOI =
-  sitios.filter(
-    s => !esDrop(s)
-  ).length;
+
+const totalAOI =
+  sitiosOperativos.length;
 
 let acumuladoGeneral = 0;
 
-const puntosGenerales = [];
+const puntosGenerales =
+  calendarioSemanal.map(
+    semana => {
 
-labelsGlobales.forEach(fecha => {
+      const aoiDeLaSemana =
+        sitiosOperativos.filter(
+          sitio => {
 
-  const sembradosFecha =
-    sitios.filter(
-      s =>
-        !esDrop(s) &&
-        s["Planting Date (MM/DD/YYYY)"] === fecha
-    ).length;
+            if (
+              !estaSembrado(sitio)
+            ) {
+              return false;
+            }
 
-  acumuladoGeneral +=
-    sembradosFecha;
+            const fecha =
+              convertirFechaPlanting(
+                sitio[
+                  "Planting Date (MM/DD/YYYY)"
+                ]
+              );
 
- const aoiDelDia =
-  sitios.filter(
-    s =>
-      !esDrop(s) &&
-      s["Planting Date (MM/DD/YYYY)"] === fecha
+            return (
+              fecha &&
+              crearClaveSemana(fecha) ===
+                semana
+            );
+
+          }
+        );
+
+      acumuladoGeneral +=
+        aoiDeLaSemana.length;
+
+      return {
+        x:
+          formatearSemanaTimeline(
+            semana
+          ),
+
+        y:
+          totalAOI > 0
+            ? (
+                acumuladoGeneral /
+                totalAOI
+              ) * 100
+            : 0,
+
+        aoiDia:
+          aoiDeLaSemana.length,
+
+        aoiIds:
+          aoiDeLaSemana.map(
+            sitio =>
+              limpiarTexto(
+                sitio["AOI ID"]
+              )
+          ),
+
+        localidades:
+          [
+            ...new Set(
+              aoiDeLaSemana
+                .map(
+                  sitio =>
+                    limpiarTexto(
+                      sitio.Location
+                    )
+                )
+                .filter(Boolean)
+            )
+          ],
+
+        semana:
+          semana
+      };
+
+    }
   );
-
-puntosGenerales.push({
-
-  x: fecha,
-
-  y:
-    (
-      acumuladoGeneral /
-      totalAOI
-    ) * 100,
-
-  aoiDia: sembradosFecha,
-
-  aoiIds:
-    aoiDelDia.map(
-      s => s["AOI ID"]
-    ),
-
-  localidades:
-    aoiDelDia.map(
-      s => s.Location
-    )
-
-});
-
-});
 
 datasets.unshift({
 
-  label: "Avance Total",
+  label:
+    "Avance Total",
 
-  data: puntosGenerales,
+  data:
+    puntosGenerales,
 
-  borderColor: "#bfbfbf",
+  borderColor:
+    "#a9a9a9",
 
-  backgroundColor: "#bfbfbf",
+  backgroundColor:
+    "#a9a9a9",
 
-  borderWidth: 3,
+  borderWidth:
+    3,
 
-  pointRadius: 5,
+  pointRadius:
+    contexto => {
 
-  pointHoverRadius: 7,
+      const punto =
+        contexto.raw;
 
-  tension: 0.3,
+      if (
+        !punto ||
+        punto.aoiDia === 0
+      ) {
+        return 0;
+      }
 
-  fill: false
+      return Math.max(
+        5,
+        punto.aoiDia * 2
+      );
+
+    },
+
+  pointHoverRadius:
+    contexto => {
+
+      const punto =
+        contexto.raw;
+
+      if (
+        !punto ||
+        punto.aoiDia === 0
+      ) {
+        return 0;
+      }
+
+      return Math.max(
+        7,
+        punto.aoiDia * 2 + 2
+      );
+
+    },
+
+  tension:
+    0.25,
+
+  fill:
+    false
 
 });
+  
   chartTimeline = new Chart(ctx, {
 
     type: "line",
