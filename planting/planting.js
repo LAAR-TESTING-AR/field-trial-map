@@ -831,13 +831,17 @@ selectorRegionesTimeline.addEventListener(
   "change",
   () => {
 
-    if (
-      modalTimeline.classList.contains(
-        "visible"
+    console.log(
+      "REGIONES CAMBIARON"
+    );
+
+    console.log(
+      Array.from(
+        selectorRegionesTimeline.selectedOptions
+      ).map(
+        o => o.value
       )
-    ) {
-      btnTimeline.click();
-    }
+    );
 
   }
 );
