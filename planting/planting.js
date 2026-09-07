@@ -895,7 +895,7 @@ fechasOrdenadas.forEach(fecha => {
 
       pointRadius:
   puntos.map(
-    p => Math.max(5, p.aoiDia * 2)
+    p => Math.max(5, p.aoiDia * 3)
   ),
 
 
