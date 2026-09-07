@@ -895,6 +895,10 @@ const sitiosFiltradosRegion =
             sitio.Region
           )
       );
+  console.log(
+  "AOI FILTRADOS REGION:",
+  sitiosFiltradosRegion.length
+);
 console.log(
   "AOI REGION:",
   sitiosFiltradosRegion.length
