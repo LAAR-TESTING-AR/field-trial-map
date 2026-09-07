@@ -455,3 +455,33 @@ font-size: 28px;
 
   color: #666;
 }
+.timeline-filtro-region {
+  margin-bottom: 10px;
+}
+
+.timeline-filtro-region label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+#selectorRegionesTimeline {
+  width: 100%;
+
+  padding: 8px 10px;
+
+  border: 1px solid #bfc7c1;
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  background: white;
+
+  height: 40px;
+}
+
+.timeline-filtro-region small {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+}
