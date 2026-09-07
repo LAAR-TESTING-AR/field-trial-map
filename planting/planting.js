@@ -883,18 +883,6 @@ console.log(
   regionesSeleccionadas
 );
 
-const selectorRegiones =
-  document.getElementById(
-    "selectorRegionesTimeline"
-  );
-
-const regionesSeleccionadas =
-  Array.from(
-    selectorRegiones.selectedOptions
-  ).map(
-    opcion => opcion.value
-  );
-
 const cultivos =
   generarDatosTimeline();
 
