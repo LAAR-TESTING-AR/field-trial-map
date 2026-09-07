@@ -132,18 +132,241 @@ main{
 }
 
 .card{
-  background:white;
-  border-radius:16px;
-  padding:25px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  --modulo-color:#0b6b3a;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-height:310px;
+  overflow:hidden;
+  padding:30px;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f7faf8 100%
+    );
+  border:1px solid rgba(11,107,58,0.18);
+  border-top:6px solid var(--modulo-color);
+  border-radius:20px;
+  box-shadow:
+    0 12px 30px rgba(16,65,40,0.10),
+    0 2px 8px rgba(16,65,40,0.08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.card:nth-child(1){
+  --modulo-color:#075c34;
+}
+
+.card:nth-child(2){
+  --modulo-color:#69a928;
+}
+
+.card:nth-child(3){
+  --modulo-color:#c89419;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  right:-55px;
+  bottom:-70px;
+  width:190px;
+  height:190px;
+  border:35px solid var(--modulo-color);
+  border-radius:50%;
+  opacity:.045;
+  pointer-events:none;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  right:24px;
+  top:28px;
+  width:52px;
+  height:2px;
+  background:var(--modulo-color);
+  box-shadow:
+    0 8px 0 var(--modulo-color),
+    0 16px 0 var(--modulo-color);
+  opacity:.18;
+  transform:rotate(-18deg);
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:var(--modulo-color);
+  box-shadow:
+    0 20px 40px rgba(16,65,40,0.16),
+    0 4px 10px rgba(16,65,40,0.10);
 }
 
 .card h2{
-  color:#0b6b3a;
+  position:relative;
+  margin:20px 0 10px;
+  color:#123d29;
+  font-size:27px;
+  line-height:1.1;
+}
+
+.card p{
+  position:relative;
+  flex:1;
+  margin:0;
+  color:#4c5d53;
+  font-size:16px;
+  line-height:1.55;
 }
 
 .icono{
-  font-size:48px;
+  position:relative;
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border-radius:18px;
+  background:var(--modulo-color);
+  box-shadow:
+    0 9px 18px rgba(11,107,58,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.28);
+}
+
+/* Icono Master List: capas de información */
+.icono-master{
+  flex-direction:column;
+  gap:7px;
+}
+
+.icono-linea{
+  display:block;
+  width:34px;
+  height:6px;
+  border:2px solid white;
+  border-radius:6px;
+  transform:skewX(-18deg);
+}
+
+.icono-linea:nth-child(2){
+  margin-left:8px;
+}
+
+/* Icono Sowing: brote minimalista */
+.tallo{
+  position:absolute;
+  bottom:15px;
+  left:34px;
+  width:4px;
+  height:31px;
+  background:white;
+  border-radius:5px;
+}
+
+.hoja{
+  position:absolute;
+  width:21px;
+  height:12px;
+  background:white;
+}
+
+.hoja-izquierda{
+  left:15px;
+  top:23px;
+  border-radius:18px 3px 18px 3px;
+  transform:rotate(24deg);
+}
+
+.hoja-derecha{
+  right:14px;
+  top:17px;
+  border-radius:3px 18px 3px 18px;
+  transform:rotate(-22deg);
+}
+
+/* Icono Harvesting: espiga minimalista */
+.espiga-tallo{
+  position:absolute;
+  bottom:13px;
+  left:34px;
+  width:4px;
+  height:43px;
+  background:white;
+  border-radius:4px;
+}
+
+.grano{
+  position:absolute;
+  width:15px;
+  height:8px;
+  background:white;
+}
+
+.grano-1{
+  left:20px;
+  top:20px;
+  border-radius:14px 2px 14px 2px;
+  transform:rotate(25deg);
+}
+
+.grano-2{
+  right:18px;
+  top:27px;
+  border-radius:2px 14px 2px 14px;
+  transform:rotate(-25deg);
+}
+
+.grano-3{
+  left:20px;
+  top:36px;
+  border-radius:14px 2px 14px 2px;
+  transform:rotate(25deg);
+}
+
+.grano-4{
+  right:18px;
+  top:43px;
+  border-radius:2px 14px 2px 14px;
+  transform:rotate(-25deg);
+}
+
+.boton{
+  position:relative;
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  margin-top:25px;
+  padding:12px 22px;
+  border:1px solid var(--modulo-color);
+  border-radius:12px;
+  background:var(--modulo-color);
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 7px 14px rgba(11,107,58,0.16);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.boton:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(11,107,58,0.23);
+}
+
+.disabled{
+  background:#e7e9e8;
+  border-color:#d2d6d4;
+  color:#758079;
+  box-shadow:none;
+  pointer-events:none;
 }
 
 .boton{
@@ -188,7 +411,41 @@ main{
   .subtitulo{
     font-size:15px;
   }
+  main{
+    padding:28px 16px;
+  }
 
+  .modulos{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .card{
+    min-height:285px;
+    padding:25px;
+    border-radius:18px;
+  }
+
+  .icono{
+    width:64px;
+    height:64px;
+    border-radius:16px;
+  }
+
+  .card h2{
+    margin-top:18px;
+    font-size:30px;
+  }
+
+  .card p{
+    font-size:17px;
+  }
+
+  .boton{
+    width:100%;
+    min-height:52px;
+    font-size:17px;
+  }
 }
 
 </style>
@@ -226,7 +483,11 @@ class="logo">
 
     <div class="card">
 
-      <div class="icono">🗺️</div>
+      <div class="icono icono-master" aria-hidden="true">
+  <span class="icono-linea"></span>
+  <span class="icono-linea"></span>
+  <span class="icono-linea"></span>
+</div>
 
       <h2>Master List</h2>
 
@@ -244,7 +505,11 @@ class="logo">
 
     <div class="card">
 
-      <div class="icono">🌱</div>
+      <div class="icono icono-sowing" aria-hidden="true">
+  <span class="tallo"></span>
+  <span class="hoja hoja-izquierda"></span>
+  <span class="hoja hoja-derecha"></span>
+</div>
 
       <h2>Sowing</h2>
 
@@ -262,7 +527,13 @@ class="logo">
 
     <div class="card">
 
-      <div class="icono">🌾</div>
+     <div class="icono icono-harvesting" aria-hidden="true">
+  <span class="espiga-tallo"></span>
+  <span class="grano grano-1"></span>
+  <span class="grano grano-2"></span>
+  <span class="grano grano-3"></span>
+  <span class="grano grano-4"></span>
+</div>
 
       <h2>Harvesting</h2>
 
