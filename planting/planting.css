@@ -447,7 +447,7 @@ font-size: 28px;
 }
 
 #contenedorGraficoTimeline {
-  height: calc(100% - 100px);
+  height: calc(100% - 150px);
 
   display: flex;
   align-items: center;
