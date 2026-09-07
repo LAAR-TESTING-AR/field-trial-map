@@ -1662,11 +1662,7 @@ ctx.fillText(
       responsive: true,
 
       maintainAspectRatio: false,
-layout: {
-  padding: {
-    top: 35
-  }
-},
+
 plugins: {
 
   legend: {
