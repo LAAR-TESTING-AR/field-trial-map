@@ -521,3 +521,31 @@ font-size: 28px;
 #contenedorGraficoTimeline {
   height: 100%;
 }
+#selectorRegionesTimeline {
+  display: none;
+}
+
+#listaRegionesTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.region-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 18px;
+  color: #333;
+}
+
+.region-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.region-item label {
+  cursor: pointer;
+}
