@@ -892,6 +892,8 @@ fechasOrdenadas.forEach(fecha => {
       label: cultivo,
 
       data: puntos,
+ultimoAvance:
+  puntos[puntos.length - 1]?.y || 0,
 
       pointRadius:
   puntos.map(
@@ -915,6 +917,12 @@ fechasOrdenadas.forEach(fecha => {
 
   }
 );
+
+  datasets.sort(
+  (a, b) =>
+    b.ultimoAvance - a.ultimoAvance
+);
+  
   const labelsGlobales =
   Array.from(todasLasFechas).sort(
     (a, b) =>
