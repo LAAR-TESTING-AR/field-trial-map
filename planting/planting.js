@@ -424,6 +424,60 @@ function cargarRegionesTimeline() {
   selector.innerHTML = "";
   lista.innerHTML = "";
 
+const filaTodas =
+  document.createElement("div");
+
+filaTodas.className =
+  "region-item";
+
+const checkboxTodas =
+  document.createElement("input");
+
+checkboxTodas.type =
+  "checkbox";
+
+const labelTodas =
+  document.createElement("label");
+
+labelTodas.textContent =
+  "Todas las regiones";
+
+checkboxTodas.addEventListener(
+  "change",
+  () => {
+
+    const checkboxes =
+      document.querySelectorAll(
+        "#listaRegionesTimeline .region-item input[type='checkbox']"
+      );
+
+    checkboxes.forEach(cb => {
+
+      if (cb !== checkboxTodas) {
+        cb.checked = false;
+      }
+
+    });
+
+    selector.dispatchEvent(
+      new Event("change")
+    );
+
+  }
+);
+
+filaTodas.appendChild(
+  checkboxTodas
+);
+
+filaTodas.appendChild(
+  labelTodas
+);
+
+lista.appendChild(
+  filaTodas
+);
+  
   regiones.forEach(region => {
 
     /*
@@ -461,19 +515,22 @@ function cargarRegionesTimeline() {
     label.textContent =
       region;
 
-    checkbox.addEventListener(
-      "change",
-      () => {
+checkbox.addEventListener(
+  "change",
+  () => {
 
-        opcion.selected =
-          checkbox.checked;
+    opcion.selected =
+      checkbox.checked;
 
-        selector.dispatchEvent(
-          new Event("change")
-        );
+    checkboxTodas.checked =
+      false;
 
-      }
+    selector.dispatchEvent(
+      new Event("change")
     );
+
+  }
+);
 
     fila.appendChild(
       checkbox
