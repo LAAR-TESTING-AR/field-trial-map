@@ -1241,13 +1241,42 @@ Object.entries(cultivos).forEach(
     if (totalCultivo === 0) {
       return;
     }
+const semanasConActividad =
+  Object.keys(semanasCultivo)
+    .sort();
 
+const primeraSemanaCultivo =
+  semanasConActividad[0];
+
+const ultimaSemanaCultivo =
+  semanasConActividad[
+    semanasConActividad.length - 1
+  ];
     let acumulado = 0;
 
     const puntos =
       calendarioSemanal.map(
         semana => {
 
+          if (
+  semana < primeraSemanaCultivo ||
+  semana > ultimaSemanaCultivo
+) {
+  return {
+    x:
+      formatearSemanaTimeline(
+        semana
+      ),
+
+    y: null,
+
+    aoiDia: 0,
+    aoiIds: [],
+    localidades: [],
+    semana: semana
+  };
+}
+          
           const actividad =
             semanasCultivo[semana];
 
