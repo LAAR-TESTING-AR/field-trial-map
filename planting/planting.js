@@ -397,7 +397,36 @@ console.log("TOTALES");
 console.log(totalesPorCultivo);
   return cultivos;
 }
+function cargarRegionesTimeline() {
 
+  const selector =
+    document.getElementById(
+      "selectorRegionesTimeline"
+    );
+
+  const regiones = [
+    ...new Set(
+      sitios
+        .map(s => s.Region)
+        .filter(Boolean)
+    )
+  ].sort();
+
+  selector.innerHTML = "";
+
+  regiones.forEach(region => {
+
+    const opcion =
+      document.createElement("option");
+
+    opcion.value = region;
+    opcion.textContent = region;
+
+    selector.appendChild(opcion);
+
+  });
+
+}
 function crearPopup(sitio, estado) {
 
   const aoiId =
@@ -699,7 +728,7 @@ Papa.parse("../Sitios.csv", {
     console.log(
       `Sitios cargados: ${sitios.length}`
     );
-
+cargarRegionesTimeline();
     actualizarVista();
 console.log(
 "Pendientes guardados:",
