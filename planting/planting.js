@@ -970,7 +970,7 @@ plugins: {
 
   }
 
-},   // ← ESTA COMA FALTA
+}, 
 
 scales: {
 
