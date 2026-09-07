@@ -417,6 +417,18 @@ function cargarRegionesTimeline() {
 
   selector.innerHTML = "";
 
+  const opcionTodas =
+  document.createElement("option");
+
+opcionTodas.value = "";
+
+opcionTodas.textContent =
+  "Todas las regiones";
+
+selector.appendChild(
+  opcionTodas
+);
+
   regiones.forEach(region => {
 
     const opcion =
@@ -901,8 +913,12 @@ const selectorRegiones =
 const regionesSeleccionadas =
   Array.from(
     selectorRegiones.selectedOptions
-  ).map(
+  )
+  .map(
     opcion => opcion.value
+  )
+  .filter(
+    valor => valor !== ""
   );
 
 console.log(
