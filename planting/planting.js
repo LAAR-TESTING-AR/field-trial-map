@@ -1601,11 +1601,17 @@ if (meta.hidden) {
             ctx.textAlign =
               "center";
 
-            ctx.fillText(
-              dato.aoiDia,
-              puntoGrafico.x,
-              puntoGrafico.y - 12
-            );
+         const desplazamiento =
+  Math.max(
+    12,
+    dato.aoiDia * 2
+  );
+
+ctx.fillText(
+  dato.aoiDia,
+  puntoGrafico.x - desplazamiento,
+  puntoGrafico.y - desplazamiento
+);
 
             ctx.restore();
 
