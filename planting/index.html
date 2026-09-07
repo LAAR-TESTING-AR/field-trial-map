@@ -144,36 +144,49 @@
       </button>
 
     </div>
-<div class="timeline-filtro-region">
+<div class="timeline-layout">
 
-  <label for="selectorRegionesTimeline">
-    Regiones
-  </label>
+  <div class="timeline-sidebar">
 
-<select
-  id="selectorRegionesTimeline"
-  multiple
-  aria-label="Seleccionar una o más regiones">
-</select>
-    
-<button
-  id="btnLimpiarRegionesTimeline"
-  type="button">
+    <div class="timeline-filtro-region">
 
-  Mostrar todas las regiones
+      <label for="selectorRegionesTimeline">
+        Regiones
+      </label>
 
-</button>
-  <small>
-    Podés seleccionar una o varias regiones
-  </small>
+      <select
+        id="selectorRegionesTimeline"
+        multiple
+        aria-label="Seleccionar una o más regiones">
+      </select>
+
+      <button
+        id="btnLimpiarRegionesTimeline"
+        type="button">
+
+        Mostrar todas las regiones
+
+      </button>
+
+      <small>
+        Podés seleccionar una o varias regiones
+      </small>
+
+    </div>
+
+  </div>
+
+  <div class="timeline-grafico">
+
+    <div id="contenedorGraficoTimeline">
+
+      <canvas id="graficoTimeline"></canvas>
+
+    </div>
+
+  </div>
 
 </div>
-  <div id="contenedorGraficoTimeline">
-
-  <canvas id="graficoTimeline"></canvas>
-
-</div>  
-
   </div>
 
 </div>
