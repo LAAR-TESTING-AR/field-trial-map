@@ -829,7 +829,10 @@ const selectorRegionesTimeline =
   document.getElementById(
     "selectorRegionesTimeline"
   );
-
+const btnLimpiarRegionesTimeline =
+  document.getElementById(
+    "btnLimpiarRegionesTimeline"
+  );
 selectorRegionesTimeline.addEventListener(
   "change",
   () => {
@@ -852,6 +855,23 @@ selectorRegionesTimeline.addEventListener(
 
   }
 );
+
+btnLimpiarRegionesTimeline.addEventListener(
+  "click",
+  () => {
+
+    Array.from(
+      selectorRegionesTimeline.options
+    ).forEach(
+      opcion => opcion.selected = false
+    );
+
+    btnTimeline.click();
+
+  }
+);
+``
+
 let chartTimeline = null;
 
 btnTimeline.addEventListener("click", () => {
