@@ -419,10 +419,10 @@ font-size: 28px;
 }
 
 .modal-timeline-contenido {
-  width: 90%;
-  max-width: 1000px;
+  width: 96vw;
+  max-width: 1400px;
 
-  height: 80vh;
+  height: 88vh;
 
   background: white;
 
