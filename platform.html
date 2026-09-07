@@ -384,7 +384,62 @@ main{
   background:#999;
   pointer-events:none;
 }
+.kpi-dashboard{
 
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(180px,1fr)
+    );
+
+  gap:18px;
+
+  margin-bottom:30px;
+}
+
+.kpi-card{
+
+  background:white;
+
+  border-radius:18px;
+
+  padding:22px;
+
+  text-align:center;
+
+  border-top:5px solid #0b6b3a;
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.08);
+}
+
+.kpi-valor{
+
+  display:block;
+
+  font-size:34px;
+
+  font-weight:700;
+
+  color:#0b6b3a;
+}
+
+.kpi-label{
+
+  display:block;
+
+  margin-top:6px;
+
+  color:#666;
+
+  font-size:14px;
+
+  letter-spacing:.5px;
+
+  text-transform:uppercase;
+}
 @media(max-width:700px){
 
   header{
@@ -479,6 +534,30 @@ class="logo">
 
 <main>
 
+  <div class="kpi-dashboard">
+
+  <div class="kpi-card">
+    <span class="kpi-valor">162</span>
+    <span class="kpi-label">AOI</span>
+  </div>
+
+  <div class="kpi-card">
+    <span class="kpi-valor">38%</span>
+    <span class="kpi-label">Sown</span>
+  </div>
+
+  <div class="kpi-card">
+    <span class="kpi-valor">101</span>
+    <span class="kpi-label">Pending</span>
+  </div>
+
+  <div class="kpi-card">
+    <span class="kpi-valor">2</span>
+    <span class="kpi-label">Drop</span>
+  </div>
+
+</div>
+  
   <div class="modulos">
 
     <div class="card">
