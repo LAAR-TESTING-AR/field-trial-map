@@ -605,20 +605,35 @@ function actualizarMapa(sitiosFiltrados) {
   const coordenadas = [];
 
   sitiosFiltrados.forEach(sitio => {
-    const lat = Number(
-      sitio["Latitude Trial"]
-    );
+const latTexto =
+  limpiarTexto(
+    sitio["Latitude Trial"]
+  );
 
-    const lon = Number(
-      sitio["Longitude Trial"]
-    );
+const lonTexto =
+  limpiarTexto(
+    sitio["Longitude Trial"]
+  );
 
-    if (
-      !Number.isFinite(lat) ||
-      !Number.isFinite(lon)
-    ) {
-      return;
-    }
+if (
+  !latTexto ||
+  !lonTexto
+) {
+  return;
+}
+
+const lat =
+  Number(latTexto);
+
+const lon =
+  Number(lonTexto);
+
+if (
+  !Number.isFinite(lat) ||
+  !Number.isFinite(lon)
+) {
+  return;
+}
 
     const drop = esDrop(sitio);
     const sembrado = estaSembrado(sitio);
