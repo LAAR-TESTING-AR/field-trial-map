@@ -1630,10 +1630,10 @@ if (meta.hidden) {
             ctx.textAlign =
               "center";
 
-         const desplazamiento =
+const desplazamiento =
   Math.max(
-    12,
-    dato.aoiDia * 2
+    18,
+    dato.aoiDia * 5
   );
 
 ctx.fillText(
