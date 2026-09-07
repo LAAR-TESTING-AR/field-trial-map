@@ -1566,6 +1566,16 @@ plugins: [{
     chart.data.datasets.forEach(
       (dataset, datasetIndex) => {
 
+     const meta =
+  chart.getDatasetMeta(
+    datasetIndex
+  );
+
+if (meta.hidden) {
+  return;
+}
+   
+        
         const meta =
           chart.getDatasetMeta(
             datasetIndex
