@@ -883,8 +883,38 @@ console.log(
   regionesSeleccionadas
 );
 
+const selectorRegiones =
+  document.getElementById(
+    "selectorRegionesTimeline"
+  );
+
+const regionesSeleccionadas =
+  Array.from(
+    selectorRegiones.selectedOptions
+  ).map(
+    opcion => opcion.value
+  );
+
+const sitiosOriginales =
+  sitios;
+
+if (
+  regionesSeleccionadas.length > 0
+) {
+
+  sitios = sitios.filter(
+    sitio =>
+      regionesSeleccionadas.includes(
+        sitio.Region
+      )
+  );
+
+}
+
 const cultivos =
   generarDatosTimeline();
+
+sitios = sitiosOriginales;
 
 const datasets = [];
 const todasLasFechas = new Set();
