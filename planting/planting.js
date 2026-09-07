@@ -400,11 +400,17 @@ function generarDatosTimeline(
   return cultivos;
 
 }
+
 function cargarRegionesTimeline() {
 
   const selector =
     document.getElementById(
       "selectorRegionesTimeline"
+    );
+
+  const lista =
+    document.getElementById(
+      "listaRegionesTimeline"
     );
 
   const regiones = [
@@ -416,21 +422,13 @@ function cargarRegionesTimeline() {
   ].sort();
 
   selector.innerHTML = "";
-
-  const opcionTodas =
-  document.createElement("option");
-
-opcionTodas.value = "";
-
-opcionTodas.textContent =
-  "Todas las regiones";
-
-selector.appendChild(
-  opcionTodas
-);
+  lista.innerHTML = "";
 
   regiones.forEach(region => {
 
+    /*
+     * option oculta
+     */
     const opcion =
       document.createElement("option");
 
@@ -439,9 +437,61 @@ selector.appendChild(
 
     selector.appendChild(opcion);
 
+    /*
+     * checkbox visible
+     */
+    const fila =
+      document.createElement("div");
+
+    fila.className =
+      "region-item";
+
+    const checkbox =
+      document.createElement("input");
+
+    checkbox.type =
+      "checkbox";
+
+    checkbox.dataset.region =
+      region;
+
+    const label =
+      document.createElement("label");
+
+    label.textContent =
+      region;
+
+    checkbox.addEventListener(
+      "change",
+      () => {
+
+        opcion.selected =
+          checkbox.checked;
+
+        selector.dispatchEvent(
+          new Event("change")
+        );
+
+      }
+    );
+
+    fila.appendChild(
+      checkbox
+    );
+
+    fila.appendChild(
+      label
+    );
+
+    lista.appendChild(
+      fila
+    );
+
   });
 
 }
+
+
 function crearPopup(sitio, estado) {
 
   const aoiId =
