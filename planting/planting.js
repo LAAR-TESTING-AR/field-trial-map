@@ -355,9 +355,11 @@ document.getElementById("barraAvance").style.width =
 
 }
 
-function generarDatosTimeline() {
+function generarDatosTimeline(
+  sitiosBase = sitios
+) {
 
-  const sembrados = sitios.filter(
+  const sembrados = sitiosBase.filter(
     sitio =>
       !esDrop(sitio) &&
       estaSembrado(sitio)
@@ -381,21 +383,22 @@ function generarDatosTimeline() {
 
   });
 
-  console.log(cultivos);
-const totalesPorCultivo = {};
+  const totalesPorCultivo = {};
 
-sitios.forEach(sitio => {
+  sitiosBase.forEach(sitio => {
 
-  const cultivo = sitio.Crop;
+    const cultivo = sitio.Crop;
 
-  totalesPorCultivo[cultivo] =
-    (totalesPorCultivo[cultivo] || 0) + 1;
+    totalesPorCultivo[cultivo] =
+      (totalesPorCultivo[cultivo] || 0) + 1;
 
-});
+  });
 
-console.log("TOTALES");
-console.log(totalesPorCultivo);
+  console.log("TOTALES");
+  console.log(totalesPorCultivo);
+
   return cultivos;
+
 }
 function cargarRegionesTimeline() {
 
