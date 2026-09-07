@@ -846,6 +846,10 @@ selectorRegionesTimeline.addEventListener(
       )
     );
 
+    if (chartTimeline) {
+      btnTimeline.click();
+    }
+
   }
 );
 let chartTimeline = null;
