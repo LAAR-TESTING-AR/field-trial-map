@@ -895,7 +895,10 @@ const sitiosFiltradosRegion =
             sitio.Region
           )
       );
-
+console.log(
+  "AOI REGION:",
+  sitiosFiltradosRegion.length
+);
 const cultivos =
   generarDatosTimeline(
     sitiosFiltradosRegion
