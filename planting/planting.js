@@ -491,6 +491,168 @@ checkbox.addEventListener(
 
 }
 
+function convertirFechaPlanting(fechaTexto) {
+
+  const partes =
+    limpiarTexto(fechaTexto)
+      .split("/");
+
+  if (partes.length !== 3) {
+    return null;
+  }
+
+  const mes =
+    Number(partes[0]);
+
+  const dia =
+    Number(partes[1]);
+
+  const anio =
+    Number(partes[2]);
+
+  const fecha =
+    new Date(
+      anio,
+      mes - 1,
+      dia
+    );
+
+  if (
+    Number.isNaN(fecha.getTime()) ||
+    fecha.getFullYear() !== anio ||
+    fecha.getMonth() !== mes - 1 ||
+    fecha.getDate() !== dia
+  ) {
+    return null;
+  }
+
+  return fecha;
+}
+
+function obtenerInicioSemana(fecha) {
+
+  const inicio =
+    new Date(
+      fecha.getFullYear(),
+      fecha.getMonth(),
+      fecha.getDate()
+    );
+
+  const diaSemana =
+    inicio.getDay();
+
+  const diferencia =
+    diaSemana === 0
+      ? -6
+      : 1 - diaSemana;
+
+  inicio.setDate(
+    inicio.getDate() + diferencia
+  );
+
+  return inicio;
+}
+
+function crearClaveSemana(fecha) {
+
+  const inicioSemana =
+    obtenerInicioSemana(fecha);
+
+  const anio =
+    inicioSemana.getFullYear();
+
+  const mes =
+    String(
+      inicioSemana.getMonth() + 1
+    ).padStart(2, "0");
+
+  const dia =
+    String(
+      inicioSemana.getDate()
+    ).padStart(2, "0");
+
+  return `${anio}-${mes}-${dia}`;
+}
+
+function formatearSemanaTimeline(claveSemana) {
+
+  const partes =
+    claveSemana
+      .split("-")
+      .map(Number);
+
+  const fecha =
+    new Date(
+      partes[0],
+      partes[1] - 1,
+      partes[2]
+    );
+
+  return fecha.toLocaleDateString(
+    "es-AR",
+    {
+      day: "2-digit",
+      month: "2-digit"
+    }
+  );
+}
+
+function generarCalendarioSemanal(sitiosBase) {
+
+  const fechasValidas =
+    sitiosBase
+      .filter(
+        sitio =>
+          !esDrop(sitio) &&
+          estaSembrado(sitio)
+      )
+      .map(
+        sitio =>
+          convertirFechaPlanting(
+            sitio[
+              "Planting Date (MM/DD/YYYY)"
+            ]
+          )
+      )
+      .filter(Boolean)
+      .sort(
+        (a, b) => a - b
+      );
+
+  if (fechasValidas.length === 0) {
+    return [];
+  }
+
+  const primeraSemana =
+    obtenerInicioSemana(
+      fechasValidas[0]
+    );
+
+  const ultimaSemana =
+    obtenerInicioSemana(
+      fechasValidas[
+        fechasValidas.length - 1
+      ]
+    );
+
+  const semanas = [];
+
+  const cursor =
+    new Date(primeraSemana);
+
+  while (cursor <= ultimaSemana) {
+
+    semanas.push(
+      crearClaveSemana(cursor)
+    );
+
+    cursor.setDate(
+      cursor.getDate() + 7
+    );
+  }
+
+  return semanas;
+}
 
 function crearPopup(sitio, estado) {
 
