@@ -886,8 +886,20 @@ console.log(
   regionesSeleccionadas
 );
 
+const sitiosFiltradosRegion =
+  regionesSeleccionadas.length === 0
+    ? sitios
+    : sitios.filter(
+        sitio =>
+          regionesSeleccionadas.includes(
+            sitio.Region
+          )
+      );
+
 const cultivos =
-  generarDatosTimeline();
+  generarDatosTimeline(
+    sitiosFiltradosRegion
+  );
 
 const datasets = [];
 const todasLasFechas = new Set();
