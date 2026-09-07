@@ -978,17 +978,36 @@ labelsGlobales.forEach(fecha => {
   acumuladoGeneral +=
     sembradosFecha;
 
-  puntosGenerales.push({
+ const aoiDelDia =
+  sitios.filter(
+    s =>
+      !esDrop(s) &&
+      s["Planting Date (MM/DD/YYYY)"] === fecha
+  );
 
-    x: fecha,
+puntosGenerales.push({
 
-    y:
-      (
-        acumuladoGeneral /
-        totalAOI
-      ) * 100
+  x: fecha,
 
-  });
+  y:
+    (
+      acumuladoGeneral /
+      totalAOI
+    ) * 100,
+
+  aoiDia: sembradosFecha,
+
+  aoiIds:
+    aoiDelDia.map(
+      s => s["AOI ID"]
+    ),
+
+  localidades:
+    aoiDelDia.map(
+      s => s.Location
+    )
+
+});
 
 });
 
