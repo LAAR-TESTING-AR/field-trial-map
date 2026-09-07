@@ -1596,7 +1596,7 @@ if (meta.hidden) {
               dataset.borderColor;
 
             ctx.font =
-              "bold 11px Arial";
+              "bold 13px Arial";
 
             ctx.textAlign =
               "center";
