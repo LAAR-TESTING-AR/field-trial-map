@@ -844,7 +844,24 @@ console.table(datosTimeline);
     chartTimeline.destroy();
   }
 
-  const cultivos =
+const selectorRegiones =
+  document.getElementById(
+    "selectorRegionesTimeline"
+  );
+
+const regionesSeleccionadas =
+  Array.from(
+    selectorRegiones.selectedOptions
+  ).map(
+    opcion => opcion.value
+  );
+
+console.log(
+  "REGIONES:",
+  regionesSeleccionadas
+);
+
+const cultivos =
   generarDatosTimeline();
 
 const datasets = [];
