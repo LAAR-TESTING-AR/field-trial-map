@@ -185,7 +185,7 @@ header {
 .barra-progreso {
   flex: 1;
   height: 14px;
-  background: #d7d7d7;
+  background: #d32f2f;
   border-radius: 20px;
   overflow: hidden;
 }
