@@ -998,13 +998,15 @@ datasets.unshift({
 
   data: puntosGenerales,
 
-  borderColor: "#b0b0b0",
+  borderColor: "#bfbfbf",
 
-  backgroundColor: "#b0b0b0",
-
-  pointRadius: 0,
+  backgroundColor: "#bfbfbf",
 
   borderWidth: 3,
+
+  pointRadius: 5,
+
+  pointHoverRadius: 7,
 
   tension: 0.3,
 
