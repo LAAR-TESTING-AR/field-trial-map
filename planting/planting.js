@@ -1670,9 +1670,14 @@ layout: {
 plugins: {
 
   legend: {
-    display: true
-  },
 
+    display: true,
+
+    labels: {
+      padding: 30
+    }
+
+  },
   tooltip: {
 
     callbacks: {
