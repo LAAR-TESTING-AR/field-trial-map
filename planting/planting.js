@@ -359,46 +359,82 @@ function generarDatosTimeline(
   sitiosBase = sitios
 ) {
 
-  const sembrados = sitiosBase.filter(
-    sitio =>
-      !esDrop(sitio) &&
-      estaSembrado(sitio)
-  );
+  const sembrados =
+    sitiosBase.filter(
+      sitio =>
+        !esDrop(sitio) &&
+        estaSembrado(sitio)
+    );
 
   const cultivos = {};
 
   sembrados.forEach(sitio => {
 
-    const cultivo = sitio.Crop;
+    const cultivo =
+      limpiarTexto(sitio.Crop);
 
-    const fecha =
-      sitio["Planting Date (MM/DD/YYYY)"];
+    const fechaPlanting =
+      convertirFechaPlanting(
+        sitio[
+          "Planting Date (MM/DD/YYYY)"
+        ]
+      );
+
+    if (
+      !cultivo ||
+      !fechaPlanting
+    ) {
+      return;
+    }
+
+    const semana =
+      crearClaveSemana(
+        fechaPlanting
+      );
 
     if (!cultivos[cultivo]) {
       cultivos[cultivo] = {};
     }
 
-    cultivos[cultivo][fecha] =
-      (cultivos[cultivo][fecha] || 0) + 1;
+    if (!cultivos[cultivo][semana]) {
+
+      cultivos[cultivo][semana] = {
+        cantidad: 0,
+        aoiIds: [],
+        localidades: []
+      };
+
+    }
+
+    cultivos[cultivo][semana]
+      .cantidad += 1;
+
+    cultivos[cultivo][semana]
+      .aoiIds.push(
+        limpiarTexto(
+          sitio["AOI ID"]
+        )
+      );
+
+    const localidad =
+      limpiarTexto(
+        sitio.Location
+      );
+
+    if (
+      localidad &&
+      !cultivos[cultivo][semana]
+        .localidades.includes(localidad)
+    ) {
+
+      cultivos[cultivo][semana]
+        .localidades.push(localidad);
+
+    }
 
   });
-
-  const totalesPorCultivo = {};
-
-  sitiosBase.forEach(sitio => {
-
-    const cultivo = sitio.Crop;
-
-    totalesPorCultivo[cultivo] =
-      (totalesPorCultivo[cultivo] || 0) + 1;
-
-  });
-
-  console.log("TOTALES");
-  console.log(totalesPorCultivo);
 
   return cultivos;
-
 }
 
 function cargarRegionesTimeline() {
