@@ -1555,6 +1555,65 @@ datasets: datasets
    
     },
 
+plugins: [{
+
+  id: "mostrarNumerosBurbujas",
+
+  afterDatasetsDraw(chart) {
+
+    const { ctx } = chart;
+
+    chart.data.datasets.forEach(
+      (dataset, datasetIndex) => {
+
+        const meta =
+          chart.getDatasetMeta(
+            datasetIndex
+          );
+
+        meta.data.forEach(
+          (puntoGrafico, index) => {
+
+            const dato =
+              dataset.data[index];
+
+            if (
+              !dato ||
+              !dato.aoiDia ||
+              dato.aoiDia === 0
+            ) {
+              return;
+            }
+
+            ctx.save();
+
+            ctx.fillStyle =
+              dataset.borderColor;
+
+            ctx.font =
+              "bold 11px Arial";
+
+            ctx.textAlign =
+              "center";
+
+            ctx.fillText(
+              dato.aoiDia,
+              puntoGrafico.x,
+              puntoGrafico.y - 12
+            );
+
+            ctx.restore();
+
+          }
+        );
+
+      }
+    );
+
+  }
+
+}],
+    
     options: {
 
       responsive: true,
