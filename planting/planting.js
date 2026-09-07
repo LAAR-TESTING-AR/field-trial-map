@@ -937,7 +937,7 @@ datasets: datasets
 
       maintainAspectRatio: false,
 
-     plugins: {
+plugins: {
 
   legend: {
     display: true
@@ -970,9 +970,9 @@ datasets: datasets
 
   }
 
-}
+},   // ← ESTA COMA FALTA
 
-      scales: {
+scales: {
 
         y: {
           beginAtZero: true,
