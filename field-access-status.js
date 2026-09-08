@@ -372,14 +372,14 @@ window.setTimeout(() => {
 }, 50);
   }
 
-  function programarActualizacion() {
-    window.requestAnimationFrame(() => {
-      actualizarEstadoAccess();
-    });
+function programarActualizacion() {
 
-    window.setTimeout(actualizarEstadoAccess, 800);
-    window.setTimeout(actualizarEstadoAccess, 1200);
-  }
+  window.setTimeout(
+    actualizarEstadoAccess,
+    600
+  );
+
+}
 
   if (
     typeof mapa !== "undefined" &&
