@@ -124,6 +124,43 @@ if (masterAoi) {
     sitiosValidos.length;
 
 }
+const regiones =
+  new Set(
+    sitiosValidos
+      .map(s => limpiarTexto(s.Region))
+      .filter(Boolean)
+  ).size;
+
+const access =
+  sitiosValidos.filter(
+    sitio =>
+      limpiarTexto(
+        sitio.Description
+      )
+      .toLowerCase()
+      .includes("access")
+  ).length;
+
+const masterRegions =
+  document.getElementById(
+    "masterRegions"
+  );
+
+const masterAccess =
+  document.getElementById(
+    "masterAccess"
+  );
+
+if (masterRegions) {
+  masterRegions.textContent =
+    `${regiones} Regions`;
+}
+
+if (masterAccess) {
+  masterAccess.textContent =
+    `${access} Access`;
+}
+  
   console.log(
     "Dashboard actualizado:",
     {
