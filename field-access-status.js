@@ -374,10 +374,12 @@ window.setTimeout(() => {
 
 function programarActualizacion() {
 
-  window.setTimeout(
-    actualizarEstadoAccess,
-    1200
-  );
+  window.requestAnimationFrame(() => {
+    actualizarEstadoAccess();
+  });
+
+  window.setTimeout(actualizarEstadoAccess, 120);
+  window.setTimeout(actualizarEstadoAccess, 500);
 
 }
 
