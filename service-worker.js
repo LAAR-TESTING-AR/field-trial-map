@@ -1,9 +1,19 @@
-const CACHE_NAME = "field-trial-map-v23";
+const CACHE_NAME = "field-trial-platform-v24";
 const BASE_PATH = "/field-trial-map/";
 
 const APP_SHELL = [
   BASE_PATH,
   `${BASE_PATH}index.html`,
+  
+  `${BASE_PATH}platform.html`,
+  `${BASE_PATH}platform.js`,
+  `${BASE_PATH}Sitios.csv`,
+
+  `${BASE_PATH}planting/`,
+  `${BASE_PATH}planting/index.html`,
+  `${BASE_PATH}planting/planting.css`,
+  `${BASE_PATH}planting/planting.js`,
+  `${BASE_PATH}planting/planting-offline.js`,
   `${BASE_PATH}viewer.html`,
   `${BASE_PATH}offline.html`,
   `${BASE_PATH}manifest.webmanifest`,
@@ -97,22 +107,98 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  /* Navegacion: red primero y cache como respaldo offline. */
-  if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request, { cache: "no-store" })
-        .then(response => {
-          if (!response || !response.ok) {
-            throw new Error("No fue posible actualizar la pagina principal");
+  /*
+   * Navegación:
+   **red*primero y cada página se guarda
+*  **utilizando su propia dirección.
+  **/
+  if (request.mode === "navigat*") {
+
+    const claveNavegacion =
+*     url.pathname;
+
+    event.resp*ndWith(
+
+      fetch(request, {
+  *     cache: "no-store"
+      })
+
+ *     *.*hen(response => {
+
+          if (
+*           !response ||
+          * !response.ok
+          ) {
+      *     throw new Error(
+            * "No fue posible actualizar la pág*na"
+            );
           }
 
-          const copia = response.clone();
+  *       const copia =
+            r*sponse.clone();
 
-          event.waitUntil(
-            caches.open(CACHE_NAME).then(cache => {
-              return cache.put(`${BASE_PATH}index.html`, copia);
-            })
+          event.w*itUntil(
+
+            caches
+     *        .open(CACHE_NAME)
+        *     .then(cache => {
+
+           *    return cache.put(
+            *     claveNavegacion,
+            *     copia
+                );
+
+   *          })
+
           );
+
+      *   return response;
+
+        })
+
+ *      .catch(async () => {
+
+      *   const paginaSolicitada =
+      *     await caches.match(
+         *    claveNavegacion,
+             *{
+                ignoreSearch: tr*e
+              }
+            );
+
+*         if (paginaSolicitada) {
+ *          return paginaSolicitada;*          }
+
+          if (
+      *     url.pathname ===
+            *${BASE_PATH}planting/`
+          )*{
+
+            const paginaSowing *
+              await caches.match(*                `${BASE_PATH}plant*ng/index.html`
+              );
+
+ *          if (paginaSowing) {
+    *         return paginaSowing;
+    *       }
+
+          }
+
+          r*turn (
+            await caches.ma*ch(
+              `${BASE_PATH}pla*form.html`
+            )
+         *) || (
+            await caches.ma*ch(
+              `${BASE_PATH}off*ine.html`
+            )
+          *;
+
+        })
+
+    );
+
+    return;*  }
 
           return response;
         })
