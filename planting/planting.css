@@ -549,3 +549,28 @@ font-size: 28px;
 .region-item label {
   cursor: pointer;
 }
+.header-container{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:60px;
+  height:60px;
+  border-radius:12px;
+}
+
+.subtitulo{
+  font-size:14px;
+  color:rgba(255,255,255,.9);
+}
+
+.submodulo{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.8);
+}
