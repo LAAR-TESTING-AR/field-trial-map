@@ -453,7 +453,7 @@ font-size: 28px;
   height: calc(100% - 150px);
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   color: #666;
