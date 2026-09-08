@@ -585,7 +585,50 @@ main{
 
   font-weight:600;
 }
-  
+  .dashboard-title{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:15px;
+
+  margin-bottom:26px;
+
+}
+
+.dashboard-title-line{
+
+  flex:1;
+
+  max-width:120px;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(11,107,58,.35),
+      transparent
+    );
+}
+
+.dashboard-title-text{
+
+  font-size:12px;
+
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  color:#0b6b3a;
+
+  text-transform:uppercase;
+
+}
 @media(max-width:700px){
 
   header{
@@ -665,6 +708,29 @@ main{
   .kpi-label{
     font-size:12px;
   }
+
+   .dashboard-title{
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+  }
+
+  .dashboard-title-text{
+
+    font-size:11px;
+
+    letter-spacing:1.5px;
+
+  }
+
+  .dashboard-title-line{
+
+    max-width:60px;
+
+  } 
+  
 }
 
 </style>
@@ -719,6 +785,18 @@ class="logo">
     <span class="kpi-valor">2</span>
     <span class="kpi-label">Drop</span>
   </div>
+
+</div>
+
+<div class="dashboard-title">
+
+  <span class="dashboard-title-line"></span>
+
+  <span class="dashboard-title-text">
+    FIELD OPERATIONS DASHBOARD
+  </span>
+
+  <span class="dashboard-title-line"></span>
 
 </div>
   
