@@ -113,7 +113,17 @@ function actualizarDashboardPlataforma(sitios) {
     miniProgressFill.style.width =
       `${avance}%`;
   }
+const masterAoi =
+  document.getElementById(
+    "masterAoi"
+  );
 
+if (masterAoi) {
+
+  masterAoi.textContent =
+    sitiosValidos.length;
+
+}
   console.log(
     "Dashboard actualizado:",
     {
