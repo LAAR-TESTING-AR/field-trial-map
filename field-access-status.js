@@ -361,14 +361,32 @@ if (!estado.coordenadaDisponible) {
       popupActual,
       crearBloqueEstado(estado)
     );
-    window.setTimeout(() => {
+window.setTimeout(() => {
+
   if (
     typeof mapa !== "undefined" &&
     mapa &&
-    mapa._popup
+    mapa._popup &&
+    typeof mapa.panInside === "function"
   ) {
-    mapa.panInsidePopup(mapa._popup);
+
+    try {
+
+      mapa.panInside(
+        mapa._popup.getLatLng()
+      );
+
+    } catch (error) {
+
+      console.warn(
+        "No fue posible reposicionar el popup:",
+        error
+      );
+
+    }
+
   }
+
 }, 50);
   }
 
