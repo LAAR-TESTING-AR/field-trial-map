@@ -104,10 +104,15 @@ function actualizarDashboardPlataforma(sitios) {
       ".mini-progress-fill"
     );
 
-  if (miniKpiValor) {
-    miniKpiValor.textContent =
-      `${avance}%`;
-  }
+  const sowingProgress =
+  document.getElementById(
+    "sowingProgress"
+  );
+
+if (sowingProgress) {
+  sowingProgress.textContent =
+    `${avance}%`;
+}
 
   if (miniProgressFill) {
     miniProgressFill.style.width =
