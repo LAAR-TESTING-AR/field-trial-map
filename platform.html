@@ -515,7 +515,45 @@ main{
   font-weight:600;
 
 }
+.sowing-stats{
 
+  display:flex;
+
+  gap:12px;
+
+  margin-top:12px;
+
+  flex-wrap:wrap;
+
+}
+
+.sowing-stats span{
+
+  padding:4px 10px;
+
+  border-radius:20px;
+
+  font-size:12px;
+
+  font-weight:600;
+
+}
+
+#sowingCompleted{
+
+  background:#edf7e8;
+
+  color:#69a928;
+
+}
+
+#sowingPending{
+
+  background:#fdeaea;
+
+  color:#d32f2f;
+
+}
 @media(max-width:700px){
 
   header{
@@ -735,6 +773,19 @@ class="logo">
   </div>
 
 </div>
+
+     <div class="sowing-stats">
+
+  <span id="sowingCompleted">
+    0 Sown
+  </span>
+
+  <span id="sowingPending">
+    0 Pending
+  </span>
+
+</div> 
+      
      <a
   class="boton"
   href="planting/">
