@@ -362,31 +362,13 @@ if (!estado.coordenadaDisponible) {
       crearBloqueEstado(estado)
     );
 window.setTimeout(() => {
-
   if (
     typeof mapa !== "undefined" &&
     mapa &&
-    mapa._popup &&
-    typeof mapa.panInside === "function"
+    mapa._popup
   ) {
-
-    try {
-
-      mapa.panInside(
-        mapa._popup.getLatLng()
-      );
-
-    } catch (error) {
-
-      console.warn(
-        "No fue posible reposicionar el popup:",
-        error
-      );
-
-    }
-
+    mapa.panInsidePopup(mapa._popup);
   }
-
 }, 50);
   }
 
