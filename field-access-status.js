@@ -377,8 +377,8 @@ if (!estado.coordenadaDisponible) {
       actualizarEstadoAccess();
     });
 
-    window.setTimeout(actualizarEstadoAccess, 120);
-    window.setTimeout(actualizarEstadoAccess, 500);
+    window.setTimeout(actualizarEstadoAccess, 800);
+    window.setTimeout(actualizarEstadoAccess, 1200);
   }
 
   if (
