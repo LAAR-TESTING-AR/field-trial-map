@@ -1,9 +1,9 @@
 {
   "id": "/field-trial-map/",
-  "name": "Field Trial Map Argentina",
-  "short_name": "Trial Map",
-  "description": "Mapa de ensayos, accesos e información de campo de Research Argentina.",
-  "start_url": "/field-trial-map/",
+  "name": "Field Trial Platform Argentina 2026-27",
+  "short_name": "Field Platform",
+  "description": "Field Trial Platform para gestión integral de ensayos, siembra, acceso y cosecha en Research Argentina.",
+  "start_url": "/field-trial-map/platform.html",
   "scope": "/field-trial-map/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -23,10 +23,10 @@
       "purpose": "any"
     },
     {
-  "src": "icon-512.png",
-  "sizes": "512x512",
-  "type": "image/png",
-  "purpose": "any maskable"
-}
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
