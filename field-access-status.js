@@ -361,7 +361,7 @@ if (!estado.coordenadaDisponible) {
       popupActual,
       crearBloqueEstado(estado)
     );
-window.setTimeout(() => {
+    window.setTimeout(() => {
   if (
     typeof mapa !== "undefined" &&
     mapa &&
@@ -372,18 +372,14 @@ window.setTimeout(() => {
 }, 50);
   }
 
-function programarActualizacion() {
+  function programarActualizacion() {
+    window.requestAnimationFrame(() => {
+      actualizarEstadoAccess();
+    });
 
-  window.requestAnimationFrame(() => {
-    actualizarEstadoAccess();
-  });
-
-  window.setTimeout(actualizarEstadoAccess, 120);
-  window.setTimeout(actualizarEstadoAccess, 500);
-
-}
-
-}
+    window.setTimeout(actualizarEstadoAccess, 800);
+    window.setTimeout(actualizarEstadoAccess, 1200);
+  }
 
   if (
     typeof mapa !== "undefined" &&
