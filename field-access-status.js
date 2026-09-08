@@ -268,44 +268,17 @@
       estadoAnterior.replaceWith(bloque);
       return;
     }
-
-const botonCrearAccess = popup.querySelector(
-  ".field-coordinate-popup-button-create-access"
-);
-
-if (botonCrearAccess) {
-
-  const contenedorAccion =
-    botonCrearAccess.closest(
-      ".field-coordinate-popup-action"
-    );
-
-  if (contenedorAccion) {
-
-    contenedorAccion.insertAdjacentElement(
-      "afterend",
-      bloque
-    );
-
-    return;
-  }
-}
-
 const navegacion = popup.querySelector(
   ".botones-navegacion"
 );
 
 if (navegacion) {
-
   navegacion.parentNode.insertBefore(
     bloque,
     navegacion
   );
-
 } else {
-
   popup.appendChild(bloque);
-
 }
   }
 
