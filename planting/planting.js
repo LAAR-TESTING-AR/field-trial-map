@@ -1192,7 +1192,10 @@ const cultivos =
   generarDatosTimeline(
     sitiosFiltradosRegion
   );
-
+  
+const esMobile =
+  window.innerWidth <= 768;
+  
 const datasets = [];
 
 const colores = [
@@ -1351,10 +1354,15 @@ const ultimaSemanaCultivo =
             return 0;
           }
 
-      return Math.max(
-  4,
-  punto.aoiDia * 2
-);
+   return esMobile
+  ? Math.max(
+      3,
+      punto.aoiDia * 1.5
+    )
+  : Math.max(
+      5,
+      punto.aoiDia * 3
+    );
 
         },
 
@@ -1371,10 +1379,15 @@ const ultimaSemanaCultivo =
             return 0;
           }
 
-         return Math.max(
-  6,
-  punto.aoiDia * 2 + 2
-);
+        return esMobile
+  ? Math.max(
+      5,
+      punto.aoiDia * 1.5 + 2
+    )
+  : Math.max(
+      7,
+      punto.aoiDia * 3 + 2
+    );
 
 
         },
@@ -1539,10 +1552,15 @@ datasets.unshift({
         return 0;
       }
 
-      return Math.max(
-        5,
-        punto.aoiDia * 2
-      );
+return esMobile
+  ? Math.max(
+      3,
+      punto.aoiDia * 1.2
+    )
+  : Math.max(
+      5,
+      punto.aoiDia * 2
+    );
 
     },
 
@@ -1559,10 +1577,15 @@ datasets.unshift({
         return 0;
       }
 
-      return Math.max(
-        7,
-        punto.aoiDia * 2 + 2
-      );
+   return esMobile
+  ? Math.max(
+      5,
+      punto.aoiDia * 1.2 + 2
+    )
+  : Math.max(
+      7,
+      punto.aoiDia * 2 + 2
+    );
 
     },
 
