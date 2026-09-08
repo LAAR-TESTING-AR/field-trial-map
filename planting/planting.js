@@ -1351,10 +1351,10 @@ const ultimaSemanaCultivo =
             return 0;
           }
 
-          return Math.max(
-            5,
-            punto.aoiDia * 3
-          );
+      return Math.max(
+  4,
+  punto.aoiDia * 2
+);
 
         },
 
@@ -1371,10 +1371,11 @@ const ultimaSemanaCultivo =
             return 0;
           }
 
-          return Math.max(
-            7,
-            punto.aoiDia * 3 + 2
-          );
+         return Math.max(
+  6,
+  punto.aoiDia * 2 + 2
+);
+
 
         },
 
