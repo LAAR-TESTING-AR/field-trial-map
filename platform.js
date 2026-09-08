@@ -165,10 +165,11 @@ const access =
   sitiosValidos.filter(
     sitio =>
       limpiarTexto(
-        sitio.Description
+        sitio["Latitude Access"]
+      ) &&
+      limpiarTexto(
+        sitio["Longitude Access"]
       )
-      .toLowerCase()
-      .includes("access")
   ).length;
 
 const masterRegions =
