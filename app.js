@@ -378,7 +378,9 @@ function cargarSitios() {
 
       completarFiltros();
       actualizarMapa();
-
+setTimeout(() => {
+  actualizarMapa();
+}, 1000);
       if (resultado.errors.length) {
         console.warn(
           "Advertencias CSV:",
