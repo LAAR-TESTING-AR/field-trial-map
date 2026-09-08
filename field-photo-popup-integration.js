@@ -25,10 +25,23 @@
       window.FieldTrialAppMode.isViewer
     );
   }
+function visitasHabilitadas() {
 
+  return Boolean(
+    window.FIELD_TRIAL_FEATURES?.VISITS
+  );
+
+}
   function botonCaptura(sitio, photoType) {
     const esTrial = photoType === "Trial";
-
+    
+if (
+  esTrial &&
+  !visitasHabilitadas()
+) {
+  return "";
+}
+    
     return `
       <div class="field-photo-popup-action">
         <button
@@ -58,6 +71,13 @@
   function botonHistorial(sitio, photoType) {
     const esTrial = photoType === "Trial";
 
+    if (
+  esTrial &&
+  !visitasHabilitadas()
+) {
+  return "";
+}
+ 
     return `
       <div class="field-photo-popup-action">
         <button
