@@ -1694,7 +1694,7 @@ plugins: {
     display: true,
 
     labels: {
-      padding: 30
+      padding: 10
     }
 
   },
