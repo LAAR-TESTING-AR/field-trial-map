@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v1.1";
+  const APP_VERSION = "v1.0";
   let eventoInstalacion = null;
 
   function esIOS() {
@@ -27,7 +27,7 @@
 
     barra.innerHTML = `
       <div class="pwa-identidad">
-        <span class="pwa-nombre">Field Trial Map</span>
+        <span class="pwa-nombre">Field Trial Platform</span>
         <span class="pwa-version">${APP_VERSION}</span>
       </div>
 
