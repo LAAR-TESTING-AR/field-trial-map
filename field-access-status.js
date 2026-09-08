@@ -376,8 +376,10 @@ function programarActualizacion() {
 
   window.setTimeout(
     actualizarEstadoAccess,
-    600
+    1200
   );
+
+}
 
 }
 
