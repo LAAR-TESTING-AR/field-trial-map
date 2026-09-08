@@ -118,6 +118,31 @@ if (sowingProgress) {
     miniProgressFill.style.width =
       `${avance}%`;
   }
+
+const sowingCompleted =
+  document.getElementById(
+    "sowingCompleted"
+  );
+
+const sowingPending =
+  document.getElementById(
+    "sowingPending"
+  );
+
+if (sowingCompleted) {
+
+  sowingCompleted.textContent =
+    `${sembrados} Sown`;
+
+}
+
+if (sowingPending) {
+
+  sowingPending.textContent =
+    `${pendientes} Pending`;
+
+}
+  
 const masterAoi =
   document.getElementById(
     "masterAoi"
