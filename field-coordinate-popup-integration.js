@@ -37,6 +37,14 @@
     );
   }
 
+function esDrop(sitio) {
+
+  return texto(sitio?.description)
+    .toLowerCase()
+    .includes("drop");
+
+}
+  
   function escaparAtributo(valor) {
     return texto(valor)
       .replaceAll("&", "&amp;")
@@ -117,20 +125,30 @@
     `;
   }
 
-  function crearControlAccessDesdeTrial(sitio) {
-    const estado = crearEstadoAccess(sitio);
+function crearControlAccessDesdeTrial(sitio) {
 
-    if (tieneAccessRegistrado(sitio)) {
-      return estado;
-    }
-
-    return (
-      estado +
-      crearBotonCoordenada(sitio, "Access", {
-        action: "create"
-      })
-    );
+  if (esDrop(sitio)) {
+    return "";
   }
+
+  const estado = crearEstadoAccess(sitio);
+
+  if (tieneAccessRegistrado(sitio)) {
+    return estado;
+  }
+
+  return (
+    crearBotonCoordenada(
+      sitio,
+      "Access",
+      {
+        action: "create"
+      }
+    ) +
+    estado
+  );
+
+}
 
   function insertarAntesDeNavegacion(html, contenido) {
     const referencia = '<div class="botones-navegacion">';
