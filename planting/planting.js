@@ -701,33 +701,23 @@ function crearPopup(sitio, estado) {
     limpiarTexto(
       sitio["Planting Date (MM/DD/YYYY)"]
     );
-  
-const esViewer =
-  window.FieldTrialAppMode &&
-  window.FieldTrialAppMode.isViewer;
-  
+
   let bloqueAccion = "";
 
-if (estado === "PENDIENTE") {
-
-  if (!esViewer) {
+  if (estado === "PENDIENTE") {
 
     bloqueAccion = `
 
       <hr>
 
       <button
-        type="button"
-        class="btn-registrar-siembra"
-        data-aoi="${aoiId}">
-        Registrar Siembra
-      </button>
+  type="button"
+  class="btn-registrar-siembra"
+  data-aoi="${aoiId}">
+  Registrar Siembra
+</button>
 
     `;
-
-  }
-
-}
 
   } else if (estado === "SEMBRADO") {
 
