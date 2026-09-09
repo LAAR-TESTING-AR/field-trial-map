@@ -59,7 +59,13 @@ function esDrop(sitio) {
       window.FieldTrialAppMode.isViewer
     );
   }
+function esDrop(sitio) {
 
+  return texto(sitio?.description)
+    .toLowerCase()
+    .includes("drop");
+
+}
   function crearBotonCoordenada(sitio, pointType, opciones = {}) {
     const esTrial = pointType === "Trial";
     const latitude = esTrial
@@ -179,22 +185,35 @@ function crearControlAccessDesdeTrial(sitio) {
     return;
   }
 
-  window.crearPopupTrial = function (sitio) {
-    const html = crearPopupTrialAnterior(sitio);
+window.crearPopupTrial = function (sitio) {
 
-    if (esModoViewer()) {
-      return html;
-    }
+  const html =
+    crearPopupTrialAnterior(sitio);
 
-    const controles =
-      crearBotonCoordenada(sitio, "Trial") +
-      crearControlAccessDesdeTrial(sitio);
+  if (esModoViewer()) {
+    return html;
+  }
 
-    return insertarAntesDeNavegacion(
-      html,
-      controles
+  if (esDrop(sitio)) {
+    return html;
+  }
+
+  const controles =
+    crearBotonCoordenada(
+      sitio,
+      "Trial"
+    ) +
+    crearControlAccessDesdeTrial(
+      sitio
     );
-  };
+
+  return insertarAntesDeNavegacion(
+    html,
+    controles
+  );
+
+};
+``
 
   window.crearPopupAccess = function (sitio) {
     const html = crearPopupAccessAnterior(sitio);
