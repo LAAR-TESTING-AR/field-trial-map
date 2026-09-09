@@ -292,6 +292,14 @@ if (navegacion) {
       return;
     }
 
+const esDrop = popup.querySelector(
+  ".aviso-trial-drop"
+);
+
+if (esDrop) {
+  return;
+}
+    
     const aoiId = obtenerAoiId(popup);
     if (!aoiId) {
       return;
