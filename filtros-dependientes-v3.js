@@ -10,6 +10,18 @@
 
   const limpiar = valor => String(valor ?? "").trim();
 
+function normalizar(valor) {
+  return limpiar(valor)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function obtenerPalabras(valor) {
+  return normalizar(valor)
+    .match(/[a-z0-9]+/g) || [];
+}
+  
   function obtenerBusquedaEspecial() {
     const q = limpiar(busqueda.value).toLowerCase();
     return ["trial", "access", "drop"].includes(q) ? q : "";
@@ -17,35 +29,151 @@
 
   window.obtenerBusquedaEspecial = obtenerBusquedaEspecial;
 
-  function coincideBusqueda(sitio) {
-    const q = limpiar(busqueda.value).toLowerCase();
-    if (!q) return true;
+ function coincideBusqueda(sitio) {
 
-    const especial = obtenerBusquedaEspecial();
-    if (especial === "trial") return tieneTrial(sitio);
-    if (especial === "access") return tieneAccess(sitio);
-    if (especial === "drop") {
-      return tieneTrial(sitio) && limpiar(sitio.description).toLowerCase().includes("drop");
-    }
+  const palabras =
+    obtenerPalabras(
+      busqueda.value
+    );
 
-    const buscable = [
-  sitio.aoiId,
-  sitio.location,
-  sitio.description,
-  sitio.crop,
-  sitio.region,
-  sitio.province,
-  sitio.fts,
-  sitio.spa,
-  sitio.operations
-].join(" ").toLowerCase();
-
-const palabras = q.split(/\s+/).filter(Boolean);
-
-return palabras.every(
-  palabra => buscable.includes(palabra)
-);
+  if (palabras.length === 0) {
+    return true;
   }
+
+  const consultaCompleta =
+    normalizar(busqueda.value);
+
+  /*
+   * Búsquedas especiales existentes.
+   */
+  if (consultaCompleta === "trial") {
+    return tieneTrial(sitio);
+  }
+
+  if (consultaCompleta === "access") {
+    return tieneAccess(sitio);
+  }
+
+  if (consultaCompleta === "drop") {
+    return (
+      tieneTrial(sitio) &&
+      normalizar(
+        sitio.description
+      ).includes("drop")
+    );
+  }
+
+  /*
+   * Valores estructurados disponibles
+   * en Crop y LAAR Status.
+   */
+  const nombresCultivos =
+    sitios
+      .map(item =>
+        normalizar(item.crop)
+      )
+      .filter(Boolean);
+
+  const palabrasLaarDisponibles =
+    new Set(
+      sitios.flatMap(item =>
+        obtenerPalabras(
+          item.laarStatus
+        )
+      )
+    );
+
+  const cropActual =
+    normalizar(sitio.crop);
+
+  const palabrasLaarActual =
+    obtenerPalabras(
+      sitio.laarStatus
+    );
+
+  /*
+   * Campos informativos generales.
+   * LAAR y Crop se evalúan aparte.
+   */
+  const palabrasGenerales =
+    obtenerPalabras([
+      sitio.location,
+      sitio.description,
+      sitio.season,
+      sitio.station,
+      sitio.province,
+      sitio.region,
+      sitio.fts,
+      sitio.spa,
+      sitio.operations
+    ].join(" "));
+
+  const aoiActual =
+    normalizar(sitio.aoiId);
+
+  return palabras.every(
+    palabra => {
+
+      /*
+       * Si es un término LAAR conocido,
+       * solamente puede coincidir en
+       * LAAR Status como palabra completa.
+       *
+       * Así R2 no coincide con PAR2T.
+       */
+      if (
+        palabrasLaarDisponibles.has(
+          palabra
+        )
+      ) {
+        return palabrasLaarActual.includes(
+          palabra
+        );
+      }
+
+      /*
+       * Si aparece dentro de algún Crop,
+       * solamente se evalúa contra Crop.
+       *
+       * "corn" coincide con:
+       * Corn
+       * Corn Stewarded
+       * cualquier Crop que contenga Corn.
+       */
+      const esTerminoCrop =
+        nombresCultivos.some(
+          cultivo =>
+            cultivo.includes(palabra)
+        );
+
+      if (esTerminoCrop) {
+        return cropActual.includes(
+          palabra
+        );
+      }
+
+      /*
+       * Un AOI completo o parcial
+       * continúa siendo buscable.
+       */
+      if (
+        aoiActual.includes(palabra)
+      ) {
+        return true;
+      }
+
+      /*
+       * Para el resto de los campos
+       * exigimos palabras separadas.
+       * No coincide dentro de otra palabra.
+       */
+      return palabrasGenerales.includes(
+        palabra
+      );
+
+    }
+  );
+}
 
   function coincideSeleccionFTS(sitio) {
     return ftsSeleccionados.size === 0 || ftsSeleccionados.has(limpiar(sitio.fts));
