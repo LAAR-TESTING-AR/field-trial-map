@@ -22,6 +22,13 @@ let botonLeyenda = null;
 
 const limpiarTexto = valor => String(valor ?? "").trim();
 
+function normalizarTexto(valor) {
+  return limpiarTexto(valor)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 function escaparHTML(valor) {
   return limpiarTexto(valor)
     .replaceAll("&", "&amp;")
@@ -102,18 +109,36 @@ function completarFiltros() {
 }
 
 function coincideConFiltros(sitio) {
-  const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [
-    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
-    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
-  ].join(" ").toLowerCase();
 
-  return esVisible(sitio)
-    && (!q || buscable.includes(q))
-    && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
-    && (!filtroRegion.value || sitio.region === filtroRegion.value)
-    && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
-    && (!filtroFTS.value || sitio.fts === filtroFTS.value);
+  const palabras =
+    normalizarTexto(busqueda.value)
+      .split(/\s+/)
+      .filter(Boolean);
+
+  if (!esVisible(sitio)) {
+    return false;
+  }
+
+  const contenidoCompleto =
+    Object.values(sitio)
+      .map(normalizarTexto)
+      .join(" ");
+
+  const coincideBusqueda =
+    palabras.length === 0 ||
+    palabras.every(
+      palabra =>
+        contenidoCompleto.includes(palabra)
+    );
+
+  return (
+    coincideBusqueda &&
+    (!filtroCultivo.value || sitio.crop === filtroCultivo.value) &&
+    (!filtroRegion.value || sitio.region === filtroRegion.value) &&
+    (!filtroLocalidad.value || sitio.location === filtroLocalidad.value) &&
+    (!filtroFTS.value || sitio.fts === filtroFTS.value)
+  );
+
 }
 
 function configuracionCultivo(cultivo) {
