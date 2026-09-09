@@ -704,22 +704,31 @@ function crearPopup(sitio, estado) {
 
   let bloqueAccion = "";
 
-  if (estado === "PENDIENTE") {
+if (estado === "PENDIENTE") {
+
+  const esViewer =
+    window.FieldTrialAppMode &&
+    window.FieldTrialAppMode.isViewer;
+
+  if (!esViewer) {
 
     bloqueAccion = `
 
       <hr>
 
       <button
-  type="button"
-  class="btn-registrar-siembra"
-  data-aoi="${aoiId}">
-  Registrar Siembra
-</button>
+        type="button"
+        class="btn-registrar-siembra"
+        data-aoi="${aoiId}">
+        Registrar Siembra
+      </button>
 
     `;
 
-  } else if (estado === "SEMBRADO") {
+  }
+
+}
+  else if (estado === "SEMBRADO") {
 
     bloqueAccion = `
 
