@@ -31,135 +31,110 @@ function obtenerPalabras(valor) {
 
 function coincideBusqueda(sitio) {
 
-  const palabras =
-    obtenerPalabras(
-      busqueda.value
-    );
-
-  if (palabras.length === 0) {
-    return true;
-  }
-
   const consultaCompleta =
     normalizar(busqueda.value);
+
+  if (!consultaCompleta) {
+    return true;
+  }
 
   /*
    * Búsquedas especiales.
    */
-  if (consultaCompleta === "tri*l") {
-    return tieneTrial(sitio)*
+  if (consultaCompleta === "trial") {
+    return tieneTrial(sitio);
   }
 
-  if (consultaCompleta === "*ccess") {
-    return tieneAccess(s*tio);
+  if (consultaCompleta === "access") {
+    return tieneAccess(sitio);
   }
 
-  if (consultaCompleta *== "drop") {
+  if (consultaCompleta === "drop") {
     return (
-      ti*neTrial(sitio) &&
-      normalizar*
+      tieneTrial(sitio) &&
+      normalizar(
         sitio.description
       ).includes("drop")
     );
   }
 
-  const cropActual =
-    normalizar(sitio.crop);
+  /*
+   * Ignora palabras de un solo carácter.
+   */
+  const palabras =
+    obtenerPalabras(busqueda.value)
+      .filter(
+        palabra =>
+          palabra.length >= 2
+      );
 
+  if (palabras.length === 0) {
+    return true;
+  }
+
+  /*
+   * LAAR Status separado en palabras completas.
+   *
+   * Ejemplo:
+   * "R2 - Confirmed" produce:
+   * ["r2", "confirmed"]
+   */
   const palabrasLaarActual =
     obtenerPalabras(
       sitio.laarStatus
     );
 
   /*
-   * Palabras de campos informativos.
-   * Permite buscar por comienzos:
-   * "tres a" = Tres Arroyos
-   * "tres i" = Tres Isletas
+   * Todas las columnas buscables para
+   * palabras de 3 caracteres o más.
    */
-  const palabrasGenerales =
-    obtenerPalabras([
-      sitio.location,
-      sitio.description,
-      sitio.season,
-      sitio.station,
-      sitio.province,
-      sitio.region,
-      sitio.fts,
-      sitio.spa,
-      sitio.operations
-    ].join(" "));
-
-  const aoiActual =
-    normalizar(sitio.aoiId);
-
-  const cultivosDisponibles =
-    sitios
-      .map(item =>
-        normalizar(item.crop)
-      )
-      .filter(Boolean);
+  const valoresGenerales = [
+    sitio.aoiId,
+    sitio.location,
+    sitio.description,
+    sitio.crop,
+    sitio.laarStatus,
+    sitio.season,
+    sitio.station,
+    sitio.province,
+    sitio.region,
+    sitio.fts,
+    sitio.spa,
+    sitio.operations,
+    sitio.plantingDate,
+    sitio.plantDensity,
+    sitio.fertilization,
+    sitio.area
+  ]
+    .map(normalizar);
 
   return palabras.every(
     palabra => {
 
       /*
-       * R1, R2, R3, etc. se buscan
-       * exclusivamente en LAAR Status.
+       * Exactamente 2 caracteres:
+       * buscar exclusivamente en
+       * LAAR Status como palabra completa.
        */
-      if (/^r\d+$/i.test(palabra)) {
+      if (palabra.length === 2) {
         return palabrasLaarActual.includes(
           palabra
         );
       }
 
       /*
-       * Solo términos de 3 letras o más
-       * pueden interpretarse como Crop.
-       * Evita clasificar "a" o "i"
-       * accidentalmente como cultivo.
+       * 3 caracteres o más:
+       * buscar en todas las columnas.
        */
-      const esTerminoCrop =
-        palabra.length >= 3 &&
-        cultivosDisponibles.some(
-          cultivo =>
-            cultivo.includes(palabra)
-        );
-
-      if (esTerminoCrop) {
-        return cropActual.includes(
-          palabra
-        );
-      }
-
-      /*
-       * Búsqueda por prefijo en campos
-       * descriptivos.
-       */
-      const coincideCampoGeneral =
-        palabrasGenerales.some(
-          valor =>
-            valor.startsWith(palabra)
-        );
-
-      if (coincideCampoGeneral) {
-        return true;
-      }
-
-      /*
-       * AOI continúa siendo buscable,
-       * pero no con una sola letra para
-       * evitar falsos positivos.
-       */
-      return (
-        palabra.length >= 3 &&
-        aoiActual.includes(palabra)
+      return valoresGenerales.some(
+        valor =>
+          valor.includes(palabra)
       );
 
     }
   );
 }
-
+``
   function coincideSeleccionFTS(sitio) {
     return ftsSeleccionados.size === 0 || ftsSeleccionados.has(limpiar(sitio.fts));
   }
