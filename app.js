@@ -102,17 +102,33 @@ function completarFiltros() {
 }
 
 function coincideConFiltros(sitio) {
+console.log(
+"BUSCADOR NUEVO",
+sitio.aoiId
+);
+  
+  
   const palabrasBusqueda =
 limpiarTexto(busqueda.value)
 .toLowerCase()
 .split(/\s+/)
 .filter(Boolean);
  
-const buscable =
-Object.values(sitio)
-.map(valor =>
-limpiarTexto(valor)
-)
+const buscable = [
+
+  sitio.location,
+  sitio.description,
+  sitio.crop,
+  sitio.laarStatus,
+  sitio.season,
+  sitio.station,
+  sitio.province,
+  sitio.region,
+  sitio.fts,
+  sitio.spa,
+  sitio.operations
+
+]
 .join(" ")
 .toLowerCase();
 
