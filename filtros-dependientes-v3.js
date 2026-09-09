@@ -126,6 +126,20 @@ const palabras =
   ]
     .map(normalizar);
 
+const cropActual =
+  normalizar(sitio.crop);
+
+const cropExcluido =
+  exclusionesCrop.some(
+    exclusion =>
+      cropActual.includes(exclusion)
+  );
+
+if (cropExcluido) {
+  return false;
+}
+``
+  
   return palabras.every(
     palabra => {
 
