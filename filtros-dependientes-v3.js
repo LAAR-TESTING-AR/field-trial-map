@@ -29,7 +29,7 @@ function obtenerPalabras(valor) {
 
   window.obtenerBusquedaEspecial = obtenerBusquedaEspecial;
 
- function coincideBusqueda(sitio) {
+function coincideBusqueda(sitio) {
 
   const palabras =
     obtenerPalabras(
@@ -44,44 +44,24 @@ function obtenerPalabras(valor) {
     normalizar(busqueda.value);
 
   /*
-   * Búsquedas especiales existentes.
+   * Búsquedas especiales.
    */
-  if (consultaCompleta === "trial") {
-    return tieneTrial(sitio);
+  if (consultaCompleta === "tri*l") {
+    return tieneTrial(sitio)*
   }
 
-  if (consultaCompleta === "access") {
-    return tieneAccess(sitio);
+  if (consultaCompleta === "*ccess") {
+    return tieneAccess(s*tio);
   }
 
-  if (consultaCompleta === "drop") {
+  if (consultaCompleta *== "drop") {
     return (
-      tieneTrial(sitio) &&
-      normalizar(
+      ti*neTrial(sitio) &&
+      normalizar*
         sitio.description
       ).includes("drop")
     );
   }
-
-  /*
-   * Valores estructurados disponibles
-   * en Crop y LAAR Status.
-   */
-  const nombresCultivos =
-    sitios
-      .map(item =>
-        normalizar(item.crop)
-      )
-      .filter(Boolean);
-
-  const palabrasLaarDisponibles =
-    new Set(
-      sitios.flatMap(item =>
-        obtenerPalabras(
-          item.laarStatus
-        )
-      )
-    );
 
   const cropActual =
     normalizar(sitio.crop);
@@ -92,8 +72,10 @@ function obtenerPalabras(valor) {
     );
 
   /*
-   * Campos informativos generales.
-   * LAAR y Crop se evalúan aparte.
+   * Palabras de campos informativos.
+   * Permite buscar por comienzos:
+   * "tres a" = Tres Arroyos
+   * "tres i" = Tres Isletas
    */
   const palabrasGenerales =
     obtenerPalabras([
@@ -111,37 +93,35 @@ function obtenerPalabras(valor) {
   const aoiActual =
     normalizar(sitio.aoiId);
 
+  const cultivosDisponibles =
+    sitios
+      .map(item =>
+        normalizar(item.crop)
+      )
+      .filter(Boolean);
+
   return palabras.every(
     palabra => {
 
       /*
-       * Si es un término LAAR conocido,
-       * solamente puede coincidir en
-       * LAAR Status como palabra completa.
-       *
-       * Así R2 no coincide con PAR2T.
+       * R1, R2, R3, etc. se buscan
+       * exclusivamente en LAAR Status.
        */
-      if (
-        palabrasLaarDisponibles.has(
-          palabra
-        )
-      ) {
+      if (/^r\d+$/i.test(palabra)) {
         return palabrasLaarActual.includes(
           palabra
         );
       }
 
       /*
-       * Si aparece dentro de algún Crop,
-       * solamente se evalúa contra Crop.
-       *
-       * "corn" coincide con:
-       * Corn
-       * Corn Stewarded
-       * cualquier Crop que contenga Corn.
+       * Solo términos de 3 letras o más
+       * pueden interpretarse como Crop.
+       * Evita clasificar "a" o "i"
+       * accidentalmente como cultivo.
        */
       const esTerminoCrop =
-        nombresCultivos.some(
+        palabra.length >= 3 &&
+        cultivosDisponibles.some(
           cultivo =>
             cultivo.includes(palabra)
         );
@@ -153,22 +133,27 @@ function obtenerPalabras(valor) {
       }
 
       /*
-       * Un AOI completo o parcial
-       * continúa siendo buscable.
+       * Búsqueda por prefijo en campos
+       * descriptivos.
        */
-      if (
-        aoiActual.includes(palabra)
-      ) {
+      const coincideCampoGeneral =
+        palabrasGenerales.some(
+          valor =>
+            valor.startsWith(palabra)
+        );
+
+      if (coincideCampoGeneral) {
         return true;
       }
 
       /*
-       * Para el resto de los campos
-       * exigimos palabras separadas.
-       * No coincide dentro de otra palabra.
+       * AOI continúa siendo buscable,
+       * pero no con una sola letra para
+       * evitar falsos positivos.
        */
-      return palabrasGenerales.includes(
-        palabra
+      return (
+        palabra.length >= 3 &&
+        aoiActual.includes(palabra)
       );
 
     }
