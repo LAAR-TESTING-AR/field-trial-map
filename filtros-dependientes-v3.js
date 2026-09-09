@@ -61,12 +61,30 @@ function coincideBusqueda(sitio) {
   /*
    * Ignora palabras de un solo carácter.
    */
-  const palabras =
-    obtenerPalabras(busqueda.value)
-      .filter(
-        palabra =>
-          palabra.length >= 2
-      );
+ const partesBusqueda =
+  consultaCompleta
+    .split(/\s+/)
+    .filter(Boolean);
+
+const exclusionesCrop =
+  partesBusqueda
+    .filter(
+      palabra =>
+        palabra.startsWith("-") &&
+        palabra.length > 1
+    )
+    .map(
+      palabra =>
+        palabra.slice(1)
+    );
+
+const palabras =
+  partesBusqueda
+    .filter(
+      palabra =>
+        !palabra.startsWith("-") &&
+        palabra.length >= 2
+    );
 
   if (palabras.length === 0) {
     return true;
