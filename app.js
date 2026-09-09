@@ -103,10 +103,13 @@ function completarFiltros() {
 
 function coincideConFiltros(sitio) {
   const q = limpiarTexto(busqueda.value).toLowerCase();
-  const buscable = [
-    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
-    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
-  ].join(" ").toLowerCase();
+const buscable =
+  Object.values(sitio)
+    .map(valor =>
+      limpiarTexto(valor)
+    )
+    .join(" ")
+    .toLowerCase();
 
   return esVisible(sitio)
     && (!q || buscable.includes(q))
