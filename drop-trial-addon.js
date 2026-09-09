@@ -60,12 +60,12 @@
       '<div class="popup-detalles">',
       `${aviso}<div class="popup-detalles">`
     );
-
+/*
     html = html.replace(
       /<div class="botones-navegacion">[\s\S]*?<\/div>\s*<\/div>$/,
       "</div>"
     );
-
+*/
     return html;
   };
 
