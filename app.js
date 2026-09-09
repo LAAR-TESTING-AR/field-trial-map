@@ -102,17 +102,28 @@ function completarFiltros() {
 }
 
 function coincideConFiltros(sitio) {
-  const q = limpiarTexto(busqueda.value).toLowerCase();
+  const palabrasBusqueda =
+limpiarTexto(busqueda.value)
+.toLowerCase()
+.split(/\s+/)
+.filter(Boolean);
+ 
 const buscable =
-  Object.values(sitio)
-    .map(valor =>
-      limpiarTexto(valor)
-    )
-    .join(" ")
-    .toLowerCase();
+Object.values(sitio)
+.map(valor =>
+limpiarTexto(valor)
+)
+.join(" ")
+.toLowerCase();
 
   return esVisible(sitio)
-    && (!q || buscable.includes(q))
+    && (
+palabrasBusqueda.length === 0 ||
+palabrasBusqueda.every(
+palabra =>
+buscable.includes(palabra)
+)
+)
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
     && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
