@@ -705,10 +705,7 @@ function crearPopup(sitio, estado) {
   let bloqueAccion = "";
 
 if (estado === "PENDIENTE") {
-console.log(
-  "VIEWER CHECK",
-  window.FieldTrialAppMode
-);
+
   const esViewer =
     window.FieldTrialAppMode &&
     window.FieldTrialAppMode.isViewer;
