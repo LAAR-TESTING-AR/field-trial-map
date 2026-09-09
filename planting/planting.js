@@ -880,7 +880,16 @@ marcador.on(
     if (!boton) {
       return;
     }
+if (
+  window.FieldTrialAppMode &&
+  window.FieldTrialAppMode.isViewer
+) {
 
+  boton.remove();
+
+  return;
+
+}
     boton.onclick =
       async () => {
 
