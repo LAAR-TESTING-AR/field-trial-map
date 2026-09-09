@@ -209,5 +209,27 @@
       );
     }
   </script>
+
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (
+    window.FieldTrialAppMode &&
+    window.FieldTrialAppMode.isViewer
+  ) {
+
+    const boton =
+      document.querySelector(".btn-dashboard");
+
+    if (boton) {
+      boton.href =
+        "platform.html?mode=viewer";
+    }
+
+  }
+
+});
+</script> 
+  
 </body>
 </html>
