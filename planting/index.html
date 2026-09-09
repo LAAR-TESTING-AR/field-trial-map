@@ -283,7 +283,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.FieldTrialAppMode &&
     window.FieldTrialAppMode.isViewer
   ) {
-
+console.log(
+  "Viewer:",
+  window.FieldTrialAppMode
+);
     const boton =
       document.querySelector(".btn-dashboard");
 
