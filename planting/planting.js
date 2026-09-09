@@ -176,20 +176,122 @@ function normalizarTexto(valor) {
 }
 
 function coincideConBusqueda(sitio) {
-  const palabras = normalizarTexto(busqueda.value)
-    .split(/\s+/)
-    .filter(Boolean);
+
+  const consulta =
+    normalizarTexto(
+      busqueda.value
+    ).trim();
+
+  if (!consulta) {
+    return true;
+  }
+
+  const partesBusqueda =
+    consulta
+      .split(/\s+/)
+      .filter(Boolean);
+
+  /*
+   * Exclusiones aplicadas al Crop.
+   *
+   * Ejemplo:
+   * corn r3 -steward
+   */
+  const exclusionesCrop =
+    partesBusqueda
+      .filter(
+        palabra =>
+          palabra.startsWith("-") &&
+          palabra.length > 1
+      )
+      .map(
+        palabra =>
+          palabra.slice(1)
+      );
+
+  /*
+   * Palabras positivas.
+   * Las de un carácter se ignoran.
+   */
+  const palabras =
+    partesBusqueda
+      .filter(
+        palabra =>
+          !palabra.startsWith("-") &&
+          palabra.length >= 2
+      );
 
   if (palabras.length === 0) {
     return true;
   }
 
-  const contenidoCompleto = Object.values(sitio)
-    .map(normalizarTexto)
-    .join(" ");
+  const cropActual =
+    normalizarTexto(
+      sitio["Crop"]
+    );
 
-  return palabras.every(palabra =>
-    contenidoCompleto.includes(palabra)
+  const cropExcluido =
+    exclusionesCrop.some(
+      exclusion =>
+        cropActual.includes(
+          exclusion
+        )
+    );
+
+  if (cropExcluido) {
+    return false;
+  }
+
+  /*
+   * LAAR Status separado en palabras
+   * completas.
+   *
+   * Así R2 no coincide con PAR2T
+   * dentro del AOI.
+   */
+  const palabrasLaar =
+    normalizarTexto(
+      sitio[
+        "LAAR Status 2026-2027"
+      ]
+    )
+      .match(/[a-z0-9]+/g) || [];
+
+  /*
+   * Todas las columnas del registro.
+   * Se utilizan únicamente para palabras
+   * de tres caracteres o más.
+   */
+  const valoresGenerales =
+    Object.values(sitio)
+      .map(normalizarTexto);
+
+  return palabras.every(
+    palabra => {
+
+      /*
+       * Exactamente dos caracteres:
+       * buscar exclusivamente en
+       * LAAR Status.
+       */
+      if (palabra.length === 2) {
+        return palabrasLaar.includes(
+          palabra
+        );
+      }
+
+      /*
+       * Tres caracteres o más:
+       * buscar en todas las columnas.
+       */
+      return valoresGenerales.some(
+        valor =>
+          valor.includes(
+            palabra
+          )
+      );
+
+    }
   );
 }
 
