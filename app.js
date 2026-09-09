@@ -102,37 +102,14 @@ function completarFiltros() {
 }
 
 function coincideConFiltros(sitio) {
+  const q = limpiarTexto(busqueda.value).toLowerCase();
+  const buscable = [
+    sitio.aoiId, sitio.location, sitio.description, sitio.crop,
+    sitio.region, sitio.province, sitio.fts, sitio.spa, sitio.operations
+  ].join(" ").toLowerCase();
 
-const palabrasBusqueda =
-  normalizarTexto(busqueda.value)
-    .split(/\s+/)
-    .filter(Boolean);
-
-const contenidoCompleto =
-  Object.values(sitio)
-    .map(normalizarTexto)
-    .join(" ");  
-  if (
-  sitio.aoiId === "AACY04NPAR2T"
-) {
-
-  console.log(
-    "AOI TEST",
-    sitio.aoiId,
-    sitio.crop,
-    sitio.laarStatus
-  );
-
-}
-  
   return esVisible(sitio)
-    && (
-palabrasBusqueda.length === 0 ||
-palabrasBusqueda.every(
-palabra =>
-contenidoCompleto.includes(palabra)
-)
-)
+    && (!q || buscable.includes(q))
     && (!filtroCultivo.value || sitio.crop === filtroCultivo.value)
     && (!filtroRegion.value || sitio.region === filtroRegion.value)
     && (!filtroLocalidad.value || sitio.location === filtroLocalidad.value)
